@@ -1,0 +1,4303 @@
+!/I-EC:I-SF:0	아/I-EC !/I-SF
+!/I-EC:I-SF:1	어/I-EC !/I-SF
+!/I-EF:I-SF:0	어/I-EF !/I-SF
+!/I-EF:I-SF:1	아/I-EF !/I-SF
+!/I-EF:I-SF:2	우/I-EF !/I-SF
+!/I-EF:I-SF:3	오/I-EF !/I-SF
+!/I-SP:I-SF:0	,/I-SP !/I-SF
+"/B-SE:I-SS:0	…/B-SE "/I-SS
+"/I-EC:I-SS:0	아/I-EC "/I-SS
+"/I-EC:I-SS:1	어/I-EC "/I-SS
+"/I-SF:I-SS:0	./I-SF "/I-SS
+'/B-SE:I-SS:0	…/B-SE '/I-SS
+'/I-EC:I-SS:0	아/I-EC '/I-SS
+'/I-EC:I-SS:1	어/I-EC '/I-SS
+'/I-EC:I-SS:2	우/I-EC '/I-SS
+'/I-EC:I-SS:3	오/I-EC '/I-SS
+'/I-ETM:I-SS:0	ㄹ/I-ETM '/I-SS
+(/I-EC:I-SS:0	어/I-EC (/I-SS
+(/I-EC:I-SS:1	아/I-EC (/I-SS
+)/I-EC:I-SS:0	아/I-EC )/I-SS
+)/I-SF:I-SS:0	./I-SF )/I-SS
+,/I-EC:I-SP:0	아/I-EC ,/I-SP
+,/I-EC:I-SP:1	어/I-EC ,/I-SP
+,/I-EC:I-SP:2	우/I-EC ,/I-SP
+,/I-EC:I-SP:3	오/I-EC ,/I-SP
+,/I-ETM:I-SP:0	ㄹ/I-ETM ,/I-SP
+,/I-SP:B-SP:0	,/I-SP ,/B-SP
+-/I-EC:I-SS:0	아/I-EC -/I-SS
+-/I-EC:I-SS:1	어/I-EC -/I-SS
+./I-EC:I-SF:0	아/I-EC ./I-SF
+./I-EF:I-SF:0	아/I-EF ./I-SF
+./I-EF:I-SF:1	어/I-EF ./I-SF
+./I-EF:I-SF:2	우/I-EF ./I-SF
+./I-EF:I-SF:3	오/I-EF ./I-SF
+//I-EC:I-SP:0	아/I-EC //I-SP
+//I-EC:I-SP:1	어/I-EC //I-SP
+;/I-EC:I-SP:0	어/I-EC ;/I-SP
+=/I-EC:I-SW:0	어/I-EC =/I-SW
+=/I-EC:I-SW:1	아/I-EC =/I-SW
+>/I-EC:I-SS:0	오/I-EC >/I-SS
+?/I-EC:I-SF:0	아/I-EC ?/I-SF
+?/I-EC:I-SF:1	어/I-EC ?/I-SF
+?/I-EF:I-SF:0	어/I-EF ?/I-SF
+?/I-EF:I-SF:1	아/I-EF ?/I-SF
+x/I-SL:I-SL:0	_/I-SL x/I-SL
+~/I-EC:I-SO:0	어/I-EC ~/I-SO
+…/B-SE:I-SF:0	…/B-SE ./I-SF
+…/I-EC:I-SE:0	어/I-EC …/I-SE
+…/I-EC:I-SE:1	아/I-EC …/I-SE
+…/I-EC:I-SE:2	우/I-EC …/I-SE
+…/I-SE:B-SE:0	…/I-SE …/B-SE
+…/I-SE:I-SF:0	…/I-SE ./I-SF
+∼/I-EC:I-SO:0	아/I-EC ∼/I-SO
+《/I-EC:I-SS:0	아/I-EC 《/I-SS
+가/I-EC:I-VV:0	어/I-EC 가/I-VV
+가/I-EC:I-VV:1	아/I-EC 가/I-VV
+가/I-EC:I-VX:0	어/I-EC 가/I-VX
+가/I-EC:I-VX:1	아/I-EC 가/I-VX
+가/I-VA:0	갑/I-VA
+가/I-VA:1	갛/I-VA
+가/I-VCP:I-EF:0	이/I-VCP 가/I-EF
+가/I-VV:0	갈/I-VV
+가/I-VV:I-EC:0	가/I-VV 아/I-EC
+가/I-VV:I-EC:1	그/I-VV 아/I-EC
+가/I-VV:I-EC:2	그/I-VV 어/I-EC
+가/I-VV:I-EF:0	그/I-VV 아/I-EF
+가/I-VV:I-EF:1	가/I-VV 아/I-EF
+가/I-VX:I-EC:0	가/I-VX 아/I-EC
+가/I-VX:I-EF:0	가/I-VX 아/I-EF
+간/I-EC:I-JX:0	가/I-EC ㄴ/I-JX
+간/I-EC:I-VV:I-EC:0	아/I-EC 가/I-VV ㄴ/I-EC
+간/I-EC:I-VV:I-EF:0	어/I-EC 가/I-VV ㄴ/I-EF
+간/I-EC:I-VV:I-ETM:0	아/I-EC 가/I-VV ㄴ/I-ETM
+간/I-EC:I-VV:I-ETM:1	어/I-EC 가/I-VV ㄴ/I-ETM
+간/I-EC:I-VX:I-EC:0	아/I-EC 가/I-VX ㄴ/I-EC
+간/I-EC:I-VX:I-EC:1	어/I-EC 가/I-VX ㄴ/I-EC
+간/I-EC:I-VX:I-EF:0	어/I-EC 가/I-VX ㄴ/I-EF
+간/I-EC:I-VX:I-EF:1	아/I-EC 가/I-VX ㄴ/I-EF
+간/I-EC:I-VX:I-ETM:0	아/I-EC 가/I-VX ㄴ/I-ETM
+간/I-EC:I-VX:I-ETM:1	어/I-EC 가/I-VX ㄴ/I-ETM
+간/I-MAG:I-JX:0	가/I-MAG ㄴ/I-JX
+간/I-NNG:I-JX:0	가/I-NNG ㄴ/I-JX
+간/I-VA:I-EC:0	갛/I-VA ㄴ/I-EC
+간/I-VA:I-ETM:0	갛/I-VA ㄴ/I-ETM
+간/I-VA:I-ETM:1	갑/I-VA ㄴ/I-ETM
+간/I-VV:I-EC:0	가/I-VV ㄴ/I-EC
+간/I-VV:I-EC:1	갈/I-VV ㄴ/I-EC
+간/I-VV:I-EF:0	가/I-VV ㄴ/I-EF
+간/I-VV:I-EF:1	갈/I-VV ㄴ/I-EF
+간/I-VV:I-ETM:0	가/I-VV ㄴ/I-ETM
+간/I-VV:I-ETM:1	갈/I-VV ㄴ/I-ETM
+간/I-VV:I-ETN:0	가/I-VV ㄴ/I-ETN
+간/I-VX:I-EC:0	가/I-VX ㄴ/I-EC
+간/I-VX:I-EF:0	가/I-VX ㄴ/I-EF
+간/I-VX:I-ETM:0	가/I-VX ㄴ/I-ETM
+간/I-VX:I-ETN:0	가/I-VX ㄴ/I-ETN
+갈/I-EC:I-JKO:0	가/I-EC ㄹ/I-JKO
+갈/I-EC:I-VV:I-EF:0	아/I-EC 가/I-VV ㄹ/I-EF
+갈/I-EC:I-VV:I-ETM:0	아/I-EC 가/I-VV ㄹ/I-ETM
+갈/I-EC:I-VX:I-EC:0	아/I-EC 가/I-VX ㄹ/I-EC
+갈/I-EC:I-VX:I-ETM:0	아/I-EC 가/I-VX ㄹ/I-ETM
+갈/I-EC:I-VX:I-ETM:1	어/I-EC 가/I-VX ㄹ/I-ETM
+갈/I-NNG:I-JKO:0	가/I-NNG ㄹ/I-JKO
+갈/I-VV:I-EC:0	가/I-VV ㄹ/I-EC
+갈/I-VV:I-EF:0	가/I-VV ㄹ/I-EF
+갈/I-VV:I-ETM:0	가/I-VV ㄹ/I-ETM
+갈/I-VV:I-ETM:1	갈/I-VV ㄹ/I-ETM
+갈/I-VV:I-VV:0	가/I-VV 르/I-VV
+갈/I-VX:I-EC:0	가/I-VX ㄹ/I-EC
+갈/I-VX:I-EF:0	가/I-VX ㄹ/I-EF
+갈/I-VX:I-ETM:0	가/I-VX ㄹ/I-ETM
+감/I-EC:I-VV:I-ETN:0	어/I-EC 가/I-VV ㅁ/I-ETN
+감/I-EC:I-VX:I-ETN:0	아/I-EC 가/I-VX ㅁ/I-ETN
+감/I-EC:I-VX:I-ETN:1	어/I-EC 가/I-VX ㅁ/I-ETN
+감/I-VV:I-EC:0	가/I-VV ㅁ/I-EC
+감/I-VV:I-EF:0	가/I-VV ㅁ/I-EF
+감/I-VV:I-ETN:0	가/I-VV ㅁ/I-ETN
+감/I-VX:I-EC:0	가/I-VX ㅁ/I-EC
+감/I-VX:I-ETN:0	가/I-VX ㅁ/I-ETN
+갑/I-VV:I-EC:0	가/I-VV ㅂ/I-EC
+갑/I-VV:I-EF:0	가/I-VV ㅂ/I-EF
+갑/I-VX:I-EC:0	가/I-VX ㅂ/I-EC
+갑/I-VX:I-EF:0	가/I-VX ㅂ/I-EF
+갓/I-VV:I-EC:0	가/I-VV 앗/I-EC
+갓/I-VV:I-EF:0	가/I-VV 앗/I-EF
+갔/I-VV:I-EP:0	가/I-VV 았/I-EP
+갔/I-VV:I-EP:1	그/I-VV 았/I-EP
+갔/I-VX:I-EP:0	가/I-VX 았/I-EP
+갖/I-EC:I-VV:0	아/I-EC 갖/I-VV
+갖/I-EC:I-VX:0	아/I-EC 갖/I-VX
+갖/I-EC:I-VX:1	어/I-EC 갖/I-VX
+개/I-EC:0	어/I-EC
+개/I-VA:I-EC:0	겋/I-VA 어/I-EC
+개/I-VA:I-EC:1	갛/I-VA 아/I-EC
+개/I-VA:I-EF:0	겋/I-VA 어/I-EF
+개/I-VV:I-EC:0	개/I-VV 어/I-EC
+갠/I-NNG:I-JX:0	개/I-NNG ㄴ/I-JX
+갠/I-VV:I-EC:0	개/I-VV ㄴ/I-EC
+갠/I-VV:I-EF:0	개/I-VV ㄴ/I-EF
+갠/I-VV:I-ETM:0	개/I-VV ㄴ/I-ETM
+갤/I-NNG:I-JKO:0	개/I-NNG ㄹ/I-JKO
+갤/I-VV:I-EC:0	개/I-VV ㄹ/I-EC
+갤/I-VV:I-ETM:0	개/I-VV ㄹ/I-ETM
+갬/I-VV:I-ETN:0	개/I-VV ㅁ/I-ETN
+갰/I-VA:I-EP:0	갛/I-VA 았/I-EP
+갰/I-VV:I-EP:0	개/I-VV 었/I-EP
+갼/I-NP:I-JX:0	갸/I-NP ㄴ/I-JX
+걘/I-NP:I-JX:0	걔/I-NP ㄴ/I-JX
+거/I-EF:I-EF:0	ㄹ/I-EF 거/I-EF
+거/I-ETM:I-NNB:0	ㄹ/I-ETM 거/I-NNB
+거/I-NNB:0	것/I-NNB
+거/I-NNG:0	것/I-NNG
+거/I-NP:0	것/I-NP
+거/I-VA:0	겁/I-VA
+거/I-VA:1	겋/I-VA
+거/I-VA:I-EC:0	겁/I-VA 어/I-EC
+거/I-VA:I-EF:0	겁/I-VA 어/I-EF
+거/I-VCP:I-EC:0	이/I-VCP 거/I-EC
+거/I-VCP:I-EF:0	이/I-VCP 거/I-EF
+거/I-VV:0	걸/I-VV
+거/I-VV:1	겁/I-VV
+거/I-VV:I-EC:0	그/I-VV 어/I-EC
+거/I-VV:I-EC:1	하/I-VV 거/I-EC
+거/I-VV:I-EF:0	그/I-VV 어/I-EF
+건/I-NNB:I-EC:0	거/I-NNB ㄴ/I-EC
+건/I-NNB:I-JX:0	거/I-NNB ㄴ/I-JX
+건/I-NNB:I-JX:1	것/I-NNB ㄴ/I-JX
+건/I-NNB:I-VCP:I-EC:0	것/I-NNB 이/I-VCP ㄴ/I-EC
+건/I-NNB:I-VCP:I-EF:0	것/I-NNB 이/I-VCP ㄴ/I-EF
+건/I-NP:I-JX:0	거/I-NP ㄴ/I-JX
+건/I-NP:I-JX:1	것/I-NP ㄴ/I-JX
+건/I-VA:I-ETM:0	겋/I-VA ㄴ/I-ETM
+건/I-VA:I-ETM:1	겁/I-VA ㄴ/I-ETM
+건/I-VA:I-ETM:2	걸/I-VA ㄴ/I-ETM
+건/I-VCP:I-EC:0	이/I-VCP 건/I-EC
+건/I-VCP:I-EF:0	이/I-VCP 건/I-EF
+건/I-VV:I-EC:0	걸/I-VV ㄴ/I-EC
+건/I-VV:I-EF:0	걸/I-VV ㄴ/I-EF
+건/I-VV:I-ETM:0	걸/I-VV ㄴ/I-ETM
+건/I-XSV:I-EC:0	하/I-XSV 건/I-EC
+걸/I-EF:I-EF:0	ㄹ/I-EF 걸/I-EF
+걸/I-NNB:0	것/I-NNB
+걸/I-NNB:I-JKB:0	거/I-NNB ㄹ/I-JKB
+걸/I-NNB:I-JKO:0	거/I-NNB ㄹ/I-JKO
+걸/I-NNB:I-JKO:1	것/I-NNB ㄹ/I-JKO
+걸/I-NNB:I-VCP:I-EC:0	것/I-NNB 이/I-VCP ㄹ/I-EC
+걸/I-NNB:I-VCP:I-EF:0	것/I-NNB 이/I-VCP ㄹ/I-EF
+걸/I-NNG:I-JKB:0	거/I-NNG ㄹ/I-JKB
+걸/I-NNG:I-JKO:0	거/I-NNG ㄹ/I-JKO
+걸/I-NP:0	것/I-NP
+걸/I-NP:I-JKB:0	거/I-NP ㄹ/I-JKB
+걸/I-NP:I-JKO:0	거/I-NP ㄹ/I-JKO
+걸/I-NP:I-JKO:1	것/I-NP ㄹ/I-JKO
+걸/I-VCP:I-EC:0	이/I-VCP 걸/I-EC
+걸/I-VCP:I-EF:0	이/I-VCP 걸/I-EF
+걸/I-VV:0	걷/I-VV
+걸/I-VV:1	거/I-VV
+걸/I-VV:I-ETM:0	걸/I-VV ㄹ/I-ETM
+걸/I-VV:I-VV:0	거/I-VV 르/I-VV
+걺/I-VV:I-ETN:0	걸/I-VV ㅁ/I-ETN
+검/I-VA:I-ETN:0	겋/I-VA ㅁ/I-ETN
+겁/I-NNB:I-VCP:I-EF:0	것/I-NNB 이/I-VCP ㅂ/I-EF
+겁/I-NP:I-VCP:I-EF:0	것/I-NP 이/I-VCP ㅂ/I-EF
+것/I-ETM:I-NNB:0	ㄹ/I-ETM 것/I-NNB
+것/I-VX:I-EP:0	하/I-VX 것/I-EP
+겄/I-VCP:I-EP:0	이/I-VCP 겄/I-EP
+겄/I-VV:I-EP:0	긋/I-VV 었/I-EP
+게/I-EC:I-EC:0	ㄹ/I-EC 게/I-EC
+게/I-EF:I-EF:0	ㄹ/I-EF 게/I-EF
+게/I-NNB:0	것/I-NNB
+게/I-NNB:I-JKC:0	것/I-NNB 이/I-JKC
+게/I-NNB:I-JKS:0	것/I-NNB 이/I-JKS
+게/I-NNB:I-VCP:0	것/I-NNB 이/I-VCP
+게/I-NP:I-JKC:0	것/I-NP 이/I-JKC
+게/I-NP:I-JKS:0	것/I-NP 이/I-JKS
+게/I-VA:I-EC:0	겋/I-VA 어/I-EC
+게/I-VCP:I-EC:0	이/I-VCP 게/I-EC
+게/I-VCP:I-EF:0	이/I-VCP 게/I-EF
+게/I-VV:I-EC:0	게/I-VV 어/I-EC
+게/I-VV:I-EF:0	기/I-VV 어/I-EF
+게/I-XSV:I-EC:0	하/I-XSV 게/I-EC
+겐/I-EC:I-JX:0	게/I-EC ㄴ/I-JX
+겐/I-JKB:I-JX:0	게/I-JKB ㄴ/I-JX
+겐/I-JKB:I-VCP:I-EC:0	게/I-JKB 이/I-VCP ㄴ/I-EC
+겐/I-MAG:I-JX:0	게/I-MAG ㄴ/I-JX
+겔/I-JKB:I-JKO:0	게/I-JKB ㄹ/I-JKO
+겔/I-NNG:I-JKO:0	게/I-NNG ㄹ/I-JKO
+겠/I-VA:I-EP:0	겋/I-VA 었/I-EP
+겠/I-VCP:I-EP:0	이/I-VCP 겠/I-EP
+겠/I-VV:I-EP:0	하/I-VV 겠/I-EP
+겠/I-VV:I-EP:1	게/I-VV 었/I-EP
+겠/I-VX:I-EP:0	하/I-VX 겠/I-EP
+겠/I-XSV:I-EP:0	하/I-XSV 겠/I-EP
+겨/I-NNB:I-VCP:I-EF:0	것/I-NNB 이/I-VCP 여/I-EF
+겨/I-VA:0	겹/I-VA
+겨/I-VA:I-EC:0	기/I-VA 어/I-EC
+겨/I-VA:I-EF:0	기/I-VA 어/I-EF
+겨/I-VV:I-EC:0	기/I-VV 어/I-EC
+겨/I-VV:I-EF:0	기/I-VV 어/I-EF
+결/I-VV:0	겯/I-VV
+겼/I-VA:I-EP:0	기/I-VA 었/I-EP
+겼/I-VV:I-EP:0	기/I-VV 었/I-EP
+계/I-EC:I-VV:0	어/I-EC 계/I-VV
+곌/I-NNG:I-JKO:0	계/I-NNG ㄹ/I-JKO
+고/I-EC:I-EC:0	ㄹ/I-EC 고/I-EC
+고/I-EC:I-EC:1	라/I-EC 고/I-EC
+고/I-EC:I-EC:2	어/I-EC 고/I-EC
+고/I-VA:0	곱/I-VA
+고/I-VCP:I-EC:0	이/I-VCP 고/I-EC
+고/I-VCP:I-EF:0	이/I-VCP 고/I-EF
+고/I-VV:0	골/I-VV
+고/I-XSV:I-EC:0	하/I-XSV 고/I-EC
+곤/I-EC:I-JX:0	고/I-EC ㄴ/I-JX
+곤/I-EC:I-JX:1	고/I-EC 는/I-JX
+곤/I-JC:I-JX:0	고/I-JC ㄴ/I-JX
+곤/I-JKB:I-JX:0	고/I-JKB ㄴ/I-JX
+곤/I-JKQ:I-JX:0	고/I-JKQ ㄴ/I-JX
+곤/I-JX:B-JX:0	고/I-JX ㄴ/B-JX
+곤/I-MAJ:I-JX:0	고/I-MAJ ㄴ/I-JX
+곤/I-VCP:I-EC:0	이/I-VCP 곤/I-EC
+곤/I-VV:I-EC:0	고/I-VV ㄴ/I-EC
+곤/I-VV:I-EF:0	골/I-VV ㄴ/I-EF
+곤/I-VV:I-ETM:0	고/I-VV ㄴ/I-ETM
+골/I-NNG:I-JKO:0	고/I-NNG ㄹ/I-JKO
+골/I-VA:I-VA:0	고/I-VA 르/I-VA
+골/I-VV:I-ETM:0	골/I-VV ㄹ/I-ETM
+골/I-VV:I-VV:0	고/I-VV 르/I-VV
+곳/I-ETM:I-NNG:0	ㄹ/I-ETM 곳/I-NNG
+과/I-ETN:I-JKB:0	ㅁ/I-ETN 과/I-JKB
+과/I-VV:I-EC:0	고/I-VV 아/I-EC
+관/I-JKB:I-JX:0	과/I-JKB ㄴ/I-JX
+관/I-VCP:I-EC:0	이/I-VCP 관/I-EC
+괸/I-VV:I-EF:0	괴/I-VV ㄴ/I-EF
+괸/I-VV:I-ETM:0	괴/I-VV ㄴ/I-ETM
+괼/I-VV:I-ETM:0	괴/I-VV ㄹ/I-ETM
+굅/I-VV:I-EF:0	괴/I-VV ㅂ/I-EF
+굔/I-NNG:I-JX:0	교/I-NNG ㄴ/I-JX
+굘/I-NNG:I-JKO:0	교/I-NNG ㄹ/I-JKO
+구/I-IC:I-SP:0	구/I-IC ,/I-SP
+구/I-VA:0	굽/I-VA
+구/I-VCP:I-EC:0	이/I-VCP 구/I-EC
+구/I-VCP:I-EF:0	이/I-VCP 구/I-EF
+구/I-VV:0	굽/I-VV
+구/I-VV:1	굴/I-VV
+구/I-VX:0	굴/I-VX
+군/I-EC:I-JX:0	구/I-EC ㄴ/I-JX
+군/I-JKB:I-JX:0	구/I-JKB ㄴ/I-JX
+군/I-NNG:I-JX:0	구/I-NNG ㄴ/I-JX
+군/I-NNP:I-JX:0	구/I-NNP ㄴ/I-JX
+군/I-NP:0	구/I-NP
+군/I-NP:I-JX:0	구/I-NP ㄴ/I-JX
+군/I-NP:I-VCP:I-EC:0	구/I-NP 이/I-VCP ㄴ/I-EC
+군/I-NP:I-VCP:I-EF:0	구/I-NP 이/I-VCP ㄴ/I-EF
+군/I-VCP:I-EC:0	이/I-VCP 군/I-EC
+군/I-VCP:I-EF:0	이/I-VCP 군/I-EF
+군/I-VV:I-EC:0	굴/I-VV ㄴ/I-EC
+군/I-VV:I-EC:1	구/I-VV ㄴ/I-EC
+군/I-VV:I-EF:0	구/I-VV ㄴ/I-EF
+군/I-VV:I-EF:1	굴/I-VV ㄴ/I-EF
+군/I-VV:I-ETM:0	구/I-VV ㄴ/I-ETM
+군/I-VV:I-ETM:1	굴/I-VV ㄴ/I-ETM
+군/I-VV:I-ETM:2	굽/I-VV 은/I-ETM
+군/I-VV:I-ETM:3	굽/I-VV ㄴ/I-ETM
+굴/I-NNG:I-JKO:0	구/I-NNG ㄹ/I-JKO
+굴/I-NP:I-JKO:0	구/I-NP ㄹ/I-JKO
+굴/I-NP:I-VCP:I-EF:0	구/I-NP 이/I-VCP ㄹ/I-EF
+굴/I-VV:I-EF:0	구/I-VV ㄹ/I-EF
+굴/I-VV:I-ETM:0	구/I-VV ㄹ/I-ETM
+굴/I-VV:I-ETM:1	굴/I-VV ㄹ/I-ETM
+굴/I-VV:I-VV:0	구/I-VV 르/I-VV
+굼/I-VV:I-ETN:0	구/I-VV ㅁ/I-ETN
+굽/I-VV:I-EC:0	굴/I-VV ㅂ/I-EC
+굽/I-VV:I-EF:0	굴/I-VV ㅂ/I-EF
+궈/I-VV:I-EC:0	구/I-VV 어/I-EC
+궈/I-VV:I-EC:1	그/I-VV 어/I-EC
+궈/I-VV:I-EC:2	굽/I-VV 어/I-EC
+권/I-ETM:I-NNG:0	ㄹ/I-ETM 권/I-NNG
+권/I-VV:I-ETM:0	궈/I-VV ㄴ/I-ETM
+궜/I-VV:I-EP:0	구/I-VV 었/I-EP
+궜/I-VV:I-EP:1	그/I-VV 었/I-EP
+귄/I-NNG:I-JX:0	귀/I-NNG ㄴ/I-JX
+귄/I-VV:I-EC:0	귀/I-VV ㄴ/I-EC
+귄/I-VV:I-EF:0	귀/I-VV ㄴ/I-EF
+귄/I-VV:I-ETM:0	귀/I-VV ㄴ/I-ETM
+귈/I-NNG:I-JKO:0	귀/I-NNG ㄹ/I-JKO
+귈/I-VV:I-EC:0	귀/I-VV ㄹ/I-EC
+귈/I-VV:I-ETM:0	귀/I-VV ㄹ/I-ETM
+귐/I-VV:I-ETN:0	귀/I-VV ㅁ/I-ETN
+귑/I-VV:I-EF:0	귀/I-VV ㅂ/I-EF
+규/I-VV:I-EF:0	기/I-VV 우/I-EF
+그/I-EC:I-EC:0	ㄹ/I-EC 그/I-EC
+그/I-VA:0	글/I-VA
+그/I-VA:I-VA:0	그/I-VA 렇/I-VA
+그/I-VV:0	긋/I-VV
+그/I-VV:1	글/I-VV
+그/I-VV:I-VV:0	그/I-VV 을/I-VV
+근/I-ETM:I-NNG:0	ㄹ/I-ETM 근/I-NNG
+근/I-VA:I-EC:0	글/I-VA ㄴ/I-EC
+근/I-VA:I-ETM:0	글/I-VA ㄴ/I-ETM
+근/I-VV:I-EC:0	그/I-VV ㄴ/I-EC
+근/I-VV:I-EC:1	글/I-VV ㄴ/I-EC
+근/I-VV:I-EF:0	그/I-VV ㄴ/I-EF
+근/I-VV:I-EF:1	글/I-VV ㄴ/I-EF
+근/I-VV:I-ETM:0	그/I-VV ㄴ/I-ETM
+근/I-VV:I-ETM:1	글/I-VV ㄴ/I-ETM
+근/I-VV:I-ETM:2	긋/I-VV ㄴ/I-ETM
+근/I-VV:I-ETM:3	글/I-VV ㄹ/I-ETM
+글/I-VA:I-ETM:0	글/I-VA ㄹ/I-ETM
+글/I-VA:I-VA:0	그/I-VA 르/I-VA
+글/I-VV:I-EC:0	그/I-VV ㄹ/I-EC
+글/I-VV:I-EF:0	그/I-VV ㄹ/I-EF
+글/I-VV:I-ETM:0	그/I-VV ㄹ/I-ETM
+글/I-VV:I-ETM:1	글/I-VV ㄹ/I-ETM
+금/I-VV:I-ETN:0	그/I-VV ㅁ/I-ETN
+기/I-VA:0	길/I-VA
+기/I-VCP:I-EC:0	이/I-VCP 기/I-EC
+기/I-VCP:I-ETN:0	이/I-VCP 기/I-ETN
+기/I-VV:0	깁/I-VV
+기/I-XSV:I-ETN:0	하/I-XSV 기/I-ETN
+긴/I-ETN:I-JX:0	기/I-ETN ㄴ/I-JX
+긴/I-NNG:I-JX:0	기/I-NNG ㄴ/I-JX
+긴/I-NNG:I-VCP:I-EC:0	기/I-NNG 이/I-VCP ㄴ/I-EC
+긴/I-NNG:I-VCP:I-EF:0	기/I-NNG 이/I-VCP ㄴ/I-EF
+긴/I-NP:I-JX:0	기/I-NP ㄴ/I-JX
+긴/I-VA:I-EC:0	길/I-VA ㄴ/I-EC
+긴/I-VA:I-EC:1	기/I-VA ㄴ/I-EC
+긴/I-VA:I-EF:0	기/I-VA ㄴ/I-EF
+긴/I-VA:I-ETM:0	길/I-VA ㄴ/I-ETM
+긴/I-VA:I-ETM:1	기/I-VA ㄴ/I-ETM
+긴/I-VCP:I-ETN:I-JX:0	이/I-VCP 기/I-ETN ㄴ/I-JX
+긴/I-VV:I-EC:0	기/I-VV ㄴ/I-EC
+긴/I-VV:I-EF:0	기/I-VV ㄴ/I-EF
+긴/I-VV:I-ETM:0	기/I-VV ㄴ/I-ETM
+긴/I-VV:I-ETN:0	기/I-VV ㄴ/I-ETN
+길/I-ETM:I-NNG:0	ㄹ/I-ETM 길/I-NNG
+길/I-ETN:I-EC:0	기/I-ETN ㄹ/I-EC
+길/I-ETN:I-JKO:0	기/I-ETN ㄹ/I-JKO
+길/I-NNG:I-JKO:0	기/I-NNG ㄹ/I-JKO
+길/I-NNG:I-JX:0	기/I-NNG ㄹ/I-JX
+길/I-NNP:I-JKO:0	기/I-NNP ㄹ/I-JKO
+길/I-NP:I-JKO:0	기/I-NP ㄹ/I-JKO
+길/I-VA:I-ETM:0	길/I-VA ㄹ/I-ETM
+길/I-VA:I-ETM:1	기/I-VA ㄹ/I-ETM
+길/I-VCP:I-EC:0	이/I-VCP 길/I-EC
+길/I-VCP:I-EF:0	이/I-VCP 길/I-EF
+길/I-VV:0	긷/I-VV
+길/I-VV:1	기/I-VV
+길/I-VV:I-EC:0	기/I-VV ㄹ/I-EC
+길/I-VV:I-EF:0	기/I-VV ㄹ/I-EF
+길/I-VV:I-ETM:0	기/I-VV ㄹ/I-ETM
+길/I-VV:I-VV:0	기/I-VV 르/I-VV
+김/I-VA:I-ETN:0	기/I-VA ㅁ/I-ETN
+김/I-VV:I-EC:0	기/I-VV ㅁ/I-EC
+김/I-VV:I-ETN:0	기/I-VV ㅁ/I-ETN
+깁/I-NNG:I-VCP:I-EF:0	기/I-NNG 이/I-VCP ㅂ/I-EF
+깁/I-VA:I-EF:0	기/I-VA ㅂ/I-EF
+깁/I-VA:I-EF:1	길/I-VA ㅂ/I-EF
+깁/I-VV:I-EC:0	기/I-VV ㅂ/I-EC
+깁/I-VV:I-EF:0	기/I-VV ㅂ/I-EF
+깄/I-VV:I-EP:0	기/I-VV 있/I-EP
+까/I-EC:I-EC:0	ㄹ/I-EC 까/I-EC
+까/I-EF:I-EF:0	ㄹ/I-EF 까/I-EF
+까/I-VA:0	깝/I-VA
+까/I-VA:I-EC:0	깝/I-VA 어/I-EC
+까/I-VCP:I-EF:0	이/I-VCP 까/I-EF
+까/I-VV:0	깔/I-VV
+까/I-VV:1	깝/I-VV
+까/I-VV:I-EC:0	까/I-VV 아/I-EC
+깍/I-VV:0	깎/I-VV
+깎/I-EC:I-VV:0	어/I-EC 깎/I-VV
+깐/I-EC:I-JX:0	까/I-EC ㄴ/I-JX
+깐/I-MAJ:I-JX:0	까/I-MAJ ㄴ/I-JX
+깐/I-NNG:I-JX:0	까/I-NNG ㄴ/I-JX
+깐/I-VV:I-EF:0	깔/I-VV ㄴ/I-EF
+깐/I-VV:I-EF:1	까/I-VV ㄴ/I-EF
+깐/I-VV:I-ETM:0	깔/I-VV ㄴ/I-ETM
+깐/I-VV:I-ETM:1	까/I-VV ㄴ/I-ETM
+깔/I-VV:I-EC:0	까/I-VV ㄹ/I-EC
+깔/I-VV:I-EF:0	까/I-VV ㄹ/I-EF
+깔/I-VV:I-ETM:0	깔/I-VV ㄹ/I-ETM
+깔/I-VV:I-ETM:1	까/I-VV ㄹ/I-ETM
+깔/I-VV:I-VV:0	낄/I-VV 리/I-VV
+깝/I-VV:I-EF:0	깔/I-VV ㅂ/I-EF
+깠/I-VV:I-EP:0	까/I-VV 았/I-EP
+깨/I-VV:I-EC:0	깨/I-VV 어/I-EC
+깬/I-VV:I-EC:0	깨/I-VV ㄴ/I-EC
+깬/I-VV:I-EF:0	깨/I-VV ㄴ/I-EF
+깬/I-VV:I-ETM:0	깨/I-VV ㄴ/I-ETM
+깰/I-VV:I-EC:0	깨/I-VV ㄹ/I-EC
+깰/I-VV:I-ETM:0	깨/I-VV ㄹ/I-ETM
+깸/I-VV:I-ETN:0	깨/I-VV ㅁ/I-ETN
+깹/I-VV:I-EF:0	깨/I-VV ㅂ/I-EF
+깼/I-VV:I-EP:0	깨/I-VV 었/I-EP
+꺄/I-NNG:I-JKV:0	끼/I-NNG 야/I-JKV
+꺼/I-VA:0	껍/I-VA
+꺼/I-VV:I-EC:0	끄/I-VV 어/I-EC
+꺼/I-VV:I-EF:0	끄/I-VV 어/I-EF
+껀/I-NNB:I-JX:0	꺼/I-NNB ㄴ/I-JX
+껄/I-EF:I-EF:0	ㄹ/I-EF 껄/I-EF
+껐/I-VV:I-EP:0	끄/I-VV 었/I-EP
+께/I-EC:I-EC:0	ㄹ/I-EC 께/I-EC
+껜/I-JKB:I-JX:0	께/I-JKB ㄴ/I-JX
+껜/I-NNG:I-JX:0	께/I-NNG ㄴ/I-JX
+껴/I-VV:I-EC:0	끼/I-VV 어/I-EC
+껴/I-VV:I-EF:0	끼/I-VV 어/I-EF
+꼇/I-VV:I-EP:0	끼/I-VV 엇/I-EP
+꼈/I-VV:I-EP:0	끼/I-VV 었/I-EP
+꼈/I-VX:I-EP:0	끼/I-VX 었/I-EP
+꼬/I-EC:I-EC:0	ㄹ/I-EC 꼬/I-EC
+꼬/I-EC:I-VV:0	어/I-EC 꼬/I-VV
+꼬/I-EF:I-EF:0	ㄹ/I-EF 꼬/I-EF
+꼬/I-VA:0	꼽/I-VA
+꼬/I-VCP:I-EC:0	이/I-VCP 꼬/I-EC
+꼬/I-VCP:I-EF:0	이/I-VCP 꼬/I-EF
+꼬/I-VV:0	꼽/I-VV
+꼰/I-VV:I-EC:0	꼬/I-VV ㄴ/I-EC
+꼰/I-VV:I-ETM:0	꼬/I-VV ㄴ/I-ETM
+꼼/I-NNG:I-NNG:0	꼼/I-NNG 이/I-NNG
+꼼/I-VV:I-ETN:0	꼬/I-VV ㅁ/I-ETN
+꽤/I-VV:I-VV:0	꾀/I-VV 하/I-VV
+꾄/I-VV:I-EC:0	꾀/I-VV ㄴ/I-EC
+꾄/I-VV:I-EF:0	꾀/I-VV ㄴ/I-EF
+꾐/I-VV:I-ETN:0	꾀/I-VV ㅁ/I-ETN
+꾼/I-VV:I-EC:0	꾸/I-VV ㄴ/I-EC
+꾼/I-VV:I-EF:0	꾸/I-VV ㄴ/I-EF
+꾼/I-VV:I-ETM:0	꾸/I-VV ㄴ/I-ETM
+꿀/I-VV:I-EC:0	꾸/I-VV ㄹ/I-EC
+꿀/I-VV:I-EF:0	꾸/I-VV ㄹ/I-EF
+꿀/I-VV:I-ETM:0	꾸/I-VV ㄹ/I-ETM
+꿈/I-VV:I-ETN:0	꾸/I-VV ㅁ/I-ETN
+꿉/I-VV:I-EC:0	꾸/I-VV ㅂ/I-EC
+꿉/I-VV:I-EF:0	꾸/I-VV ㅂ/I-EF
+꿔/I-VV:I-EC:0	꾸/I-VV 어/I-EC
+꿔/I-VV:I-EF:0	꾸/I-VV 어/I-EF
+꿨/I-VV:I-EP:0	꾸/I-VV 었/I-EP
+꿰/I-VV:I-EC:0	꿰/I-VV 어/I-EC
+꿴/I-VV:I-ETM:0	꿰/I-VV ㄴ/I-ETM
+꿸/I-VV:I-ETM:0	꿰/I-VV ㄹ/I-ETM
+뀄/I-VV:I-EP:0	꿰/I-VV 었/I-EP
+뀐/I-VV:I-EC:0	뀌/I-VV ㄴ/I-EC
+뀐/I-VV:I-EF:0	뀌/I-VV ㄴ/I-EF
+뀐/I-VV:I-ETM:0	뀌/I-VV ㄴ/I-ETM
+뀔/I-VV:I-EC:0	뀌/I-VV ㄹ/I-EC
+뀔/I-VV:I-ETM:0	뀌/I-VV ㄹ/I-ETM
+뀜/I-VV:I-ETN:0	뀌/I-VV ㅁ/I-ETN
+뀝/I-VV:I-EF:0	뀌/I-VV ㅂ/I-EF
+뀠/I-VV:I-EP:0	뀌/I-VV 있/I-EP
+끄/I-VV:0	끌/I-VV
+끈/I-VV:I-EC:0	끌/I-VV ㄴ/I-EC
+끈/I-VV:I-EC:1	끄/I-VV ㄴ/I-EC
+끈/I-VV:I-EF:0	끌/I-VV ㄴ/I-EF
+끈/I-VV:I-EF:1	끄/I-VV ㄴ/I-EF
+끈/I-VV:I-ETM:0	끌/I-VV ㄴ/I-ETM
+끈/I-VV:I-ETM:1	끄/I-VV ㄴ/I-ETM
+끌/I-VV:I-EC:0	끄/I-VV ㄹ/I-EC
+끌/I-VV:I-EF:0	끄/I-VV ㄹ/I-EF
+끌/I-VV:I-ETM:0	끌/I-VV ㄹ/I-ETM
+끌/I-VV:I-ETM:1	끄/I-VV ㄹ/I-ETM
+끌/I-VV:I-VV:0	끄/I-VV 르/I-VV
+끔/I-VV:I-ETN:0	끄/I-VV ㅁ/I-ETN
+끔/I-VV:I-ETN:1	끌/I-VV ㅁ/I-ETN
+끕/I-VV:I-EF:0	끌/I-VV ㅂ/I-EF
+끕/I-VV:I-EF:1	끄/I-VV ㅂ/I-EF
+낀/I-NNG:I-JX:0	끼/I-NNG ㄴ/I-JX
+낀/I-VV:I-EC:0	끼/I-VV ㄴ/I-EC
+낀/I-VV:I-EF:0	끼/I-VV ㄴ/I-EF
+낀/I-VV:I-ETM:0	끼/I-VV ㄴ/I-ETM
+낀/I-VV:I-ETN:0	끼/I-VV ㄴ/I-ETN
+낀/I-VX:I-EF:0	끼/I-VX ㄴ/I-EF
+낀/I-VX:I-ETM:0	끼/I-VX ㄴ/I-ETM
+낄/I-NNG:I-JKO:0	끼/I-NNG ㄹ/I-JKO
+낄/I-VV:I-EC:0	끼/I-VV ㄹ/I-EC
+낄/I-VV:I-EF:0	끼/I-VV ㄹ/I-EF
+낄/I-VV:I-ETM:0	끼/I-VV ㄹ/I-ETM
+낌/I-VV:I-ETN:0	끼/I-VV ㅁ/I-ETN
+낍/I-VV:I-EC:0	끼/I-VV ㅂ/I-EC
+낍/I-VV:I-EF:0	끼/I-VV ㅂ/I-EF
+나/I-EC:I-EC:0	아/I-EC 나/I-EC
+나/I-EC:I-VV:0	어/I-EC 나/I-VV
+나/I-EC:I-VV:1	아/I-EC 나/I-VV
+나/I-EC:I-VX:0	어/I-EC 나/I-VX
+나/I-EC:I-VX:1	아/I-EC 나/I-VX
+나/I-JC:I-JC:0	이/I-JC 나/I-JC
+나/I-JX:I-JX:0	이/I-JX 나/I-JX
+나/I-NNG:I-NNG:0	나/I-NNG 이/I-NNG
+나/I-VA:0	납/I-VA
+나/I-VA:1	낫/I-VA
+나/I-VA:I-EC:0	나/I-VA 아/I-EC
+나/I-VA:I-EC:1	낫/I-VA 아/I-EC
+나/I-VA:I-EF:0	낫/I-VA 아/I-EF
+나/I-VCP:I-EC:0	이/I-VCP 나/I-EC
+나/I-VCP:I-EF:0	이/I-VCP 나/I-EF
+나/I-VV:0	낫/I-VV
+나/I-VV:1	날/I-VV
+나/I-VV:2	낳/I-VV
+나/I-VV:I-EC:0	나/I-VV 아/I-EC
+나/I-VV:I-EC:1	낳/I-VV 아/I-EC
+나/I-VV:I-EC:2	느/I-VV 아/I-EC
+나/I-VV:I-EP:0	낳/I-VV 으/I-EP
+나/I-VX:I-EC:0	나/I-VX 아/I-EC
+나/I-VX:I-EF:0	나/I-VX 아/I-EF
+난/I-EC:I-JX:0	나/I-EC ㄴ/I-JX
+난/I-MAG:I-JX:0	나/I-MAG ㄴ/I-JX
+난/I-MAJ:I-JX:0	나/I-MAJ ㄴ/I-JX
+난/I-NNG:I-JX:0	나/I-NNG ㄴ/I-JX
+난/I-NP:I-JX:0	나/I-NP ㄴ/I-JX
+난/I-NR:I-JX:0	나/I-NR ㄴ/I-JX
+난/I-VA:I-EC:0	나/I-VA ㄴ/I-EC
+난/I-VA:I-EF:0	나/I-VA ㄴ/I-EF
+난/I-VA:I-ETM:0	나/I-VA ㄴ/I-ETM
+난/I-VA:I-ETM:1	납/I-VA ㄴ/I-ETM
+난/I-VV:I-EC:0	나/I-VV ㄴ/I-EC
+난/I-VV:I-EC:1	날/I-VV ㄴ/I-EC
+난/I-VV:I-EF:0	나/I-VV ㄴ/I-EF
+난/I-VV:I-EF:1	날/I-VV ㄴ/I-EF
+난/I-VV:I-ETM:0	나/I-VV ㄴ/I-ETM
+난/I-VV:I-ETM:1	날/I-VV ㄴ/I-ETM
+난/I-VV:I-ETM:2	나/I-VV ㄹ/I-ETM
+난/I-VV:I-ETM:3	낳/I-VV ㄴ/I-ETM
+난/I-VV:I-ETM:4	낫/I-VV ㄴ/I-ETM
+난/I-VV:I-ETN:0	나/I-VV ㄴ/I-ETN
+난/I-VX:I-EC:0	나/I-VX ㄴ/I-EC
+난/I-VX:I-EF:0	나/I-VX ㄴ/I-EF
+난/I-VX:I-ETM:0	나/I-VX ㄴ/I-ETM
+날/I-ETM:I-NNG:0	ㄹ/I-ETM 날/I-NNG
+날/I-NP:I-JKB:0	나/I-NP ㄹ/I-JKB
+날/I-NP:I-JKO:0	나/I-NP ㄹ/I-JKO
+날/I-NR:I-JKO:0	나/I-NR ㄹ/I-JKO
+날/I-VA:I-EC:0	나/I-VA ㄹ/I-EC
+날/I-VA:I-EC:1	낫/I-VA ㄹ/I-EC
+날/I-VA:I-ETM:0	나/I-VA ㄹ/I-ETM
+날/I-VA:I-ETM:1	낫/I-VA ㄹ/I-ETM
+날/I-VV:I-EC:0	나/I-VV ㄹ/I-EC
+날/I-VV:I-EF:0	나/I-VV ㄹ/I-EF
+날/I-VV:I-ETM:0	나/I-VV ㄹ/I-ETM
+날/I-VV:I-ETM:1	날/I-VV ㄹ/I-ETM
+날/I-VV:I-ETM:2	낳/I-VV ㄹ/I-ETM
+날/I-VV:I-ETM:3	낫/I-VV ㄹ/I-ETM
+날/I-VV:I-VV:0	나/I-VV 르/I-VV
+날/I-VX:I-EC:0	나/I-VX ㄹ/I-EC
+날/I-VX:I-EF:0	나/I-VX ㄹ/I-EF
+날/I-VX:I-ETM:0	나/I-VX ㄹ/I-ETM
+남/I-VA:I-ETN:0	나/I-VA ㅁ/I-ETN
+남/I-VV:I-EC:0	나/I-VV ㅁ/I-EC
+남/I-VV:I-ETN:0	나/I-VV ㅁ/I-ETN
+남/I-VX:I-ETN:0	나/I-VX ㅁ/I-ETN
+납/I-VA:I-EF:0	나/I-VA ㅂ/I-EF
+납/I-VV:I-EC:0	나/I-VV ㅂ/I-EC
+납/I-VV:I-EF:0	나/I-VV ㅂ/I-EF
+납/I-VV:I-EF:1	낳/I-VV ㅂ/I-EF
+납/I-VX:I-EF:0	나/I-VX ㅂ/I-EF
+났/I-VA:I-EP:0	나/I-VA 았/I-EP
+났/I-VV:0	나/I-VV
+났/I-VV:I-EP:0	나/I-VV 았/I-EP
+났/I-VV:I-EP:1	낫/I-VV 았/I-EP
+났/I-VX:I-EP:0	나/I-VX 았/I-EP
+낭/I-VV:I-EC:0	나/I-VV ㅇ/I-EC
+낭/I-VX:I-EC:0	나/I-VX ㅇ/I-EC
+내/I-EC:I-VV:0	아/I-EC 내/I-VV
+내/I-EC:I-VV:1	어/I-EC 내/I-VV
+내/I-EC:I-VX:0	아/I-EC 내/I-VX
+내/I-EC:I-VX:1	어/I-EC 내/I-VX
+내/I-NP:I-JKB:0	나/I-NP 에/I-JKB
+내/I-NP:I-JKG:0	나/I-NP 의/I-JKG
+내/I-VV:I-EC:0	내/I-VV 어/I-EC
+내/I-VX:I-EC:0	내/I-VX 어/I-EC
+내/I-VX:I-EF:0	내/I-VX 어/I-EF
+낸/I-EC:I-VX:I-EC:0	아/I-EC 내/I-VX ㄴ/I-EC
+낸/I-EC:I-VX:I-ETM:0	아/I-EC 내/I-VX ㄴ/I-ETM
+낸/I-EC:I-VX:I-ETM:1	어/I-EC 내/I-VX ㄴ/I-ETM
+낸/I-MAG:I-JX:0	내/I-MAG ㄴ/I-JX
+낸/I-NNG:I-JX:0	내/I-NNG ㄴ/I-JX
+낸/I-VV:I-EC:0	내/I-VV ㄴ/I-EC
+낸/I-VV:I-EF:0	내/I-VV ㄴ/I-EF
+낸/I-VV:I-ETM:0	내/I-VV ㄴ/I-ETM
+낸/I-VV:I-ETN:0	내/I-VV ㄴ/I-ETN
+낸/I-VX:I-EC:0	내/I-VX ㄴ/I-EC
+낸/I-VX:I-EF:0	내/I-VX ㄴ/I-EF
+낸/I-VX:I-ETM:0	내/I-VX ㄴ/I-ETM
+낼/I-EC:I-VX:I-EC:0	아/I-EC 내/I-VX ㄹ/I-EC
+낼/I-EC:I-VX:I-ETM:0	아/I-EC 내/I-VX ㄹ/I-ETM
+낼/I-NNG:I-JKO:0	내/I-NNG ㄹ/I-JKO
+낼/I-NNG:I-NNG:0	내/I-NNG 일/I-NNG
+낼/I-VV:I-EC:0	내/I-VV ㄹ/I-EC
+낼/I-VV:I-EF:0	내/I-VV ㄹ/I-EF
+낼/I-VV:I-ETM:0	내/I-VV ㄹ/I-ETM
+낼/I-VX:I-EC:0	내/I-VX ㄹ/I-EC
+낼/I-VX:I-EF:0	내/I-VX ㄹ/I-EF
+낼/I-VX:I-ETM:0	내/I-VX ㄹ/I-ETM
+냄/I-VV:I-EF:0	내/I-VV ㅁ/I-EF
+냄/I-VV:I-ETN:0	내/I-VV ㅁ/I-ETN
+냄/I-VX:I-ETN:0	내/I-VX ㅁ/I-ETN
+냅/I-VV:I-EC:0	내/I-VV ㅂ/I-EC
+냅/I-VV:I-EF:0	내/I-VV ㅂ/I-EF
+냅/I-VX:I-EF:0	내/I-VX ㅂ/I-EF
+냇/I-VV:I-EP:0	내/I-VV 엇/I-EP
+냈/I-VV:I-EP:0	내/I-VV 었/I-EP
+냈/I-VV:I-EP:1	내/I-VV 았/I-EP
+냈/I-VX:I-EP:0	내/I-VX 었/I-EP
+냐/I-VCN:I-EC:0	니/I-VCN 야/I-EC
+냐/I-VCN:I-EC:1	니/I-VCN 아/I-EC
+냐/I-VCN:I-EF:0	니/I-VCN 야/I-EF
+냐/I-VCP:I-EC:0	이/I-VCP 냐/I-EC
+냐/I-VCP:I-EF:0	이/I-VCP 냐/I-EF
+냐/I-VCP:I-ETM:0	이/I-VCP 냐/I-ETM
+냔/I-EC:I-JX:0	냐/I-EC ㄴ/I-JX
+냔/I-VCP:I-EC:I-JX:0	이/I-VCP 냐/I-EC ㄴ/I-JX
+냔/I-VCP:I-ETM:0	이/I-VCP 냔/I-ETM
+너/I-NNG:I-EC:0	너/I-NNG 어/I-EC
+너/I-VV:0	널/I-VV
+너/I-VV:1	넘/I-VV
+너/I-VV:I-EC:0	너/I-VV 어/I-EC
+너/I-VV:I-EC:1	느/I-VV 어/I-EC
+넌/I-EC:0	던/I-EC
+넌/I-NP:I-JX:0	너/I-NP ㄴ/I-JX
+넌/I-VV:I-EC:0	너/I-VV ㄴ/I-EC
+넌/I-VV:I-EF:0	너/I-VV ㄴ/I-EF
+넌/I-VV:I-ETM:0	너/I-VV ㄴ/I-ETM
+넌/I-VV:I-ETM:1	널/I-VV ㄴ/I-ETM
+널/I-EC:I-VV:0	어/I-EC 널/I-VV
+널/I-NP:I-JKO:0	너/I-NP ㄹ/I-JKO
+널/I-NP:I-JX:0	너/I-NP ㄹ/I-JX
+널/I-VA:I-VA:0	너/I-VA 르/I-VA
+널/I-VV:I-EC:0	너/I-VV ㄹ/I-EC
+널/I-VV:I-EC:1	넣/I-VV ㄹ/I-EC
+널/I-VV:I-ETM:0	널/I-VV ㄹ/I-ETM
+널/I-VV:I-ETM:1	너/I-VV ㄹ/I-ETM
+넒/I-VA:0	넓/I-VA
+넒/I-VV:I-ETN:0	널/I-VV ㅁ/I-ETN
+넘/I-EC:I-VV:0	아/I-EC 넘/I-VV
+넜/I-VV:I-EP:0	너/I-VV 었/I-EP
+넣/I-EC:I-VV:0	아/I-EC 넣/I-VV
+네/I-NP:I-JKB:0	너/I-NP 에/I-JKB
+네/I-NP:I-JKG:0	너/I-NP 의/I-JKG
+네/I-VCP:I-EC:0	이/I-VCP 네/I-EC
+네/I-VCP:I-EF:0	이/I-VCP 네/I-EF
+네/I-VV:I-EC:0	네/I-VV 어/I-EC
+네/I-XSA:I-EC:0	하/I-XSA 네/I-EC
+넨/I-NNG:I-JX:0	네/I-NNG ㄴ/I-JX
+넨/I-NP:I-JX:0	네/I-NP ㄴ/I-JX
+넨/I-VV:I-EC:0	네/I-VV ㄴ/I-EC
+넨/I-VV:I-EF:0	네/I-VV ㄴ/I-EF
+넨/I-VV:I-ETM:0	네/I-VV ㄴ/I-ETM
+넨/I-XSN:I-JX:0	네/I-XSN ㄴ/I-JX
+넬/I-NP:I-JKO:0	네/I-NP ㄹ/I-JKO
+넬/I-VV:I-ETM:0	네/I-VV ㄹ/I-ETM
+넬/I-XSN:I-JKO:0	네/I-XSN ㄹ/I-JKO
+넵/I-VV:I-EF:0	네/I-VV ㅂ/I-EF
+넸/I-VV:I-EP:0	네/I-VV 었/I-EP
+녀/I-VCN:I-EC:0	니/I-VCN 여/I-EC
+녀/I-VCN:I-EC:1	니/I-VCN 어/I-EC
+녀/I-VCN:I-EF:0	니/I-VCN 여/I-EF
+녀/I-VCN:I-EF:1	니/I-VCN 어/I-EF
+녀/I-VV:I-EC:0	니/I-VV 어/I-EC
+녀/I-VV:I-EF:0	니/I-VV 어/I-EF
+녔/I-VCN:I-EP:0	니/I-VCN 었/I-EP
+녔/I-VV:I-EP:0	니/I-VV 었/I-EP
+녜/I-VCN:I-EC:0	니/I-VCN 에/I-EC
+녜/I-VCN:I-EF:0	니/I-VCN 에/I-EF
+노/I-MAG:0	높/I-MAG
+노/I-VCP:I-EC:0	이/I-VCP 노/I-EC
+노/I-VCP:I-EF:0	이/I-VCP 노/I-EF
+노/I-VV:0	놀/I-VV
+노/I-VV:1	놓/I-VV
+노/I-VV:I-EC:0	놓/I-VV 으/I-EC
+노/I-VV:I-EP:0	놓/I-VV 으/I-EP
+노/I-VX:0	놓/I-VX
+노/I-VX:I-EC:0	놓/I-VX 으/I-EC
+논/I-VV:I-EC:0	놀/I-VV ㄴ/I-EC
+논/I-VV:I-EC:1	놓/I-VV ㄴ/I-EC
+논/I-VV:I-EF:0	놀/I-VV ㄴ/I-EF
+논/I-VV:I-ETM:0	놓/I-VV ㄴ/I-ETM
+논/I-VV:I-ETM:1	놀/I-VV ㄴ/I-ETM
+논/I-VV:I-ETM:2	놓/I-VV 은/I-ETM
+논/I-VV:I-ETN:0	놀/I-VV ㄴ/I-ETN
+논/I-VX:I-EC:0	놓/I-VX ㄴ/I-EC
+논/I-VX:I-ETM:0	놓/I-VX ㄴ/I-ETM
+놀/I-VV:I-EC:0	놓/I-VV ㄹ/I-EC
+놀/I-VV:I-EF:0	놓/I-VV ㄹ/I-EF
+놀/I-VV:I-ETM:0	놀/I-VV ㄹ/I-ETM
+놀/I-VV:I-ETM:1	놓/I-VV ㄹ/I-ETM
+놀/I-VX:I-ETM:0	놓/I-VX ㄹ/I-ETM
+놂/I-VV:I-ETN:0	놀/I-VV ㅁ/I-ETN
+놈/I-ETM:I-NNB:0	ㄹ/I-ETM 놈/I-NNB
+놉/I-VV:I-EF:0	놀/I-VV ㅂ/I-EF
+놓/I-EC:I-VV:0	어/I-EC 놓/I-VV
+놓/I-EC:I-VV:1	아/I-EC 놓/I-VV
+놓/I-EC:I-VX:0	아/I-EC 놓/I-VX
+놓/I-EC:I-VX:1	어/I-EC 놓/I-VX
+놔/I-VV:I-EC:0	놓/I-VV 아/I-EC
+놔/I-VV:I-EC:1	누/I-VV 아/I-EC
+놔/I-VV:I-EF:0	놓/I-VV 아/I-EF
+놔/I-VX:I-EC:0	놓/I-VX 아/I-EC
+놔/I-VX:I-EF:0	놓/I-VX 아/I-EF
+놨/I-VV:I-EP:0	놓/I-VV 았/I-EP
+놨/I-VX:I-EP:0	놓/I-VX 았/I-EP
+뇐/I-VV:I-ETM:0	뇌/I-VV ㄴ/I-ETM
+뇔/I-VV:I-ETM:0	뇌/I-VV ㄹ/I-ETM
+뇨/I-VCN:I-EC:0	니/I-VCN 오/I-EC
+뇨/I-VCN:I-EF:0	니/I-VCN 오/I-EF
+뇨/I-VCP:I-EF:0	이/I-VCP 뇨/I-EF
+누/I-EC:I-VV:0	아/I-EC 누/I-VV
+누/I-NNG:0	눅/I-NNG
+누/I-NP:I-NP:0	누/I-NP 구/I-NP
+누/I-VV:0	눕/I-VV
+누/I-VV:1	눗/I-VV
+누/I-VV:I-EF:0	눕/I-VV 우/I-EF
+눈/I-VV:I-EC:0	누/I-VV ㄴ/I-EC
+눈/I-VV:I-EF:0	누/I-VV ㄴ/I-EF
+눈/I-VV:I-ETM:0	누/I-VV ㄴ/I-ETM
+눌/I-VV:0	눋/I-VV
+눌/I-VV:I-EC:0	누/I-VV ㄹ/I-EC
+눌/I-VV:I-EF:0	누/I-VV ㄹ/I-EF
+눌/I-VV:I-ETM:0	누/I-VV ㄹ/I-ETM
+눌/I-VV:I-ETM:1	눕/I-VV ㄹ/I-ETM
+눌/I-VV:I-VV:0	누/I-VV 르/I-VV
+눔/I-VV:I-ETN:0	누/I-VV ㅁ/I-ETN
+눕/I-VV:I-EC:0	누/I-VV ㅂ/I-EC
+눕/I-VV:I-EF:0	누/I-VV ㅂ/I-EF
+눠/I-VV:I-EC:0	누/I-VV 어/I-EC
+눠/I-VV:I-EC:1	눕/I-VV 어/I-EC
+눠/I-VV:I-EF:0	누/I-VV 어/I-EF
+눴/I-VV:I-EP:0	누/I-VV 었/I-EP
+뉘/I-VV:0	눕/I-VV
+뉜/I-VV:I-EC:0	뉘/I-VV ㄴ/I-EC
+뉜/I-VV:I-EF:0	뉘/I-VV ㄴ/I-EF
+뉜/I-VV:I-ETM:0	뉘/I-VV ㄴ/I-ETM
+뉠/I-VV:I-EC:0	뉘/I-VV ㄹ/I-EC
+뉠/I-VV:I-ETM:0	뉘/I-VV ㄹ/I-ETM
+뉨/I-VV:I-ETN:0	뉘/I-VV ㅁ/I-ETN
+뉩/I-VV:I-EF:0	뉘/I-VV ㅂ/I-EF
+뉴/I-VCN:I-EF:0	니/I-VCN 유/I-EF
+느/I-VA:0	늘/I-VA
+느/I-VCP:I-EC:0	이/I-VCP 느/I-EC
+느/I-VV:0	늘/I-VV
+는/I-EC:I-EC:0	ㄹ/I-EC 는/I-EC
+는/I-EC:I-JX:0	여/I-EC 는/I-JX
+는/I-VA:I-EC:0	늘/I-VA ㄴ/I-EC
+는/I-VA:I-ETM:0	늘/I-VA ㄴ/I-ETM
+는/I-VCP:I-ETM:0	이/I-VCP 는/I-ETM
+는/I-VV:I-EC:0	늘/I-VV ㄴ/I-EC
+는/I-VV:I-EF:0	늘/I-VV ㄴ/I-EF
+는/I-VV:I-ETM:0	늘/I-VV ㄴ/I-ETM
+는/I-XSV:I-ETM:0	하/I-XSV 는/I-ETM
+늘/I-VV:I-ETM:0	늘/I-VV ㄹ/I-ETM
+니/I-EF:I-EF:0	ㅂ/I-EF 니/I-EF
+니/I-JC:I-JC:0	이/I-JC 니/I-JC
+니/I-VCP:I-EC:0	이/I-VCP 니/I-EC
+니/I-VCP:I-EF:0	이/I-VCP 니/I-EF
+니/I-VV:0	닐/I-VV
+니/I-VX:I-EF:0	하/I-VX 니/I-EF
+니/I-XSA:I-EC:0	하/I-XSA 니/I-EC
+닌/I-NNG:I-JX:0	니/I-NNG ㄴ/I-JX
+닌/I-VA:I-ETM:0	니/I-VA ㄴ/I-ETM
+닌/I-VCN:I-EC:0	니/I-VCN ㄴ/I-EC
+닌/I-VCN:I-EF:0	니/I-VCN ㄴ/I-EF
+닌/I-VCN:I-ETM:0	니/I-VCN ㄴ/I-ETM
+닌/I-VV:I-EC:0	니/I-VV ㄴ/I-EC
+닌/I-VV:I-EC:1	닐/I-VV ㄴ/I-EC
+닌/I-VV:I-EF:0	니/I-VV ㄴ/I-EF
+닌/I-VV:I-EF:1	닐/I-VV ㄴ/I-EF
+닌/I-VV:I-ETM:0	니/I-VV ㄴ/I-ETM
+닐/I-NNG:I-JKO:0	니/I-NNG ㄹ/I-JKO
+닐/I-VCN:I-EC:0	니/I-VCN ㄹ/I-EC
+닐/I-VCN:I-EF:0	니/I-VCN ㄹ/I-EF
+닐/I-VCN:I-ETM:0	니/I-VCN ㄹ/I-ETM
+닐/I-VV:I-EC:0	니/I-VV ㄹ/I-EC
+닐/I-VV:I-EF:0	니/I-VV ㄹ/I-EF
+닐/I-VV:I-ETM:0	니/I-VV ㄹ/I-ETM
+닐/I-VV:I-ETM:1	닐/I-VV ㄹ/I-ETM
+닒/I-VCN:I-EC:0	니/I-VCN ㄹ/I-EC
+닒/I-VCN:I-EF:0	니/I-VCN ㄹ/I-EF
+닒/I-VV:I-ETM:0	니/I-VV ㄹ/I-ETM
+님/I-VCN:I-ETN:0	니/I-VCN ㅁ/I-ETN
+님/I-VCP:I-ETN:0	니/I-VCP ㅁ/I-ETN
+님/I-VV:I-EC:0	니/I-VV ㅁ/I-EC
+님/I-VV:I-ETN:0	니/I-VV ㅁ/I-ETN
+닙/I-VCN:I-EC:0	니/I-VCN ㅂ/I-EC
+닙/I-VCN:I-EF:0	니/I-VCN ㅂ/I-EF
+닙/I-VV:I-EC:0	니/I-VV ㅂ/I-EC
+닙/I-VV:I-EF:0	니/I-VV ㅂ/I-EF
+닝/I-VCN:I-EF:0	니/I-VCN ㅇ/I-EF
+닝/I-VCP:I-EF:0	이/I-VCP 닝/I-EF
+다/I-EC:0	나/I-EC
+다/I-EC:I-EC:0	어/I-EC 다/I-EC
+다/I-EC:I-EC:1	아/I-EC 다/I-EC
+다/I-EC:I-EC:2	다/I-EC 고/I-EC
+다/I-EC:I-VV:0	어/I-EC 다/I-VV
+다/I-EF:I-SF:0	다/I-EF ./I-SF
+다/I-JKB:I-JKB:0	에/I-JKB 다/I-JKB
+다/I-JKB:I-JX:0	에/I-JKB 다/I-JX
+다/I-MAG:0	단/I-MAG
+다/I-VA:0	답/I-VA
+다/I-VA:1	달/I-VA
+다/I-VCP:I-EC:0	이/I-VCP 다/I-EC
+다/I-VCP:I-EF:0	이/I-VCP 다/I-EF
+다/I-VCP:I-ETM:0	이/I-VCP 다/I-ETM
+다/I-VV:0	달/I-VV
+다/I-VV:1	닿/I-VV
+다/I-VX:0	달/I-VX
+다/I-XSA:0	답/I-XSA
+다/I-XSV:I-EC:0	하/I-XSV 다/I-EC
+단/I-EC:0	다/I-EC
+단/I-EC:I-JX:0	다/I-EC ㄴ/I-JX
+단/I-EF:I-JX:0	다/I-EF ㄴ/I-JX
+단/I-ETM:0	다/I-ETM
+단/I-JKB:I-JX:0	다/I-JKB ㄴ/I-JX
+단/I-MAJ:I-JX:0	다/I-MAJ ㄴ/I-JX
+단/I-VA:I-EC:0	달/I-VA ㄴ/I-EC
+단/I-VA:I-ETM:0	달/I-VA ㄴ/I-ETM
+단/I-VA:I-ETM:1	닿/I-VA ㄴ/I-ETM
+단/I-VCP:I-EF:0	이/I-VCP 단/I-EF
+단/I-VV:I-EC:0	달/I-VV ㄴ/I-EC
+단/I-VV:I-EF:0	달/I-VV ㄴ/I-EF
+단/I-VV:I-ETM:0	달/I-VV ㄴ/I-ETM
+단/I-VV:I-ETM:1	닿/I-VV ㄴ/I-ETM
+달/I-EC:I-EC:0	다/I-EC ㄹ/I-EC
+달/I-EC:I-VX:0	아/I-EC 달/I-VX
+달/I-EC:I-VX:1	어/I-EC 달/I-VX
+달/I-VA:0	다/I-VA
+달/I-VA:1	닫/I-VA
+달/I-VA:I-ETM:0	달/I-VA ㄹ/I-ETM
+달/I-VA:I-VA:0	다/I-VA 르/I-VA
+달/I-VV:0	닫/I-VV
+달/I-VV:I-ETM:0	달/I-VV ㄹ/I-ETM
+달/I-VV:I-ETM:1	닿/I-VV ㄹ/I-ETM
+달/I-VV:I-VV:0	다/I-VV 르/I-VV
+달/I-VV:I-VV:1	다/I-VV 리/I-VV
+달/I-VX:I-EC:0	달/I-VX ㄹ/I-EC
+달/I-VX:I-EF:0	달/I-VX ㄹ/I-EF
+달/I-VX:I-ETM:0	달/I-VX ㄹ/I-ETM
+담/I-EC:I-VV:0	아/I-EC 담/I-VV
+답/I-EC:I-EF:0	다/I-EC ㅂ/I-EF
+답/I-MAG:0	다/I-MAG
+답/I-VV:I-EF:0	달/I-VV ㅂ/I-EF
+닷/I-VCP:I-EF:0	이/I-VCP 닷/I-EF
+당/I-NNG:I-NNG:0	합/I-NNG 당/I-NNG
+닿/I-EC:I-VV:0	아/I-EC 닿/I-VV
+대/I-EC:I-VX:0	아/I-EC 대/I-VX
+대/I-EC:I-VX:1	어/I-EC 대/I-VX
+대/I-ETM:I-NNB:0	ㄹ/I-ETM 대/I-NNB
+대/I-ETM:I-NNG:0	ㄹ/I-ETM 대/I-NNG
+대/I-NNP:I-NNP:0	물/I-NNP 대/I-NNP
+대/I-SF:I-NNP:0	./I-SF 대/I-NNP
+대/I-VV:0	내/I-VV
+대/I-VV:I-EC:0	대/I-VV 어/I-EC
+대/I-VX:I-EC:0	대/I-VX 어/I-EC
+대/I-VX:I-EC:1	대/I-VX 아/I-EC
+대/I-VX:I-EF:0	대/I-VX 어/I-EF
+댄/I-EC:I-JX:0	대/I-EC ㄴ/I-JX
+댄/I-EC:I-VX:I-EF:0	어/I-EC 대/I-VX ㄴ/I-EF
+댄/I-EC:I-VX:I-EF:1	아/I-EC 대/I-VX ㄴ/I-EF
+댄/I-EF:0	단/I-EF
+댄/I-NNG:I-JX:0	대/I-NNG ㄴ/I-JX
+댄/I-NP:I-JX:0	대/I-NP ㄴ/I-JX
+댄/I-VV:I-EC:0	대/I-VV ㄴ/I-EC
+댄/I-VV:I-EF:0	대/I-VV ㄴ/I-EF
+댄/I-VV:I-ETM:0	대/I-VV ㄴ/I-ETM
+댄/I-VX:I-EC:0	대/I-VX ㄴ/I-EC
+댄/I-VX:I-EF:0	대/I-VX ㄴ/I-EF
+댄/I-VX:I-ETM:0	대/I-VX ㄴ/I-ETM
+댈/I-EC:I-VX:I-ETM:0	아/I-EC 대/I-VX ㄹ/I-ETM
+댈/I-NNG:I-JKO:0	대/I-NNG ㄹ/I-JKO
+댈/I-NP:I-JKO:0	대/I-NP ㄹ/I-JKO
+댈/I-VV:I-EC:0	대/I-VV ㄹ/I-EC
+댈/I-VV:I-EF:0	대/I-VV ㄹ/I-EF
+댈/I-VV:I-ETM:0	대/I-VV ㄹ/I-ETM
+댈/I-VX:I-EC:0	대/I-VX ㄹ/I-EC
+댈/I-VX:I-ETM:0	대/I-VX ㄹ/I-ETM
+댐/I-VV:I-ETN:0	대/I-VV ㅁ/I-ETN
+댐/I-VX:I-ETN:0	대/I-VX ㅁ/I-ETN
+댑/I-VV:I-EC:0	대/I-VV ㅂ/I-EC
+댑/I-VV:I-EF:0	대/I-VV ㅂ/I-EF
+댑/I-VX:I-EF:0	대/I-VX ㅂ/I-EF
+댔/I-EC:I-VV:I-EP:0	다/I-EC 하/I-VV 였/I-EP
+댔/I-VV:I-EP:0	대/I-VV 었/I-EP
+댔/I-VV:I-EP:1	대/I-VV 았/I-EP
+댔/I-VX:I-EP:0	대/I-VX 었/I-EP
+댔/I-VX:I-EP:1	하/I-VX 였/I-EP
+댜/I-VV:I-EF:0	되/I-VV 야/I-EF
+더/I-EC:0	어/I-EC
+더/I-VA:0	덥/I-VA
+더/I-VCP:I-EC:0	이/I-VCP 더/I-EC
+더/I-VCP:I-EF:0	이/I-VCP 더/I-EF
+더/I-VCP:I-ETM:0	이/I-VCP 더/I-ETM
+더/I-VV:0	덜/I-VV
+던/I-NNP:I-JX:0	더/I-NNP ㄴ/I-JX
+던/I-VCP:I-EC:0	이/I-VCP 던/I-EC
+던/I-VCP:I-EF:0	이/I-VCP 던/I-EF
+던/I-VCP:I-ETM:0	이/I-VCP 던/I-ETM
+던/I-VV:I-EC:0	덜/I-VV ㄴ/I-EC
+던/I-VV:I-EC:1	하/I-VV 던/I-EC
+던/I-VV:I-EF:0	덜/I-VV ㄴ/I-EF
+던/I-VV:I-ETM:0	덜/I-VV ㄴ/I-ETM
+던/I-VX:I-EC:0	하/I-VX 던/I-EC
+던/I-XSV:I-ETM:0	하/I-XSV 던/I-ETM
+덜/I-VV:I-ETM:0	덜/I-VV ㄹ/I-ETM
+덞/I-NR:0	덟/I-NR
+덩/I-MAG:0	덜/I-MAG
+덩/I-NNG:I-NNG:0	덩/I-NNG 이/I-NNG
+덮/I-EC:I-VV:0	아/I-EC 덮/I-VV
+덯/I-VA:0	떻/I-VA
+데/I-NNB:I-JKB:0	데/I-NNB 에/I-JKB
+데/I-VCP:I-EC:0	이/I-VCP 데/I-EC
+데/I-VCP:I-EF:0	이/I-VCP 데/I-EF
+데/I-VV:I-EC:0	디/I-VV 어/I-EC
+덴/I-NNB:I-JX:0	데/I-NNB ㄴ/I-JX
+덴/I-NNG:I-JX:0	데/I-NNG ㄴ/I-JX
+덴/I-VV:I-ETM:0	데/I-VV ㄴ/I-ETM
+델/I-NNB:I-JKO:0	데/I-NNB ㄹ/I-JKO
+델/I-NP:I-JKO:0	데/I-NP ㄹ/I-JKO
+델/I-VV:I-ETM:0	데/I-VV ㄹ/I-ETM
+뎃/I-NNG:0	데/I-NNG
+뎌/I-EF:0	아/I-EF
+뎌/I-VA:I-EC:0	디/I-VA 어/I-EC
+뎌/I-VV:I-EC:0	디/I-VV 어/I-EC
+뎌/I-VV:I-EF:0	디/I-VV 어/I-EF
+뎌/I-VX:I-EC:0	디/I-VX 어/I-EC
+뎌/I-VX:I-EF:0	디/I-VX 어/I-EF
+뎠/I-VA:I-EP:0	디/I-VA 었/I-EP
+뎠/I-VV:I-EP:0	디/I-VV 었/I-EP
+도/B-NNG:I-NNG:0	도/B-NNG 시/I-NNG
+도/I-EC:I-EC:0	아/I-EC 도/I-EC
+도/I-EC:I-EC:1	어/I-EC 도/I-EC
+도/I-EC:I-JX:0	어/I-EC 도/I-JX
+도/I-EF:I-EF:0	어/I-EF 도/I-EF
+도/I-ETN:I-JX:0	기/I-ETN 도/I-JX
+도/I-JKB:I-JX:0	에/I-JKB 도/I-JX
+도/I-NNG:0	독/I-NNG
+도/I-NNG:I-NNG:0	도/I-NNG 시/I-NNG
+도/I-NNG:I-SP:0	도/I-NNG ,/I-SP
+도/I-NNP:I-NNP:0	제/I-NNP 도/I-NNP
+도/I-NNP:I-SS:0	도/I-NNP ≫/I-SS
+도/I-VCP:I-EC:0	이/I-VCP 도/I-EC
+도/I-VV:0	돕/I-VV
+도/I-VV:1	돌/I-VV
+도/I-VV:I-EC:0	두/I-VV 오/I-EC
+도/I-XSN:I-JX:0	네/I-XSN 도/I-JX
+독/I-NNP:I-NNP:0	독/I-NNP 부/I-NNP
+독/I-SF:I-NNP:0	./I-SF 독/I-NNP
+돈/I-NNP:I-JX:0	도/I-NNP ㄴ/I-JX
+돈/I-VV:I-EC:0	돌/I-VV ㄴ/I-EC
+돈/I-VV:I-EF:0	돌/I-VV ㄴ/I-EF
+돈/I-VV:I-ETM:0	돌/I-VV ㄴ/I-ETM
+돌/I-EC:I-VV:0	어/I-EC 돌/I-VV
+돌/I-JX:0	도/I-JX
+돌/I-NNP:I-NNP:0	돌/I-NNP 이/I-NNP
+돌/I-VV:I-EC:0	돌/I-VV 아/I-EC
+돌/I-VV:I-ETM:0	돌/I-VV ㄹ/I-ETM
+돎/I-VV:I-ETN:0	돌/I-VV ㅁ/I-ETN
+돕/I-NNG:I-VCP:I-EF:0	도/I-NNG 이/I-VCP ㅂ/I-EF
+돕/I-VV:I-EF:0	돌/I-VV ㅂ/I-EF
+동/I-ETM:I-NNB:0	ㄹ/I-ETM 동/I-NNB
+동/I-NNG:I-NNG:0	대/I-NNG 동/I-NNG
+동/I-NNP:I-JKG:0	동/I-NNP 의/I-JKG
+돠/I-VV:I-EC:0	두/I-VV 아/I-EC
+돼/I-VA:I-EC:0	되/I-VA 어/I-EC
+돼/I-VA:I-EF:0	되/I-VA 어/I-EF
+돼/I-VV:0	되/I-VV
+돼/I-VV:I-EC:0	되/I-VV 어/I-EC
+돼/I-VV:I-EF:0	되/I-VV 어/I-EF
+돼/I-VX:I-EC:0	되/I-VX 어/I-EC
+돼/I-VX:I-EF:0	되/I-VX 어/I-EF
+돼/I-XSA:I-EC:0	되/I-XSA 어/I-EC
+돼/I-XSA:I-EF:0	되/I-XSA 어/I-EF
+돼/I-XSV:I-EC:0	되/I-XSV 어/I-EC
+돼/I-XSV:I-EF:0	되/I-XSV 어/I-EF
+됐/I-VA:I-EP:0	되/I-VA 었/I-EP
+됐/I-VV:I-EP:0	되/I-VV 었/I-EP
+됐/I-VX:I-EP:0	되/I-VX 었/I-EP
+됐/I-XSA:I-EP:0	되/I-XSA 었/I-EP
+됐/I-XSV:I-EP:0	되/I-XSV 었/I-EP
+되/I-VA:I-EC:0	되/I-VA 어/I-EC
+되/I-XSV:I-EC:0	되/I-XSV 어/I-EC
+된/I-VA:I-EC:0	되/I-VA ㄴ/I-EC
+된/I-VA:I-EF:0	되/I-VA ㄴ/I-EF
+된/I-VA:I-ETM:0	되/I-VA ㄴ/I-ETM
+된/I-VV:0	되/I-VV
+된/I-VV:I-EC:0	되/I-VV ㄴ/I-EC
+된/I-VV:I-EF:0	되/I-VV ㄴ/I-EF
+된/I-VV:I-ETM:0	되/I-VV ㄴ/I-ETM
+된/I-VX:I-EC:0	되/I-VX ㄴ/I-EC
+된/I-VX:I-EF:0	되/I-VX ㄴ/I-EF
+된/I-VX:I-ETM:0	되/I-VX ㄴ/I-ETM
+된/I-XSA:I-EC:0	되/I-XSA ㄴ/I-EC
+된/I-XSA:I-EF:0	되/I-XSA ㄴ/I-EF
+된/I-XSA:I-ETM:0	되/I-XSA ㄴ/I-ETM
+된/I-XSV:I-EC:0	되/I-XSV ㄴ/I-EC
+된/I-XSV:I-EF:0	되/I-XSV ㄴ/I-EF
+된/I-XSV:I-ETM:0	되/I-XSV ㄴ/I-ETM
+된/I-XSV:I-ETN:0	되/I-XSV ㄴ/I-ETN
+된/I-XSV:I-JX:0	되/I-XSV ㄴ/I-JX
+될/I-VA:I-EC:0	되/I-VA ㄹ/I-EC
+될/I-VA:I-ETM:0	되/I-VA ㄹ/I-ETM
+될/I-VV:I-EC:0	되/I-VV ㄹ/I-EC
+될/I-VV:I-EF:0	되/I-VV ㄹ/I-EF
+될/I-VV:I-ETM:0	되/I-VV ㄹ/I-ETM
+될/I-VX:I-EC:0	되/I-VX ㄹ/I-EC
+될/I-VX:I-EF:0	되/I-VX ㄹ/I-EF
+될/I-VX:I-ETM:0	되/I-VX ㄹ/I-ETM
+될/I-XSA:I-EC:0	되/I-XSA ㄹ/I-EC
+될/I-XSA:I-ETM:0	되/I-XSA ㄹ/I-ETM
+될/I-XSV:I-EC:0	되/I-XSV ㄹ/I-EC
+될/I-XSV:I-EF:0	되/I-XSV ㄹ/I-EF
+될/I-XSV:I-ETM:0	되/I-XSV ㄹ/I-ETM
+됨/I-VA:I-ETN:0	되/I-VA ㅁ/I-ETN
+됨/I-VV:I-EC:0	되/I-VV ㅁ/I-EC
+됨/I-VV:I-ETN:0	되/I-VV ㅁ/I-ETN
+됨/I-VX:I-ETN:0	되/I-VX ㅁ/I-ETN
+됨/I-XSA:I-ETN:0	되/I-XSA ㅁ/I-ETN
+됨/I-XSV:I-EC:0	되/I-XSV ㅁ/I-EC
+됨/I-XSV:I-ETN:0	되/I-XSV ㅁ/I-ETN
+됩/I-VV:I-EC:0	되/I-VV ㅂ/I-EC
+됩/I-VV:I-EF:0	되/I-VV ㅂ/I-EF
+됩/I-VV:I-ETM:0	되/I-VV ㅂ/I-ETM
+됩/I-VX:I-EC:0	되/I-VX ㅂ/I-EC
+됩/I-VX:I-EF:0	되/I-VX ㅂ/I-EF
+됩/I-XSA:I-EC:0	되/I-XSA ㅂ/I-EC
+됩/I-XSV:I-EC:0	되/I-XSV ㅂ/I-EC
+됩/I-XSV:I-EF:0	되/I-XSV ㅂ/I-EF
+됬/I-VV:I-EP:0	되/I-VV 었/I-EP
+됴/I-VA:0	둏/I-VA
+두/I-EC:I-EC:0	아/I-EC 두/I-EC
+두/I-EC:I-VV:0	아/I-EC 두/I-VV
+두/I-EC:I-VX:0	아/I-EC 두/I-VX
+두/I-EC:I-VX:1	어/I-EC 두/I-VX
+두/I-NR:0	둘/I-NR
+두/I-VA:0	둡/I-VA
+두/I-VA:I-EP:0	둡/I-VA 으/I-EP
+두/I-VCP:I-EF:0	이/I-VCP 두/I-EF
+두/I-VV:0	둘/I-VV
+둔/I-EC:I-VX:I-EC:0	어/I-EC 두/I-VX ㄴ/I-EC
+둔/I-EC:I-VX:I-EF:0	어/I-EC 두/I-VX ㄴ/I-EF
+둔/I-EC:I-VX:I-EF:1	아/I-EC 두/I-VX ㄴ/I-EF
+둔/I-EC:I-VX:I-ETM:0	아/I-EC 두/I-VX ㄴ/I-ETM
+둔/I-EC:I-VX:I-ETM:1	어/I-EC 두/I-VX ㄴ/I-ETM
+둔/I-NNG:0	둠/I-NNG
+둔/I-VA:I-ETM:0	둡/I-VA ㄴ/I-ETM
+둔/I-VV:I-EC:0	두/I-VV ㄴ/I-EC
+둔/I-VV:I-EF:0	두/I-VV ㄴ/I-EF
+둔/I-VV:I-ETM:0	두/I-VV ㄴ/I-ETM
+둔/I-VV:I-ETM:1	둘/I-VV ㄴ/I-ETM
+둔/I-VV:I-ETN:0	두/I-VV ㄴ/I-ETN
+둔/I-VX:I-EC:0	두/I-VX ㄴ/I-EC
+둔/I-VX:I-EF:0	두/I-VX ㄴ/I-EF
+둔/I-VX:I-ETM:0	두/I-VX ㄴ/I-ETM
+둘/I-EC:I-VX:I-ETM:0	아/I-EC 두/I-VX ㄹ/I-ETM
+둘/I-NNG:I-JKO:0	두/I-NNG ㄹ/I-JKO
+둘/I-VV:0	들/I-VV
+둘/I-VV:I-EC:0	두/I-VV ㄹ/I-EC
+둘/I-VV:I-EF:0	두/I-VV ㄹ/I-EF
+둘/I-VV:I-ETM:0	두/I-VV ㄹ/I-ETM
+둘/I-VV:I-ETM:1	둘/I-VV ㄹ/I-ETM
+둘/I-VV:I-VV:0	두/I-VV 르/I-VV
+둘/I-VX:I-EC:0	두/I-VX ㄹ/I-EC
+둘/I-VX:I-EF:0	두/I-VX ㄹ/I-EF
+둘/I-VX:I-ETM:0	두/I-VX ㄹ/I-ETM
+둠/I-VV:I-EC:0	두/I-VV ㅁ/I-EC
+둠/I-VV:I-ETN:0	두/I-VV ㅁ/I-ETN
+둠/I-VX:I-ETN:0	두/I-VX ㅁ/I-ETN
+둡/I-EC:I-VX:I-EF:0	아/I-EC 두/I-VX ㅂ/I-EF
+둡/I-VV:I-EC:0	두/I-VV ㅂ/I-EC
+둡/I-VV:I-EF:0	두/I-VV ㅂ/I-EF
+둡/I-VX:I-EC:0	두/I-VX ㅂ/I-EC
+둡/I-VX:I-EF:0	두/I-VX ㅂ/I-EF
+둥/I-EC:I-EC:0	ㄹ/I-EC 둥/I-EC
+둥/I-ETM:I-NNB:0	ㄹ/I-ETM 둥/I-NNB
+둥/I-NNG:I-NNG:0	둥/I-NNG 이/I-NNG
+둬/I-VA:I-EC:0	둡/I-VA 어/I-EC
+둬/I-VV:I-EC:0	두/I-VV 어/I-EC
+둬/I-VV:I-EF:0	두/I-VV 어/I-EF
+둬/I-VX:I-EC:0	두/I-VX 어/I-EC
+둬/I-VX:I-EF:0	두/I-VX 어/I-EF
+뒀/I-VV:I-EP:0	두/I-VV 었/I-EP
+뒀/I-VX:I-EP:0	두/I-VX 었/I-EP
+뒬/I-NNG:I-JKO:0	뒤/I-NNG ㄹ/I-JKO
+뒷/I-NNG:0	뒤/I-NNG
+드/I-EC:I-VV:0	어/I-EC 드/I-VV
+드/I-EC:I-VX:0	어/I-EC 드/I-VX
+드/I-EC:I-VX:1	아/I-EC 드/I-VX
+드/I-VA:0	들/I-VA
+드/I-VCP:I-EF:0	이/I-VCP 드/I-EF
+드/I-VV:0	들/I-VV
+드/I-VV:I-VV:0	들/I-VV 이/I-VV
+드/I-VX:0	들/I-VX
+득/I-NNP:I-NNP:0	득/I-NNP 이/I-NNP
+득/I-XSN:0	들/I-XSN
+든/I-ETM:0	ㄴ/I-ETM
+든/I-VA:I-EC:0	들/I-VA ㄴ/I-EC
+든/I-VA:I-EF:0	들/I-VA ㄴ/I-EF
+든/I-VA:I-ETM:0	들/I-VA ㄴ/I-ETM
+든/I-VCP:I-EC:0	이/I-VCP 든/I-EC
+든/I-VCP:I-EF:0	이/I-VCP 든/I-EF
+든/I-VV:0	들/I-VV
+든/I-VV:I-EC:0	들/I-VV ㄴ/I-EC
+든/I-VV:I-EF:0	들/I-VV ㄴ/I-EF
+든/I-VV:I-ETM:0	들/I-VV ㄴ/I-ETM
+든/I-VV:I-ETM:1	들/I-VV 은/I-ETM
+든/I-VX:0	들/I-VX
+든/I-VX:I-EC:0	들/I-VX ㄴ/I-EC
+든/I-VX:I-EF:0	들/I-VX ㄴ/I-EF
+든/I-VX:I-ETM:0	들/I-VX ㄴ/I-ETM
+듣/I-VV:0	들/I-VV
+들/I-EC:I-VV:0	아/I-EC 들/I-VV
+들/I-EC:I-VV:1	어/I-EC 들/I-VV
+들/I-EC:I-VX:0	어/I-EC 들/I-VX
+들/I-EC:I-VX:1	아/I-EC 들/I-VX
+들/I-EC:I-XSN:0	아/I-EC 들/I-XSN
+들/I-ETM:0	ㄹ/I-ETM
+들/I-JX:I-XSN:0	는/I-JX 들/I-XSN
+들/I-VA:I-ETM:0	들/I-VA ㄹ/I-ETM
+들/I-VV:0	듣/I-VV
+들/I-VV:I-EC:0	들/I-VV ㄹ/I-EC
+들/I-VV:I-ETM:0	들/I-VV ㄹ/I-ETM
+들/I-VV:I-VV:0	들/I-VV 이/I-VV
+들/I-VX:I-EC:0	들/I-VX ㄹ/I-EC
+들/I-VX:I-ETM:0	들/I-VX ㄹ/I-ETM
+듦/I-VA:I-ETN:0	들/I-VA ㅁ/I-ETN
+듦/I-VV:I-ETN:0	들/I-VV ㅁ/I-ETN
+듦/I-VX:I-ETN:0	들/I-VX ㅁ/I-ETN
+듬/I-VV:0	들/I-VV
+듬/I-VV:I-ETN:0	들/I-VV ㅁ/I-ETN
+듭/I-VA:I-EF:0	들/I-VA ㅂ/I-EF
+듭/I-VV:I-EC:0	들/I-VV ㅂ/I-EC
+듭/I-VV:I-EF:0	들/I-VV ㅂ/I-EF
+듭/I-VV:I-EP:0	들/I-VV ㅂ/I-EP
+듭/I-VX:I-EF:0	들/I-VX ㅂ/I-EF
+듯/I-EC:I-EC:0	ㄹ/I-EC 듯/I-EC
+듯/I-ETM:I-NNB:0	ㄹ/I-ETM 듯/I-NNB
+듯/I-VCP:I-EC:0	이/I-VCP 듯/I-EC
+등/I-XPN:I-NNG:0	가/I-XPN 등/I-NNG
+디/I-VCP:I-EF:0	이/I-VCP 디/I-EF
+디/I-VV:0	딪/I-VV
+딘/I-NNP:I-ETM:0	딘/I-NNP ㄴ/I-ETM
+딘/I-NP:I-JX:0	디/I-NP ㄴ/I-JX
+딘/I-NP:I-VCP:I-EC:0	디/I-NP 이/I-VCP ㄴ/I-EC
+딘/I-NP:I-VCP:I-EF:0	디/I-NP 이/I-VCP ㄴ/I-EF
+딘/I-VA:I-EC:0	디/I-VA ㄴ/I-EC
+딘/I-VA:I-ETM:0	디/I-VA ㄴ/I-ETM
+딘/I-VV:I-EC:0	디/I-VV ㄴ/I-EC
+딘/I-VV:I-EF:0	디/I-VV ㄴ/I-EF
+딘/I-VV:I-ETM:0	디/I-VV ㄴ/I-ETM
+딛/I-VV:0	디/I-VV
+딜/I-NP:0	디/I-NP
+딜/I-NP:I-JKO:0	디/I-NP ㄹ/I-JKO
+딜/I-VA:I-EC:0	디/I-VA ㄹ/I-EC
+딜/I-VA:I-ETM:0	디/I-VA ㄹ/I-ETM
+딜/I-VV:I-EC:0	디/I-VV ㄹ/I-EC
+딜/I-VV:I-EF:0	디/I-VV ㄹ/I-EF
+딜/I-VV:I-ETM:0	디/I-VV ㄹ/I-ETM
+딤/I-VV:I-ETN:0	디/I-VV ㅁ/I-ETN
+딥/I-NP:I-VCP:I-EF:0	디/I-NP 이/I-VCP ㅂ/I-EF
+딥/I-VV:I-EF:0	디/I-VV ㅂ/I-EF
+딨/I-NP:I-VV:0	디/I-NP 있/I-VV
+따/I-VA:0	땁/I-VA
+따/I-VV:I-EC:0	따/I-VV 아/I-EC
+따/I-VV:I-EC:1	뜨/I-VV 아/I-EC
+따/I-VV:I-VV:0	따/I-VV 르/I-VV
+딴/I-MAG:I-JX:0	따/I-MAG ㄴ/I-JX
+딴/I-VV:I-EC:0	따/I-VV ㄴ/I-EC
+딴/I-VV:I-EF:0	따/I-VV ㄴ/I-EF
+딴/I-VV:I-ETM:0	따/I-VV ㄴ/I-ETM
+딸/I-VV:I-EC:0	따/I-VV ㄹ/I-EC
+딸/I-VV:I-EF:0	따/I-VV ㄹ/I-EF
+딸/I-VV:I-ETM:0	따/I-VV ㄹ/I-ETM
+땁/I-VV:I-EF:0	따/I-VV ㅂ/I-EF
+땄/I-VV:I-EP:0	따/I-VV 았/I-EP
+땄/I-VV:I-EP:1	뜨/I-VV 았/I-EP
+땅/I-NNG:0	땀/I-NNG
+때/I-ETM:I-NNG:0	ㄹ/I-ETM 때/I-NNG
+때/I-NNB:0	땜/I-NNB
+때/I-NNG:I-NNG:0	그/I-NNG 때/I-NNG
+때/I-VA:I-EC:0	떻/I-VA 어/I-EC
+때/I-VA:I-EF:0	떻/I-VA 어/I-EF
+때/I-VV:I-EC:0	때/I-VV 아/I-EC
+땐/B-NNG:I-JX:0	때/B-NNG ㄴ/I-JX
+땐/I-NNG:I-JX:0	때/I-NNG ㄴ/I-JX
+땐/I-NNG:I-VCP:I-EC:0	때/I-NNG 이/I-VCP ㄴ/I-EC
+땐/I-VV:I-EC:0	때/I-VV ㄴ/I-EC
+땐/I-VV:I-EF:0	때/I-VV ㄴ/I-EF
+땐/I-VV:I-ETM:0	때/I-VV ㄴ/I-ETM
+땔/I-NNG:I-JKO:0	때/I-NNG ㄹ/I-JKO
+땔/I-VV:I-ETM:0	때/I-VV ㄹ/I-ETM
+땜/I-VV:I-ETN:0	때/I-VV ㅁ/I-ETN
+땠/I-VA:I-EP:0	떻/I-VA 었/I-EP
+땠/I-VV:I-EP:0	때/I-VV 었/I-EP
+땠/I-VV:I-EP:1	때/I-VV 았/I-EP
+떠/I-VA:0	떻/I-VA
+떠/I-VA:1	떱/I-VA
+떠/I-VA:I-EC:0	뜨/I-VA 어/I-EC
+떠/I-VV:0	떨/I-VV
+떠/I-VV:I-EC:0	뜨/I-VV 어/I-EC
+떠/I-VV:I-EF:0	뜨/I-VV 어/I-EF
+떡/I-VA:I-EC:0	떻/I-VA ㄱ/I-EC
+떤/I-VA:0	떻/I-VA
+떤/I-VA:I-EC:0	떻/I-VA ㄴ/I-EC
+떤/I-VA:I-EF:0	떻/I-VA ㄴ/I-EF
+떤/I-VA:I-ETM:0	떻/I-VA ㄴ/I-ETM
+떤/I-VV:I-EC:0	떨/I-VV ㄴ/I-EC
+떤/I-VV:I-EF:0	떨/I-VV ㄴ/I-EF
+떤/I-VV:I-ETM:0	떨/I-VV ㄴ/I-ETM
+떨/I-NNG:I-NNG:0	떨/I-NNG 이/I-NNG
+떨/I-VA:I-EC:0	떻/I-VA ㄹ/I-EC
+떨/I-VA:I-EF:0	떻/I-VA ㄹ/I-EF
+떨/I-VA:I-ETM:0	떻/I-VA ㄹ/I-ETM
+떨/I-VV:I-ETM:0	떨/I-VV ㄹ/I-ETM
+떨/I-VV:I-ETM:1	떠/I-VV ㄹ/I-ETM
+떱/I-VA:I-EC:0	떻/I-VA ㅂ/I-EC
+떱/I-VV:I-EF:0	떨/I-VV ㅂ/I-EF
+떳/I-VV:I-EP:0	뜨/I-VV 었/I-EP
+떴/I-VA:I-EP:0	뜨/I-VA 었/I-EP
+떴/I-VV:I-EP:0	뜨/I-VV 었/I-EP
+떼/I-VV:I-EC:0	떼/I-VV 어/I-EC
+떼/I-VV:I-ETM:0	떼/I-VV ㄹ/I-ETM
+뗀/I-VV:I-EC:0	떼/I-VV ㄴ/I-EC
+뗀/I-VV:I-EF:0	떼/I-VV ㄴ/I-EF
+뗀/I-VV:I-ETM:0	떼/I-VV ㄴ/I-ETM
+뗄/I-VV:I-EC:0	떼/I-VV ㄹ/I-EC
+뗄/I-VV:I-ETM:0	떼/I-VV ㄹ/I-ETM
+뗍/I-VV:I-EF:0	떼/I-VV ㅂ/I-EF
+뗐/I-VV:I-EP:0	떼/I-VV 었/I-EP
+뗘/I-VA:I-EF:0	뗳/I-VA 어/I-EF
+뗘/I-VA:I-EF:1	떻/I-VA 어/I-EF
+뗘/I-VV:I-EC:0	띠/I-VV 어/I-EC
+뗘/I-VV:I-EF:0	띠/I-VV 어/I-EF
+뗬/I-VV:I-EP:0	떼/I-VV 었/I-EP
+또/I-SS:I-MAG:0	)/I-SS 또/I-MAG
+뛴/I-VV:I-EC:0	뛰/I-VV ㄴ/I-EC
+뛴/I-VV:I-EF:0	뛰/I-VV ㄴ/I-EF
+뛴/I-VV:I-ETM:0	뛰/I-VV ㄴ/I-ETM
+뛸/I-VV:I-EC:0	뛰/I-VV ㄹ/I-EC
+뛸/I-VV:I-EF:0	뛰/I-VV ㄹ/I-EF
+뛸/I-VV:I-ETM:0	뛰/I-VV ㄹ/I-ETM
+뜀/I-VV:I-ETN:0	뛰/I-VV ㅁ/I-ETN
+뜁/I-VV:I-EC:0	뛰/I-VV ㅂ/I-EC
+뜁/I-VV:I-EF:0	뛰/I-VV ㅂ/I-EF
+뜨/I-VV:I-VV:0	뜨/I-VV 리/I-VV
+뜬/I-VA:I-ETM:0	뜨/I-VA ㄴ/I-ETM
+뜬/I-VV:I-EC:0	뜨/I-VV ㄴ/I-EC
+뜬/I-VV:I-EF:0	뜨/I-VV ㄴ/I-EF
+뜬/I-VV:I-ETM:0	뜨/I-VV ㄴ/I-ETM
+뜰/I-VV:I-EC:0	뜨/I-VV ㄹ/I-EC
+뜰/I-VV:I-EF:0	뜨/I-VV ㄹ/I-EF
+뜰/I-VV:I-ETM:0	뜨/I-VV ㄹ/I-ETM
+뜸/I-VV:I-ETN:0	뜨/I-VV ㅁ/I-ETN
+뜹/I-VV:I-EF:0	뜨/I-VV ㅂ/I-EF
+띈/I-VV:I-EC:0	띄/I-VV ㄴ/I-EC
+띈/I-VV:I-EF:0	띄/I-VV ㄴ/I-EF
+띈/I-VV:I-ETM:0	띄/I-VV ㄴ/I-ETM
+띌/I-VV:I-EC:0	띄/I-VV ㄹ/I-EC
+띌/I-VV:I-ETM:0	띄/I-VV ㄹ/I-ETM
+띕/I-VV:I-EF:0	띄/I-VV ㅂ/I-EF
+띤/I-VA:I-ETM:0	띠/I-VA ㄴ/I-ETM
+띤/I-VV:I-EC:0	띠/I-VV ㄴ/I-EC
+띤/I-VV:I-EF:0	띠/I-VV ㄴ/I-EF
+띤/I-VV:I-ETM:0	띠/I-VV ㄴ/I-ETM
+띨/I-VV:I-EC:0	띠/I-VV ㄹ/I-EC
+띨/I-VV:I-ETM:0	띠/I-VV ㄹ/I-ETM
+띰/I-VV:I-ETN:0	띠/I-VV ㅁ/I-ETN
+라/I-EC:0	아/I-EC
+라/I-EC:1	어/I-EC
+라/I-EC:I-EC:0	아/I-EC 라/I-EC
+라/I-EC:I-EC:1	어/I-EC 라/I-EC
+라/I-EC:I-EC:2	여/I-EC 라/I-EC
+라/I-EC:I-EC:3	ㄹ/I-EC 라/I-EC
+라/I-EC:I-EC:4	라/I-EC 아/I-EC
+라/I-EF:0	아/I-EF
+라/I-EF:I-EF:0	아/I-EF 라/I-EF
+라/I-EF:I-EF:1	어/I-EF 라/I-EF
+라/I-EF:I-EF:2	ㄹ/I-EF 라/I-EF
+라/I-ETM:I-ETM:0	아/I-ETM 라/I-ETM
+라/I-JKQ:I-JKQ:0	이/I-JKQ 라/I-JKQ
+라/I-VA:0	랍/I-VA
+라/I-VA:1	랗/I-VA
+라/I-VA:I-EC:0	르/I-VA 아/I-EC
+라/I-VA:I-EC:1	랍/I-VA 어/I-EC
+라/I-VCP:I-EC:0	이/I-VCP 라/I-EC
+라/I-VCP:I-EF:0	이/I-VCP 라/I-EF
+라/I-VCP:I-ETM:0	이/I-VCP 라/I-ETM
+라/I-VCP:I-ETN:0	이/I-VCP 라/I-ETN
+라/I-VCP:I-JKQ:0	이/I-VCP 라/I-JKQ
+라/I-VCP:I-NNG:0	이/I-VCP 라/I-NNG
+라/I-VV:0	리/I-VV
+라/I-VV:1	르/I-VV
+라/I-VV:2	랍/I-VV
+라/I-VV:3	가/I-VV
+라/I-VV:I-EC:0	르/I-VV 아/I-EC
+라/I-VV:I-EC:1	라/I-VV 아/I-EC
+라/I-VV:I-EC:2	르/I-VV 어/I-EC
+라/I-VV:I-EC:3	리/I-VV 어/I-EC
+라/I-VV:I-EC:4	러/I-VV 아/I-EC
+라/I-VV:I-EF:0	르/I-VV 아/I-EF
+라/I-VV:I-VV:0	자/I-VV 라/I-VV
+라/I-XR:0	람/I-XR
+락/I-EC:I-EC:0	ㄹ/I-EC 락/I-EC
+락/I-VCP:I-EC:0	이/I-VCP 락/I-EC
+란/I-EC:I-EF:0	라/I-EC ㄴ/I-EF
+란/I-EC:I-JX:0	라/I-EC ㄴ/I-JX
+란/I-EF:I-EF:0	ㄹ/I-EF 란/I-EF
+란/I-JX:I-JX:0	이/I-JX 란/I-JX
+란/I-NNG:I-JX:0	라/I-NNG ㄴ/I-JX
+란/I-VA:I-EC:0	랗/I-VA ㄴ/I-EC
+란/I-VA:I-ETM:0	랗/I-VA ㄴ/I-ETM
+란/I-VCP:I-EF:0	이/I-VCP 란/I-EF
+란/I-VCP:I-ETM:0	이/I-VCP 란/I-ETM
+란/I-VCP:I-ETM:1	이/I-VCP ㄴ/I-ETM
+란/I-VCP:I-JX:0	이/I-VCP 란/I-JX
+란/I-VV:I-EC:0	라/I-VV ㄴ/I-EC
+란/I-VV:I-EF:0	라/I-VV ㄴ/I-EF
+란/I-VV:I-ETM:0	라/I-VV ㄴ/I-ETM
+란/I-VV:I-ETM:1	랗/I-VV ㄴ/I-ETM
+랄/I-EC:I-ETM:0	라/I-EC ㄹ/I-ETM
+랄/I-NNG:I-JKO:0	라/I-NNG ㄹ/I-JKO
+랄/I-VA:I-ETM:0	랗/I-VA ㄹ/I-ETM
+랄/I-VCP:I-EC:0	이/I-VCP 랄/I-EC
+랄/I-VCP:I-EF:0	이/I-VCP 랄/I-EF
+랄/I-VCP:I-ETM:0	이/I-VCP 랄/I-ETM
+랄/I-VV:0	라/I-VV
+랄/I-VV:I-EC:0	라/I-VV ㄹ/I-EC
+랄/I-VV:I-EF:0	라/I-VV ㄹ/I-EF
+랄/I-VV:I-ETM:0	라/I-VV ㄹ/I-ETM
+람/I-NNP:I-SS:0	람/I-NNP ≫/I-SS
+람/I-VCP:I-EC:0	이/I-VCP 람/I-EC
+람/I-VCP:I-EF:0	이/I-VCP 람/I-EF
+람/I-VV:I-ETN:0	라/I-VV ㅁ/I-ETN
+랍/I-EC:I-EF:0	라/I-EC ㅂ/I-EF
+랍/I-NNG:0	람/I-NNG
+랍/I-VCP:I-EC:0	이/I-VCP 랍/I-EC
+랍/I-VCP:I-EF:0	이/I-VCP 랍/I-EF
+랍/I-VV:I-EC:0	라/I-VV ㅂ/I-EC
+랍/I-VV:I-EF:0	라/I-VV ㅂ/I-EF
+랐/I-EP:0	았/I-EP
+랐/I-VA:I-EP:0	르/I-VA 았/I-EP
+랐/I-VV:I-EP:0	라/I-VV 았/I-EP
+랐/I-VV:I-EP:1	르/I-VV 았/I-EP
+랑/I-EF:I-EF:0	ㄹ/I-EF 랑/I-EF
+랑/I-NNG:I-NNG:0	랑/I-NNG 이/I-NNG
+랑/I-NNP:I-NNP:0	랑/I-NNP 이/I-NNP
+랑/I-VCP:I-EC:0	이/I-VCP 랑/I-EC
+랑/I-VCP:I-EF:0	이/I-VCP 랑/I-EF
+랖/I-NNG:0	랍/I-NNG
+래/I-EC:I-EC:0	ㄹ/I-EC 래/I-EC
+래/I-EF:I-EF:0	ㄹ/I-EF 래/I-EF
+래/I-NNG:0	랜/I-NNG
+래/I-NNG:1	랫/I-NNG
+래/I-VA:I-EC:0	렇/I-VA 어/I-EC
+래/I-VA:I-EC:1	랗/I-VA 아/I-EC
+래/I-VA:I-EC:2	랗/I-VA 어/I-EC
+래/I-VA:I-EF:0	랗/I-VA 아/I-EF
+래/I-VA:I-EF:1	렇/I-VA 어/I-EF
+래/I-VA:I-EF:2	렇/I-VA 아/I-EF
+래/I-VCP:I-EC:0	이/I-VCP 래/I-EC
+래/I-VCP:I-EC:1	이/I-VCP 라/I-EC
+래/I-VCP:I-EF:0	이/I-VCP 래/I-EF
+래/I-VCP:I-EF:1	이/I-VCP 라/I-EF
+래/I-VCP:I-ETM:0	이/I-VCP 래/I-ETM
+래/I-VV:0	라/I-VV
+래/I-VV:1	러/I-VV
+래/I-VV:I-EC:0	러/I-VV 어/I-EC
+래/I-VV:I-EC:1	렇/I-VV 어/I-EC
+래/I-VV:I-EC:2	래/I-VV 어/I-EC
+래/I-VV:I-EC:3	러/I-VV 아/I-EC
+래/I-VV:I-EC:4	라/I-VV 어/I-EC
+래/I-VV:I-EC:5	러/I-VV 앓/I-EC
+래/I-VV:I-EC:6	라/I-VV 아/I-EC
+래/I-VV:I-EC:7	리/I-VV 어/I-EC
+래/I-VV:I-EF:0	러/I-VV 어/I-EF
+래/I-VV:I-EF:1	라/I-VV 아/I-EF
+래/I-VV:I-EF:2	라/I-VV 어/I-EF
+래/I-VV:I-EF:3	러/I-VV 아/I-EF
+래/I-VX:I-EF:0	리/I-VX 아/I-EF
+랜/I-NNG:I-JX:0	래/I-NNG ㄴ/I-JX
+랜/I-VA:I-ETM:0	래/I-VA ㄴ/I-ETM
+랜/I-VCP:I-ETM:0	이/I-VCP 랜/I-ETM
+랜/I-VV:I-EC:0	래/I-VV ㄴ/I-EC
+랜/I-VV:I-EF:0	래/I-VV ㄴ/I-EF
+랜/I-VV:I-ETM:0	래/I-VV ㄴ/I-ETM
+랠/I-NNG:I-JKO:0	래/I-NNG ㄹ/I-JKO
+랠/I-VV:I-EC:0	래/I-VV ㄹ/I-EC
+랠/I-VV:I-EF:0	래/I-VV ㄹ/I-EF
+랠/I-VV:I-ETM:0	래/I-VV ㄹ/I-ETM
+램/I-VV:I-ETN:0	래/I-VV ㅁ/I-ETN
+랩/I-VA:I-EF:0	래/I-VA ㅂ/I-EF
+랩/I-VV:I-EF:0	래/I-VV ㅂ/I-EF
+랫/I-MAG:0	래/I-MAG
+랫/I-NNG:0	래/I-NNG
+랫/I-NNG:1	랜/I-NNG
+랫/I-VA:I-EC:0	래/I-VA ㅅ/I-EC
+랬/I-EC:I-VV:I-EP:0	라/I-EC 하/I-VV 였/I-EP
+랬/I-VA:I-EP:0	렇/I-VA 었/I-EP
+랬/I-VA:I-EP:1	래/I-VA 었/I-EP
+랬/I-VA:I-EP:2	랗/I-VA 았/I-EP
+랬/I-VCP:I-EC:0	이/I-VCP 랬/I-EC
+랬/I-VCP:I-EC:I-VV:I-EP:0	이/I-VCP 라/I-EC 하/I-VV 였/I-EP
+랬/I-VV:I-EP:0	러/I-VV 었/I-EP
+랬/I-VV:I-EP:1	래/I-VV 었/I-EP
+랬/I-VV:I-EP:2	래/I-VV 았/I-EP
+랬/I-VV:I-EP:3	러/I-VV 았/I-EP
+랬/I-VV:I-EP:4	라/I-VV 었/I-EP
+랭/I-NNP:I-NNP:0	랭/I-NNP 이/I-NNP
+랴/I-VCP:I-EC:0	이/I-VCP 랴/I-EC
+랴/I-VCP:I-EF:0	이/I-VCP 랴/I-EF
+략/I-EC:0	랴/I-EC
+략/I-NNP:I-SS:0	략/I-NNP ≫/I-SS
+량/I-NNB:0	양/I-NNB
+러/I-EC:0	어/I-EC
+러/I-EC:I-EC:0	으/I-EC 러/I-EC
+러/I-EF:0	어/I-EF
+러/I-MAJ:0	렇/I-MAJ
+러/I-VA:0	럽/I-VA
+러/I-VA:1	렇/I-VA
+러/I-VA:2	어/I-VA
+러/I-VA:3	롭/I-VA
+러/I-VA:I-EC:0	럽/I-VA 어/I-EC
+러/I-VA:I-EC:1	르/I-VA 어/I-EC
+러/I-VA:I-EC:2	렇/I-VA 어/I-EC
+러/I-VA:I-EF:0	럽/I-VA 어/I-EF
+러/I-VA:I-EF:1	르/I-VA 어/I-EF
+러/I-VCP:I-EC:0	이/I-VCP 러/I-EC
+러/I-VV:0	려/I-VV
+러/I-VV:1	럽/I-VV
+러/I-VV:2	어/I-VV
+러/I-VV:I-EC:0	르/I-VV 어/I-EC
+러/I-VV:I-EC:1	리/I-VV 어/I-EC
+러/I-VV:I-EF:0	르/I-VV 어/I-EF
+러/I-XSA:0	럽/I-XSA
+러/I-XSA:I-EC:0	럽/I-XSA 어/I-EC
+러/I-XSA:I-EF:0	럽/I-XSA 어/I-EF
+럭/I-MAG:I-MAG:0	버/I-MAG 럭/I-MAG
+런/I-JKB:0	럼/I-JKB
+런/I-VA:I-EC:0	렇/I-VA ㄴ/I-EC
+런/I-VA:I-EC:1	렇/I-VA 게/I-EC
+런/I-VA:I-EF:0	렇/I-VA ㄴ/I-EF
+런/I-VA:I-EF:1	럽/I-VA ㄴ/I-EF
+런/I-VA:I-ETM:0	럽/I-VA 은/I-ETM
+런/I-VA:I-ETM:1	렇/I-VA ㄴ/I-ETM
+런/I-VA:I-ETM:2	럽/I-VA ㄴ/I-ETM
+런/I-VCP:I-EC:0	이/I-VCP 런/I-EC
+런/I-VCP:I-ETM:0	이/I-VCP 런/I-ETM
+런/I-VV:I-EC:0	러/I-VV ㄴ/I-EC
+런/I-VV:I-EF:0	러/I-VV ㄴ/I-EF
+런/I-VV:I-ETM:0	러/I-VV ㄴ/I-ETM
+런/I-VV:I-ETM:1	렇/I-VV ㄴ/I-ETM
+런/I-XSA:I-EF:0	럽/I-XSA ㄴ/I-EF
+런/I-XSA:I-ETM:0	럽/I-XSA ㄴ/I-ETM
+런/I-XSA:I-ETM:1	럽/I-XSA 은/I-ETM
+럴/I-VA:I-EC:0	렇/I-VA ㄹ/I-EC
+럴/I-VA:I-EF:0	렇/I-VA ㄹ/I-EF
+럴/I-VA:I-ETM:0	렇/I-VA ㄹ/I-ETM
+럴/I-VA:I-ETM:1	럽/I-VA ㄹ/I-ETM
+럴/I-VA:I-ETM:2	렇/I-VA ㄴ/I-ETM
+럴/I-VV:I-EC:0	러/I-VV ㄹ/I-EC
+럴/I-VV:I-EF:0	러/I-VV ㄹ/I-EF
+럴/I-VV:I-ETM:0	러/I-VV ㄹ/I-ETM
+럴/I-XSA:I-ETM:0	럽/I-XSA ㄹ/I-ETM
+럼/I-VA:I-EC:0	렇/I-VA ㅁ/I-EC
+럼/I-VA:I-ETN:0	렇/I-VA ㅁ/I-ETN
+럼/I-VA:I-ETN:1	럽/I-VA ㅁ/I-ETN
+럼/I-VV:I-EC:0	러/I-VV 면/I-EC
+럼/I-VV:I-ETN:0	러/I-VV ㅁ/I-ETN
+럼/I-XSA:I-ETN:0	럽/I-XSA ㅁ/I-ETN
+럽/I-VA:0	렵/I-VA
+럽/I-VA:1	롭/I-VA
+럽/I-VA:I-EF:0	렇/I-VA ㅂ/I-EF
+럽/I-VV:I-EC:0	러/I-VV ㅂ/I-EC
+럽/I-VV:I-EF:0	러/I-VV ㅂ/I-EF
+럽/I-VV:I-VV:0	렵/I-VV 히/I-VV
+럿/I-VA:I-EC:0	럽/I-VA 엇/I-EC
+럿/I-VV:I-EC:0	르/I-VV 엇/I-EC
+렀/I-EP:0	었/I-EP
+렀/I-VV:I-EP:0	르/I-VV 었/I-EP
+렀/I-VV:I-EP:1	리/I-VV 었/I-EP
+렀/I-VX:I-EP:0	리/I-VX 었/I-EP
+렀/I-XSA:I-EP:0	럽/I-XSA 었/I-EP
+렁/I-VV:I-EC:0	러/I-VV ㅇ/I-EC
+렇/I-IC:0	러/I-IC
+레/I-NNP:0	렌/I-NNP
+레/I-VA:I-EC:0	렇/I-VA 어/I-EC
+레/I-VA:I-EF:0	렇/I-VA 어/I-EF
+레/I-VV:I-EC:0	러/I-VV 어/I-EC
+레/I-VV:I-EC:1	레/I-VV 어/I-EC
+레/I-XSA:I-EC:0	럽/I-XSA 게/I-EC
+렌/I-NNG:I-JX:0	레/I-NNG ㄴ/I-JX
+렌/I-VV:I-EF:0	레/I-VV ㄴ/I-EF
+렌/I-VV:I-ETM:0	레/I-VV ㄴ/I-ETM
+렐/I-VV:I-ETM:0	레/I-VV ㄹ/I-ETM
+렘/I-VV:I-ETN:0	레/I-VV ㅁ/I-ETN
+렜/I-VV:I-EP:0	레/I-VV 었/I-EP
+렜/I-VV:I-EP:1	러/I-VV 었/I-EP
+려/I-EC:0	어/I-EC
+려/I-EC:I-EC:0	ㄹ/I-EC 려/I-EC
+려/I-VA:0	렵/I-VA
+려/I-VA:I-EC:0	리/I-VA 어/I-EC
+려/I-VA:I-EC:1	렇/I-VA 어/I-EC
+려/I-VA:I-EF:0	리/I-VA 어/I-EF
+려/I-VA:I-EF:1	렇/I-VA 어/I-EF
+려/I-VCP:I-EC:0	이/I-VCP 려/I-EC
+려/I-VV:0	렵/I-VV
+려/I-VV:1	러/I-VV
+려/I-VV:I-EC:0	리/I-VV 어/I-EC
+려/I-VV:I-EC:1	르/I-VV 어/I-EC
+려/I-VV:I-EC:2	러/I-VV 어/I-EC
+려/I-VV:I-EC:3	리/I-VV 아/I-EC
+려/I-VV:I-EF:0	리/I-VV 어/I-EF
+려/I-VV:I-EF:1	러/I-VV 어/I-EF
+려/I-VV:I-VV:0	리/I-VV 치/I-VV
+려/I-VV:I-VV:1	르/I-VV 치/I-VV
+려/I-VX:I-EC:0	리/I-VX 어/I-EC
+려/I-VX:I-EC:1	려/I-VX 어/I-EC
+려/I-VX:I-EF:0	리/I-VX 어/I-EF
+련/I-VCP:I-EC:0	이/I-VCP 련/I-EC
+련/I-VCP:I-EC:I-JX:0	이/I-VCP 려/I-EC ㄴ/I-JX
+렬/I-NNG:I-JX:0	려/I-NNG ㄹ/I-JX
+렵/I-VV:I-VV:0	럽/I-VV 히/I-VV
+렷/I-VA:I-EP:0	리/I-VA 었/I-EP
+렷/I-VCP:I-EF:0	이/I-VCP 렷/I-EF
+렷/I-VV:I-EF:0	리/I-VV 엇/I-EF
+렷/I-VV:I-EP:0	리/I-VV 었/I-EP
+렷/I-VX:I-EF:0	리/I-VX 엇/I-EF
+렸/I-EP:0	었/I-EP
+렸/I-VA:I-EP:0	리/I-VA 었/I-EP
+렸/I-VA:I-EP:1	렇/I-VA 었/I-EP
+렸/I-VV:0	리/I-VV
+렸/I-VV:I-EP:0	리/I-VV 었/I-EP
+렸/I-VV:I-EP:1	리/I-VV 았/I-EP
+렸/I-VX:I-EP:0	리/I-VX 었/I-EP
+렸/I-XSV:I-EP:0	리/I-XSV 었/I-EP
+롄/I-NNG:I-JX:0	례/I-NNG ㄴ/I-JX
+로/I-JKB:I-JKB:0	으/I-JKB 로/I-JKB
+로/I-JKB:I-JX:0	로/I-JKB 도/I-JX
+로/I-NNG:I-JKB:0	로/I-NNG 로/I-JKB
+로/I-SF:I-NNP:0	./I-SF 로/I-NNP
+로/I-SS:I-NNG:0	(/I-SS 로/I-NNG
+로/I-VA:0	롭/I-VA
+로/I-VCP:I-EC:0	이/I-VCP 로/I-EC
+로/I-VCP:I-EF:0	이/I-VCP 로/I-EF
+로/I-VCP:I-JKB:0	이/I-VCP 로/I-JKB
+로/I-VV:0	롭/I-VV
+로/I-XSA:0	롭/I-XSA
+로/I-ZN:I-ZN:0	이/I-ZN 로/I-ZN
+록/I-NNP:I-SS:0	록/I-NNP ≫/I-SS
+론/I-JKB:I-JX:0	로/I-JKB ㄴ/I-JX
+론/I-JKB:I-VCP:I-EC:0	로/I-JKB 이/I-VCP ㄴ/I-EC
+론/I-MAG:I-JX:0	로/I-MAG ㄴ/I-JX
+론/I-NNG:I-JX:0	론/I-NNG ㄴ/I-JX
+론/I-NNP:I-NNP:0	로/I-NNP 론/I-NNP
+론/I-VA:I-ETM:0	롭/I-VA ㄴ/I-ETM
+롬/I-VA:I-ETN:0	롭/I-VA ㅁ/I-ETN
+뢰/I-VV:I-EC:0	뢰/I-VV 아/I-EC
+뢴/I-VV:I-EC:0	뢰/I-VV ㄴ/I-EC
+뢴/I-VV:I-EF:0	뢰/I-VV ㄴ/I-EF
+뢴/I-VV:I-ETM:0	뢰/I-VV ㄴ/I-ETM
+뢸/I-VV:I-EC:0	뢰/I-VV ㄹ/I-EC
+뢸/I-VV:I-ETM:0	뢰/I-VV ㄹ/I-ETM
+룀/I-VV:I-ETN:0	뢰/I-VV ㅁ/I-ETN
+루/I-EF:0	우/I-EF
+루/I-VV:I-EF:0	르/I-VV 우/I-EF
+룬/I-ETM:0	ㄴ/I-ETM
+룬/I-JKB:I-JX:0	루/I-JKB ㄴ/I-JX
+룬/I-NNG:I-JX:0	루/I-NNG ㄴ/I-JX
+룬/I-VV:I-EC:0	루/I-VV ㄴ/I-EC
+룬/I-VV:I-EF:0	루/I-VV ㄴ/I-EF
+룬/I-VV:I-ETM:0	루/I-VV ㄴ/I-ETM
+룰/I-NNG:I-JKO:0	루/I-NNG ㄹ/I-JKO
+룰/I-VV:I-EC:0	루/I-VV ㄹ/I-EC
+룰/I-VV:I-EF:0	루/I-VV ㄹ/I-EF
+룰/I-VV:I-ETM:0	루/I-VV ㄹ/I-ETM
+룰/I-VV:I-ETM:1	르/I-VV ㄹ/I-ETM
+룸/I-VV:I-ETN:0	루/I-VV ㅁ/I-ETN
+룹/I-VV:I-EF:0	루/I-VV ㅂ/I-EF
+룻/I-NNG:0	루/I-NNG
+뤄/I-VA:I-EC:0	루/I-VA 어/I-EC
+뤄/I-VV:I-EC:0	루/I-VV 어/I-EC
+뤄/I-VV:I-EF:0	루/I-VV 어/I-EF
+뤄/I-VV:I-VV:0	루/I-VV 어/I-VV
+뤘/I-VV:I-EP:0	루/I-VV 었/I-EP
+류/I-VV:I-EC:0	리/I-VV 유/I-EC
+류/I-VV:I-EC:1	리/I-VV 우/I-EC
+류/I-VV:I-EF:0	리/I-VV 유/I-EF
+륳/I-NNG:0	류/I-NNG
+르/I-NNP:I-NNP:0	미/I-NNP 르/I-NNP
+른/I-ETM:0	은/I-ETM
+른/I-NNG:0	르/I-NNG
+른/I-VA:I-EC:0	르/I-VA ㄴ/I-EC
+른/I-VA:I-EF:0	르/I-VA ㄴ/I-EF
+른/I-VA:I-ETM:0	르/I-VA ㄴ/I-ETM
+른/I-VA:I-ETM:1	르/I-VA ㄹ/I-ETM
+른/I-VA:I-ETM:2	렇/I-VA ㄴ/I-ETM
+른/I-VV:0	르/I-VV
+른/I-VV:I-EC:0	르/I-VV ㄴ/I-EC
+른/I-VV:I-EF:0	르/I-VV ㄴ/I-EF
+른/I-VV:I-ETM:0	르/I-VV ㄴ/I-ETM
+를/I-ETM:0	ㄹ/I-ETM
+를/I-VA:I-EC:0	르/I-VA ㄹ/I-EC
+를/I-VA:I-EF:0	르/I-VA ㄹ/I-EF
+를/I-VA:I-ETM:0	르/I-VA ㄹ/I-ETM
+를/I-VV:I-EC:0	르/I-VV ㄹ/I-EC
+를/I-VV:I-EF:0	르/I-VV ㄹ/I-EF
+를/I-VV:I-ETM:0	르/I-VV ㄹ/I-ETM
+름/I-VA:I-ETN:0	르/I-VA ㅁ/I-ETN
+름/I-VV:I-EC:0	르/I-VV ㅁ/I-EC
+름/I-VV:I-ETN:0	르/I-VV ㅁ/I-ETN
+릅/I-VA:I-EC:0	르/I-VA ㅂ/I-EC
+릅/I-VA:I-EF:0	르/I-VA ㅂ/I-EF
+릅/I-VV:I-EC:0	르/I-VV ㅂ/I-EC
+릅/I-VV:I-EF:0	르/I-VV ㅂ/I-EF
+릉/I-VV:I-EF:0	르/I-VV ㅇ/I-EF
+릎/I-VV:0	릅/I-VV
+리/I-ETM:0	ㄹ/I-ETM
+리/I-ETM:I-NNB:0	ㄹ/I-ETM 리/I-NNB
+리/I-JKS:0	이/I-JKS
+리/I-MAG:I-MAG:0	이/I-MAG 리/I-MAG
+리/I-NNG:I-SP:0	리/I-NNG ,/I-SP
+리/I-VA:0	립/I-VA
+리/I-VCP:I-EC:0	이/I-VCP 리/I-EC
+리/I-VCP:I-EF:0	이/I-VCP 리/I-EF
+리/I-VV:0	이/I-VV
+리/I-VV:1	려/I-VV
+리/I-VV:2	르/I-VV
+리/I-VV:3	미/I-VV
+리/I-VV:I-EC:0	리/I-VV 이/I-EC
+리/I-VV:I-VV:0	리/I-VV 하/I-VV
+린/I-ETM:0	ㄴ/I-ETM
+린/I-MAG:I-JX:0	리/I-MAG ㄴ/I-JX
+린/I-NNG:I-JX:0	리/I-NNG ㄴ/I-JX
+린/I-NNG:I-NNG:0	린/I-NNG 이/I-NNG
+린/I-NNG:I-VCP:I-EC:0	리/I-NNG 이/I-VCP ㄴ/I-EC
+린/I-NNG:I-VCP:I-EF:0	리/I-NNG 이/I-VCP ㄴ/I-EF
+린/I-NNP:I-JX:0	리/I-NNP ㄴ/I-JX
+린/I-NP:0	리/I-NP
+린/I-NP:I-JX:0	리/I-NP ㄴ/I-JX
+린/I-VA:I-EC:0	리/I-VA ㄴ/I-EC
+린/I-VA:I-EF:0	리/I-VA ㄴ/I-EF
+린/I-VA:I-ETM:0	리/I-VA ㄴ/I-ETM
+린/I-VV:0	리/I-VV
+린/I-VV:I-EC:0	리/I-VV ㄴ/I-EC
+린/I-VV:I-EF:0	리/I-VV ㄴ/I-EF
+린/I-VV:I-ETM:0	리/I-VV ㄴ/I-ETM
+린/I-VV:I-ETM:1	리/I-VV ㄹ/I-ETM
+린/I-VX:I-EC:0	리/I-VX ㄴ/I-EC
+린/I-VX:I-EF:0	리/I-VX ㄴ/I-EF
+린/I-VX:I-ETM:0	리/I-VX ㄴ/I-ETM
+린/I-XSN:I-JX:0	리/I-XSN ㄴ/I-JX
+린/I-XSV:I-ETM:0	리/I-XSV ㄴ/I-ETM
+릴/I-ETM:0	ㄹ/I-ETM
+릴/I-NNG:I-JKO:0	리/I-NNG ㄹ/I-JKO
+릴/I-NNG:I-JX:0	리/I-NNG ㄹ/I-JX
+릴/I-NNP:I-JKO:0	리/I-NNP ㄹ/I-JKO
+릴/I-NP:I-JKO:0	리/I-NP ㄹ/I-JKO
+릴/I-VA:I-EC:0	리/I-VA ㄹ/I-EC
+릴/I-VA:I-EF:0	리/I-VA ㄹ/I-EF
+릴/I-VA:I-ETM:0	리/I-VA ㄹ/I-ETM
+릴/I-VV:0	리/I-VV
+릴/I-VV:I-EC:0	리/I-VV ㄹ/I-EC
+릴/I-VV:I-EF:0	리/I-VV ㄹ/I-EF
+릴/I-VV:I-ETM:0	리/I-VV ㄹ/I-ETM
+릴/I-VV:I-ETM:1	리/I-VV ㄴ/I-ETM
+릴/I-VV:I-JKO:0	리/I-VV ㄹ/I-JKO
+릴/I-VX:I-EC:0	리/I-VX ㄹ/I-EC
+릴/I-VX:I-EF:0	리/I-VX ㄹ/I-EF
+릴/I-VX:I-ETM:0	리/I-VX ㄹ/I-ETM
+릴/I-XSV:I-EF:0	리/I-XSV ㄹ/I-EF
+릴/I-XSV:I-ETM:0	리/I-XSV ㄹ/I-ETM
+림/I-NNG:I-ETN:0	리/I-NNG ㅁ/I-ETN
+림/I-NNG:I-ETN:1	림/I-NNG ㅁ/I-ETN
+림/I-VA:I-ETN:0	리/I-VA ㅁ/I-ETN
+림/I-VV:0	리/I-VV
+림/I-VV:I-EC:0	리/I-VV ㅁ/I-EC
+림/I-VV:I-ETM:0	리/I-VV ㄴ/I-ETM
+림/I-VV:I-ETN:0	리/I-VV ㅁ/I-ETN
+림/I-VX:I-ETN:0	리/I-VX ㅁ/I-ETN
+립/I-NNG:I-VCP:I-EF:0	리/I-NNG 이/I-VCP ㅂ/I-EF
+립/I-VA:I-EF:0	리/I-VA ㅂ/I-EF
+립/I-VV:I-EC:0	리/I-VV ㅂ/I-EC
+립/I-VV:I-EF:0	리/I-VV ㅂ/I-EF
+립/I-VX:I-EC:0	리/I-VX ㅂ/I-EC
+립/I-VX:I-EF:0	리/I-VX ㅂ/I-EF
+립/I-XSV:I-EC:0	리/I-XSV ㅂ/I-EC
+립/I-XSV:I-EF:0	리/I-XSV ㅂ/I-EF
+릿/I-NNB:0	리/I-NNB
+릿/I-NNG:0	리/I-NNG
+맀/I-VV:I-EP:0	리/I-VV 었/I-EP
+마/B-NNG:I-JX:0	점/B-NNG 마/I-JX
+마/I-EC:I-VV:0	아/I-EC 마/I-VV
+마/I-JX:0	만/I-JX
+마/I-NNG:0	말/I-NNG
+마/I-VA:0	맙/I-VA
+마/I-VCP:I-ETM:0	이/I-VCP 마/I-ETM
+마/I-VV:0	말/I-VV
+마/I-VV:1	맛/I-VV
+마/I-VV:I-EC:0	말/I-VV 아/I-EC
+마/I-VV:I-EF:0	말/I-VV 아/I-EF
+마/I-VX:0	말/I-VX
+마/I-VX:I-EC:0	말/I-VX 아/I-EC
+마/I-VX:I-EC:1	말/I-VX ㄹ/I-EC
+마/I-VX:I-EF:0	말/I-VX 아/I-EF
+마/I-VX:I-ETM:0	말/I-VX 아/I-ETM
+마/I-XR:0	만/I-XR
+마/I-XR:1	맣/I-XR
+막/I-VV:0	박/I-VV
+만/B-NNG:I-JX:0	점/B-NNG 만/I-JX
+만/I-EC:I-JX:0	아/I-EC 만/I-JX
+만/I-EC:I-JX:1	어/I-EC 만/I-JX
+만/I-ETM:I-NNB:0	ㄹ/I-ETM 만/I-NNB
+만/I-MAG:I-JX:0	마/I-MAG ㄴ/I-JX
+만/I-NNG:I-JX:0	마/I-NNG ㄴ/I-JX
+만/I-VA:I-EC:0	맣/I-VA ㄴ/I-EC
+만/I-VA:I-ETM:0	맣/I-VA ㄴ/I-ETM
+만/I-VA:I-ETM:1	마/I-VA ㄴ/I-ETM
+만/I-VV:I-EC:0	말/I-VV ㄴ/I-EC
+만/I-VV:I-EF:0	말/I-VV ㄴ/I-EF
+만/I-VV:I-ETM:0	말/I-VV ㄴ/I-ETM
+만/I-VX:0	말/I-VX
+만/I-VX:I-EC:0	말/I-VX ㄴ/I-EC
+만/I-VX:I-EF:0	말/I-VX ㄴ/I-EF
+만/I-VX:I-ETM:0	말/I-VX ㄴ/I-ETM
+만/I-XR:0	마/I-XR
+많/I-VA:0	맣/I-VA
+말/B-JX:I-JX:0	야/B-JX 말/I-JX
+말/B-SE:I-NNG:0	…/B-SE 말/I-NNG
+말/I-EC:I-VV:0	어/I-EC 말/I-VV
+말/I-NNG:I-JKO:0	마/I-NNG ㄹ/I-JKO
+말/I-VA:I-ETM:0	맣/I-VA ㄹ/I-ETM
+말/I-VA:I-VA:0	마/I-VA 르/I-VA
+말/I-VV:0	맡/I-VV
+말/I-VV:I-EF:0	마/I-VV ㄹ/I-EF
+말/I-VV:I-ETM:0	말/I-VV ㄹ/I-ETM
+말/I-VV:I-VV:0	마/I-VV 르/I-VV
+말/I-VX:I-EF:0	말/I-VX ㄹ/I-EF
+말/I-VX:I-ETM:0	말/I-VX ㄹ/I-ETM
+맙/I-VV:I-EF:0	말/I-VV ㅂ/I-EF
+맙/I-VX:I-EC:0	말/I-VX ㅂ/I-EC
+맙/I-VX:I-EF:0	말/I-VX ㅂ/I-EF
+망/I-EC:I-EC:0	ㄹ/I-EC 망/I-EC
+망/I-ETM:I-NNB:0	ㄹ/I-ETM 망/I-NNB
+맞/I-EC:I-VV:0	아/I-EC 맞/I-VV
+매/I-VA:0	맵/I-VA
+매/I-VA:I-EC:0	맣/I-VA 아/I-EC
+매/I-VA:I-EF:0	맣/I-VA 아/I-EF
+매/I-VV:I-EC:0	매/I-VV 어/I-EC
+매/I-VV:I-EC:1	매/I-VV 아/I-EC
+맨/I-VV:I-EC:0	매/I-VV ㄴ/I-EC
+맨/I-VV:I-EF:0	매/I-VV ㄴ/I-EF
+맨/I-VV:I-ETM:0	매/I-VV ㄴ/I-ETM
+맬/I-VV:I-EC:0	매/I-VV ㄹ/I-EC
+맬/I-VV:I-EF:0	매/I-VV ㄹ/I-EF
+맬/I-VV:I-ETM:0	매/I-VV ㄹ/I-ETM
+맴/I-VV:I-ETN:0	매/I-VV ㅁ/I-ETN
+맸/I-VA:I-EP:0	맣/I-VA 았/I-EP
+맸/I-VV:I-EP:0	매/I-VV 었/I-EP
+머/I-EC:0	어/I-EC
+머/I-NNG:I-NNG:0	머/I-NNG 니/I-NNG
+머/I-VA:0	멀/I-VA
+머/I-VA:1	멓/I-VA
+머/I-VCP:I-EC:0	이/I-VCP 머/I-EC
+머/I-VV:0	멀/I-VV
+먹/I-EC:I-VV:0	아/I-EC 먹/I-VV
+먹/I-EC:I-VV:1	어/I-EC 먹/I-VV
+먹/I-EC:I-VX:0	아/I-EC 먹/I-VX
+먹/I-EC:I-VX:1	어/I-EC 먹/I-VX
+먹/I-VV:I-VV:0	어/I-VV 먹/I-VV
+먼/I-VA:I-EC:0	멀/I-VA ㄴ/I-EC
+먼/I-VA:I-ETM:0	멀/I-VA ㄴ/I-ETM
+먼/I-VA:I-ETM:1	멓/I-VA ㄴ/I-ETM
+먼/I-VCP:I-EC:0	이/I-VCP 먼/I-EC
+먼/I-VV:I-ETM:0	멀/I-VV ㄴ/I-ETM
+멀/I-NNG:I-JKO:0	머/I-NNG ㄹ/I-JKO
+멀/I-NP:I-JKO:0	머/I-NP ㄹ/I-JKO
+멀/I-VA:I-ETM:0	멀/I-VA ㄹ/I-ETM
+멉/I-VA:I-EF:0	멀/I-VA ㅂ/I-EF
+메/I-JKB:0	에/I-JKB
+메/I-VV:I-EC:0	메/I-VV 어/I-EC
+멘/I-NNP:I-JX:0	메/I-NNP ㄴ/I-JX
+멘/I-VA:I-ETM:0	메/I-VA ㄴ/I-ETM
+멘/I-VV:I-EC:0	메/I-VV ㄴ/I-EC
+멘/I-VV:I-EF:0	메/I-VV ㄴ/I-EF
+멘/I-VV:I-ETM:0	메/I-VV ㄴ/I-ETM
+멜/I-VV:I-ETM:0	메/I-VV ㄹ/I-ETM
+멥/I-VV:I-EF:0	메/I-VV ㅂ/I-EF
+멨/I-VA:I-EP:0	멓/I-VA 었/I-EP
+멨/I-VV:I-EP:0	메/I-VV 었/I-EP
+며/I-EC:0	면/I-EC
+며/I-EC:I-EC:0	라/I-EC 며/I-EC
+며/I-JC:I-JC:0	이/I-JC 며/I-JC
+며/I-VCP:I-EC:0	이/I-VCP 며/I-EC
+며/I-VCP:I-EF:0	이/I-VCP 며/I-EF
+며/I-VV:I-EC:0	미/I-VV 어/I-EC
+면/I-EC:I-EC:0	라/I-EC 면/I-EC
+면/I-NNB:0	명/I-NNB
+면/I-VCP:I-EC:0	이/I-VCP 면/I-EC
+면/I-VCP:I-EF:0	이/I-VCP 면/I-EF
+면/I-VCP:I-NNP:0	이/I-VCP 면/I-NNP
+몄/I-VV:I-EP:0	미/I-VV 었/I-EP
+몇/I-NNG:0	며/I-NNG
+모/I-EC:I-VV:0	아/I-EC 모/I-VV
+모/I-VV:0	몰/I-VV
+모/I-VV:1	보/I-VV
+모/I-VV:I-VV:0	모/I-VV 으/I-VV
+모/I-VX:I-VX:0	못/I-VX 하/I-VX
+목/I-VX:0	못/I-VX
+몬/I-NNG:I-JX:0	모/I-NNG ㄴ/I-JX
+몬/I-VV:0	몰/I-VV
+몬/I-VV:I-EC:0	몰/I-VV ㄴ/I-EC
+몬/I-VV:I-EF:0	몰/I-VV ㄴ/I-EF
+몬/I-VV:I-ETM:0	몰/I-VV ㄴ/I-ETM
+몰/I-VV:0	모/I-VV
+몰/I-VV:I-ETM:0	몰/I-VV ㄹ/I-ETM
+몰/I-VV:I-VV:0	모/I-VV 르/I-VV
+몹/I-VV:I-EF:0	몰/I-VV ㅂ/I-EF
+못/I-VA:I-VA:0	못/I-VA 하/I-VA
+못/I-VX:I-VX:0	못/I-VX 하/I-VX
+무/I-NNG:0	문/I-NNG
+무/I-VV:0	물/I-VV
+무/I-VV:1	묻/I-VV
+묵/I-EC:I-VV:0	아/I-EC 묵/I-VV
+문/I-NNG:I-EF:0	무/I-NNG ㄴ/I-EF
+문/I-NNG:I-JX:0	문/I-NNG ㄴ/I-JX
+문/I-NNG:I-JX:1	무/I-NNG ㄴ/I-JX
+문/I-NNG:I-NNG:0	학/I-NNG 문/I-NNG
+문/I-VA:I-EC:0	물/I-VA ㄴ/I-EC
+문/I-VA:I-ETM:0	물/I-VA ㄴ/I-ETM
+문/I-VCP:I-EC:0	이/I-VCP 문/I-EC
+문/I-VV:0	물/I-VV
+문/I-VV:I-EC:0	물/I-VV ㄴ/I-EC
+문/I-VV:I-EF:0	물/I-VV ㄴ/I-EF
+문/I-VV:I-ETM:0	물/I-VV ㄴ/I-ETM
+묻/I-EC:I-VV:0	아/I-EC 묻/I-VV
+물/I-EC:I-VV:0	어/I-EC 물/I-VV
+물/I-NNG:0	묻/I-NNG
+물/I-NNG:I-JKO:0	무/I-NNG ㄹ/I-JKO
+물/I-NNG:I-NNG:0	식/I-NNG 물/I-NNG
+물/I-VA:I-ETM:0	물/I-VA ㄹ/I-ETM
+물/I-VA:I-VA:0	무/I-VA 르/I-VA
+물/I-VV:0	묻/I-VV
+물/I-VV:1	무/I-VV
+물/I-VV:I-EC:0	묵/I-VV ㄹ/I-EC
+물/I-VV:I-ETM:0	물/I-VV ㄹ/I-ETM
+물/I-VV:I-VV:0	무/I-VV 르/I-VV
+물/I-VV:I-VV:1	모/I-VV 르/I-VV
+묾/I-VV:I-ETN:0	물/I-VV ㅁ/I-ETN
+뭇/I-MM:0	무/I-MM
+뭇/I-NNG:0	무/I-NNG
+뭇/I-VCP:I-EF:0	이/I-VCP 뭇/I-EF
+뭐/I-NP:0	뭣/I-NP
+뭔/I-NP:I-JX:0	뭐/I-NP ㄴ/I-JX
+뭔/I-NP:I-VCP:I-EC:0	뭐/I-NP 이/I-VCP ㄴ/I-EC
+뭔/I-NP:I-VCP:I-EF:0	뭐/I-NP 이/I-VCP ㄴ/I-EF
+뭘/I-IC:I-JKO:0	뭐/I-IC ㄹ/I-JKO
+뭘/I-NP:I-JKB:0	뭐/I-NP ㄹ/I-JKB
+뭘/I-NP:I-JKO:0	뭐/I-NP ㄹ/I-JKO
+뭘/I-NP:I-NP:I-JKB:0	무/I-NP 엇/I-NP 으/I-JKB
+뭘/I-NP:I-NP:I-JKO:0	무/I-NP 엇/I-NP ㄹ/I-JKO
+뭘/I-NP:I-VCP:I-EF:0	뭐/I-NP 이/I-VCP ㄹ/I-EF
+뭡/I-NP:I-NP:I-VCP:I-EF:0	무/I-NP 엇/I-NP 이/I-VCP ㅂ/I-EF
+뭡/I-NP:I-VCP:I-EF:0	뭐/I-NP 이/I-VCP ㅂ/I-EF
+뭣/I-NP:0	뭐/I-NP
+뭣/I-NP:I-NP:0	무/I-NP 엇/I-NP
+므/I-VCP:I-EC:0	이/I-VCP 므/I-EC
+믄/I-VA:I-ETM:0	믛/I-VA ㄴ/I-ETM
+믄/I-VCP:I-EC:0	이/I-VCP 믄/I-EC
+믈/I-NNG:I-JKO:0	므/I-NNG ㄹ/I-JKO
+믈/I-VV:I-VV:0	무/I-VV 르/I-VV
+미/I-SF:I-NNP:0	./I-SF 미/I-NNP
+미/I-VA:0	밉/I-VA
+미/I-VV:0	밀/I-VV
+미/I-VV:1	메/I-VV
+믹/I-EC:I-VV:0	아/I-EC 믹/I-VV
+민/I-NNG:I-JX:0	미/I-NNG ㄴ/I-JX
+민/I-VV:I-EC:0	미/I-VV ㄴ/I-EC
+민/I-VV:I-EC:1	밀/I-VV ㄴ/I-EC
+민/I-VV:I-EF:0	미/I-VV ㄴ/I-EF
+민/I-VV:I-EF:1	밀/I-VV ㄴ/I-EF
+민/I-VV:I-ETM:0	밀/I-VV ㄴ/I-ETM
+민/I-VV:I-ETM:1	미/I-VV ㄴ/I-ETM
+밀/I-NNG:I-JKO:0	미/I-NNG ㄹ/I-JKO
+밀/I-VV:I-EC:0	미/I-VV ㄹ/I-EC
+밀/I-VV:I-ETM:0	밀/I-VV ㄹ/I-ETM
+밀/I-VV:I-ETM:1	미/I-VV ㄹ/I-ETM
+밈/I-VV:I-ETN:0	미/I-VV ㅁ/I-ETN
+밉/I-VV:I-EF:0	미/I-VV ㅂ/I-EF
+밉/I-VV:I-EF:1	밀/I-VV ㅂ/I-EF
+밌/I-VA:I-VA:0	미/I-VA 있/I-VA
+바/I-EC:0	아/I-EC
+바/I-EC:I-VA:0	아/I-EC 바/I-VA
+바/I-EC:I-VV:0	어/I-EC 바/I-VV
+바/I-EC:I-VV:1	아/I-EC 바/I-VV
+바/I-NNG:0	밥/I-NNG
+바/I-VV:I-VV:0	빠/I-VV 지/I-VV
+바/I-VX:I-EF:0	보/I-VX 아/I-EF
+박/I-EC:I-VV:0	어/I-EC 박/I-VV
+밖/I-EC:I-EC:0	ㄹ/I-EC 밖/I-EC
+반/I-SF:I-NNG:0	./I-SF 반/I-NNG
+받/I-EC:I-VV:0	어/I-EC 받/I-VV
+발/I-NNG:0	방/I-NNG
+발/I-NNP:0	박/I-NNP
+발/I-VA:0	밝/I-VA
+발/I-VA:I-VA:0	바/I-VA 르/I-VA
+발/I-VV:I-VV:0	바/I-VV 르/I-VV
+배/I-NNG:I-JKB:0	배/I-NNG 로/I-JKB
+배/I-VV:I-EC:0	배/I-VV 어/I-EC
+배/I-VV:I-EC:1	베/I-VV 어/I-EC
+배/I-VX:I-EF:0	보/I-VX 아/I-EF
+백/I-NR:I-NR:0	백/I-NR 만/I-NR
+밴/I-VA:I-ETM:0	배/I-VA ㄴ/I-ETM
+밴/I-VV:I-EC:0	배/I-VV ㄴ/I-EC
+밴/I-VV:I-EF:0	배/I-VV ㄴ/I-EF
+밴/I-VV:I-ETM:0	배/I-VV ㄴ/I-ETM
+밸/I-NNG:I-JKO:0	배/I-NNG ㄹ/I-JKO
+밸/I-VV:I-EC:0	배/I-VV ㄹ/I-EC
+밸/I-VV:I-ETM:0	배/I-VV ㄹ/I-ETM
+뱀/I-VV:I-ETN:0	배/I-VV ㅁ/I-ETN
+뱄/I-VV:I-EP:0	배/I-VV 었/I-EP
+뱅/I-NNG:I-NNG:0	뱅/I-NNG 이/I-NNG
+뱉/I-EC:I-VV:0	아/I-EC 뱉/I-VV
+버/I-EC:0	어/I-EC
+버/I-EC:I-VX:0	어/I-EC 버/I-VX
+버/I-EC:I-VX:1	아/I-EC 버/I-VX
+버/I-VV:0	벌/I-VV
+버/I-VX:I-VX:0	버/I-VX 리/I-VX
+번/I-VV:0	벌/I-VV
+번/I-VV:I-EC:0	벌/I-VV ㄴ/I-EC
+번/I-VV:I-EF:0	벌/I-VV ㄴ/I-EF
+번/I-VV:I-ETM:0	벌/I-VV ㄴ/I-ETM
+벌/I-NNG:I-NNG:0	벌/I-NNG 이/I-NNG
+벌/I-VV:I-ETM:0	벌/I-VV ㄹ/I-ETM
+벌/I-VV:I-ETM:1	벌/I-VV ㄴ/I-ETM
+범/I-NNG:0	법/I-NNG
+법/B-NNG:I-SP:0	법/B-NNG ,/I-SP
+법/I-VV:I-EF:0	벌/I-VV ㅂ/I-EF
+벙/I-NNG:I-NNG:0	벙/I-NNG 이/I-NNG
+벙/I-VV:0	범/I-VV
+베/I-NNP:0	벨/I-NNP
+벤/I-VV:I-EC:0	베/I-VV ㄴ/I-EC
+벤/I-VV:I-ETM:0	베/I-VV ㄴ/I-ETM
+벨/I-VV:I-EF:0	베/I-VV ㄹ/I-EF
+벨/I-VV:I-ETM:0	베/I-VV ㄹ/I-ETM
+벰/I-VV:I-ETN:0	베/I-VV ㅁ/I-ETN
+벼/I-NNG:0	볕/I-NNG
+벼/I-NNG:1	변/I-NNG
+벼/I-VA:0	볍/I-VA
+벼/I-VV:I-EC:0	비/I-VV 어/I-EC
+벼/I-VV:I-EF:0	비/I-VV 어/I-EF
+벼/I-VX:I-EF:0	비/I-VX 어/I-EF
+별/I-VV:0	벼/I-VV
+별/I-VV:I-VV:0	벼/I-VV 르/I-VV
+볐/I-VV:I-EP:0	비/I-VV 었/I-EP
+보/I-EC:I-VV:0	아/I-EC 보/I-VV
+보/I-EC:I-VV:1	어/I-EC 보/I-VV
+보/I-EC:I-VX:0	아/I-EC 보/I-VX
+보/I-EC:I-VX:1	어/I-EC 보/I-VX
+복/I-VV:0	북/I-VV
+본/I-EC:I-VX:I-EC:0	아/I-EC 보/I-VX ㄴ/I-EC
+본/I-EC:I-VX:I-EC:1	어/I-EC 보/I-VX ㄴ/I-EC
+본/I-EC:I-VX:I-EF:0	어/I-EC 보/I-VX ㄴ/I-EF
+본/I-EC:I-VX:I-EF:1	아/I-EC 보/I-VX ㄴ/I-EF
+본/I-EC:I-VX:I-ETM:0	아/I-EC 보/I-VX ㄴ/I-ETM
+본/I-EC:I-VX:I-ETM:1	어/I-EC 보/I-VX ㄴ/I-ETM
+본/I-NNG:I-JX:0	보/I-NNG ㄴ/I-JX
+본/I-NNP:I-JX:0	보/I-NNP ㄴ/I-JX
+본/I-VV:0	보/I-VV
+본/I-VV:I-EC:0	보/I-VV ㄴ/I-EC
+본/I-VV:I-EF:0	보/I-VV ㄴ/I-EF
+본/I-VV:I-ETM:0	보/I-VV ㄴ/I-ETM
+본/I-VV:I-ETN:0	보/I-VV ㄴ/I-ETN
+본/I-VX:I-EC:0	보/I-VX ㄴ/I-EC
+본/I-VX:I-EF:0	보/I-VX ㄴ/I-EF
+본/I-VX:I-ETM:0	보/I-VX ㄴ/I-ETM
+볼/I-EC:I-VV:I-ETM:0	아/I-EC 보/I-VV ㄹ/I-ETM
+볼/I-EC:I-VX:I-EC:0	아/I-EC 보/I-VX ㄹ/I-EC
+볼/I-EC:I-VX:I-EF:0	아/I-EC 보/I-VX ㄹ/I-EF
+볼/I-EC:I-VX:I-EF:1	어/I-EC 보/I-VX ㄹ/I-EF
+볼/I-EC:I-VX:I-ETM:0	아/I-EC 보/I-VX ㄹ/I-ETM
+볼/I-EC:I-VX:I-ETM:1	어/I-EC 보/I-VX ㄹ/I-ETM
+볼/I-VV:0	보/I-VV
+볼/I-VV:I-EC:0	보/I-VV ㄹ/I-EC
+볼/I-VV:I-EF:0	보/I-VV ㄹ/I-EF
+볼/I-VV:I-ETM:0	보/I-VV ㄹ/I-ETM
+볼/I-VX:0	보/I-VX
+볼/I-VX:I-EC:0	보/I-VX ㄹ/I-EC
+볼/I-VX:I-EF:0	보/I-VX ㄹ/I-EF
+볼/I-VX:I-ETM:0	보/I-VX ㄹ/I-ETM
+봄/I-VV:I-EC:0	보/I-VV ㅁ/I-EC
+봄/I-VV:I-ETN:0	보/I-VV ㅁ/I-ETN
+봄/I-VX:I-EC:0	보/I-VX ㅁ/I-EC
+봄/I-VX:I-EF:0	보/I-VX ㅁ/I-EF
+봄/I-VX:I-ETN:0	보/I-VX ㅁ/I-ETN
+봅/I-EC:I-VX:I-EF:0	아/I-EC 보/I-VX ㅂ/I-EF
+봅/I-EC:I-VX:I-EF:1	어/I-EC 보/I-VX ㅂ/I-EF
+봅/I-VV:I-EC:0	보/I-VV ㅂ/I-EC
+봅/I-VV:I-EF:0	보/I-VV ㅂ/I-EF
+봅/I-VX:I-EC:0	보/I-VX ㅂ/I-EC
+봅/I-VX:I-EF:0	보/I-VX ㅂ/I-EF
+봉/I-NNG:I-SS:0	봉/I-NNG )/I-SS
+봉/I-NNP:I-NNP:0	봉/I-NNP 이/I-NNP
+봉/I-VV:I-EC:0	보/I-VV ㅇ/I-EC
+봉/I-VX:I-EC:0	보/I-VX ㅇ/I-EC
+봐/I-EC:0	아/I-EC
+봐/I-VV:0	보/I-VV
+봐/I-VV:I-EC:0	보/I-VV 아/I-EC
+봐/I-VV:I-EF:0	보/I-VV 아/I-EF
+봐/I-VV:I-ETM:0	보/I-VV 아/I-ETM
+봐/I-VX:I-EC:0	보/I-VX 아/I-EC
+봐/I-VX:I-EF:0	보/I-VX 아/I-EF
+봤/I-EP:0	았/I-EP
+봤/I-VV:I-EP:0	보/I-VV 았/I-EP
+봤/I-VX:I-EP:0	보/I-VX 았/I-EP
+봬/I-VV:I-EC:0	뵈/I-VV 어/I-EC
+봬/I-VV:I-EF:0	뵙/I-VV 어/I-EF
+봬/I-VV:I-EF:1	뵈/I-VV 어/I-EF
+뵈/I-EC:I-VV:0	아/I-EC 뵈/I-VV
+뵈/I-VV:0	뵙/I-VV
+뵈/I-VV:I-EC:0	뵈/I-VV 어/I-EC
+뵈/I-VV:I-EC:1	뵙/I-VV 으/I-EC
+뵈/I-VV:I-ETM:0	뵈/I-VV ㄹ/I-ETM
+뵌/I-EC:I-VV:I-ETM:0	아/I-EC 뵈/I-VV ㄴ/I-ETM
+뵌/I-VV:I-EC:0	뵈/I-VV ㄴ/I-EC
+뵌/I-VV:I-EF:0	뵈/I-VV ㄴ/I-EF
+뵌/I-VV:I-ETM:0	뵈/I-VV ㄴ/I-ETM
+뵐/I-EC:I-VV:I-EF:0	아/I-EC 뵈/I-VV ㄹ/I-EF
+뵐/I-EC:I-VV:I-ETM:0	아/I-EC 뵈/I-VV ㄹ/I-ETM
+뵐/I-VV:I-EC:0	뵈/I-VV ㄹ/I-EC
+뵐/I-VV:I-EC:1	뵙/I-VV ㄹ/I-EC
+뵐/I-VV:I-EF:0	뵈/I-VV ㄹ/I-EF
+뵐/I-VV:I-EF:1	뵙/I-VV ㄹ/I-EF
+뵐/I-VV:I-ETM:0	뵈/I-VV ㄹ/I-ETM
+뵙/I-EC:I-VV:0	아/I-EC 뵙/I-VV
+뵙/I-EC:I-VV:I-EF:0	아/I-EC 뵈/I-VV ㅂ/I-EF
+뵙/I-VV:I-EC:0	뵈/I-VV ㅂ/I-EC
+뵙/I-VV:I-EF:0	뵈/I-VV ㅂ/I-EF
+뵜/I-VV:I-EP:0	뵙/I-VV 었/I-EP
+뵝/I-NNG:I-NNG:0	뵝/I-NNG 이/I-NNG
+뵤/I-VX:I-EF:0	보/I-VX 오/I-EF
+부/I-VV:0	불/I-VV
+부/I-VV:1	붓/I-VV
+부/I-VV:2	붇/I-VV
+부/I-VV:3	붙/I-VV
+부/I-VX:0	불/I-VX
+분/I-EC:I-ZV:0	아/I-EC 분/I-ZV
+분/I-ETM:0	ㄴ/I-ETM
+분/I-VV:I-EC:0	불/I-VV ㄴ/I-EC
+분/I-VV:I-EF:0	불/I-VV ㄴ/I-EF
+분/I-VV:I-ETM:0	불/I-VV ㄴ/I-ETM
+분/I-VX:I-ETM:0	부/I-VX ㄴ/I-ETM
+불/I-EC:I-VX:0	어/I-EC 불/I-VX
+불/I-NNG:0	붙/I-NNG
+불/I-NNG:I-JKO:0	부/I-NNG ㄹ/I-JKO
+불/I-VA:I-VA:0	부/I-VA 르/I-VA
+불/I-VV:0	붇/I-VV
+불/I-VV:1	부/I-VV
+불/I-VV:I-ETM:0	불/I-VV ㄹ/I-ETM
+불/I-VV:I-ETM:1	붓/I-VV ㄹ/I-ETM
+불/I-VV:I-ETM:2	보/I-VV ㄹ/I-ETM
+불/I-VV:I-VV:0	부/I-VV 르/I-VV
+불/I-VV:I-VV:1	붙/I-VV 이/I-VV
+불/I-VX:I-EC:0	부/I-VX ㄹ/I-EC
+붑/I-VV:I-EC:0	불/I-VV ㅂ/I-EC
+붑/I-VV:I-EF:0	불/I-VV ㅂ/I-EF
+붙/I-EC:I-VV:0	어/I-EC 붙/I-VV
+붙/I-VV:I-VV:0	붙/I-VV 이/I-VV
+브/I-VV:0	븟/I-VV
+븐/I-VX:I-EC:0	브/I-VX ㄴ/I-EC
+븟/I-VV:0	붓/I-VV
+비/B-NNG:B-NNG:0	점/B-NNG 비/B-NNG
+비/I-EC:I-VV:0	어/I-EC 비/I-VV
+비/I-VV:0	빌/I-VV
+비/I-VV:I-EC:0	비/I-VV 어/I-EC
+비/I-VV:I-EC:1	비/I-VV 이/I-EC
+빈/I-NNG:I-JX:0	비/I-NNG ㄴ/I-JX
+빈/I-SF:I-VV:I-ETM:0	./I-SF 비/I-VV ㄴ/I-ETM
+빈/I-VA:I-ETM:0	비/I-VA ㄴ/I-ETM
+빈/I-VV:I-EC:0	빌/I-VV ㄴ/I-EC
+빈/I-VV:I-EC:1	비/I-VV ㄴ/I-EC
+빈/I-VV:I-EF:0	비/I-VV ㄴ/I-EF
+빈/I-VV:I-EF:1	빌/I-VV ㄴ/I-EF
+빈/I-VV:I-ETM:0	비/I-VV ㄴ/I-ETM
+빈/I-VV:I-ETM:1	빌/I-VV ㄴ/I-ETM
+빌/I-NNG:I-JKO:0	비/I-NNG ㄹ/I-JKO
+빌/I-VA:I-ETM:0	비/I-VA ㄹ/I-ETM
+빌/I-VV:I-EC:0	비/I-VV ㄹ/I-EC
+빌/I-VV:I-EF:0	비/I-VV ㄹ/I-EF
+빌/I-VV:I-ETM:0	비/I-VV ㄹ/I-ETM
+빌/I-VV:I-ETM:1	빌/I-VV ㄹ/I-ETM
+빔/I-VV:I-EF:0	빌/I-VV ㅂ/I-EF
+빔/I-VV:I-ETN:0	비/I-VV ㅁ/I-ETN
+빕/I-VV:I-EC:0	빌/I-VV ㅂ/I-EC
+빕/I-VV:I-EF:0	빌/I-VV ㅂ/I-EF
+빗/I-NNG:0	비/I-NNG
+빛/I-NNG:I-JX:0	빛/I-NNG 은/I-JX
+빠/I-VA:I-EC:0	쁘/I-VA 아/I-EC
+빠/I-VA:I-EC:1	쁘/I-VA 어/I-EC
+빠/I-VA:I-EF:0	쁘/I-VA 아/I-EF
+빠/I-VV:0	빨/I-VV
+빤/I-NNG:I-JX:0	빠/I-NNG ㄴ/I-JX
+빤/I-VA:I-ETM:0	빨/I-VA ㄴ/I-ETM
+빤/I-VV:I-EC:0	빨/I-VV ㄴ/I-EC
+빤/I-VV:I-EF:0	빨/I-VV ㄴ/I-EF
+빤/I-VV:I-ETM:0	빨/I-VV ㄴ/I-ETM
+빨/I-NNG:I-JKO:0	빠/I-NNG ㄹ/I-JKO
+빨/I-VA:I-VA:0	빠/I-VA 르/I-VA
+빨/I-VV:I-ETM:0	빨/I-VV ㄹ/I-ETM
+빴/I-VA:I-EP:0	쁘/I-VA 았/I-EP
+빼/I-VV:I-EC:0	빼/I-VV 어/I-EC
+뺀/I-VV:I-EC:0	빼/I-VV ㄴ/I-EC
+뺀/I-VV:I-EF:0	빼/I-VV ㄴ/I-EF
+뺀/I-VV:I-ETM:0	빼/I-VV ㄴ/I-ETM
+뺄/I-VV:I-EC:0	빼/I-VV ㄹ/I-EC
+뺄/I-VV:I-EF:0	빼/I-VV ㄹ/I-EF
+뺄/I-VV:I-ETM:0	빼/I-VV ㄹ/I-ETM
+뺌/I-VV:I-ETN:0	빼/I-VV ㅁ/I-ETN
+뺍/I-VV:I-EF:0	빼/I-VV ㅂ/I-EF
+뺏/I-VV:I-EP:0	빼/I-VV 엇/I-EP
+뺐/I-VV:I-EP:0	빼/I-VV 었/I-EP
+뻐/I-MAG:0	뻥/I-MAG
+뻐/I-VA:I-EC:0	쁘/I-VA 어/I-EC
+뻐/I-VA:I-EC:1	쁘/I-VA 아/I-EC
+뻐/I-VA:I-EF:0	쁘/I-VA 어/I-EF
+뻐/I-VA:I-EP:0	쁘/I-VA 었/I-EP
+뻐/I-VA:I-VA:0	뻘/I-VA 겋/I-VA
+뻐/I-VV:I-EC:0	쁘/I-VV 어/I-EC
+뻔/I-ETM:I-NNB:0	ㄹ/I-ETM 뻔/I-NNB
+뻗/I-EC:I-VV:0	어/I-EC 뻗/I-VV
+뻤/I-VA:I-EP:0	쁘/I-VA 었/I-EP
+뼜/I-VV:I-EP:0	삐/I-VV 었/I-EP
+뽄/I-NNG:I-JX:0	뽀/I-NNG ㄴ/I-JX
+뿌/I-EC:I-VX:0	아/I-EC 뿌/I-VX
+뿌/I-EC:I-VX:1	이/I-EC 뿌/I-VX
+뿌/I-EC:I-VX:2	어/I-EC 뿌/I-VX
+뿌/I-VX:0	뿔/I-VX
+뿐/I-EC:I-EC:0	ㄹ/I-EC 뿐/I-EC
+뿐/I-ETM:I-NNB:0	ㄹ/I-ETM 뿐/I-NNB
+뿐/I-VA:I-EF:0	뿌/I-VA ㄴ/I-EF
+뿐/I-VA:I-ETM:0	뿌/I-VA ㄴ/I-ETM
+뿐/I-VA:I-ETM:1	쁘/I-VA 운/I-ETM
+뿐/I-VV:I-EF:0	뿔/I-VV ㄴ/I-EF
+뿐/I-VX:I-EF:0	뿌/I-VX ㄴ/I-EF
+뿔/I-EC:I-VX:0	이/I-EC 뿔/I-VX
+뿔/I-VA:I-ETM:0	뿌/I-VA ㄹ/I-ETM
+뿔/I-VX:I-EF:0	뿌/I-VX ㄹ/I-EF
+뿟/I-VX:I-EF:0	뿌/I-VX ㅅ/I-EF
+뿠/I-EC:I-ZV:0	아/I-EC 뿠/I-ZV
+뿠/I-VX:I-EP:0	뿌/I-VX 었/I-EP
+뿠/I-VX:I-EP:1	뿌/I-VX 았/I-EP
+쁜/I-VA:I-EC:0	쁘/I-VA ㄴ/I-EC
+쁜/I-VA:I-EF:0	쁘/I-VA ㄴ/I-EF
+쁜/I-VA:I-ETM:0	쁘/I-VA ㄴ/I-ETM
+쁠/I-VA:I-EC:0	쁘/I-VA ㄹ/I-EC
+쁠/I-VA:I-EF:0	쁘/I-VA ㄹ/I-EF
+쁠/I-VA:I-ETM:0	쁘/I-VA ㄹ/I-ETM
+쁨/I-VA:I-ETN:0	쁘/I-VA ㅁ/I-ETN
+쁩/I-VA:I-EC:0	쁘/I-VA ㅂ/I-EC
+쁩/I-VA:I-EF:0	쁘/I-VA ㅂ/I-EF
+삐/I-EC:I-VX:0	어/I-EC 삐/I-VX
+삐/I-EC:I-ZV:0	아/I-EC 삐/I-ZV
+삔/I-VV:I-ETM:0	삐/I-VV ㄴ/I-ETM
+삔/I-VX:I-EC:0	삐/I-VX ㄴ/I-EC
+삘/I-VV:I-EC:0	삐/I-VV ㄹ/I-EC
+사/B-NNG:I-NNG:0	사/B-NNG 이/I-NNG
+사/B-NNG:I-NNG:1	이/B-NNG 사/I-NNG
+사/I-NNG:I-NNG:0	사/I-NNG 이/I-NNG
+사/I-NNP:0	시/I-NNP
+사/I-NNP:1	상/I-NNP
+사/I-NNP:I-NNP:0	공/I-NNP 사/I-NNP
+사/I-VV:0	살/I-VV
+사/I-VV:I-EC:0	사/I-VV 아/I-EC
+사/I-VV:I-ETM:0	사/I-VV 는/I-ETM
+산/I-NNG:0	상/I-NNG
+산/I-NNG:I-JX:0	사/I-NNG ㄴ/I-JX
+산/I-NNG:I-NNG:0	태/I-NNG 산/I-NNG
+산/I-NNP:0	사/I-NNP
+산/I-NNP:I-JX:0	사/I-NNP ㄴ/I-JX
+산/I-VV:0	살/I-VV
+산/I-VV:I-EC:0	살/I-VV ㄴ/I-EC
+산/I-VV:I-EC:1	사/I-VV ㄴ/I-EC
+산/I-VV:I-EF:0	살/I-VV ㄴ/I-EF
+산/I-VV:I-EF:1	사/I-VV ㄴ/I-EF
+산/I-VV:I-ETM:0	살/I-VV ㄴ/I-ETM
+산/I-VV:I-ETM:1	사/I-VV ㄴ/I-ETM
+산/I-VV:I-ETM:2	살/I-VV ㄹ/I-ETM
+산/I-VV:I-ETN:0	사/I-VV ㄴ/I-ETN
+살/I-NNB:I-ETM:0	살/I-NNB ㄹ/I-ETM
+살/I-NNG:I-JKO:0	사/I-NNG ㄹ/I-JKO
+살/I-VV:I-EC:0	사/I-VV ㄹ/I-EC
+살/I-VV:I-EF:0	사/I-VV ㄹ/I-EF
+살/I-VV:I-ETM:0	사/I-VV ㄹ/I-ETM
+살/I-VV:I-ETM:1	살/I-VV ㄹ/I-ETM
+살/I-VV:I-VV:0	사/I-VV 르/I-VV
+살/I-VX:I-ETM:0	살/I-VX ㄹ/I-ETM
+삶/I-VV:I-EC:0	살/I-VV ㅁ/I-EC
+삶/I-VV:I-ETN:0	살/I-VV ㅁ/I-ETN
+삼/I-VV:I-EF:0	사/I-VV ㅁ/I-EF
+삽/I-VV:I-EC:0	살/I-VV ㅂ/I-EC
+삽/I-VV:I-EC:1	사/I-VV ㅂ/I-EC
+삽/I-VV:I-EF:0	살/I-VV ㅂ/I-EF
+삽/I-VV:I-EF:1	사/I-VV ㅂ/I-EF
+삿/I-NNG:0	사/I-NNG
+샀/I-VV:I-EP:0	사/I-VV 았/I-EP
+상/B-NNG:B-NNG:0	점/B-NNG 상/B-NNG
+상/B-NNG:I-NNG:0	조/B-NNG 상/I-NNG
+상/I-NNG:I-SF:0	상/I-NNG ./I-SF
+새/I-NNG:0	생/I-NNG
+새/I-VV:I-EC:0	새/I-VV 어/I-EC
+샌/I-NNG:I-JX:0	새/I-NNG ㄴ/I-JX
+샌/I-NNP:I-JX:0	새/I-NNP ㄴ/I-JX
+샌/I-VV:I-EC:0	새/I-VV ㄴ/I-EC
+샌/I-VV:I-EF:0	새/I-VV ㄴ/I-EF
+샌/I-VV:I-ETM:0	새/I-VV ㄴ/I-ETM
+샐/I-NNG:I-JKO:0	새/I-NNG ㄹ/I-JKO
+샐/I-VV:I-EC:0	새/I-VV ㄹ/I-EC
+샐/I-VV:I-EF:0	새/I-VV ㄹ/I-EF
+샐/I-VV:I-ETM:0	새/I-VV ㄹ/I-ETM
+샘/I-VV:I-ETN:0	새/I-VV ㅁ/I-ETN
+샙/I-VV:I-EF:0	새/I-VV ㅂ/I-EF
+샜/I-VV:I-EP:0	새/I-VV 었/I-EP
+생/B-NNG:B-NNG:0	직/B-NNG 생/B-NNG
+샤/I-EP:I-EC:0	시/I-EP 아/I-EC
+샬/I-EP:I-ETM:0	샤/I-EP ㄹ/I-ETM
+샷/I-EP:B-EP:0	시/I-EP 았/B-EP
+서/I-EC:0	어/I-EC
+서/I-EC:I-EC:0	아/I-EC 서/I-EC
+서/I-EC:I-EC:1	어/I-EC 서/I-EC
+서/I-EC:I-VV:0	아/I-EC 서/I-VV
+서/I-EF:I-EF:0	어/I-EF 서/I-EF
+서/I-EF:I-EF:1	아/I-EF 서/I-EF
+서/I-EP:I-EC:0	시/I-EP 어/I-EC
+서/I-EP:I-EF:0	시/I-EP 어/I-EF
+서/I-JKB:I-JKB:0	에/I-JKB 서/I-JKB
+서/I-NNG:0	선/I-NNG
+서/I-NNG:I-NNG:0	서/I-NNG 이/I-NNG
+서/I-NNG:I-SP:0	서/I-NNG ,/I-SP
+서/I-VA:0	섭/I-VA
+서/I-VA:1	섧/I-VA
+서/I-VA:I-EF:0	섭/I-VA 어/I-EF
+서/I-VCP:I-EC:0	이/I-VCP 서/I-EC
+서/I-VV:0	설/I-VV
+서/I-VV:I-EC:0	서/I-VV 어/I-EC
+서/I-VV:I-EC:1	서/I-VV 아/I-EC
+서/I-VV:I-EF:0	시/I-VV 어/I-EF
+서/I-VV:I-VV:0	설/I-VV 이/I-VV
+석/I-NNP:I-NNP:0	석/I-NNP 이/I-NNP
+석/I-VV:0	섞/I-VV
+선/B-JKB:I-JX:0	서/B-JKB ㄴ/I-JX
+선/I-EC:I-EC:I-JX:0	아/I-EC 서/I-EC ㄴ/I-JX
+선/I-EC:I-EC:I-JX:1	어/I-EC 서/I-EC ㄴ/I-JX
+선/I-EC:I-JX:0	서/I-EC ㄴ/I-JX
+선/I-EC:I-VCP:I-EC:0	서/I-EC 이/I-VCP ㄴ/I-EC
+선/I-JKB:I-EC:0	서/I-JKB ㄴ/I-EC
+선/I-JKB:I-JKB:I-JX:0	에/I-JKB 서/I-JKB ㄴ/I-JX
+선/I-JKB:I-JX:0	서/I-JKB ㄴ/I-JX
+선/I-JKB:I-VCP:I-EC:0	서/I-JKB 이/I-VCP ㄴ/I-EC
+선/I-JKS:I-JX:0	서/I-JKS ㄴ/I-JX
+선/I-MAJ:I-JX:0	서/I-MAJ ㄴ/I-JX
+선/I-NNG:0	서/I-NNG
+선/I-VA:I-EF:0	설/I-VA ㄴ/I-EF
+선/I-VA:I-ETM:0	설/I-VA ㄴ/I-ETM
+선/I-VV:I-EC:0	서/I-VV ㄴ/I-EC
+선/I-VV:I-EF:0	서/I-VV ㄴ/I-EF
+선/I-VV:I-ETM:0	서/I-VV ㄴ/I-ETM
+설/I-EC:I-EC:I-JX:0	아/I-EC 서/I-EC ㄹ/I-JX
+설/I-EC:I-JKO:0	서/I-EC ㄹ/I-JKO
+설/I-EC:I-JX:0	서/I-EC ㄹ/I-JX
+설/I-JKB:I-JX:0	서/I-JKB ㄹ/I-JX
+설/I-NNP:I-JX:0	설/I-NNP 은/I-JX
+설/I-VA:0	섧/I-VA
+설/I-VA:I-ETM:0	설/I-VA ㄹ/I-ETM
+설/I-VA:I-VA:0	서/I-VA 럽/I-VA
+설/I-VV:I-EC:0	서/I-VV ㄹ/I-EC
+설/I-VV:I-EF:0	서/I-VV ㄹ/I-EF
+설/I-VV:I-ETM:0	서/I-VV ㄹ/I-ETM
+섦/I-VA:I-ETN:0	설/I-VA ㅁ/I-ETN
+섬/I-VA:I-ETN:0	설/I-VA ㅁ/I-ETN
+섬/I-VA:I-ETN:1	섭/I-VA ㅁ/I-ETN
+섬/I-VV:I-EC:0	서/I-VV ㅁ/I-EC
+섬/I-VV:I-ETN:0	서/I-VV ㅁ/I-ETN
+섭/I-VA:I-EF:0	설/I-VA ㅂ/I-EF
+섭/I-VV:I-EF:0	서/I-VV ㅂ/I-EF
+섯/I-VV:I-EC:0	서/I-VV 엇/I-EC
+섯/I-VV:I-EC:1	서/I-VV ㅅ/I-EC
+섯/I-VV:I-EF:0	서/I-VV 엇/I-EF
+섰/I-EP:B-EP:0	시/I-EP 었/B-EP
+섰/I-VV:0	서/I-VV
+섰/I-VV:I-EP:0	서/I-VV 었/I-EP
+섰/I-VV:I-EP:1	시/I-VV 었/I-EP
+섰/I-VV:I-EP:2	스/I-VV 었/I-EP
+성/I-NNG:I-NNG:0	성/I-NNG _/I-NNG
+성/I-NNG:I-NNG:1	성/I-NNG 성/I-NNG
+성/I-NNP:0	선/I-NNP
+성/I-XSN:I-JKS:0	성/I-XSN 이/I-JKS
+성/I-XSN:I-XSN:0	성/I-XSN 이/I-XSN
+세/B-EP:I-EC:0	시/B-EP 어/I-EC
+세/B-EP:I-EF:0	시/B-EP 어/I-EF
+세/B-NNG:I-NNG:0	과/B-NNG 세/I-NNG
+세/I-EC:I-EC:0	ㄹ/I-EC 세/I-EC
+세/I-EP:I-EC:0	시/I-EP 어/I-EC
+세/I-EP:I-EF:0	시/I-EP 어/I-EF
+세/I-EP:I-ETM:0	시/I-EP 어/I-ETM
+세/I-NNP:I-SP:0	세/I-NNP ·/I-SP
+세/I-VA:I-EC:0	세/I-VA 어/I-EC
+세/I-VCP:I-EC:0	이/I-VCP 세/I-EC
+세/I-VCP:I-EF:0	이/I-VCP 세/I-EF
+세/I-VCP:I-EP:I-EF:0	이/I-VCP 시/I-EP 어/I-EF
+세/I-VV:I-EC:0	시/I-VV 어/I-EC
+세/I-VV:I-EF:0	시/I-VV 어/I-EF
+세/I-VX:I-EC:0	시/I-VX 어/I-EC
+세/I-VX:I-EF:0	시/I-VX 어/I-EF
+센/I-NNG:I-JX:0	세/I-NNG ㄴ/I-JX
+센/I-VA:I-EC:0	세/I-VA ㄴ/I-EC
+센/I-VA:I-EF:0	세/I-VA ㄴ/I-EF
+센/I-VA:I-ETM:0	세/I-VA ㄴ/I-ETM
+센/I-VV:I-EC:0	세/I-VV ㄴ/I-EC
+센/I-VV:I-EF:0	세/I-VV ㄴ/I-EF
+센/I-VV:I-ETM:0	세/I-VV ㄴ/I-ETM
+센/I-VV:I-ETM:1	새/I-VV ㄴ/I-ETM
+섾/I-VV:I-EP:0	혀/I-VV 었/I-EP
+셀/I-NNG:I-JKO:0	세/I-NNG ㄹ/I-JKO
+셀/I-NNP:I-JKO:0	세/I-NNP ㄹ/I-JKO
+셀/I-VA:I-EC:0	세/I-VA ㄹ/I-EC
+셀/I-VA:I-ETM:0	세/I-VA ㄹ/I-ETM
+셀/I-VV:I-ETM:0	세/I-VV ㄹ/I-ETM
+셈/I-VA:I-ETN:0	세/I-VA ㅁ/I-ETN
+셉/I-VA:I-EF:0	세/I-VA ㅂ/I-EF
+셋/I-NR:0	세/I-NR
+셌/I-EP:B-EP:0	시/I-EP 었/B-EP
+셌/I-VA:I-EP:0	세/I-VA 었/I-EP
+셌/I-VV:I-EP:0	시/I-VV 었/I-EP
+셌/I-VV:I-EP:1	세/I-VV 었/I-EP
+셔/I-EC:0	여/I-EC
+셔/I-EF:0	세/I-EF
+셔/I-EP:0	시/I-EP
+셔/I-EP:I-EC:0	시/I-EP 어/I-EC
+셔/I-EP:I-EF:0	시/I-EP 어/I-EF
+셔/I-VA:I-EC:0	시/I-VA 어/I-EC
+셔/I-VA:I-EF:0	시/I-VA 어/I-EF
+셔/I-VV:I-EC:0	시/I-VV 어/I-EC
+셔/I-VV:I-EF:0	시/I-VV 어/I-EF
+셔/I-VX:I-EC:0	시/I-VX 어/I-EC
+셔/I-VX:I-EF:0	시/I-VX 어/I-EF
+셨/I-EP:B-EP:0	시/I-EP 었/B-EP
+셨/I-VA:I-EP:0	시/I-VA 었/I-EP
+셨/I-VV:I-EP:0	시/I-VV 었/I-EP
+셨/I-VX:I-EP:0	시/I-VX 었/I-EP
+소/I-NNG:I-NNG:0	소/I-NNG 리/I-NNG
+소/I-VCP:I-EC:0	이/I-VCP 소/I-EC
+속/B-SP:I-NNG:0	,/B-SP 속/I-NNG
+손/I-NNG:I-JX:0	소/I-NNG ㄴ/I-JX
+솔/I-NNG:I-JKO:0	소/I-NNG ㄹ/I-JKO
+쇄/I-VV:0	쇠/I-VV
+쇤/I-NNG:I-JX:0	쇠/I-NNG ㄴ/I-JX
+쇤/I-VV:I-EC:0	쇠/I-VV ㄴ/I-EC
+쇤/I-VV:I-EF:0	쇠/I-VV ㄴ/I-EF
+쇤/I-VV:I-ETM:0	쇠/I-VV ㄴ/I-ETM
+쇳/I-NNG:0	쇠/I-NNG
+쇼/I-EP:I-EC:0	시/I-EP 오/I-EC
+쇼/I-EP:I-EF:0	시/I-EP 오/I-EF
+쇼/I-VCP:I-EC:0	이/I-VCP 쇼/I-EC
+쇼/I-VV:I-EF:0	시/I-VV 오/I-EF
+수/I-EC:I-EC:0	ㄹ/I-EC 수/I-EC
+수/I-ETM:I-NNB:0	ㄹ/I-ETM 수/I-NNB
+수/I-ETM:I-VA:0	ㄹ/I-ETM 수/I-VA
+수/I-NNG:I-NNG:0	촉/I-NNG 수/I-NNG
+수/I-NNP:0	숙/I-NNP
+수/I-VA:0	숩/I-VA
+수/I-VV:0	숫/I-VV
+순/I-NNB:I-JX:0	수/I-NNB ㄴ/I-JX
+순/I-NNG:I-JX:0	수/I-NNG ㄴ/I-JX
+순/I-NNP:I-JX:0	수/I-NNP ㄴ/I-JX
+순/I-NNP:I-NNP:0	순/I-NNP 이/I-NNP
+순/I-VA:I-ETM:0	숩/I-VA ㄴ/I-ETM
+순/I-VV:I-EC:0	수/I-VV ㄴ/I-EC
+순/I-VV:I-EF:0	수/I-VV ㄴ/I-EF
+순/I-VV:I-ETM:0	수/I-VV ㄴ/I-ETM
+술/I-NNG:I-JKO:0	수/I-NNG ㄹ/I-JKO
+술/I-VV:I-EC:0	수/I-VV ㄹ/I-EC
+술/I-VV:I-ETM:0	수/I-VV ㄹ/I-ETM
+숨/I-NNG:I-NNG:0	목/I-NNG 숨/I-NNG
+숩/I-VV:I-EF:0	수/I-VV ㅂ/I-EF
+숴/I-VV:I-EC:0	수/I-VV 어/I-EC
+숴/I-VV:I-EF:0	쉬/I-VV 어/I-EF
+숴/I-VV:I-EF:1	수/I-VV 어/I-EF
+쉈/I-VV:I-EP:0	수/I-VV 었/I-EP
+쉔/I-VV:I-ETM:0	쉐/I-VV ㄴ/I-ETM
+쉬/I-VA:0	쉽/I-VA
+쉰/I-VA:I-ETM:0	쉽/I-VA ㄴ/I-ETM
+쉰/I-VV:I-EC:0	쉬/I-VV ㄴ/I-EC
+쉰/I-VV:I-EF:0	쉬/I-VV ㄴ/I-EF
+쉰/I-VV:I-ETM:0	쉬/I-VV ㄴ/I-ETM
+쉴/I-VV:I-EC:0	쉬/I-VV ㄹ/I-EC
+쉴/I-VV:I-ETM:0	쉬/I-VV ㄹ/I-ETM
+쉼/I-VV:I-ETN:0	쉬/I-VV ㅁ/I-ETN
+쉽/I-VV:I-EC:0	쉬/I-VV ㅂ/I-EC
+쉽/I-VV:I-EF:0	쉬/I-VV ㅂ/I-EF
+슈/B-EP:I-EF:0	시/B-EP 유/I-EF
+슈/I-EP:I-EC:0	시/I-EP 우/I-EC
+슈/I-EP:I-EC:1	시/I-EP 유/I-EC
+슈/I-EP:I-EF:0	시/I-EP 우/I-EF
+슈/I-EP:I-EF:1	시/I-EP 오/I-EF
+슈/I-EP:I-EF:2	시/I-EP 유/I-EF
+슈/I-VCP:I-EC:0	이/I-VCP 슈/I-EC
+슈/I-VCP:I-EF:0	이/I-VCP 슈/I-EF
+슈/I-VV:I-EC:0	시/I-VV 우/I-EC
+슈/I-VV:I-EF:0	시/I-VV 우/I-EF
+스/I-VA:0	습/I-VA
+스/I-VV:0	슬/I-VV
+슥/I-MM:0	슨/I-MM
+슨/I-NNG:I-JX:0	스/I-NNG ㄴ/I-JX
+슨/I-NNP:I-JX:0	스/I-NNP ㄴ/I-JX
+슨/I-VA:I-ETM:0	스/I-VA ㄴ/I-ETM
+슨/I-VV:I-EC:0	슬/I-VV ㄴ/I-EC
+슨/I-VV:I-EF:0	슬/I-VV ㄴ/I-EF
+슨/I-VV:I-ETM:0	슬/I-VV ㄴ/I-ETM
+슨/I-VV:I-ETM:1	스/I-VV ㄴ/I-ETM
+슬/I-NNG:I-JKO:0	스/I-NNG ㄹ/I-JKO
+슬/I-VV:I-ETM:0	슬/I-VV ㄹ/I-ETM
+슬/I-VV:I-VV:0	스/I-VV 르/I-VV
+슴/I-VV:I-EC:0	스/I-VV ㅁ/I-EC
+습/B-EP:I-EF:0	시/B-EP ㅂ/I-EF
+시/B-NNG:I-NNB:0	점/B-NNG 시/I-NNB
+시/I-EF:I-EF:0	ㅂ/I-EF 시/I-EF
+시/I-JKS:0	이/I-JKS
+시/I-JKV:I-JKV:0	이/I-JKV 시/I-JKV
+시/I-NNG:B-NNG:0	이/I-NNG 시/B-NNG
+시/I-VA:0	쉽/I-VA
+시/I-VA:I-EF:0	십/I-VA 어/I-EF
+시/I-VCP:I-EF:0	이/I-VCP 시/I-EF
+시/I-VCP:I-EP:0	이/I-VCP 시/I-EP
+시/I-VV:0	싯/I-VV
+시/I-VV:I-EP:0	하/I-VV 시/I-EP
+시/I-VX:I-EP:0	하/I-VX 시/I-EP
+식/I-SP:I-NNG:0	·/I-SP 식/I-NNG
+신/B-EP:I-ETM:0	시/B-EP ㄴ/I-ETM
+신/B-NNG:I-NNG:0	여/B-NNG 신/I-NNG
+신/I-EC:I-EP:I-EF:0	아/I-EC 시/I-EP ㄴ/I-EF
+신/I-EC:I-VV:0	어/I-EC 신/I-VV
+신/I-EC:I-VV:1	아/I-EC 신/I-VV
+신/I-EP:0	시/I-EP
+신/I-EP:I-EC:0	시/I-EP ㄴ/I-EC
+신/I-EP:I-EF:0	시/I-EP ㄴ/I-EF
+신/I-EP:I-ETM:0	시/I-EP ㄴ/I-ETM
+신/I-EP:I-JX:0	시/I-EP ㄴ/I-JX
+신/I-MAG:I-JX:0	시/I-MAG ㄴ/I-JX
+신/I-NNB:I-JX:0	시/I-NNB ㄴ/I-JX
+신/I-NNG:I-JX:0	시/I-NNG ㄴ/I-JX
+신/I-VA:I-EC:0	시/I-VA ㄴ/I-EC
+신/I-VA:I-ETM:0	시/I-VA ㄴ/I-ETM
+신/I-VCP:I-EF:0	이/I-VCP ㄴ/I-EF
+신/I-VCP:I-EP:I-EC:0	이/I-VCP 시/I-EP ㄴ/I-EC
+신/I-VCP:I-EP:I-EF:0	이/I-VCP 시/I-EP ㄴ/I-EF
+신/I-VCP:I-EP:I-ETM:0	이/I-VCP 시/I-EP ㄴ/I-ETM
+신/I-VV:0	시/I-VV
+신/I-VV:I-EC:0	시/I-VV ㄴ/I-EC
+신/I-VV:I-EF:0	시/I-VV ㄴ/I-EF
+신/I-VV:I-ETM:0	시/I-VV ㄴ/I-ETM
+신/I-VV:I-ETN:0	시/I-VV ㄴ/I-ETN
+신/I-VX:I-EC:0	시/I-VX ㄴ/I-EC
+신/I-VX:I-EF:0	시/I-VX ㄴ/I-EF
+신/I-VX:I-ETM:0	시/I-VX ㄴ/I-ETM
+실/I-EP:I-EC:0	시/I-EP ㄹ/I-EC
+실/I-EP:I-EF:0	시/I-EP ㄹ/I-EF
+실/I-EP:I-ETM:0	시/I-EP ㄹ/I-ETM
+실/I-NNG:I-JKO:0	시/I-NNG ㄹ/I-JKO
+실/I-VA:I-EC:0	시/I-VA ㄹ/I-EC
+실/I-VA:I-ETM:0	시/I-VA ㄹ/I-ETM
+실/I-VV:0	싣/I-VV
+실/I-VV:I-EC:0	시/I-VV ㄹ/I-EC
+실/I-VV:I-EF:0	시/I-VV ㄹ/I-EF
+실/I-VV:I-ETM:0	시/I-VV ㄹ/I-ETM
+실/I-VX:I-EC:0	시/I-VX ㄹ/I-EC
+실/I-VX:I-EF:0	시/I-VX ㄹ/I-EF
+실/I-VX:I-ETM:0	시/I-VX ㄹ/I-ETM
+심/I-EP:I-EC:0	시/I-EP ㅁ/I-EC
+심/I-EP:I-EF:0	시/I-EP ㅁ/I-EF
+심/I-EP:I-ETN:0	시/I-EP ㅁ/I-ETN
+심/I-NR:0	십/I-NR
+심/I-VA:I-ETN:0	시/I-VA ㅁ/I-ETN
+심/I-VV:I-ETN:0	시/I-VV ㅁ/I-ETN
+심/I-VX:I-ETN:0	시/I-VX ㅁ/I-ETN
+십/B-EP:I-EF:0	시/B-EP ㅂ/I-EF
+십/I-EP:I-EC:0	시/I-EP ㅂ/I-EC
+십/I-EP:I-EF:0	시/I-EP ㅂ/I-EF
+십/I-EP:I-ETM:0	시/I-EP ㅂ/I-ETM
+십/I-EP:I-ZZ:0	시/I-EP ㅂ/I-ZZ
+십/I-NR:I-NR:0	이/I-NR 십/I-NR
+십/I-VA:I-EF:0	시/I-VA ㅂ/I-EF
+십/I-VCP:I-EP:I-EC:0	이/I-VCP 시/I-EP ㅂ/I-EC
+십/I-VCP:I-EP:I-EF:0	이/I-VCP 시/I-EP ㅂ/I-EF
+십/I-VV:I-EC:0	시/I-VV ㅂ/I-EC
+십/I-VV:I-EF:0	시/I-VV ㅂ/I-EF
+십/I-VV:I-EP:I-EF:0	하/I-VV 시/I-EP ㅂ/I-EF
+십/I-VX:0	싶/I-VX
+십/I-VX:I-EC:0	시/I-VX ㅂ/I-EC
+십/I-VX:I-EF:0	시/I-VX ㅂ/I-EF
+싯/I-NNP:0	신/I-NNP
+싰/I-VV:I-EP:0	시/I-VV 었/I-EP
+싱/I-VV:I-EC:0	시/I-VV ㅇ/I-EC
+싸/I-EC:I-VV:0	어/I-EC 싸/I-VV
+싸/I-VA:I-EC:0	싸/I-VA 아/I-EC
+싸/I-VV:0	쌓/I-VV
+싸/I-VV:I-EC:0	싸/I-VV 아/I-EC
+싸/I-VX:0	쌓/I-VX
+싸/I-VX:I-EC:0	쌓/I-VX 아/I-EC
+싼/I-VA:I-EC:0	싸/I-VA ㄴ/I-EC
+싼/I-VA:I-EF:0	싸/I-VA ㄴ/I-EF
+싼/I-VA:I-ETM:0	싸/I-VA ㄴ/I-ETM
+싼/I-VV:I-EC:0	싸/I-VV ㄴ/I-EC
+싼/I-VV:I-EF:0	싸/I-VV ㄴ/I-EF
+싼/I-VV:I-ETM:0	싸/I-VV ㄴ/I-ETM
+쌀/I-VA:I-EC:0	싸/I-VA ㄹ/I-EC
+쌀/I-VA:I-ETM:0	싸/I-VA ㄹ/I-ETM
+쌀/I-VV:I-EC:0	싸/I-VV ㄹ/I-EC
+쌀/I-VV:I-EF:0	싸/I-VV ㄹ/I-EF
+쌀/I-VV:I-ETM:0	싸/I-VV ㄹ/I-ETM
+쌈/I-VV:I-ETN:0	싸/I-VV ㅁ/I-ETN
+쌉/I-VA:I-EF:0	싸/I-VA ㅂ/I-EF
+쌉/I-VX:I-EF:0	싸/I-VX ㅂ/I-EF
+쌌/I-VA:I-EP:0	싸/I-VA 았/I-EP
+쌌/I-VV:I-EP:0	싸/I-VV 았/I-EP
+쌌/I-VX:I-EP:0	쌓/I-VX 았/I-EP
+쌌/I-VX:I-EP:1	싸/I-VX 았/I-EP
+쌓/I-EC:I-VX:0	어/I-EC 쌓/I-VX
+쌘/I-VA:I-EC:0	쌔/I-VA ㄴ/I-EC
+쌘/I-VA:I-ETM:0	쌔/I-VA ㄴ/I-ETM
+쌘/I-VV:I-ETM:0	쌔/I-VV ㄴ/I-ETM
+쌨/I-VA:I-EP:0	쌔/I-VA 었/I-EP
+쌨/I-VV:I-EP:0	쌔/I-VV 었/I-EP
+써/I-JKB:I-JKB:0	로/I-JKB 써/I-JKB
+써/I-VA:I-EC:0	쓰/I-VA 어/I-EC
+써/I-VA:I-EF:0	쓰/I-VA 어/I-EF
+써/I-VV:0	썰/I-VV
+써/I-VV:I-EC:0	쓰/I-VV 어/I-EC
+써/I-VV:I-EF:0	쓰/I-VV 어/I-EF
+썬/I-JKB:I-JX:0	써/I-JKB ㄴ/I-JX
+썬/I-VV:I-EF:0	썰/I-VV ㄴ/I-EF
+썬/I-VV:I-ETM:0	썰/I-VV ㄴ/I-ETM
+썰/I-VV:I-ETM:0	썰/I-VV ㄹ/I-ETM
+썼/I-VA:I-EP:0	쓰/I-VA 었/I-EP
+썼/I-VV:I-EP:0	쓰/I-VV 었/I-EP
+쎈/I-VA:I-EC:0	쎄/I-VA ㄴ/I-EC
+쎈/I-VA:I-ETM:0	쎄/I-VA ㄴ/I-ETM
+쏜/I-VV:I-EC:0	쏘/I-VV ㄴ/I-EC
+쏜/I-VV:I-EF:0	쏘/I-VV ㄴ/I-EF
+쏜/I-VV:I-ETM:0	쏘/I-VV ㄴ/I-ETM
+쏠/I-VV:I-EC:0	쏘/I-VV ㄹ/I-EC
+쏠/I-VV:I-ETM:0	쏘/I-VV ㄹ/I-ETM
+쏴/I-VV:I-EC:0	쏘/I-VV 아/I-EC
+쏴/I-VV:I-EF:0	쏘/I-VV 아/I-EF
+쐈/I-VV:I-EP:0	쏘/I-VV 았/I-EP
+쐐/I-VV:I-EF:0	쐬/I-VV 어/I-EF
+쐰/I-VV:I-EC:0	쐬/I-VV ㄴ/I-EC
+쐰/I-VV:I-ETM:0	쐬/I-VV ㄴ/I-ETM
+쐴/I-VV:I-EC:0	쐬/I-VV ㄹ/I-EC
+쐴/I-VV:I-ETM:0	쐬/I-VV ㄹ/I-ETM
+쑨/I-VV:I-EC:0	쑤/I-VV ㄴ/I-EC
+쑨/I-VV:I-EF:0	쑤/I-VV ㄴ/I-EF
+쑨/I-VV:I-ETM:0	쑤/I-VV ㄴ/I-ETM
+쑬/I-VV:I-ETM:0	쑤/I-VV ㄹ/I-ETM
+쒀/I-VV:I-EC:0	쑤/I-VV 어/I-EC
+쒔/I-VV:I-EP:0	쑤/I-VV 었/I-EP
+쓰/I-EC:I-VV:0	어/I-EC 쓰/I-VV
+쓰/I-EC:I-VV:1	아/I-EC 쓰/I-VV
+쓰/I-VV:0	씌/I-VV
+쓰/I-VV:1	쓸/I-VV
+쓰/I-VV:2	슬/I-VV
+쓴/I-VA:I-EC:0	쓰/I-VA ㄴ/I-EC
+쓴/I-VA:I-EF:0	쓰/I-VA ㄴ/I-EF
+쓴/I-VA:I-ETM:0	쓰/I-VA ㄴ/I-ETM
+쓴/I-VV:I-EC:0	쓰/I-VV ㄴ/I-EC
+쓴/I-VV:I-EC:1	쓸/I-VV ㄴ/I-EC
+쓴/I-VV:I-EF:0	쓰/I-VV ㄴ/I-EF
+쓴/I-VV:I-EF:1	쓸/I-VV ㄴ/I-EF
+쓴/I-VV:I-ETM:0	쓰/I-VV ㄴ/I-ETM
+쓴/I-VV:I-ETM:1	쓸/I-VV ㄴ/I-ETM
+쓴/I-VV:I-ETN:0	쓰/I-VV ㄴ/I-ETN
+쓸/I-NNG:I-JKO:0	쓰/I-NNG ㄹ/I-JKO
+쓸/I-VA:I-ETM:0	쓰/I-VA ㄹ/I-ETM
+쓸/I-VV:0	쓰/I-VV
+쓸/I-VV:I-EC:0	쓰/I-VV ㄹ/I-EC
+쓸/I-VV:I-EF:0	쓰/I-VV ㄹ/I-EF
+쓸/I-VV:I-ETM:0	쓰/I-VV ㄹ/I-ETM
+쓸/I-VV:I-ETM:1	쓸/I-VV ㄹ/I-ETM
+씀/I-VV:I-EC:0	쓰/I-VV ㅁ/I-EC
+씀/I-VV:I-EF:0	쓰/I-VV ㅁ/I-EF
+씀/I-VV:I-ETN:0	쓰/I-VV ㅁ/I-ETN
+씁/I-VV:I-EC:0	쓰/I-VV ㅂ/I-EC
+씁/I-VV:I-EF:0	쓰/I-VV ㅂ/I-EF
+씁/I-VV:I-EF:1	쓸/I-VV ㅂ/I-EF
+씌/I-VV:I-VV:0	쓰/I-VV 이/I-VV
+씐/I-VV:I-ETM:0	씌/I-VV ㄴ/I-ETM
+씨/I-VV:0	씻/I-VV
+씩/I-SF:I-XSN:0	./I-SF 씩/I-XSN
+씬/I-NNB:I-JX:0	씨/I-NNB ㄴ/I-JX
+씬/I-NNG:I-JX:0	씨/I-NNG ㄴ/I-JX
+씬/I-XR:0	씨/I-XR
+씰/I-NNB:I-JKO:0	씨/I-NNB ㄹ/I-JKO
+씰/I-NNG:I-JKO:0	씨/I-NNG ㄹ/I-JKO
+아/I-EC:0	여/I-EC
+아/I-NNG:I-NNG:0	아/I-NNG 이/I-NNG
+아/I-VCP:I-EF:0	이/I-VCP 아/I-EF
+아/I-VV:0	알/I-VV
+아/I-VV:1	어/I-VV
+아/I-VV:2	안/I-VV
+아/I-VV:3	다/I-VV
+아/I-VV:I-EC:0	으/I-VV 아/I-EC
+아/I-VV:I-EC:1	이/I-VV 어/I-EC
+아/I-VV:I-EC:2	으/I-VV 어/I-EC
+아/I-XSN:I-JKV:0	들/I-XSN 아/I-JKV
+안/I-EC:I-VV:0	아/I-EC 안/I-VV
+안/I-NNG:I-JX:0	아/I-NNG ㄴ/I-JX
+안/I-NNP:I-JX:0	아/I-NNP ㄴ/I-JX
+안/I-VV:0	알/I-VV
+안/I-VV:1	않/I-VV
+안/I-VV:I-EC:0	알/I-VV ㄴ/I-EC
+안/I-VV:I-EF:0	알/I-VV ㄴ/I-EF
+안/I-VV:I-ETM:0	알/I-VV ㄴ/I-ETM
+안/I-VV:I-ETN:0	알/I-VV ㄴ/I-ETN
+안/I-VX:0	않/I-VX
+앉/I-EC:I-VV:0	아/I-EC 앉/I-VV
+알/I-VV:I-ETM:0	알/I-VV ㄹ/I-ETM
+앍/I-VV:0	읽/I-VV
+앎/I-VV:I-ETN:0	알/I-VV ㅁ/I-ETN
+압/I-VV:I-EC:0	알/I-VV ㅂ/I-EC
+압/I-VV:I-EF:0	알/I-VV ㅂ/I-EF
+앗/I-EP:0	았/I-EP
+았/I-VV:I-EP:0	이/I-VV 었/I-EP
+았/I-VX:I-EP:0	오/I-VX 았/I-EP
+애/I-NNG:B-NNG:0	이/I-NNG 애/B-NNG
+애/I-VV:I-EC:0	애/I-VV 어/I-EC
+앤/B-NNG:I-JX:0	애/B-NNG ㄴ/I-JX
+앤/I-NNG:I-JX:0	애/I-NNG ㄴ/I-JX
+앤/I-NNP:I-JX:0	애/I-NNP ㄴ/I-JX
+앤/I-VV:I-EC:0	애/I-VV ㄴ/I-EC
+앤/I-VV:I-EF:0	애/I-VV ㄴ/I-EF
+앤/I-VV:I-ETM:0	애/I-VV ㄴ/I-ETM
+앨/I-NNG:I-JKO:0	애/I-NNG ㄹ/I-JKO
+앨/I-VV:I-EC:0	애/I-VV ㄹ/I-EC
+앨/I-VV:I-ETM:0	애/I-VV ㄹ/I-ETM
+앰/I-VV:I-ETN:0	애/I-VV ㅁ/I-ETN
+앴/I-VA:I-EP:0	얗/I-VA 았/I-EP
+앴/I-VV:I-EP:0	애/I-VV 었/I-EP
+앴/I-VV:I-EP:1	애/I-VV 았/I-EP
+야/I-EC:0	어/I-EC
+야/I-EC:1	아/I-EC
+야/I-EC:I-EC:0	아/I-EC 야/I-EC
+야/I-EC:I-EC:1	어/I-EC 야/I-EC
+야/I-EC:I-EC:2	여/I-EC 야/I-EC
+야/I-EC:I-JX:0	어/I-EC 야/I-JX
+야/I-EC:I-VA:0	아/I-EC 야/I-VA
+야/I-EF:I-EF:0	어/I-EF 야/I-EF
+야/I-EF:I-EF:1	아/I-EF 야/I-EF
+야/I-JX:I-JX:0	이/I-JX 야/I-JX
+야/I-VA:0	얗/I-VA
+야/I-VCP:I-EC:0	이/I-VCP 야/I-EC
+야/I-VCP:I-EC:1	이/I-VCP 아/I-EC
+야/I-VCP:I-EF:0	이/I-VCP 야/I-EF
+야/I-VCP:I-EF:1	이/I-VCP 아/I-EF
+야/I-VCP:I-ETM:0	이/I-VCP 야/I-ETM
+야/I-VCP:I-JX:0	이/I-VCP 야/I-JX
+야/I-VV:I-EC:0	이/I-VV 아/I-EC
+얀/I-VA:I-EC:0	얗/I-VA ㄴ/I-EC
+얀/I-VA:I-EF:0	얗/I-VA ㄴ/I-EF
+얀/I-VA:I-ETM:0	얗/I-VA ㄴ/I-ETM
+얄/I-EC:I-JKO:0	야/I-EC ㄹ/I-JKO
+얄/I-VA:I-ETM:0	얗/I-VA ㄹ/I-ETM
+얄/I-VV:I-EF:0	야/I-VV ㄹ/I-EF
+얏/I-VCP:I-EF:0	이/I-VCP 얏/I-EF
+양/I-NNG:I-NNG:0	//I-NNG 양/I-NNG
+얘/I-VA:I-EC:0	얗/I-VA 어/I-EC
+얘/I-VA:I-EC:1	얗/I-VA 아/I-EC
+얘/I-VA:I-EF:0	얗/I-VA 아/I-EF
+얘/I-VCP:I-EC:0	이/I-VCP 예/I-EC
+얜/I-IC:I-JX:0	얘/I-IC ㄴ/I-JX
+얜/I-NP:I-JX:0	얘/I-NP ㄴ/I-JX
+얬/I-VA:I-EP:0	얗/I-VA 았/I-EP
+어/I-EC:I-NNG:0	아/I-EC 어/I-NNG
+어/I-EP:0	었/I-EP
+어/I-MAG:0	엉/I-MAG
+어/I-NP:0	엇/I-NP
+어/I-NP:I-NP:0	어/I-NP 디/I-NP
+어/I-VCP:I-EC:0	이/I-VCP 어/I-EC
+어/I-VCP:I-EF:0	이/I-VCP 어/I-EF
+어/I-VV:0	얼/I-VV
+어/I-VV:1	아/I-VV
+언/I-ETM:0	ㄴ/I-ETM
+언/I-NP:0	엇/I-NP
+언/I-NP:I-VCP:I-EC:0	엇/I-NP 이/I-VCP ㄴ/I-EC
+언/I-NP:I-VCP:I-EF:0	엇/I-NP 이/I-VCP ㄴ/I-EF
+언/I-VA:I-ETM:0	얼/I-VA ㄴ/I-ETM
+언/I-VCP:I-EC:0	이/I-VCP 언/I-EC
+언/I-VV:I-EF:0	얼/I-VV ㄴ/I-EF
+언/I-VV:I-ETM:0	얼/I-VV ㄴ/I-ETM
+얼/I-NNG:I-NNG:0	얼/I-NNG 마/I-NNG
+얼/I-NP:0	엇/I-NP
+얼/I-NP:I-JKO:0	엇/I-NP ㄹ/I-JKO
+얼/I-VV:I-ETM:0	얼/I-VV ㄹ/I-ETM
+얼/I-VV:I-VV:0	어/I-VV 르/I-VV
+업/I-VA:0	없/I-VA
+엇/I-EP:0	었/I-EP
+었/I-EP:0	였/I-EP
+었/I-NP:0	엇/I-NP
+었/I-VA:0	없/I-VA
+었/I-VCP:I-EP:0	이/I-VCP 었/I-EP
+엉/I-NNG:I-NNG:0	엉/I-NNG 이/I-NNG
+에/B-NNG:I-JKB:0	점/B-NNG 에/I-JKB
+에/B-NNG:I-JKB:1	길/B-NNG 에/I-JKB
+에/I-JKB:B-JKB:0	에/I-JKB 에/B-JKB
+에/I-JKB:I-JKB:0	에/I-JKB 서/I-JKB
+에/I-JX:I-JKB:0	는/I-JX 에/I-JKB
+에/I-NNB:I-JKB:0	거/I-NNB 에/I-JKB
+에/I-NNP:I-JKB:0	에/I-NNP 에/I-JKB
+에/I-NP:I-JKB:0	이/I-NP 에/I-JKB
+에/I-VCP:I-EC:0	이/I-VCP 에/I-EC
+에/I-VCP:I-EF:0	이/I-VCP 에/I-EF
+에/I-VCP:I-EF:1	이/I-VCP 예/I-EF
+에/I-VCP:I-EF:2	이/I-VCP 어/I-EF
+에/I-XSN:I-JKB:0	질/I-XSN 에/I-JKB
+엔/I-EC:I-JX:0	에/I-EC ㄴ/I-JX
+엔/I-JKB:0	에/I-JKB
+엔/I-JKB:I-EC:0	에/I-JKB ㄴ/I-EC
+엔/I-JKB:I-ETM:0	에/I-JKB ㄴ/I-ETM
+엔/I-JKB:I-JX:0	에/I-JKB ㄴ/I-JX
+엔/I-JKB:I-VCP:I-EC:0	에/I-JKB 이/I-VCP ㄴ/I-EC
+엔/I-JX:B-JX:0	에/I-JX ㄴ/B-JX
+엘/I-JKB:I-JKO:0	에/I-JKB ㄹ/I-JKO
+엘/I-JKB:I-JX:0	에/I-JKB ㄹ/I-JX
+여/I-EC:0	어/I-EC
+여/I-EC:1	아/I-EC
+여/I-EF:0	아/I-EF
+여/I-JKV:I-JKV:0	이/I-JKV 여/I-JKV
+여/I-NNG:I-SP:0	여/I-NNG ,/I-SP
+여/I-VA:0	엽/I-VA
+여/I-VA:1	어/I-VA
+여/I-VA:2	옇/I-VA
+여/I-VA:3	엾/I-VA
+여/I-VA:I-EC:0	이/I-VA 어/I-EC
+여/I-VCP:I-EC:0	이/I-VCP 어/I-EC
+여/I-VCP:I-EC:1	이/I-VCP 여/I-EC
+여/I-VCP:I-EF:0	이/I-VCP 어/I-EF
+여/I-VCP:I-EF:1	이/I-VCP 여/I-EF
+여/I-VCP:I-EF:2	이/I-VCP 야/I-EF
+여/I-VV:0	열/I-VV
+여/I-VV:1	어/I-VV
+여/I-VV:2	이/I-VV
+여/I-VV:3	엮/I-VV
+여/I-VV:I-EC:0	이/I-VV 어/I-EC
+여/I-VV:I-EC:1	잇/I-VV 어/I-EC
+여/I-VV:I-EC:2	이/I-VV 아/I-EC
+여/I-VV:I-EC:3	이/I-VV 며/I-EC
+여/I-VV:I-EF:0	이/I-VV 어/I-EF
+여/I-VV:I-ETM:0	이/I-VV 어/I-ETM
+여/I-VV:I-VV:0	어/I-VV 들/I-VV
+여/I-VX:I-EC:0	이/I-VX 어/I-EC
+연/I-NNG:0	여/I-NNG
+연/I-NNG:I-SP:0	연/I-NNG ·/I-SP
+연/I-VA:I-EC:0	옇/I-VA ㄴ/I-EC
+연/I-VA:I-ETM:0	옇/I-VA ㄴ/I-ETM
+연/I-VV:I-EC:0	열/I-VV ㄴ/I-EC
+연/I-VV:I-EF:0	열/I-VV ㄴ/I-EF
+연/I-VV:I-ETM:0	열/I-VV ㄴ/I-ETM
+연/I-XSN:I-JX:0	여/I-XSN ㄴ/I-JX
+열/I-MM:I-ETM:0	열/I-MM ㄹ/I-ETM
+열/I-NR:I-ETM:0	열/I-NR ㄹ/I-ETM
+열/I-VV:I-ETM:0	열/I-VV ㄹ/I-ETM
+열/I-VV:I-ETM:1	여/I-VV ㄹ/I-ETM
+열/I-XSN:I-JKO:0	여/I-XSN ㄹ/I-JKO
+염/I-NNP:I-NNP:0	염/I-NNP 이/I-NNP
+염/I-NR:0	열/I-NR
+염/I-VA:I-ETN:0	엽/I-VA ㅁ/I-ETN
+엽/I-NNG:0	연/I-NNG
+엽/I-VV:I-EF:0	열/I-VV ㅂ/I-EF
+엿/I-EP:0	였/I-EP
+엿/I-VCP:I-EP:0	이/I-VCP 었/I-EP
+엿/I-VV:I-EF:0	이/I-VV 엇/I-EF
+엿/I-VV:I-EP:0	이/I-VV 었/I-EP
+였/I-EP:I-EP:0	았/I-EP 었/I-EP
+였/I-VCP:I-EP:0	이/I-VCP 었/I-EP
+였/I-VCP:I-EP:1	이/I-VCP 았/I-EP
+였/I-VV:I-EP:0	이/I-VV 었/I-EP
+였/I-VX:I-EP:0	이/I-VX 었/I-EP
+영/I-NNP:I-NNP:0	영/I-NNP 이/I-NNP
+영/I-SF:I-NNP:0	./I-SF 영/I-NNP
+예/I-EF:0	에/I-EF
+예/I-VCP:I-EC:0	이/I-VCP 에/I-EC
+예/I-VCP:I-EC:1	이/I-VCP 어/I-EC
+예/I-VCP:I-EC:2	이/I-VCP 예/I-EC
+예/I-VCP:I-EF:0	이/I-VCP 에/I-EF
+예/I-VCP:I-EF:1	이/I-VCP 예/I-EF
+예/I-VCP:I-EF:2	이/I-VCP 여/I-EF
+예/I-VCP:I-EF:3	이/I-VCP 어/I-EF
+옜/I-VA:I-EP:0	옇/I-VA 었/I-EP
+오/I-EC:I-VV:0	아/I-EC 오/I-VV
+오/I-EC:I-VV:1	어/I-EC 오/I-VV
+오/I-EC:I-VX:0	어/I-EC 오/I-VX
+오/I-EC:I-VX:1	아/I-EC 오/I-VX
+오/I-EP:0	옵/I-EP
+오/I-NNG:0	올/I-NNG
+오/I-VCP:I-EC:0	이/I-VCP 오/I-EC
+오/I-VCP:I-EF:0	이/I-VCP 오/I-EF
+오/I-VV:I-VV:0	오/I-VV 르/I-VV
+온/B-EP:I-EC:0	오/B-EP ㄴ/I-EC
+온/I-EC:I-EC:0	오/I-EC ㄴ/I-EC
+온/I-EC:I-VV:I-EC:0	아/I-EC 오/I-VV ㄴ/I-EC
+온/I-EC:I-VV:I-EF:0	아/I-EC 오/I-VV ㄴ/I-EF
+온/I-EC:I-VV:I-ETM:0	아/I-EC 오/I-VV ㄴ/I-ETM
+온/I-EC:I-VX:I-EC:0	아/I-EC 오/I-VX ㄴ/I-EC
+온/I-EC:I-VX:I-EF:0	어/I-EC 오/I-VX ㄴ/I-EF
+온/I-EC:I-VX:I-EF:1	아/I-EC 오/I-VX ㄴ/I-EF
+온/I-EC:I-VX:I-ETM:0	어/I-EC 오/I-VX ㄴ/I-ETM
+온/I-EC:I-VX:I-ETM:1	아/I-EC 오/I-VX ㄴ/I-ETM
+온/I-EP:I-EC:0	오/I-EP ㄴ/I-EC
+온/I-EP:I-EF:0	오/I-EP ㄴ/I-EF
+온/I-EP:I-ETM:0	오/I-EP ㄴ/I-ETM
+온/I-VV:I-EC:0	오/I-VV ㄴ/I-EC
+온/I-VV:I-EF:0	오/I-VV ㄴ/I-EF
+온/I-VV:I-ETM:0	오/I-VV ㄴ/I-ETM
+온/I-VV:I-ETN:0	오/I-VV ㄴ/I-ETN
+온/I-VX:I-EC:0	오/I-VX ㄴ/I-EC
+온/I-VX:I-EF:0	오/I-VX ㄴ/I-EF
+온/I-VX:I-ETM:0	오/I-VX ㄴ/I-ETM
+온/I-VX:I-ETM:1	오/I-VX ㄹ/I-ETM
+올/I-EC:I-VV:0	아/I-EC 올/I-VV
+올/I-EC:I-VV:1	어/I-EC 올/I-VV
+올/I-EC:I-VV:I-EC:0	아/I-EC 오/I-VV ㄹ/I-EC
+올/I-EC:I-VV:I-EF:0	아/I-EC 오/I-VV ㄹ/I-EF
+올/I-EC:I-VV:I-ETM:0	아/I-EC 오/I-VV ㄹ/I-ETM
+올/I-EC:I-VX:I-EF:0	아/I-EC 오/I-VX ㄹ/I-EF
+올/I-EC:I-VX:I-ETM:0	아/I-EC 오/I-VX ㄹ/I-ETM
+올/I-EC:I-VX:I-ETM:1	어/I-EC 오/I-VX ㄹ/I-ETM
+올/I-EP:I-ETM:0	오/I-EP ㄹ/I-ETM
+올/I-ETM:0	ㄹ/I-ETM
+올/I-VCP:I-EC:0	이/I-VCP 올/I-EC
+올/I-VCP:I-EF:0	이/I-VCP 올/I-EF
+올/I-VV:I-EC:0	오/I-VV ㄹ/I-EC
+올/I-VV:I-EF:0	오/I-VV ㄹ/I-EF
+올/I-VV:I-ETM:0	오/I-VV ㄹ/I-ETM
+올/I-VV:I-VV:0	오/I-VV 르/I-VV
+올/I-VX:I-EC:0	오/I-VX ㄹ/I-EC
+올/I-VX:I-EF:0	오/I-VX ㄹ/I-EF
+올/I-VX:I-ETM:0	오/I-VX ㄹ/I-ETM
+옴/I-VV:I-EC:0	오/I-VV ㅁ/I-EC
+옴/I-VV:I-EF:0	오/I-VV ㅁ/I-EF
+옴/I-VV:I-ETN:0	오/I-VV ㅁ/I-ETN
+옴/I-VX:I-EF:0	오/I-VX ㅁ/I-EF
+옴/I-VX:I-ETN:0	오/I-VX ㅁ/I-ETN
+옵/B-EP:I-EF:0	오/B-EP ㅂ/I-EF
+옵/I-EP:I-EC:0	오/I-EP ㅂ/I-EC
+옵/I-EP:I-EF:0	오/I-EP ㅂ/I-EF
+옵/I-VV:I-EC:0	오/I-VV ㅂ/I-EC
+옵/I-VV:I-EF:0	오/I-VV ㅂ/I-EF
+옵/I-VX:I-EC:0	오/I-VX ㅂ/I-EC
+옵/I-VX:I-EF:0	오/I-VX ㅂ/I-EF
+옹/I-VV:I-EC:0	오/I-VV ㅇ/I-EC
+옹/I-VX:I-EF:0	오/I-VX ㅇ/I-EF
+와/I-EC:0	아/I-EC
+와/I-EC:1	어/I-EC
+와/I-EF:0	아/I-EF
+와/I-EF:1	어/I-EF
+와/I-VV:I-EC:0	오/I-VV 아/I-EC
+와/I-VV:I-EC:1	우/I-VV 아/I-EC
+와/I-VV:I-EF:0	오/I-VV 아/I-EF
+와/I-VX:I-EC:0	오/I-VX 아/I-EC
+와/I-VX:I-EF:0	오/I-VX 아/I-EF
+완/I-JKB:I-JX:0	와/I-JKB ㄴ/I-JX
+왓/I-VV:I-EF:0	오/I-VV 앗/I-EF
+왓/I-VV:I-EP:0	오/I-VV 았/I-EP
+왓/I-VV:I-EP:1	오/I-VV 앗/I-EP
+왔/I-EP:0	았/I-EP
+왔/I-VV:I-EP:0	오/I-VV 았/I-EP
+왔/I-VX:I-EP:0	오/I-VX 았/I-EP
+외/B-NNG:I-NNG:0	외/B-NNG 고/I-NNG
+외/I-VCP:I-EC:0	이/I-VCP 외/I-EC
+외/I-VCP:I-EF:0	이/I-VCP 외/I-EF
+왼/I-VV:I-EC:0	외/I-VV ㄴ/I-EC
+왼/I-VV:I-EF:0	외/I-VV ㄴ/I-EF
+왼/I-VV:I-ETM:0	외/I-VV ㄴ/I-ETM
+욀/I-VV:I-ETM:0	외/I-VV ㄹ/I-ETM
+요/B-NNG:B-NNG:0	점/B-NNG 요/B-NNG
+요/I-EC:I-EC:0	아/I-EC 요/I-EC
+요/I-EC:I-EC:1	어/I-EC 요/I-EC
+요/I-EC:I-EC:2	여/I-EC 요/I-EC
+요/I-EC:I-JX:0	아/I-EC 요/I-JX
+요/I-EF:0	오/I-EF
+요/I-EF:I-EF:0	아/I-EF 요/I-EF
+요/I-EF:I-EF:1	어/I-EF 요/I-EF
+요/I-EF:I-SF:0	요/I-EF ?/I-SF
+요/I-SF:I-NNP:0	./I-SF 요/I-NNP
+요/I-VCP:I-EC:0	이/I-VCP 요/I-EC
+요/I-VCP:I-EC:1	이/I-VCP 오/I-EC
+요/I-VCP:I-EF:0	이/I-VCP 오/I-EF
+요/I-VCP:I-EF:1	이/I-VCP 요/I-EF
+요/I-VCP:I-EP:0	이/I-VCP 오/I-EP
+요/I-VCP:I-JX:0	이/I-VCP 요/I-JX
+욘/I-NNG:I-JX:0	요/I-NNG ㄴ/I-JX
+우/I-EC:0	으/I-EC
+우/I-EF:0	으/I-EF
+우/I-EF:1	오/I-EF
+우/I-EP:0	으/I-EP
+우/I-ETM:0	으/I-ETM
+우/I-NNG:0	웃/I-NNG
+우/I-NNG:1	울/I-NNG
+우/I-NNP:0	으/I-NNP
+우/I-NNP:I-NNP:0	이/I-NNP 우/I-NNP
+우/I-VCP:I-EC:0	이/I-VCP 우/I-EC
+우/I-VCP:I-EF:0	이/I-VCP 우/I-EF
+우/I-VV:0	울/I-VV
+운/I-EC:0	은/I-EC
+운/I-EC:1	ㄴ/I-EC
+운/I-EF:0	은/I-EF
+운/I-EF:1	ㄴ/I-EF
+운/I-ETM:0	은/I-ETM
+운/I-ETM:1	ㄴ/I-ETM
+운/I-MAG:I-JX:0	우/I-MAG ㄴ/I-JX
+운/I-NNG:I-JX:0	우/I-NNG ㄴ/I-JX
+운/I-NNP:I-JX:0	우/I-NNP ㄴ/I-JX
+운/I-VA:I-EC:0	우/I-VA ㄴ/I-EC
+운/I-VV:I-EC:0	우/I-VV ㄴ/I-EC
+운/I-VV:I-EC:1	울/I-VV ㄴ/I-EC
+운/I-VV:I-EF:0	우/I-VV ㄴ/I-EF
+운/I-VV:I-EF:1	울/I-VV ㄴ/I-EF
+운/I-VV:I-ETM:0	우/I-VV ㄴ/I-ETM
+운/I-VV:I-ETM:1	울/I-VV ㄴ/I-ETM
+운/I-VV:I-ETN:0	우/I-VV ㄴ/I-ETN
+운/I-VX:I-EF:0	우/I-VX ㄴ/I-EF
+운/I-VX:I-ETM:0	우/I-VX ㄴ/I-ETM
+운/I-VX:I-ETM:1	오/I-VX ㄴ/I-ETM
+운/I-XSA:I-ETM:0	럽/I-XSA 은/I-ETM
+울/I-EC:0	ㄹ/I-EC
+울/I-EC:1	을/I-EC
+울/I-EF:0	ㄹ/I-EF
+울/I-EF:1	을/I-EF
+울/I-ETM:0	ㄹ/I-ETM
+울/I-ETM:1	을/I-ETM
+울/I-NNG:I-JKO:0	우/I-NNG ㄹ/I-JKO
+울/I-VV:I-EC:0	우/I-VV ㄹ/I-EC
+울/I-VV:I-EF:0	우/I-VV ㄹ/I-EF
+울/I-VV:I-ETM:0	우/I-VV ㄹ/I-ETM
+울/I-VV:I-ETM:1	울/I-VV ㄹ/I-ETM
+울/I-VV:I-VV:0	우/I-VV 르/I-VV
+울/I-VX:I-ETM:0	우/I-VX ㄹ/I-ETM
+움/I-ETN:0	ㅁ/I-ETN
+움/I-ETN:1	음/I-ETN
+움/I-VV:I-ETN:0	우/I-VV ㅁ/I-ETN
+웁/I-EC:0	읍/I-EC
+웁/I-EC:1	ㅂ/I-EC
+웁/I-EF:0	ㅂ/I-EF
+웁/I-NNG:I-EF:0	우/I-NNG ㅂ/I-EF
+웁/I-VA:I-EF:0	우/I-VA ㅂ/I-EF
+웁/I-VV:I-EC:0	울/I-VV ㅂ/I-EC
+웁/I-VV:I-EC:1	우/I-VV ㅂ/I-EC
+웁/I-VV:I-EF:0	우/I-VV ㅂ/I-EF
+웁/I-VV:I-EF:1	울/I-VV ㅂ/I-EF
+워/I-EC:0	어/I-EC
+워/I-EC:1	아/I-EC
+워/I-EF:0	어/I-EF
+워/I-VA:I-EC:0	웁/I-VA 어/I-EC
+워/I-VA:I-EC:1	럽/I-VA 어/I-EC
+워/I-VV:0	어/I-VV
+워/I-VV:I-EC:0	우/I-VV 어/I-EC
+워/I-VV:I-EF:0	우/I-VV 어/I-EF
+워/I-VX:I-EC:0	우/I-VX 어/I-EC
+워/I-VX:I-EF:0	우/I-VX 어/I-EF
+원/I-NNB:I-SS:0	원/I-NNB )/I-SS
+웠/I-EP:0	었/I-EP
+웠/I-EP:1	았/I-EP
+웠/I-VV:I-EP:0	우/I-VV 었/I-EP
+웠/I-VX:I-EP:0	우/I-VX 었/I-EP
+위/I-VV:I-EC:0	우/I-VV 어/I-EC
+윈/I-NNB:I-JX:0	위/I-NNB ㄴ/I-JX
+윈/I-VV:I-EF:0	위/I-VV ㄴ/I-EF
+윈/I-VV:I-ETM:0	의/I-VV ㄴ/I-ETM
+윈/I-VV:I-ETM:1	위/I-VV ㄴ/I-ETM
+윌/I-NNB:I-JKO:0	위/I-NNB ㄹ/I-JKO
+윌/I-VV:I-ETM:0	위/I-VV ㄹ/I-ETM
+윔/I-VV:I-ETN:0	위/I-VV ㅁ/I-ETN
+윕/I-NNG:I-EF:0	위/I-NNG ㅂ/I-EF
+윗/I-NNG:0	위/I-NNG
+유/I-EF:I-EF:0	아/I-EF 유/I-EF
+유/I-NNG:B-NNG:0	_/I-NNG 유/B-NNG
+유/I-SF:I-NNP:0	./I-SF 유/I-NNP
+유/I-VCP:I-EC:0	이/I-VCP 유/I-EC
+유/I-VCP:I-EF:0	이/I-VCP 유/I-EF
+유/I-VCP:I-EF:1	이/I-VCP 우/I-EF
+육/I-NNG:I-NNG:0	육/I-NNG 체/I-NNG
+윤/I-NNG:I-JX:0	유/I-NNG ㄴ/I-JX
+율/B-XSN:I-JKO:0	율/B-XSN ㄹ/I-JKO
+율/I-NNG:I-JKO:0	유/I-NNG ㄹ/I-JKO
+으/B-NNG:I-JKB:0	점/B-NNG 으/I-JKB
+으/I-EP:I-EP:0	으/I-EP 시/I-EP
+으/I-ETM:0	을/I-ETM
+으/I-ETN:I-JKB:0	ㅁ/I-ETN 으/I-JKB
+으/I-SF:I-JKB:0	./I-SF 으/I-JKB
+으/I-VCP:I-EC:0	이/I-VCP 으/I-EC
+은/I-EC:0	을/I-EC
+은/I-ETM:0	ㄴ/I-ETM
+은/I-ETM:1	는/I-ETM
+은/I-ETM:2	을/I-ETM
+은/I-ETN:I-SS:0	은/I-ETN )/I-SS
+은/I-NNG:I-NNG:0	은/I-NNG 이/I-NNG
+은/I-VCP:I-ETM:0	이/I-VCP 은/I-ETM
+은/I-VV:I-EC:0	으/I-VV ㄴ/I-EC
+은/I-VV:I-EF:0	으/I-VV ㄴ/I-EF
+은/I-VV:I-ETM:0	으/I-VV ㄴ/I-ETM
+을/B-JX:0	은/B-JX
+을/B-NNG:I-JKO:0	점/B-NNG 을/I-JKO
+을/I-EC:0	ㄹ/I-EC
+을/I-ETM:0	ㄹ/I-ETM
+을/I-JKS:I-JKO:0	이/I-JKS 을/I-JKO
+을/I-VA:I-VA:0	으/I-VA 르/I-VA
+을/I-VCP:I-ETM:0	이/I-VCP 을/I-ETM
+을/I-VV:I-EC:0	으/I-VV ㄹ/I-EC
+을/I-VV:I-ETM:0	으/I-VV ㄹ/I-ETM
+을/I-VV:I-ETM:1	을/I-VV ㄹ/I-ETM
+을/I-VV:I-VV:0	으/I-VV 르/I-VV
+음/I-ETN:0	ㅁ/I-ETN
+음/I-ETN:I-SP:0	음/I-ETN ,/I-SP
+음/I-NNG:0	은/I-NNG
+음/I-VV:I-ETN:0	으/I-VV ㅁ/I-ETN
+읍/I-VV:I-EF:0	으/I-VV ㅂ/I-EF
+읓/I-VCP:I-ETM:0	이/I-VCP ㄴ/I-ETM
+읖/I-JKO:0	을/I-JKO
+의/B-JKB:I-JKG:0	로/B-JKB 의/I-JKG
+의/B-NNG:I-JKG:0	점/B-NNG 의/I-JKG
+의/B-NNG:I-NNG:0	한/B-NNG 의/I-NNG
+의/I-JKB:I-JKG:0	로/I-JKB 의/I-JKG
+의/I-JKS:I-JKG:0	이/I-JKS 의/I-JKG
+의/I-JX:I-JKG:0	는/I-JX 의/I-JKG
+의/I-NNG:I-NNG:0	부/I-NNG 의/I-NNG
+의/I-NNG:I-NNG:1	한/I-NNG 의/I-NNG
+의/I-NNG:I-NNG:2	회/I-NNG 의/I-NNG
+읜/I-VV:I-ETM:0	의/I-VV ㄴ/I-ETM
+이/B-NNG:I-JC:0	직/B-NNG 이/I-JC
+이/B-NNG:I-VCP:0	점/B-NNG 이/I-VCP
+이/I-EC:0	리/I-EC
+이/I-ETM:I-NNB:0	ㄹ/I-ETM 이/I-NNB
+이/I-MAG:0	히/I-MAG
+이/I-MAG:I-SF:0	이/I-MAG ./I-SF
+이/I-NNG:0	의/I-NNG
+이/I-NNG:1	인/I-NNG
+이/I-NNG:I-JKS:0	이/I-NNG 이/I-JKS
+이/I-NNP:0	아/I-NNP
+이/I-SF:I-NNG:0	./I-SF 이/I-NNG
+이/I-SP:I-NNP:0	//I-SP 이/I-NNP
+이/I-VCP:I-ETM:0	이/I-VCP ㄴ/I-ETM
+이/I-VV:0	일/I-VV
+이/I-VV:1	잇/I-VV
+이/I-VV:2	리/I-VV
+이/I-VV:3	있/I-VV
+이/I-XSN:I-JKS:0	당/I-XSN 이/I-JKS
+익/I-VV:0	읽/I-VV
+인/B-NNG:I-VCP:I-ETM:0	점/B-NNG 이/I-VCP ㄴ/I-ETM
+인/B-NNP:I-NNP:0	탁/B-NNP 인/I-NNP
+인/I-JKB:I-JX:0	이/I-JKB ㄴ/I-JX
+인/I-JKS:0	이/I-JKS
+인/I-JKS:I-JX:0	이/I-JKS ㄴ/I-JX
+인/I-JX:I-VCP:I-ETM:0	는/I-JX 이/I-VCP ㄴ/I-ETM
+인/I-MAG:I-JX:0	이/I-MAG ㄴ/I-JX
+인/I-NNB:I-JX:0	이/I-NNB ㄴ/I-JX
+인/I-NNG:0	일/I-NNG
+인/I-NNG:I-JX:0	이/I-NNG ㄴ/I-JX
+인/I-NNG:I-SP:0	인/I-NNG ,/I-SP
+인/I-NNP:I-JX:0	이/I-NNP ㄴ/I-JX
+인/I-NP:I-ETM:0	이/I-NP ㄴ/I-ETM
+인/I-NP:I-JX:0	이/I-NP ㄴ/I-JX
+인/I-NP:I-VCP:I-EC:0	이/I-NP 이/I-VCP ㄴ/I-EC
+인/I-SF:I-VCP:I-EC:0	./I-SF 이/I-VCP ㄴ/I-EC
+인/I-VCN:I-EC:0	이/I-VCN ㄴ/I-EC
+인/I-VCN:I-EF:0	이/I-VCN ㄴ/I-EF
+인/I-VCN:I-ETM:0	이/I-VCN ㄴ/I-ETM
+인/I-VCP:I-EC:0	이/I-VCP ㄴ/I-EC
+인/I-VCP:I-EF:0	이/I-VCP ㄴ/I-EF
+인/I-VCP:I-ETM:0	이/I-VCP ㄴ/I-ETM
+인/I-VCP:I-ETM:1	이/I-VCP 은/I-ETM
+인/I-VCP:I-JX:0	이/I-VCP ㄴ/I-JX
+인/I-VCP:I-NNG:0	이/I-VCP ㄴ/I-NNG
+인/I-VV:0	이/I-VV
+인/I-VV:I-EC:0	이/I-VV ㄴ/I-EC
+인/I-VV:I-EC:1	일/I-VV ㄴ/I-EC
+인/I-VV:I-EF:0	이/I-VV ㄴ/I-EF
+인/I-VV:I-EF:1	일/I-VV ㄴ/I-EF
+인/I-VV:I-ETM:0	이/I-VV ㄴ/I-ETM
+인/I-VV:I-ETM:1	일/I-VV ㄴ/I-ETM
+인/I-VV:I-ETM:2	리/I-VV ㄴ/I-ETM
+인/I-VV:I-ETN:0	이/I-VV ㄴ/I-ETN
+인/I-VX:I-EF:0	이/I-VX ㄴ/I-EF
+인/I-XR:I-JX:0	이/I-XR ㄴ/I-JX
+일/I-NNG:0	입/I-NNG
+일/I-NNG:I-JKO:0	이/I-NNG ㄹ/I-JKO
+일/I-NNG:I-JX:0	이/I-NNG ㄹ/I-JX
+일/I-NNG:I-NNG:0	재/I-NNG 일/I-NNG
+일/I-NNP:I-JKO:0	이/I-NNP ㄹ/I-JKO
+일/I-NNP:I-NNP:0	일/I-NNP 이/I-NNP
+일/I-NP:I-JKO:0	이/I-NP ㄹ/I-JKO
+일/I-SF:I-NNP:0	./I-SF 일/I-NNP
+일/I-VA:I-VA:0	이/I-VA 르/I-VA
+일/I-VCP:I-EC:0	이/I-VCP ㄹ/I-EC
+일/I-VCP:I-EC:1	이/I-VCP ㄴ/I-EC
+일/I-VCP:I-EF:0	이/I-VCP ㄹ/I-EF
+일/I-VCP:I-EF:1	이/I-VCP ?/I-EF
+일/I-VCP:I-ETM:0	이/I-VCP ㄹ/I-ETM
+일/I-VCP:I-ETM:1	일/I-VCP ㄹ/I-ETM
+일/I-VCP:I-JKO:0	이/I-VCP ㄹ/I-JKO
+일/I-VV:I-EC:0	이/I-VV ㄹ/I-EC
+일/I-VV:I-EC:1	리/I-VV ㄹ/I-EC
+일/I-VV:I-EF:0	이/I-VV ㄹ/I-EF
+일/I-VV:I-ETM:0	이/I-VV ㄹ/I-ETM
+일/I-VV:I-ETM:1	일/I-VV ㄹ/I-ETM
+일/I-VV:I-VV:0	이/I-VV 르/I-VV
+읽/I-EC:I-VV:0	아/I-EC 읽/I-VV
+임/I-NNG:I-ETN:0	이/I-NNG ㅁ/I-ETN
+임/I-NNP:0	인/I-NNP
+임/I-VCN:I-EF:0	이/I-VCN ㅁ/I-EF
+임/I-VCP:I-EC:0	이/I-VCP ㅁ/I-EC
+임/I-VCP:I-EF:0	이/I-VCP ㅁ/I-EF
+임/I-VCP:I-ETN:0	이/I-VCP ㅁ/I-ETN
+임/I-VV:I-ETN:0	이/I-VV ㅁ/I-ETN
+입/I-EC:I-VV:0	아/I-EC 입/I-VV
+입/I-EC:I-VV:1	어/I-EC 입/I-VV
+입/I-NNB:I-VCP:I-EF:0	이/I-NNB 이/I-VCP ㅂ/I-EF
+입/I-VCN:I-EF:0	이/I-VCN ㅂ/I-EF
+입/I-VCP:I-EC:0	이/I-VCP ㅂ/I-EC
+입/I-VCP:I-EF:0	이/I-VCP ㅂ/I-EF
+입/I-VCP:I-ZZ:0	이/I-VCP ㅂ/I-ZZ
+입/I-VV:I-EC:0	이/I-VV ㅂ/I-EC
+입/I-VV:I-EF:0	이/I-VV ㅂ/I-EF
+잇/I-NNG:0	이/I-NNG
+잇/I-VX:0	있/I-VX
+있/I-EC:I-VX:0	어/I-EC 있/I-VX
+있/I-EC:I-VX:1	아/I-EC 있/I-VX
+있/I-VV:I-EP:0	이/I-VV ㅆ/I-EP
+있/I-VV:I-EP:1	이/I-VV 었/I-EP
+잉/I-VCP:I-EC:0	이/I-VCP ㅇ/I-EC
+잉/I-VCP:I-EF:0	이/I-VCP ㅇ/I-EF
+잎/I-JKS:0	이/I-JKS
+자/B-NNG:B-NNG:0	점/B-NNG 자/B-NNG
+자/I-EC:0	아/I-EC
+자/I-ETM:I-ETM:0	자/I-ETM 는/I-ETM
+자/I-JKG:I-NNG:0	의/I-JKG 자/I-NNG
+자/I-NNG:I-NNG:0	자/I-NNG 이/I-NNG
+자/I-VCP:I-EC:0	이/I-VCP 자/I-EC
+자/I-VCP:I-ETM:0	이/I-VCP 자/I-ETM
+자/I-VV:0	잡/I-VV
+자/I-VV:1	잣/I-VV
+자/I-VV:I-EC:0	지/I-VV 아/I-EC
+자/I-VV:I-EC:1	자/I-VV 아/I-EC
+잔/I-EC:I-JX:0	자/I-EC ㄴ/I-JX
+잔/I-EF:0	잖/I-EF
+잔/I-NNG:I-JX:0	자/I-NNG ㄴ/I-JX
+잔/I-NNG:I-VCP:I-EC:0	자/I-NNG 이/I-VCP ㄴ/I-EC
+잔/I-NP:I-JX:0	자/I-NP ㄴ/I-JX
+잔/I-VA:I-ETM:0	잘/I-VA ㄴ/I-ETM
+잔/I-VV:I-EC:0	자/I-VV ㄴ/I-EC
+잔/I-VV:I-EF:0	자/I-VV ㄴ/I-EF
+잔/I-VV:I-ETM:0	자/I-VV ㄴ/I-ETM
+잖/I-EC:I-VX:0	지/I-EC 않/I-VX
+잖/I-VCP:I-EC:0	이/I-VCP 잖/I-EC
+잖/I-VCP:I-EC:I-VX:0	이/I-VCP 지/I-EC 않/I-VX
+잖/I-VCP:I-EF:0	이/I-VCP 잖/I-EF
+잖/I-VX:I-EF:0	하/I-VX 잖/I-EF
+잘/I-EC:I-JKO:0	자/I-EC ㄹ/I-JKO
+잘/I-NNG:I-JKO:0	자/I-NNG ㄹ/I-JKO
+잘/I-VV:I-EC:0	자/I-VV ㄹ/I-EC
+잘/I-VV:I-EF:0	자/I-VV ㄹ/I-EF
+잘/I-VV:I-ETM:0	자/I-VV ㄹ/I-ETM
+잘/I-VV:I-VV:0	자/I-VV 르/I-VV
+잡/I-EC:I-VV:0	어/I-EC 잡/I-VV
+잡/I-EC:I-VV:1	아/I-EC 잡/I-VV
+잡/I-NNG:I-VCP:I-EF:0	자/I-NNG 이/I-VCP ㅂ/I-EF
+잡/I-VCP:I-VV:0	이/I-VCP 잡/I-VV
+잡/I-VV:0	집/I-VV
+잡/I-VV:I-EF:0	자/I-VV ㅂ/I-EF
+잤/I-VV:I-EP:0	자/I-VV 았/I-EP
+장/I-NNP:I-SP:0	장/I-NNP ,/I-SP
+재/I-EC:I-VX:0	아/I-EC 재/I-VX
+재/I-SF:I-NNG:0	./I-SF 재/I-NNG
+재/I-VCP:I-EC:0	이/I-VCP 재/I-EC
+재/I-VV:I-EC:0	재/I-VV 어/I-EC
+재/I-XSN:0	쟁/I-XSN
+잰/I-VA:I-ETM:0	재/I-VA ㄴ/I-ETM
+잰/I-VV:I-EC:0	재/I-VV ㄴ/I-EC
+잰/I-VV:I-EF:0	재/I-VV ㄴ/I-EF
+잰/I-VV:I-ETM:0	재/I-VV ㄴ/I-ETM
+잴/I-VV:I-EC:0	재/I-VV ㄹ/I-EC
+잴/I-VV:I-ETM:0	재/I-VV ㄹ/I-ETM
+잼/I-VV:I-ETN:0	재/I-VV ㅁ/I-ETN
+잽/I-VV:I-EF:0	재/I-VV ㅂ/I-EF
+쟀/I-VV:I-EP:0	재/I-VV 었/I-EP
+쟀/I-VV:I-EP:1	재/I-VV 았/I-EP
+쟁/I-NNP:I-JKG:0	쟁/I-NNP 의/I-JKG
+쟁/I-XSN:I-XSN:0	쟁/I-XSN 이/I-XSN
+쟤/I-MM:I-NNG:I-NNG:0	저/I-MM 아/I-NNG 이/I-NNG
+쟨/I-NP:I-JX:0	쟤/I-NP ㄴ/I-JX
+저/I-MAG:0	전/I-MAG
+저/I-VV:0	젓/I-VV
+저/I-VV:1	절/I-VV
+저/I-VV:2	어/I-VV
+저/I-VV:3	지/I-VV
+저/I-VV:I-EC:0	지/I-VV 어/I-EC
+저/I-VX:I-EC:0	지/I-VX 어/I-EC
+저/I-XSN:0	적/I-XSN
+적/I-NNG:0	전/I-NNG
+적/I-NNG:I-NNG:0	적/I-NNG 3/I-NNG
+적/I-XSN:I-SP:0	적/I-XSN ˙/I-SP
+전/I-NNG:I-NNG:0	정/I-NNG 전/I-NNG
+전/I-NP:I-JX:0	저/I-NP ㄴ/I-JX
+전/I-NP:I-JX:1	전/I-NP ㄴ/I-JX
+전/I-VV:I-EC:0	절/I-VV ㄴ/I-EC
+전/I-VV:I-ETM:0	절/I-VV ㄴ/I-ETM
+전/I-VV:I-ETM:1	절/I-VV 은/I-ETM
+절/I-NP:I-JKO:0	저/I-NP ㄹ/I-JKO
+절/I-VV:I-ETM:0	절/I-VV ㄹ/I-ETM
+절/I-VV:I-VV:0	지/I-VV 르/I-VV
+접/I-NP:I-EC:0	저/I-NP ㅂ/I-EC
+제/I-EF:I-SF:0	제/I-EF ?/I-SF
+제/I-NNG:I-JKG:0	제/I-NNG 의/I-JKG
+제/I-NP:I-JKB:0	저/I-NP 에/I-JKB
+제/I-NP:I-JKG:0	저/I-NP 의/I-JKG
+제/I-VCP:I-EC:0	이/I-VCP 제/I-EC
+제/I-VCP:I-EF:0	이/I-VCP 제/I-EF
+제/I-XSN:I-JKG:0	제/I-XSN 의/I-JKG
+젠/I-MAG:I-JX:0	제/I-MAG ㄴ/I-JX
+젠/I-NNB:I-JX:0	제/I-NNB ㄴ/I-JX
+젠/I-NNG:I-JX:0	제/I-NNG ㄴ/I-JX
+젠/I-NP:0	제/I-NP
+젠/I-NP:I-JX:0	제/I-NP ㄴ/I-JX
+젤/I-NNG:I-JKO:0	제/I-NNG ㄹ/I-JKO
+져/I-EC:0	어/I-EC
+져/I-VA:I-EC:0	지/I-VA 어/I-EC
+져/I-VA:I-EF:0	지/I-VA 어/I-EF
+져/I-VV:I-EC:0	지/I-VV 어/I-EC
+져/I-VV:I-EC:1	짓/I-VV 어/I-EC
+져/I-VV:I-EC:2	기/I-VV 어/I-EC
+져/I-VV:I-EF:0	지/I-VV 어/I-EF
+져/I-VX:0	지/I-VX
+져/I-VX:I-EC:0	지/I-VX 어/I-EC
+져/I-VX:I-EF:0	지/I-VX 어/I-EF
+졌/I-VA:I-EP:0	지/I-VA 었/I-EP
+졌/I-VV:0	지/I-VV
+졌/I-VV:I-EP:0	지/I-VV 었/I-EP
+졌/I-VV:I-EP:1	짓/I-VV 었/I-EP
+졌/I-VV:I-VV:0	져/I-VV 오/I-VV
+졌/I-VX:I-EP:0	지/I-VX 었/I-EP
+조/I-MAG:I-MAG:0	무/I-MAG 조/I-MAG
+조/I-NNG:I-SF:0	조/I-NNG ./I-SF
+조/I-VV:0	졸/I-VV
+조/I-VV:1	좋/I-VV
+조/I-VV:I-EF:0	주/I-VV 어/I-EF
+족/I-NNG:B-NNG:0	족/I-NNG 점/B-NNG
+존/I-VA:I-EC:0	좋/I-VA ㄴ/I-EC
+존/I-VA:I-ETM:0	좋/I-VA ㄴ/I-ETM
+존/I-VA:I-ETM:1	좋/I-VA 은/I-ETM
+존/I-VV:I-EC:0	졸/I-VV ㄴ/I-EC
+졸/I-VA:I-ETM:0	좋/I-VA 을/I-ETM
+졸/I-VV:I-ETM:0	졸/I-VV ㄹ/I-ETM
+졸/I-VV:I-VV:0	조/I-VV 르/I-VV
+죈/I-VV:I-EC:0	죄/I-VV ㄴ/I-EC
+죈/I-VV:I-EF:0	죄/I-VV ㄴ/I-EF
+죈/I-VV:I-ETM:0	죄/I-VV ㄴ/I-ETM
+죌/I-VV:I-ETM:0	죄/I-VV ㄹ/I-ETM
+죔/I-VV:I-ETN:0	죄/I-VV ㅁ/I-ETN
+죘/I-VV:I-EP:0	죄/I-VV 었/I-EP
+죠/I-VCP:I-EC:0	이/I-VCP 죠/I-EC
+죠/I-VCP:I-EF:0	이/I-VCP 죠/I-EF
+주/B-NNG:B-NNG:0	점/B-NNG 주/B-NNG
+주/I-EC:I-VV:0	아/I-EC 주/I-VV
+주/I-EC:I-VV:1	어/I-EC 주/I-VV
+주/I-EC:I-VX:0	아/I-EC 주/I-VX
+주/I-EC:I-VX:1	어/I-EC 주/I-VX
+주/I-EF:I-EF:0	어/I-EF 주/I-EF
+주/I-NNB:0	중/I-NNB
+주/I-NNG:0	중/I-NNG
+주/I-VV:0	줍/I-VV
+주/I-VV:1	줏/I-VV
+주/I-VV:2	줄/I-VV
+주/I-VV:3	지/I-VV
+주/I-VV:I-EC:0	주/I-VV 우/I-EC
+주/I-VV:I-EC:1	지/I-VV 우/I-EC
+주/I-VX:0	지/I-VX
+주/I-VX:I-EC:0	주/I-VX 우/I-EC
+주/I-VX:I-EF:0	주/I-VX 우/I-EF
+죽/I-EC:I-VV:0	아/I-EC 죽/I-VV
+죽/I-EC:I-VV:1	어/I-EC 죽/I-VV
+죽/I-NNP:0	중/I-NNP
+준/I-EC:I-VV:I-ETM:0	아/I-EC 주/I-VV ㄴ/I-ETM
+준/I-EC:I-VX:I-EC:0	아/I-EC 주/I-VX ㄴ/I-EC
+준/I-EC:I-VX:I-EC:1	어/I-EC 주/I-VX ㄴ/I-EC
+준/I-EC:I-VX:I-EF:0	어/I-EC 주/I-VX ㄴ/I-EF
+준/I-EC:I-VX:I-EF:1	아/I-EC 주/I-VX ㄴ/I-EF
+준/I-EC:I-VX:I-ETM:0	어/I-EC 주/I-VX ㄴ/I-ETM
+준/I-EC:I-VX:I-ETM:1	아/I-EC 주/I-VX ㄴ/I-ETM
+준/I-NNG:I-JX:0	주/I-NNG ㄴ/I-JX
+준/I-NNP:I-JX:0	주/I-NNP ㄴ/I-JX
+준/I-VV:I-EC:0	주/I-VV ㄴ/I-EC
+준/I-VV:I-EC:1	줄/I-VV ㄴ/I-EC
+준/I-VV:I-EF:0	주/I-VV ㄴ/I-EF
+준/I-VV:I-EF:1	줄/I-VV ㄴ/I-EF
+준/I-VV:I-ETM:0	주/I-VV ㄴ/I-ETM
+준/I-VV:I-ETM:1	줄/I-VV ㄴ/I-ETM
+준/I-VV:I-ETN:0	주/I-VV ㄴ/I-ETN
+준/I-VX:I-EC:0	주/I-VX ㄴ/I-EC
+준/I-VX:I-EF:0	주/I-VX ㄴ/I-EF
+준/I-VX:I-ETM:0	주/I-VX ㄴ/I-ETM
+줄/I-EC:I-VV:I-ETM:0	어/I-EC 주/I-VV ㄹ/I-ETM
+줄/I-EC:I-VX:I-EC:0	아/I-EC 주/I-VX ㄹ/I-EC
+줄/I-EC:I-VX:I-EC:1	어/I-EC 주/I-VX ㄹ/I-EC
+줄/I-EC:I-VX:I-EF:0	아/I-EC 주/I-VX ㄹ/I-EF
+줄/I-EC:I-VX:I-EF:1	어/I-EC 주/I-VX ㄹ/I-EF
+줄/I-EC:I-VX:I-ETM:0	어/I-EC 주/I-VX ㄹ/I-ETM
+줄/I-EC:I-VX:I-ETM:1	아/I-EC 주/I-VX ㄹ/I-ETM
+줄/I-ETM:I-NNB:0	ㄹ/I-ETM 줄/I-NNB
+줄/I-NNG:I-JKO:0	주/I-NNG ㄹ/I-JKO
+줄/I-VV:0	주/I-VV
+줄/I-VV:I-EC:0	주/I-VV ㄹ/I-EC
+줄/I-VV:I-EF:0	주/I-VV ㄹ/I-EF
+줄/I-VV:I-ETM:0	주/I-VV ㄹ/I-ETM
+줄/I-VV:I-ETM:1	줄/I-VV ㄹ/I-ETM
+줄/I-VV:I-VV:0	줄/I-VV 이/I-VV
+줄/I-VX:I-EC:0	주/I-VX ㄹ/I-EC
+줄/I-VX:I-EF:0	주/I-VX ㄹ/I-EF
+줄/I-VX:I-ETM:0	주/I-VX ㄹ/I-ETM
+줆/I-VV:I-ETN:0	줄/I-VV ㅁ/I-ETN
+줌/I-EC:I-VX:I-ETN:0	어/I-EC 주/I-VX ㅁ/I-ETN
+줌/I-EC:I-VX:I-ETN:1	아/I-EC 주/I-VX ㅁ/I-ETN
+줌/I-VV:I-ETN:0	주/I-VV ㅁ/I-ETN
+줌/I-VX:I-EC:0	주/I-VX ㅁ/I-EC
+줌/I-VX:I-EF:0	주/I-VX ㅁ/I-EF
+줌/I-VX:I-ETN:0	주/I-VX ㅁ/I-ETN
+줍/I-EC:I-VV:I-EF:0	어/I-EC 주/I-VV ㅂ/I-EF
+줍/I-EC:I-VX:I-EF:0	어/I-EC 주/I-VX ㅂ/I-EF
+줍/I-VV:I-EC:0	주/I-VV ㅂ/I-EC
+줍/I-VV:I-EF:0	주/I-VV ㅂ/I-EF
+줍/I-VX:I-EC:0	주/I-VX ㅂ/I-EC
+줍/I-VX:I-EF:0	주/I-VX ㅂ/I-EF
+줏/I-NNG:0	주/I-NNG
+줏/I-VX:0	주/I-VX
+중/B-NNG:I-NNG:0	중/B-NNG 이/I-NNG
+중/I-NNG:I-JKG:0	중/I-NNG 의/I-JKG
+중/I-SF:I-NNP:0	./I-SF 중/I-NNP
+줘/I-VV:I-EC:0	주/I-VV 어/I-EC
+줘/I-VV:I-EF:0	주/I-VV 어/I-EF
+줘/I-VX:0	주/I-VX
+줘/I-VX:I-EC:0	주/I-VX 어/I-EC
+줘/I-VX:I-EF:0	주/I-VX 어/I-EF
+줬/I-VV:I-EP:0	주/I-VV 었/I-EP
+줬/I-VX:I-EP:0	주/I-VX 었/I-EP
+쥐/I-EC:I-VV:0	아/I-EC 쥐/I-VV
+쥔/I-EC:I-VV:I-ETM:0	아/I-EC 쥐/I-VV ㄴ/I-ETM
+쥔/I-VV:I-EF:0	쥐/I-VV ㄴ/I-EF
+쥔/I-VV:I-ETM:0	쥐/I-VV ㄴ/I-ETM
+쥘/I-EC:I-VV:I-ETM:0	아/I-EC 쥐/I-VV ㄹ/I-ETM
+쥘/I-VV:I-EC:0	쥐/I-VV ㄹ/I-EC
+쥘/I-VV:I-EF:0	쥐/I-VV ㄹ/I-EF
+쥘/I-VV:I-ETM:0	쥐/I-VV ㄹ/I-ETM
+쥠/I-VV:I-ETN:0	쥐/I-VV ㅁ/I-ETN
+쥬/I-VCP:I-EF:0	이/I-VCP 쥬/I-EF
+증/I-NNG:I-SW:0	증/I-NNG →/I-SW
+지/I-EC:I-EC:0	ㄹ/I-EC 지/I-EC
+지/I-EC:I-VV:0	어/I-EC 지/I-VV
+지/I-EC:I-VX:0	어/I-EC 지/I-VX
+지/I-EC:I-VX:1	아/I-EC 지/I-VX
+지/I-EF:I-EF:0	ㄹ/I-EF 지/I-EF
+지/I-ETM:I-NNG:0	ㄹ/I-ETM 지/I-NNG
+지/I-NNG:0	직/I-NNG
+지/I-NNG:I-SF:0	지/I-NNG ./I-SF
+지/I-VA:0	질/I-VA
+지/I-VCP:I-EC:0	이/I-VCP 지/I-EC
+지/I-VCP:I-EF:0	이/I-VCP 지/I-EF
+지/I-VV:0	짓/I-VV
+지/I-VV:1	질/I-VV
+지/I-VV:I-EC:0	짓/I-VV 으/I-EC
+지/I-VV:I-VV:0	어/I-VV 지/I-VV
+지/I-VX:I-EC:0	지/I-VX 어/I-EC
+지/I-XSA:I-EC:0	하/I-XSA 지/I-EC
+지/I-XSV:I-EC:0	하/I-XSV 지/I-EC
+직/I-EC:I-VV:0	어/I-EC 직/I-VV
+직/I-NNG:0	지/I-NNG
+진/I-EC:I-EC:0	ㄹ/I-EC 진/I-EC
+진/I-EC:I-EC:I-JX:0	ㄹ/I-EC 지/I-EC ㄴ/I-JX
+진/I-EC:I-JX:0	지/I-EC ㄴ/I-JX
+진/I-EC:I-VX:I-EC:0	어/I-EC 지/I-VX ㄴ/I-EC
+진/I-EC:I-VX:I-EF:0	어/I-EC 지/I-VX ㄴ/I-EF
+진/I-EC:I-VX:I-EF:1	아/I-EC 지/I-VX ㄴ/I-EF
+진/I-EC:I-VX:I-ETM:0	어/I-EC 지/I-VX ㄴ/I-ETM
+진/I-EC:I-VX:I-ETM:1	아/I-EC 지/I-VX ㄴ/I-ETM
+진/I-JX:B-JX:0	지/I-JX ㄴ/B-JX
+진/I-NNG:I-EC:0	지/I-NNG ㄴ/I-EC
+진/I-NNG:I-JX:0	지/I-NNG ㄴ/I-JX
+진/I-NNG:I-NNG:0	진/I-NNG 7/I-NNG
+진/I-NNG:I-VCP:I-EC:0	지/I-NNG 이/I-VCP ㄴ/I-EC
+진/I-VA:I-EC:0	지/I-VA ㄴ/I-EC
+진/I-VA:I-EC:1	질/I-VA ㄴ/I-EC
+진/I-VA:I-EF:0	지/I-VA ㄴ/I-EF
+진/I-VA:I-ETM:0	지/I-VA ㄴ/I-ETM
+진/I-VA:I-ETM:1	질/I-VA ㄴ/I-ETM
+진/I-VCP:I-EC:0	이/I-VCP ㄴ/I-EC
+진/I-VCP:I-EC:I-JX:0	이/I-VCP 지/I-EC ㄴ/I-JX
+진/I-VV:I-EC:0	지/I-VV ㄴ/I-EC
+진/I-VV:I-EF:0	지/I-VV ㄴ/I-EF
+진/I-VV:I-EF:1	짓/I-VV ㄴ/I-EF
+진/I-VV:I-ETM:0	지/I-VV ㄴ/I-ETM
+진/I-VV:I-ETM:1	짓/I-VV ㄴ/I-ETM
+진/I-VV:I-ETN:0	지/I-VV ㄴ/I-ETN
+진/I-VV:I-VV:I-ETM:0	어/I-VV 지/I-VV ㄴ/I-ETM
+진/I-VX:0	지/I-VX
+진/I-VX:I-EC:0	지/I-VX ㄴ/I-EC
+진/I-VX:I-EF:0	지/I-VX ㄴ/I-EF
+진/I-VX:I-ETM:0	지/I-VX ㄴ/I-ETM
+진/I-XSV:I-EC:I-JX:0	하/I-XSV 지/I-EC ㄴ/I-JX
+질/I-EC:0	ㄹ/I-EC
+질/I-EC:I-EC:I-JKO:0	ㄴ/I-EC 지/I-EC ㄹ/I-JKO
+질/I-EC:I-ETM:0	지/I-EC ㄹ/I-ETM
+질/I-EC:I-JKO:0	지/I-EC ㄹ/I-JKO
+질/I-EC:I-VV:0	어/I-EC 질/I-VV
+질/I-EC:I-VX:I-EC:0	아/I-EC 지/I-VX ㄹ/I-EC
+질/I-EC:I-VX:I-EC:1	어/I-EC 지/I-VX ㄹ/I-EC
+질/I-EC:I-VX:I-EF:0	아/I-EC 지/I-VX ㄹ/I-EF
+질/I-EC:I-VX:I-EF:1	어/I-EC 지/I-VX ㄹ/I-EF
+질/I-EC:I-VX:I-ETM:0	어/I-EC 지/I-VX ㄹ/I-ETM
+질/I-EC:I-VX:I-ETM:1	아/I-EC 지/I-VX ㄹ/I-ETM
+질/I-JX:I-EC:0	지/I-JX ㄹ/I-EC
+질/I-MAG:0	지/I-MAG
+질/I-NNB:I-JKO:0	지/I-NNB ㄹ/I-JKO
+질/I-NNG:I-JKO:0	지/I-NNG ㄹ/I-JKO
+질/I-NNG:I-JX:0	지/I-NNG ㄹ/I-JX
+질/I-VA:I-EC:0	지/I-VA ㄹ/I-EC
+질/I-VA:I-ETM:0	지/I-VA ㄹ/I-ETM
+질/I-VA:I-ETM:1	질/I-VA ㄹ/I-ETM
+질/I-VV:0	지/I-VV
+질/I-VV:I-EC:0	지/I-VV ㄹ/I-EC
+질/I-VV:I-EF:0	지/I-VV ㄹ/I-EF
+질/I-VV:I-EF:1	짓/I-VV ㄹ/I-EF
+질/I-VV:I-ETM:0	지/I-VV ㄹ/I-ETM
+질/I-VV:I-ETM:1	짓/I-VV ㄹ/I-ETM
+질/I-VV:I-VV:0	지/I-VV 르/I-VV
+질/I-VX:I-EC:0	지/I-VX ㄹ/I-EC
+질/I-VX:I-EF:0	지/I-VX ㄹ/I-EF
+질/I-VX:I-ETM:0	지/I-VX ㄹ/I-ETM
+짊/I-EC:I-VV:0	아/I-EC 짊/I-VV
+짐/I-EC:I-VX:I-ETN:0	어/I-EC 지/I-VX ㅁ/I-ETN
+짐/I-EC:I-VX:I-ETN:1	아/I-EC 지/I-VX ㅁ/I-ETN
+짐/I-VA:I-ETN:0	지/I-VA ㅁ/I-ETN
+짐/I-VV:I-EC:0	지/I-VV ㅁ/I-EC
+짐/I-VV:I-ETN:0	지/I-VV ㅁ/I-ETN
+짐/I-VX:I-ETN:0	지/I-VX ㅁ/I-ETN
+집/I-EC:I-VX:I-EC:0	아/I-EC 지/I-VX ㅂ/I-EC
+집/I-EC:I-VX:I-EF:0	어/I-EC 지/I-VX ㅂ/I-EF
+집/I-EC:I-VX:I-EF:1	아/I-EC 지/I-VX ㅂ/I-EF
+집/I-ETM:I-NNG:0	ㄹ/I-ETM 집/I-NNG
+집/I-NNG:I-EF:0	지/I-NNG ㅂ/I-EF
+집/I-NNG:I-VCP:I-EF:0	지/I-NNG 이/I-VCP ㅂ/I-EF
+집/I-VA:I-EF:0	지/I-VA ㅂ/I-EF
+집/I-VV:I-EC:0	지/I-VV ㅂ/I-EC
+집/I-VV:I-EF:0	지/I-VV ㅂ/I-EF
+집/I-VV:I-ETM:0	지/I-VV ㅂ/I-ETM
+집/I-VX:I-EC:0	지/I-VX ㅂ/I-EC
+집/I-VX:I-EF:0	지/I-VX ㅂ/I-EF
+짓/I-NNG:0	지/I-NNG
+짖/I-VA:0	짓/I-VA
+짜/I-SF:I-XSN:0	./I-SF 짜/I-XSN
+짜/I-VV:I-EC:0	짜/I-VV 아/I-EC
+짠/I-VA:I-EC:0	짜/I-VA ㄴ/I-EC
+짠/I-VA:I-ETM:0	짜/I-VA ㄴ/I-ETM
+짠/I-VV:I-EC:0	짜/I-VV ㄴ/I-EC
+짠/I-VV:I-EF:0	짜/I-VV ㄴ/I-EF
+짠/I-VV:I-ETM:0	짜/I-VV ㄴ/I-ETM
+짤/I-VV:I-EC:0	짜/I-VV ㄹ/I-EC
+짤/I-VV:I-EF:0	짜/I-VV ㄹ/I-EF
+짤/I-VV:I-ETM:0	짜/I-VV ㄹ/I-ETM
+짤/I-VV:I-VV:0	짜/I-VV 르/I-VV
+짬/I-VV:I-ETN:0	짜/I-VV ㅁ/I-ETN
+짰/I-VV:I-EP:0	짜/I-VV 았/I-EP
+째/I-MAG:I-XSV:I-EC:0	찌/I-MAG 하/I-XSV 여/I-EC
+째/I-VV:I-EC:0	쩌/I-VV 아/I-EC
+째/I-VV:I-EC:1	쩌/I-VV 어/I-EC
+째/I-VV:I-EC:2	짜/I-VV 아/I-EC
+째/I-VV:I-EF:0	쩌/I-VV 어/I-EF
+째/I-VV:I-EF:1	쩌/I-VV 아/I-EF
+짼/I-XSN:I-ETM:0	째/I-XSN ㄴ/I-ETM
+쨀/I-VV:I-EC:0	째/I-VV ㄹ/I-EC
+쨌/I-MAG:I-XSV:I-EP:0	찌/I-MAG 하/I-XSV 였/I-EP
+쨌/I-VV:I-EP:0	쩌/I-VV 었/I-EP
+쨌/I-VV:I-EP:1	쩌/I-VV 았/I-EP
+쨌/I-VV:I-EP:2	찌/I-VV 었/I-EP
+쨌/I-VV:I-EP:3	짜/I-VV 었/I-EP
+쨌/I-VV:I-EP:4	짜/I-VV 았/I-EP
+쩌/I-VV:I-EF:0	있/I-VV 쩌/I-EF
+쩐/I-VV:I-EC:0	쩌/I-VV ㄴ/I-EC
+쩐/I-VV:I-EF:0	쩌/I-VV ㄴ/I-EF
+쩐/I-VV:I-ETM:0	쩌/I-VV ㄴ/I-ETM
+쩐/I-VV:I-ETM:1	쩔/I-VV ㄴ/I-ETM
+쩔/I-VV:I-EC:0	쩌/I-VV ㄹ/I-EC
+쩔/I-VV:I-EF:0	쩌/I-VV ㄹ/I-EF
+쩔/I-VV:I-ETM:0	쩌/I-VV ㄹ/I-ETM
+쩜/I-VV:I-ETN:0	쩌/I-VV ㅁ/I-ETN
+쩝/I-VV:I-EC:0	쩌/I-VV ㅂ/I-EC
+쩝/I-VV:I-EF:0	쩌/I-VV ㅂ/I-EF
+쪄/I-VV:I-EC:0	찌/I-VV 어/I-EC
+쪄/I-VV:I-EC:1	찌/I-VV 아/I-EC
+쪄/I-VV:I-EF:0	쩌/I-VV 어/I-EF
+쪄/I-VV:I-EF:1	찌/I-VV 어/I-EF
+쪘/I-VV:I-EP:0	찌/I-VV 었/I-EP
+쫀/I-VV:I-EF:0	쪼/I-VV ㄴ/I-EF
+쫄/I-VV:I-ETM:0	쪼/I-VV ㄹ/I-ETM
+쫌/I-VV:I-ETN:0	쪼/I-VV ㅁ/I-ETN
+쫒/I-VV:0	쫓/I-VV
+쫬/I-VV:I-EP:0	쪼/I-VV 았/I-EP
+쬔/I-VV:I-EF:0	쬐/I-VV ㄴ/I-EF
+쬔/I-VV:I-ETM:0	쬐/I-VV ㄴ/I-ETM
+쬘/I-VV:I-ETM:0	쬐/I-VV ㄹ/I-ETM
+쬠/I-VV:I-ETN:0	쬐/I-VV ㅁ/I-ETN
+쭐/I-VV:I-ETM:0	쭈/I-VV ㄹ/I-ETM
+쭙/I-VV:I-EF:0	쭈/I-VV ㅂ/I-EF
+쭤/I-VV:I-EC:0	쭈/I-VV 어/I-EC
+찌/I-VV:0	찧/I-VV
+찌/I-VV:1	찡/I-VV
+찐/I-VV:I-EC:0	찌/I-VV ㄴ/I-EC
+찐/I-VV:I-EF:0	찌/I-VV ㄴ/I-EF
+찐/I-VV:I-ETM:0	찌/I-VV ㄴ/I-ETM
+찔/I-VV:I-EC:0	찌/I-VV ㄹ/I-EC
+찔/I-VV:I-ETM:0	찌/I-VV ㄹ/I-ETM
+찔/I-VV:I-ETM:1	찧/I-VV ㄹ/I-ETM
+찔/I-VV:I-VV:0	찌/I-VV 르/I-VV
+차/B-NNG:I-NNG:0	차/B-NNG 이/I-NNG
+차/I-NNG:I-NNG:0	차/I-NNG 이/I-NNG
+차/I-VA:0	찹/I-VA
+차/I-VA:I-EC:0	차/I-VA 아/I-EC
+차/I-VV:I-EC:0	차/I-VV 아/I-EC
+차/I-VV:I-EF:0	차/I-VV 아/I-EF
+찬/I-NNG:I-JX:0	차/I-NNG ㄴ/I-JX
+찬/I-VA:I-EC:0	차/I-VA ㄴ/I-EC
+찬/I-VA:I-EF:0	차/I-VA ㄴ/I-EF
+찬/I-VA:I-ETM:0	차/I-VA ㄴ/I-ETM
+찬/I-VV:I-EC:0	차/I-VV ㄴ/I-EC
+찬/I-VV:I-EF:0	차/I-VV ㄴ/I-EF
+찬/I-VV:I-ETM:0	차/I-VV ㄴ/I-ETM
+찮/I-XSA:I-EC:I-VX:0	하/I-XSA 지/I-EC 않/I-VX
+찰/I-NNG:I-JKO:0	차/I-NNG ㄹ/I-JKO
+찰/I-VA:I-EC:0	차/I-VA ㄹ/I-EC
+찰/I-VA:I-ETM:0	차/I-VA ㄹ/I-ETM
+찰/I-VV:I-EC:0	차/I-VV ㄹ/I-EC
+찰/I-VV:I-EF:0	차/I-VV ㄹ/I-EF
+찰/I-VV:I-ETM:0	차/I-VV ㄹ/I-ETM
+참/I-NNG:0	찹/I-NNG
+참/I-VA:I-ETN:0	차/I-VA ㅁ/I-ETN
+참/I-VV:I-ETN:0	차/I-VV ㅁ/I-ETN
+찹/I-VA:I-EC:0	차/I-VA ㅂ/I-EC
+찹/I-VA:I-EF:0	차/I-VA ㅂ/I-EF
+찻/I-NNG:0	차/I-NNG
+찼/I-VA:I-EP:0	차/I-VA 았/I-EP
+찼/I-VV:I-EP:0	차/I-VV 았/I-EP
+찿/I-VV:0	찾/I-VV
+채/I-VV:I-EC:0	채/I-VV 어/I-EC
+책/I-VV:0	택/I-VV
+챈/I-VV:I-EC:0	채/I-VV ㄴ/I-EC
+챈/I-VV:I-EF:0	채/I-VV ㄴ/I-EF
+챈/I-VV:I-ETM:0	채/I-VV ㄴ/I-ETM
+챌/I-VV:I-EC:0	채/I-VV ㄹ/I-EC
+챌/I-VV:I-ETM:0	채/I-VV ㄹ/I-ETM
+챔/I-VV:I-ETN:0	채/I-VV ㅁ/I-ETN
+챘/I-VV:I-EP:0	채/I-VV 었/I-EP
+처/I-EC:0	어/I-EC
+처/I-VV:I-EC:0	치/I-VV 어/I-EC
+처/I-XSN:I-JKB:0	용/I-XSN 처/I-JKB
+천/I-VA:0	청/I-VA
+철/I-NNG:0	처/I-NNG
+체/I-NNG:I-JKB:0	체/I-NNG 에/I-JKB
+첵/I-NNG:0	체/I-NNG
+첼/I-NNG:I-JKO:0	체/I-NNG ㄹ/I-JKO
+쳐/I-EC:0	어/I-EC
+쳐/I-VA:I-EC:0	치/I-VA 어/I-EC
+쳐/I-VA:I-EF:0	치/I-VA 어/I-EF
+쳐/I-VV:0	치/I-VV
+쳐/I-VV:I-EC:0	치/I-VV 어/I-EC
+쳐/I-VV:I-EF:0	치/I-VV 어/I-EF
+쳐/I-VV:I-VV:0	처/I-VV 지/I-VV
+쳤/I-VA:I-EP:0	치/I-VA 었/I-EP
+쳤/I-VV:I-EP:0	치/I-VV 었/I-EP
+쳤/I-VX:I-EP:0	치/I-VX 었/I-EP
+쵸/I-VV:I-EF:0	치/I-VV 요/I-EF
+추/I-VA:0	춥/I-VA
+축/B-NNG:0	추/B-NNG
+춘/I-VA:I-ETM:0	춥/I-VA ㄴ/I-ETM
+춘/I-VV:I-EC:0	추/I-VV ㄴ/I-EC
+춘/I-VV:I-EF:0	추/I-VV ㄴ/I-EF
+춘/I-VV:I-ETM:0	추/I-VV ㄴ/I-ETM
+춘/I-VV:I-ETN:0	추/I-VV ㄴ/I-ETN
+출/I-VA:I-EF:0	춥/I-VA ㄹ/I-EF
+출/I-VV:I-EC:0	추/I-VV ㄹ/I-EC
+출/I-VV:I-EF:0	추/I-VV ㄹ/I-EF
+출/I-VV:I-ETM:0	추/I-VV ㄹ/I-ETM
+춤/I-NNG:I-NNG:0	북/I-NNG 춤/I-NNG
+춤/I-VV:I-ETN:0	추/I-VV ㅁ/I-ETN
+춥/I-VV:I-EF:0	추/I-VV ㅂ/I-EF
+춧/I-NNG:0	추/I-NNG
+춰/I-VV:I-EC:0	추/I-VV 어/I-EC
+춰/I-VV:I-EF:0	추/I-VV 어/I-EF
+춰/I-VV:I-EP:0	추/I-VV 었/I-EP
+췄/I-VV:I-EP:0	추/I-VV 었/I-EP
+치/I-EC:0	지/I-EC
+치/I-NNP:I-SP:0	치/I-NNP ,/I-SP
+치/I-VA:0	칠/I-VA
+치/I-VA:1	칩/I-VA
+치/I-VA:I-EC:0	렇/I-VA 지/I-EC
+치/I-VA:I-EC:1	하/I-VA 지/I-EC
+치/I-VA:I-EF:0	렇/I-VA 지/I-EF
+치/I-VV:0	이/I-VV
+치/I-VV:I-EC:0	하/I-VV 지/I-EC
+치/I-VV:I-VV:0	치/I-VV 이/I-VV
+치/I-VV:I-VV:1	치/I-VV 우/I-VV
+치/I-VX:I-EC:0	하/I-VX 지/I-EC
+치/I-XSA:I-EC:0	하/I-XSA 지/I-EC
+치/I-XSA:I-EF:0	하/I-XSA 지/I-EF
+치/I-XSV:I-EC:0	하/I-XSV 지/I-EC
+치/I-XSV:I-EF:0	하/I-XSV 지/I-EF
+친/I-NNG:0	치/I-NNG
+친/I-NNG:I-JX:0	치/I-NNG ㄴ/I-JX
+친/I-VA:I-EC:0	칠/I-VA ㄴ/I-EC
+친/I-VA:I-ETM:0	치/I-VA ㄴ/I-ETM
+친/I-VA:I-ETM:1	칠/I-VA ㄴ/I-ETM
+친/I-VV:I-EC:0	치/I-VV ㄴ/I-EC
+친/I-VV:I-EF:0	치/I-VV ㄴ/I-EF
+친/I-VV:I-ETM:0	치/I-VV ㄴ/I-ETM
+친/I-VV:I-ETN:0	치/I-VV ㄴ/I-ETN
+친/I-VX:I-ETM:0	치/I-VX ㄴ/I-ETM
+칠/I-NNG:I-JKO:0	치/I-NNG ㄹ/I-JKO
+칠/I-NNP:I-NNP:0	칠/I-NNP 이/I-NNP
+칠/I-VA:I-EC:0	치/I-VA ㄹ/I-EC
+칠/I-VA:I-EF:0	치/I-VA ㄹ/I-EF
+칠/I-VA:I-ETM:0	칠/I-VA ㄹ/I-ETM
+칠/I-VV:0	치/I-VV
+칠/I-VV:I-EC:0	치/I-VV ㄹ/I-EC
+칠/I-VV:I-EF:0	치/I-VV ㄹ/I-EF
+칠/I-VV:I-ETM:0	치/I-VV ㄹ/I-ETM
+칠/I-VX:I-ETM:0	치/I-VX ㄹ/I-ETM
+침/I-VA:I-ETN:0	치/I-VA ㅁ/I-ETN
+침/I-VA:I-ETN:1	칠/I-VA ㅁ/I-ETN
+침/I-VV:I-ETN:0	치/I-VV ㅁ/I-ETN
+칩/I-VA:I-EF:0	치/I-VA ㅂ/I-EF
+칩/I-VV:I-EC:0	치/I-VV ㅂ/I-EC
+칩/I-VV:I-EF:0	치/I-VV ㅂ/I-EF
+카/I-NNG:0	칼/I-NNG
+카/I-NNP:I-NNP:0	이/I-NNP 카/I-NNP
+카/I-VV:0	하/I-VV
+카/I-VX:0	하/I-VX
+칸/I-VV:I-EC:0	카/I-VV ㄴ/I-EC
+칸/I-VV:I-ETM:0	카/I-VV ㄴ/I-ETM
+캅/I-VV:I-EF:0	카/I-VV ㅂ/I-EF
+캐/I-VV:0	카/I-VV
+캐/I-VV:I-EC:0	캐/I-VV 어/I-EC
+캐/I-VV:I-EC:1	카/I-VV 아/I-EC
+캐/I-VV:I-ETM:0	캐/I-VV ㄹ/I-ETM
+캔/I-VV:I-EF:0	캐/I-VV ㄴ/I-EF
+캔/I-VV:I-ETM:0	캐/I-VV ㄴ/I-ETM
+캘/I-VV:I-ETM:0	캐/I-VV ㄹ/I-ETM
+캤/I-VA:I-EP:0	카/I-VA 였/I-EP
+캤/I-VV:I-EP:0	캐/I-VV 었/I-EP
+캤/I-VV:I-EP:1	카/I-VV 았/I-EP
+커/I-EC:I-VV:0	아/I-EC 커/I-VV
+커/I-NNG:0	컬/I-NNG
+커/I-VA:I-EC:0	크/I-VA 어/I-EC
+커/I-VA:I-EF:0	크/I-VA 어/I-EF
+커/I-VV:0	컫/I-VV
+커/I-VV:I-EC:0	크/I-VV 어/I-EC
+커/I-VV:I-EC:1	하/I-VV 거/I-EC
+커/I-XSA:I-EC:0	하/I-XSA 거/I-EC
+컨/I-VV:I-EC:0	하/I-VV 건/I-EC
+컨/I-XSV:I-EC:0	하/I-XSV 건/I-EC
+컬/I-VV:0	컫/I-VV
+컬/I-VV:I-ETM:0	커/I-VV ㄹ/I-ETM
+컸/I-VA:I-EP:0	크/I-VA 었/I-EP
+컸/I-VV:I-EP:0	크/I-VV 었/I-EP
+컸/I-XSV:I-EP:0	하/I-XSV 겄/I-EP
+케/I-EC:0	게/I-EC
+케/I-NNP:0	켐/I-NNP
+케/I-VA:I-EC:0	하/I-VA 게/I-EC
+케/I-VA:I-EC:1	렇/I-VA 게/I-EC
+케/I-VV:I-EC:0	하/I-VV 여/I-EC
+케/I-VV:I-EC:1	하/I-VV 게/I-EC
+케/I-XSA:I-EC:0	하/I-XSA 게/I-EC
+케/I-XSV:I-EC:0	하/I-XSV 게/I-EC
+켔/I-VA:I-EP:0	하/I-VA 겠/I-EP
+켜/I-VV:0	키/I-VV
+켜/I-VV:I-EC:0	키/I-VV 어/I-EC
+켜/I-VV:I-EC:1	켜/I-VV 어/I-EC
+켜/I-VV:I-EC:2	키/I-VV 아/I-EC
+켜/I-VV:I-EF:0	키/I-VV 어/I-EF
+켜/I-XSV:I-EC:0	키/I-XSV 어/I-EC
+켜/I-XSV:I-EF:0	키/I-XSV 어/I-EF
+켠/I-VV:I-EC:0	켜/I-VV ㄴ/I-EC
+켠/I-VV:I-EF:0	켜/I-VV ㄴ/I-EF
+켠/I-VV:I-ETM:0	켜/I-VV ㄴ/I-ETM
+켠/I-VV:I-ETM:1	키/I-VV ㄴ/I-ETM
+켤/I-VV:I-EC:0	켜/I-VV ㄹ/I-EC
+켤/I-VV:I-EF:0	켜/I-VV ㄹ/I-EF
+켤/I-VV:I-ETM:0	켜/I-VV ㄹ/I-ETM
+켭/I-VV:I-EF:0	켜/I-VV ㅂ/I-EF
+켰/I-VV:I-EP:0	키/I-VV 었/I-EP
+켰/I-VV:I-EP:1	켜/I-VV 었/I-EP
+켰/I-XSV:I-EP:0	키/I-XSV 었/I-EP
+코/I-EC:0	고/I-EC
+코/I-VA:I-EC:0	하/I-VA 고/I-EC
+코/I-XSV:I-EC:0	하/I-XSV 고/I-EC
+콘/I-MAG:I-JX:0	코/I-MAG ㄴ/I-JX
+콘/I-NNG:0	콜/I-NNG
+쿄/I-NNP:I-SS:0	쿄/I-NNP )/I-SS
+쿠/I-XSA:I-EC:0	하/I-XSA 구/I-EC
+쿠/I-XSA:I-EF:0	하/I-XSA 구/I-EF
+쿨/I-VV:I-EC:0	쿠/I-VV ㄹ/I-EC
+퀸/I-VV:I-EF:0	퀴/I-VV ㄴ/I-EF
+퀸/I-VV:I-ETM:0	퀴/I-VV ㄴ/I-ETM
+퀼/I-VV:I-EC:0	퀴/I-VV ㄹ/I-EC
+크/I-NNG:I-SP:0	크/I-NNG ·/I-SP
+크/I-VV:0	클/I-VV
+큰/I-VA:I-EC:0	크/I-VA ㄴ/I-EC
+큰/I-VA:I-EF:0	크/I-VA ㄴ/I-EF
+큰/I-VA:I-ETM:0	크/I-VA ㄴ/I-ETM
+큰/I-VA:I-ETM:1	크/I-VA ㄹ/I-ETM
+큰/I-VV:I-EF:0	크/I-VV ㄴ/I-EF
+큰/I-VV:I-ETM:0	크/I-VV ㄴ/I-ETM
+클/I-NNG:I-JKO:0	크/I-NNG ㄹ/I-JKO
+클/I-VA:I-EC:0	크/I-VA ㄹ/I-EC
+클/I-VA:I-EF:0	크/I-VA ㄹ/I-EF
+클/I-VA:I-ETM:0	크/I-VA ㄹ/I-ETM
+클/I-VV:I-EC:0	크/I-VV ㄹ/I-EC
+클/I-VV:I-EF:0	크/I-VV ㄹ/I-EF
+클/I-VV:I-ETM:0	크/I-VV ㄹ/I-ETM
+클/I-VV:I-ETM:1	클/I-VV ㄹ/I-ETM
+큼/I-JKB:I-JKB:0	만/I-JKB 큼/I-JKB
+큼/I-VA:I-ETN:0	크/I-VA ㅁ/I-ETN
+큽/I-VA:I-EC:0	크/I-VA ㅂ/I-EC
+큽/I-VA:I-EF:0	크/I-VA ㅂ/I-EF
+키/I-VA:I-ETN:0	하/I-VA 기/I-ETN
+키/I-VV:0	켜/I-VV
+키/I-VV:I-ETN:0	하/I-VV 기/I-ETN
+키/I-VX:I-ETN:0	하/I-VX 기/I-ETN
+키/I-XSA:I-ETN:0	하/I-XSA 기/I-ETN
+키/I-XSV:I-EC:0	하/I-XSV 기/I-EC
+키/I-XSV:I-EC:1	키/I-XSV 아/I-EC
+키/I-XSV:I-ETN:0	하/I-XSV 기/I-ETN
+킨/I-NNG:I-JX:0	키/I-NNG ㄴ/I-JX
+킨/I-VV:I-EC:0	키/I-VV ㄴ/I-EC
+킨/I-VV:I-EF:0	키/I-VV ㄴ/I-EF
+킨/I-VV:I-ETM:0	키/I-VV ㄴ/I-ETM
+킨/I-VV:I-ETN:0	키/I-VV ㄴ/I-ETN
+킨/I-XSV:0	키/I-XSV
+킨/I-XSV:I-EC:0	키/I-XSV ㄴ/I-EC
+킨/I-XSV:I-EF:0	키/I-XSV ㄴ/I-EF
+킨/I-XSV:I-ETM:0	키/I-XSV ㄴ/I-ETM
+킨/I-XSV:I-ETN:0	키/I-XSV ㄴ/I-ETN
+킨/I-ZV:I-EF:0	키/I-ZV ㄴ/I-EF
+킬/I-VV:I-EC:0	키/I-VV ㄹ/I-EC
+킬/I-VV:I-EF:0	키/I-VV ㄹ/I-EF
+킬/I-VV:I-ETM:0	키/I-VV ㄹ/I-ETM
+킬/I-XSV:I-EC:0	키/I-XSV ㄹ/I-EC
+킬/I-XSV:I-EF:0	키/I-XSV ㄹ/I-EF
+킬/I-XSV:I-ETM:0	키/I-XSV ㄹ/I-ETM
+킴/I-VV:I-EC:0	키/I-VV ㅁ/I-EC
+킴/I-VV:I-ETN:0	키/I-VV ㅁ/I-ETN
+킴/I-XSV:I-ETN:0	키/I-XSV ㅁ/I-ETN
+킵/I-VV:I-EC:0	키/I-VV ㅂ/I-EC
+킵/I-VV:I-EF:0	키/I-VV ㅂ/I-EF
+킵/I-XSV:I-EF:0	키/I-XSV ㅂ/I-EF
+타/I-EF:0	다/I-EF
+타/I-NNG:I-NNG:0	타/I-NNG 이/I-NNG
+타/I-VA:0	탑/I-VA
+타/I-VA:I-EC:0	하/I-VA 다/I-EC
+타/I-VV:I-EC:0	타/I-VV 아/I-EC
+타/I-XSA:I-EC:0	하/I-XSA 다/I-EC
+타/I-XSA:I-EF:0	하/I-XSA 다/I-EF
+타/I-XSV:I-EC:0	하/I-XSV 다/I-EC
+탁/I-NNG:0	탄/I-NNG
+탄/I-VV:I-EC:0	타/I-VV ㄴ/I-EC
+탄/I-VV:I-EF:0	타/I-VV ㄴ/I-EF
+탄/I-VV:I-ETM:0	타/I-VV ㄴ/I-ETM
+탈/I-NNP:I-JKO:0	타/I-NNP ㄹ/I-JKO
+탈/I-VV:I-EC:0	타/I-VV ㄹ/I-EC
+탈/I-VV:I-EF:0	타/I-VV ㄹ/I-EF
+탈/I-VV:I-ETM:0	타/I-VV ㄹ/I-ETM
+탑/I-VA:I-EF:0	타/I-VA ㅂ/I-EF
+탑/I-VV:I-EF:0	타/I-VV ㅂ/I-EF
+탓/I-VV:I-EP:0	타/I-VV 앗/I-EP
+탓/I-VV:I-EP:1	타/I-VV 았/I-EP
+탔/I-VV:I-EP:0	타/I-VV 았/I-EP
+탕/I-VA:I-EC:0	하/I-VA 당/I-EC
+태/I-VV:I-EC:0	태/I-VV 어/I-EC
+탠/I-VV:I-EC:0	태/I-VV ㄴ/I-EC
+탠/I-VV:I-EF:0	태/I-VV ㄴ/I-EF
+탠/I-VV:I-ETM:0	태/I-VV ㄴ/I-ETM
+탤/I-VV:I-EC:0	태/I-VV ㄹ/I-EC
+탤/I-VV:I-ETM:0	태/I-VV ㄹ/I-ETM
+탬/I-VV:I-ETN:0	태/I-VV ㅁ/I-ETN
+탰/I-VV:I-EP:0	태/I-VV 었/I-EP
+터/I-EC:I-VX:0	아/I-EC 터/I-VX
+터/I-JKB:I-JKB:0	부/I-JKB 터/I-JKB
+터/I-VA:0	텁/I-VA
+터/I-VV:0	털/I-VV
+터/I-VV:I-EC:0	트/I-VV 어/I-EC
+터/I-VV:I-EC:1	트/I-VV 아/I-EC
+터/I-XSA:I-EC:0	하/I-XSA 더/I-EC
+턴/I-JKB:I-JX:0	터/I-JKB ㄴ/I-JX
+턴/I-JX:B-JX:0	터/I-JX ㄴ/B-JX
+턴/I-JX:I-VCP:I-EC:0	터/I-JX 이/I-VCP ㄴ/I-EC
+턴/I-NNP:I-JX:0	터/I-NNP ㄴ/I-JX
+턴/I-VV:I-EF:0	털/I-VV ㄴ/I-EF
+턴/I-VV:I-ETM:0	털/I-VV ㄴ/I-ETM
+턴/I-XSA:I-EC:0	하/I-XSA 던/I-EC
+턴/I-XSV:I-ETM:0	하/I-XSV 던/I-ETM
+털/I-VV:I-ETM:0	털/I-VV ㄹ/I-ETM
+텄/I-VV:I-EP:0	트/I-VV 었/I-EP
+테/I-EC:I-EC:0	ㄹ/I-EC 테/I-EC
+테/I-NNB:0	터/I-NNB
+텐/I-JKB:I-JX:0	테/I-JKB ㄴ/I-JX
+텐/I-NNB:I-VCP:I-EC:0	터/I-NNB 이/I-VCP ㄴ/I-EC
+텐/I-NNB:I-VCP:I-EF:0	터/I-NNB 이/I-VCP ㄴ/I-EF
+텨/I-VV:I-EC:0	티/I-VV 어/I-EC
+텼/I-VV:I-EP:0	티/I-VV 었/I-EP
+토/I-VV:I-EC:0	하/I-VV 도/I-EC
+토/I-XSA:I-EC:0	하/I-XSA 도/I-EC
+토/I-XSV:I-EC:0	하/I-XSV 도/I-EC
+톨/I-NNG:I-JKO:0	토/I-NNG ㄹ/I-JKO
+톱/I-NNG:0	톰/I-NNG
+통/I-NNG:I-JKG:0	통/I-NNG 의/I-JKG
+톺/I-VV:0	돌/I-VV
+투/I-VA:0	툴/I-VA
+툰/I-VA:I-ETM:0	툴/I-VA ㄴ/I-ETM
+툰/I-VA:I-ETM:1	툴/I-VA ㄹ/I-ETM
+툰/I-VV:I-EC:0	투/I-VV ㄴ/I-EC
+툰/I-VV:I-EF:0	투/I-VV ㄴ/I-EF
+툰/I-VV:I-ETM:0	투/I-VV ㄴ/I-ETM
+툴/I-VA:I-ETM:0	툴/I-VA ㄹ/I-ETM
+툴/I-VA:I-VA:0	투/I-VA 르/I-VA
+툴/I-VV:I-ETM:0	투/I-VV ㄹ/I-ETM
+툼/I-VV:I-ETN:0	투/I-VV ㅁ/I-ETN
+퉈/I-VV:I-EC:0	투/I-VV 어/I-EC
+퉜/I-VV:I-EP:0	투/I-VV 었/I-EP
+튄/I-VV:I-EC:0	튀/I-VV ㄴ/I-EC
+튄/I-VV:I-EF:0	튀/I-VV ㄴ/I-EF
+튄/I-VV:I-ETM:0	튀/I-VV ㄴ/I-ETM
+튈/I-VV:I-EC:0	튀/I-VV ㄹ/I-EC
+튈/I-VV:I-EF:0	튀/I-VV ㄹ/I-EF
+튈/I-VV:I-ETM:0	튀/I-VV ㄹ/I-ETM
+트/I-NNP:I-NNP:0	이/I-NNP 트/I-NNP
+트/I-VV:0	틀/I-VV
+튼/I-NNG:I-JX:0	트/I-NNG ㄴ/I-JX
+튼/I-VV:I-EC:0	하/I-VV 든/I-EC
+튼/I-VV:I-EC:1	틀/I-VV ㄴ/I-EC
+튼/I-VV:I-EC:2	트/I-VV ㄴ/I-EC
+튼/I-VV:I-EF:0	트/I-VV ㄴ/I-EF
+튼/I-VV:I-EF:1	틀/I-VV ㄴ/I-EF
+튼/I-VV:I-ETM:0	틀/I-VV ㄴ/I-ETM
+튼/I-VV:I-ETM:1	트/I-VV ㄴ/I-ETM
+틀/I-VV:I-EC:0	트/I-VV ㄹ/I-EC
+틀/I-VV:I-ETM:0	트/I-VV ㄹ/I-ETM
+틀/I-VV:I-ETM:1	틀/I-VV ㄹ/I-ETM
+틈/I-VV:I-ETN:0	트/I-VV ㅁ/I-ETN
+틉/I-VV:I-EF:0	트/I-VV ㅂ/I-EF
+티/I-JKB:0	테/I-JKB
+틴/I-VV:I-EC:0	티/I-VV ㄴ/I-EC
+틴/I-VV:I-EF:0	티/I-VV ㄴ/I-EF
+틴/I-VV:I-ETM:0	티/I-VV ㄴ/I-ETM
+틸/I-VV:I-EC:0	티/I-VV ㄹ/I-EC
+틸/I-VV:I-ETM:0	티/I-VV ㄹ/I-ETM
+팀/I-VV:I-ETN:0	티/I-VV ㅁ/I-ETN
+파/I-NNG:0	팡/I-NNG
+파/I-NNG:1	팎/I-NNG
+파/I-VA:I-EC:0	프/I-VA 아/I-EC
+파/I-VA:I-EF:0	프/I-VA 아/I-EF
+파/I-VV:0	팔/I-VV
+파/I-VV:I-EC:0	프/I-VV 아/I-EC
+파/I-VV:I-EC:1	파/I-VV 아/I-EC
+파/I-VX:I-EC:0	프/I-VX 아/I-EC
+파/I-VX:I-EC:1	싶/I-VX 아/I-EC
+팍/I-NNG:0	팎/I-NNG
+판/B-NNG:I-NNG:0	부/B-NNG 판/I-NNG
+판/I-NNG:I-NNG:0	판/I-NNG 사/I-NNG
+판/I-VV:I-EC:0	팔/I-VV ㄴ/I-EC
+판/I-VV:I-EC:1	파/I-VV ㄴ/I-EC
+판/I-VV:I-EF:0	팔/I-VV ㄴ/I-EF
+판/I-VV:I-EF:1	파/I-VV ㄴ/I-EF
+판/I-VV:I-ETM:0	팔/I-VV ㄴ/I-ETM
+판/I-VV:I-ETM:1	파/I-VV ㄴ/I-ETM
+팔/I-NNG:I-NNG:0	팔/I-NNG 이/I-NNG
+팔/I-VA:I-VA:0	파/I-VA 르/I-VA
+팔/I-VV:I-ETM:0	팔/I-VV ㄹ/I-ETM
+팔/I-VV:I-ETM:1	파/I-VV ㄹ/I-ETM
+팝/I-VV:I-EC:0	팔/I-VV ㅂ/I-EC
+팝/I-VV:I-EF:0	파/I-VV ㅂ/I-EF
+팝/I-VV:I-EF:1	팔/I-VV ㅂ/I-EF
+팠/I-VA:I-EP:0	프/I-VA 았/I-EP
+팠/I-VA:I-EP:1	프/I-VA 었/I-EP
+팠/I-VV:I-EP:0	파/I-VV 았/I-EP
+패/I-VV:I-EC:0	패/I-VV 어/I-EC
+팬/I-NNG:I-JX:0	패/I-NNG ㄴ/I-JX
+팬/I-VA:I-ETM:0	패/I-VA ㄴ/I-ETM
+팬/I-VV:I-EC:0	패/I-VV ㄴ/I-EC
+팬/I-VV:I-EF:0	패/I-VV ㄴ/I-EF
+팬/I-VV:I-ETM:0	패/I-VV ㄴ/I-ETM
+팰/I-VV:I-EC:0	패/I-VV ㄹ/I-EC
+팰/I-VV:I-EF:0	패/I-VV ㄹ/I-EF
+팰/I-VV:I-ETM:0	패/I-VV ㄹ/I-ETM
+팼/I-VV:I-EP:0	패/I-VV 었/I-EP
+퍼/I-VA:0	프/I-VA
+퍼/I-VA:I-EC:0	프/I-VA 어/I-EC
+퍼/I-VA:I-EF:0	프/I-VA 어/I-EF
+퍼/I-VA:I-EP:0	프/I-VA 었/I-EP
+퍼/I-VV:I-EC:0	푸/I-VV 어/I-EC
+퍼/I-VV:I-EF:0	푸/I-VV 어/I-EF
+퍼/I-VX:I-EC:0	프/I-VX 어/I-EC
+펐/I-VA:I-EP:0	프/I-VA 었/I-EP
+펐/I-VV:I-EP:0	푸/I-VV 었/I-EP
+펴/I-VV:I-EC:0	펴/I-VV 어/I-EC
+펴/I-VV:I-EC:1	피/I-VV 어/I-EC
+펴/I-VV:I-EF:0	피/I-VV 어/I-EF
+편/I-NNG:I-NNG:0	편/I-NNG 3/I-NNG
+편/I-VV:I-EC:0	펴/I-VV ㄴ/I-EC
+편/I-VV:I-EF:0	펴/I-VV ㄴ/I-EF
+편/I-VV:I-ETM:0	펴/I-VV ㄴ/I-ETM
+펼/I-VV:I-EC:0	펴/I-VV ㄹ/I-EC
+펼/I-VV:I-ETM:0	펴/I-VV ㄹ/I-ETM
+폄/I-VV:I-ETN:0	펴/I-VV ㅁ/I-ETN
+폈/I-VV:I-EP:0	펴/I-VV 었/I-EP
+폈/I-VV:I-EP:1	피/I-VV 었/I-EP
+평/I-NNG:0	편/I-NNG
+포/I-SN:I-NNG:0	1/I-SN 포/I-NNG
+표/B-NNG:I-NNG:0	장/B-NNG 표/I-NNG
+표/I-NNG:I-NNG:0	표/I-NNG -/I-NNG
+푸/I-VA:I-EC:0	프/I-VA 우/I-EC
+푸/I-VV:0	풀/I-VV
+푼/I-VA:I-ETM:0	프/I-VA ㄴ/I-ETM
+푼/I-VV:I-EC:0	풀/I-VV ㄴ/I-EC
+푼/I-VV:I-EF:0	풀/I-VV ㄴ/I-EF
+푼/I-VV:I-ETM:0	풀/I-VV ㄴ/I-ETM
+풀/I-NNG:I-NNG:0	풀/I-NNG 이/I-NNG
+풀/I-VV:I-ETM:0	풀/I-VV ㄹ/I-ETM
+풀/I-VV:I-ETM:1	푸/I-VV ㄹ/I-ETM
+풂/I-VV:I-ETN:0	풀/I-VV ㅁ/I-ETN
+품/I-VV:I-ETN:0	풀/I-VV ㅁ/I-ETN
+풉/I-VV:I-EC:0	풀/I-VV ㅂ/I-EC
+풍/I-VA:I-EC:0	푸/I-VA ㅇ/I-EC
+퓨/I-NNG:I-NNG:0	퓨/I-NNG 터/I-NNG
+픈/I-VA:I-EC:0	프/I-VA ㄴ/I-EC
+픈/I-VA:I-EF:0	프/I-VA ㄴ/I-EF
+픈/I-VA:I-ETM:0	프/I-VA ㄴ/I-ETM
+픈/I-VX:I-ETM:0	싶/I-VX 은/I-ETM
+픈/I-VX:I-ETM:1	싶/I-VX ㄴ/I-ETM
+픈/I-VX:I-ETM:2	프/I-VX ㄴ/I-ETM
+플/I-NNG:I-NNG:0	준/I-NNG 플/I-NNG
+플/I-VA:I-EC:0	프/I-VA ㄹ/I-EC
+플/I-VA:I-EF:0	프/I-VA ㄹ/I-EF
+플/I-VA:I-ETM:0	프/I-VA ㄹ/I-ETM
+플/I-VX:I-ETM:0	프/I-VX ㄹ/I-ETM
+픔/I-VA:I-ETN:0	프/I-VA ㅁ/I-ETN
+픕/I-VA:I-EF:0	프/I-VA ㅂ/I-EF
+피/I-EC:I-VV:0	아/I-EC 피/I-VV
+피/I-MAG:0	이/I-MAG
+피/I-VV:I-EC:0	피/I-VV 어/I-EC
+핀/I-VV:I-EC:0	피/I-VV ㄴ/I-EC
+핀/I-VV:I-EF:0	피/I-VV ㄴ/I-EF
+핀/I-VV:I-ETM:0	피/I-VV ㄴ/I-ETM
+핀/I-VV:I-ETM:1	펴/I-VV ㄴ/I-ETM
+필/I-NNG:I-JKO:0	피/I-NNG ㄹ/I-JKO
+필/I-VV:I-EC:0	피/I-VV ㄹ/I-EC
+필/I-VV:I-EF:0	피/I-VV ㄹ/I-EF
+필/I-VV:I-ETM:0	피/I-VV ㄹ/I-ETM
+핌/I-VV:I-ETN:0	피/I-VV ㅁ/I-ETN
+핍/I-VV:I-EF:0	피/I-VV ㅂ/I-EF
+하/B-NNG:I-XSA:0	점/B-NNG 하/I-XSA
+하/I-EC:I-VX:0	어/I-EC 하/I-VX
+하/I-EC:I-VX:1	아/I-EC 하/I-VX
+하/I-VA:I-ETM:0	하/I-VA ㄴ/I-ETM
+하/I-XSA:I-ETM:0	하/I-XSA ㄴ/I-ETM
+하/I-XSN:I-VV:0	질/I-XSN 하/I-VV
+한/B-NNG:I-XSA:I-EC:0	점/B-NNG 하/I-XSA ㄴ/I-EC
+한/B-NNG:I-XSA:I-ETM:0	점/B-NNG 하/I-XSA ㄴ/I-ETM
+한/I-EC:I-VX:I-ETM:0	아/I-EC 하/I-VX ㄴ/I-ETM
+한/I-NNG:I-JX:0	하/I-NNG ㄴ/I-JX
+한/I-NNP:0	하/I-NNP
+한/I-NNP:I-JX:0	하/I-NNP ㄴ/I-JX
+한/I-VA:I-EC:0	하/I-VA ㄴ/I-EC
+한/I-VA:I-EF:0	하/I-VA ㄴ/I-EF
+한/I-VA:I-ETM:0	하/I-VA ㄴ/I-ETM
+한/I-VV:0	하/I-VV
+한/I-VV:I-EC:0	하/I-VV ㄴ/I-EC
+한/I-VV:I-EF:0	하/I-VV ㄴ/I-EF
+한/I-VV:I-ETM:0	하/I-VV ㄴ/I-ETM
+한/I-VV:I-ETM:1	한/I-VV ㄴ/I-ETM
+한/I-VV:I-ETN:0	하/I-VV ㄴ/I-ETN
+한/I-VX:0	하/I-VX
+한/I-VX:I-EC:0	하/I-VX ㄴ/I-EC
+한/I-VX:I-EF:0	하/I-VX ㄴ/I-EF
+한/I-VX:I-ETM:0	하/I-VX ㄴ/I-ETM
+한/I-VX:I-ETN:0	하/I-VX ㄴ/I-ETN
+한/I-XSA:I-EC:0	하/I-XSA ㄴ/I-EC
+한/I-XSA:I-EC:I-EC:0	하/I-XSA ㄴ/I-EC 지/I-EC
+한/I-XSA:I-EF:0	하/I-XSA ㄴ/I-EF
+한/I-XSA:I-EF:1	하/I-XSA ㄷ/I-EF
+한/I-XSA:I-ETM:0	하/I-XSA ㄴ/I-ETM
+한/I-XSA:I-JX:0	하/I-XSA ㄴ/I-JX
+한/I-XSV:0	하/I-XSV
+한/I-XSV:I-EC:0	하/I-XSV ㄴ/I-EC
+한/I-XSV:I-EF:0	하/I-XSV ㄴ/I-EF
+한/I-XSV:I-ETM:0	하/I-XSV ㄴ/I-ETM
+한/I-XSV:I-ETN:0	하/I-XSV ㄴ/I-ETN
+한/I-XSV:I-JX:0	하/I-XSV ㄴ/I-JX
+할/B-XPN:I-NNG:0	친/B-XPN 할/I-NNG
+할/I-EC:I-VX:I-ETM:0	아/I-EC 하/I-VX ㄹ/I-ETM
+할/I-NNG:I-JKO:0	하/I-NNG ㄹ/I-JKO
+할/I-VA:I-EC:0	하/I-VA ㄹ/I-EC
+할/I-VA:I-EF:0	하/I-VA ㄹ/I-EF
+할/I-VA:I-ETM:0	하/I-VA ㄹ/I-ETM
+할/I-VV:I-EC:0	하/I-VV ㄹ/I-EC
+할/I-VV:I-EF:0	하/I-VV ㄹ/I-EF
+할/I-VV:I-ETM:0	하/I-VV ㄹ/I-ETM
+할/I-VV:I-ETM:1	하/I-VV ㄴ/I-ETM
+할/I-VX:0	하/I-VX
+할/I-VX:I-EC:0	하/I-VX ㄹ/I-EC
+할/I-VX:I-EF:0	하/I-VX ㄹ/I-EF
+할/I-VX:I-ETM:0	하/I-VX ㄹ/I-ETM
+할/I-XSA:0	하/I-XSA
+할/I-XSA:I-EC:0	하/I-XSA ㄹ/I-EC
+할/I-XSA:I-EF:0	하/I-XSA ㄹ/I-EF
+할/I-XSA:I-ETM:0	하/I-XSA ㄹ/I-ETM
+할/I-XSA:I-JKO:0	하/I-XSA ㄹ/I-JKO
+할/I-XSV:0	하/I-XSV
+할/I-XSV:I-EC:0	하/I-XSV ㄹ/I-EC
+할/I-XSV:I-EF:0	하/I-XSV ㄹ/I-EF
+할/I-XSV:I-ETM:0	하/I-XSV ㄹ/I-ETM
+할/I-XSV:I-ETM:1	하/I-XSV ㄴ/I-ETM
+할/I-XSV:I-JKO:0	하/I-XSV ㄹ/I-JKO
+함/I-IC:I-ETN:0	하/I-IC ㅁ/I-ETN
+함/I-NNP:0	한/I-NNP
+함/I-VA:I-ETN:0	하/I-VA ㅁ/I-ETN
+함/I-VV:I-EC:0	하/I-VV ㅁ/I-EC
+함/I-VV:I-EF:0	하/I-VV ㅁ/I-EF
+함/I-VV:I-ETN:0	하/I-VV ㅁ/I-ETN
+함/I-VX:I-ETN:0	하/I-VX ㅁ/I-ETN
+함/I-XSA:I-EC:0	하/I-XSA ㅁ/I-EC
+함/I-XSA:I-EF:0	하/I-XSA ㅁ/I-EF
+함/I-XSA:I-ETN:0	하/I-XSA ㅁ/I-ETN
+함/I-XSV:I-EC:0	하/I-XSV ㅁ/I-EC
+함/I-XSV:I-ETN:0	하/I-XSV ㅁ/I-ETN
+합/I-VA:I-EC:0	하/I-VA ㅂ/I-EC
+합/I-VA:I-EF:0	하/I-VA ㅂ/I-EF
+합/I-VV:I-EC:0	하/I-VV ㅂ/I-EC
+합/I-VV:I-EF:0	하/I-VV ㅂ/I-EF
+합/I-VX:I-EC:0	하/I-VX ㅂ/I-EC
+합/I-VX:I-EF:0	하/I-VX ㅂ/I-EF
+합/I-XSA:I-EC:0	하/I-XSA ㅂ/I-EC
+합/I-XSA:I-EF:0	하/I-XSA ㅂ/I-EF
+합/I-XSV:I-EC:0	하/I-XSV ㅂ/I-EC
+합/I-XSV:I-EF:0	하/I-XSV ㅂ/I-EF
+항/I-VV:I-ZZ:0	하/I-VV ㅇ/I-ZZ
+항/I-XSA:I-ETM:0	하/I-XSA ㄴ/I-ETM
+해/I-EC:0	여/I-EC
+해/I-VA:I-EC:0	하/I-VA 여/I-EC
+해/I-VA:I-EC:1	하/I-VA 아/I-EC
+해/I-VA:I-EC:2	하/I-VA 애/I-EC
+해/I-VA:I-EC:3	하/I-VA 어/I-EC
+해/I-VA:I-EF:0	하/I-VA 아/I-EF
+해/I-VV:0	하/I-VV
+해/I-VV:I-EC:0	하/I-VV 여/I-EC
+해/I-VV:I-EC:1	하/I-VV 아/I-EC
+해/I-VV:I-EC:2	하/I-VV 어/I-EC
+해/I-VV:I-EF:0	하/I-VV 여/I-EF
+해/I-VV:I-EF:1	하/I-VV 아/I-EF
+해/I-VV:I-EF:2	하/I-VV 어/I-EF
+해/I-VV:I-ETM:0	하/I-VV 아/I-ETM
+해/I-VX:I-EC:0	하/I-VX 여/I-EC
+해/I-VX:I-EC:1	하/I-VX 아/I-EC
+해/I-VX:I-EF:0	하/I-VX 여/I-EF
+해/I-VX:I-EF:1	하/I-VX 아/I-EF
+해/I-VX:I-EF:2	하/I-VX 어/I-EF
+해/I-XSA:0	하/I-XSA
+해/I-XSA:I-EC:0	하/I-XSA 여/I-EC
+해/I-XSA:I-EC:1	하/I-XSA 아/I-EC
+해/I-XSA:I-EF:0	하/I-XSA 여/I-EF
+해/I-XSA:I-EF:1	하/I-XSA 아/I-EF
+해/I-XSA:I-ETM:0	하/I-XSA 아/I-ETM
+해/I-XSV:0	하/I-XSV
+해/I-XSV:I-EC:0	하/I-XSV 여/I-EC
+해/I-XSV:I-EC:1	하/I-XSV 아/I-EC
+해/I-XSV:I-EF:0	하/I-XSV 여/I-EF
+해/I-XSV:I-EF:1	하/I-XSV 아/I-EF
+해/I-XSV:I-ETM:0	하/I-XSV 여/I-ETM
+핸/I-NNG:I-JX:0	해/I-NNG ㄴ/I-JX
+핸/I-XSV:I-EF:0	하/I-XSV 연/I-EF
+핼/I-NNG:I-JKO:0	해/I-NNG ㄹ/I-JKO
+햇/I-NNG:0	해/I-NNG
+햇/I-VV:I-EF:0	하/I-VV 엿/I-EF
+햇/I-VV:I-EP:0	하/I-VV 였/I-EP
+햇/I-VX:I-EP:0	하/I-VX 엿/I-EP
+햇/I-XSA:I-EP:0	하/I-XSA 였/I-EP
+햇/I-XSV:I-EP:0	하/I-XSV 였/I-EP
+햇/I-XSV:I-EP:1	하/I-XSV 앗/I-EP
+했/I-VA:I-EP:0	하/I-VA 였/I-EP
+했/I-VA:I-EP:1	하/I-VA 았/I-EP
+했/I-VV:I-EP:0	하/I-VV 였/I-EP
+했/I-VV:I-EP:1	하/I-VV 았/I-EP
+했/I-VV:I-EP:2	하/I-VV 었/I-EP
+했/I-VX:I-EP:0	하/I-VX 였/I-EP
+했/I-VX:I-EP:1	하/I-VX 았/I-EP
+했/I-XSA:I-EC:0	하/I-XSA 여/I-EC
+했/I-XSA:I-EP:0	하/I-XSA 였/I-EP
+했/I-XSA:I-EP:1	하/I-XSA 았/I-EP
+했/I-XSV:0	하/I-XSV
+했/I-XSV:I-EP:0	하/I-XSV 였/I-EP
+했/I-XSV:I-EP:1	하/I-XSV 았/I-EP
+했/I-XSV:I-EP:2	하/I-XSV 었/I-EP
+행/I-NNG:I-NNG:0	오/I-NNG 행/I-NNG
+행/I-NNG:I-SW:0	행/I-NNG →/I-SW
+햐/I-VV:0	하/I-VV
+헀/I-VV:I-EP:0	하/I-VV 였/I-EP
+헀/I-VX:I-EP:0	하/I-VX 였/I-EP
+허/I-VV:0	헐/I-VV
+허/I-VV:1	하/I-VV
+허/I-VV:I-EC:0	허/I-VV 어/I-EC
+허/I-VX:0	하/I-VX
+헌/I-JKB:0	한/I-JKB
+헌/I-VA:I-EC:0	허/I-VA ㄴ/I-EC
+헌/I-VA:I-EF:0	허/I-VA ㄴ/I-EF
+헌/I-VA:I-ETM:0	허/I-VA ㄴ/I-ETM
+헌/I-VV:I-EC:0	허/I-VV ㄴ/I-EC
+헌/I-VV:I-EC:1	하/I-VV ㄴ/I-EC
+헌/I-VV:I-EF:0	허/I-VV ㄴ/I-EF
+헌/I-VV:I-EF:1	헐/I-VV ㄴ/I-EF
+헌/I-VV:I-ETM:0	허/I-VV ㄴ/I-ETM
+헌/I-VV:I-ETM:1	하/I-VV ㄴ/I-ETM
+헌/I-VX:I-EC:0	허/I-VX ㄴ/I-EC
+헌/I-VX:I-EF:0	허/I-VX ㄴ/I-EF
+헌/I-VX:I-EF:1	하/I-VX ㄴ/I-EF
+헌/I-VX:I-ETM:0	허/I-VX ㄴ/I-ETM
+헌/I-XSA:I-EC:0	허/I-XSA ㄴ/I-EC
+헌/I-XSA:I-EF:0	허/I-XSA ㄴ/I-EF
+헌/I-XSA:I-ETM:0	하/I-XSA ㄴ/I-ETM
+헌/I-XSA:I-ETM:1	허/I-XSA ㄴ/I-ETM
+헌/I-XSV:I-EC:0	허/I-XSV ㄴ/I-EC
+헌/I-XSV:I-EF:0	허/I-XSV ㄴ/I-EF
+헌/I-XSV:I-ETM:0	허/I-XSV ㄴ/I-ETM
+헌/I-XSV:I-ETM:1	하/I-XSV ㄴ/I-ETM
+헐/I-NNG:I-JKO:0	허/I-NNG ㄹ/I-JKO
+헐/I-VA:I-ETM:0	허/I-VA ㄹ/I-ETM
+헐/I-VV:I-EC:0	허/I-VV ㄹ/I-EC
+헐/I-VV:I-EF:0	허/I-VV ㄹ/I-EF
+헐/I-VV:I-ETM:0	허/I-VV ㄹ/I-ETM
+헐/I-VV:I-ETM:1	헐/I-VV ㄹ/I-ETM
+헐/I-VX:I-EC:0	허/I-VX ㄹ/I-EC
+헐/I-VX:I-EF:0	허/I-VX ㄹ/I-EF
+헐/I-VX:I-ETM:0	허/I-VX ㄹ/I-ETM
+헐/I-XSA:I-EC:0	허/I-XSA ㄹ/I-EC
+헐/I-XSA:I-EF:0	허/I-XSA ㄹ/I-EF
+헐/I-XSA:I-ETM:0	허/I-XSA ㄹ/I-ETM
+헐/I-XSV:I-EC:0	허/I-XSV ㄹ/I-EC
+헐/I-XSV:I-EF:0	허/I-XSV ㄹ/I-EF
+헐/I-XSV:I-ETM:0	허/I-XSV ㄹ/I-ETM
+헐/I-XSV:I-ETM:1	하/I-XSV ㄹ/I-ETM
+헐/I-XSV:I-JKO:0	허/I-XSV ㄹ/I-JKO
+험/I-VV:I-EC:0	허/I-VV ㅁ/I-EC
+험/I-VV:I-EF:0	허/I-VV ㅁ/I-EF
+험/I-VV:I-ETN:0	허/I-VV ㅁ/I-ETN
+험/I-VX:I-EC:0	허/I-VX ㅁ/I-EC
+험/I-XSA:I-ETN:0	허/I-XSA ㅁ/I-ETN
+험/I-XSV:I-EC:0	허/I-XSV ㅁ/I-EC
+헙/I-NNG:0	험/I-NNG
+헙/I-VV:I-EF:0	허/I-VV ㅂ/I-EF
+헙/I-VX:I-EF:0	허/I-VX ㅂ/I-EF
+헙/I-XSA:I-EF:0	허/I-XSA ㅂ/I-EF
+헙/I-XSV:I-EF:0	허/I-XSV ㅂ/I-EF
+헜/I-VV:I-EP:0	허/I-VV 었/I-EP
+헜/I-XSV:I-EP:0	허/I-XSV 었/I-EP
+헝/I-VV:I-EC:0	허/I-VV ㅇ/I-EC
+헝/I-XSA:I-EC:0	허/I-XSA ㅇ/I-EC
+헝/I-XSV:I-EC:0	허/I-XSV ㅇ/I-EC
+헤/I-EC:I-VV:0	아/I-EC 헤/I-VV
+헤/I-VV:0	해/I-VV
+헤/I-VV:I-EC:0	하/I-VV 여/I-EC
+헤/I-VV:I-EC:1	하/I-VV 아/I-EC
+헤/I-VV:I-EC:2	허/I-VV 어/I-EC
+헤/I-VV:I-EC:3	허/I-VV 아/I-EC
+헤/I-VV:I-EC:4	히/I-VV 어/I-EC
+헤/I-VV:I-VV:0	해/I-VV 보/I-VV
+헤/I-VX:I-EC:0	하/I-VX 여/I-EC
+헤/I-VX:I-EC:1	하/I-VX 아/I-EC
+헤/I-XSA:I-EC:0	하/I-XSA 여/I-EC
+헤/I-XSA:I-EC:1	허/I-XSA 어/I-EC
+헤/I-XSV:I-EC:0	하/I-XSV 여/I-EC
+헤/I-XSV:I-EC:1	하/I-XSV 아/I-EC
+헤/I-XSV:I-EC:2	허/I-XSV 어/I-EC
+헤/I-XSV:I-EF:0	하/I-XSV 아/I-EF
+헷/I-VX:I-EP:0	허/I-VX 었/I-EP
+헸/I-VV:I-EP:0	허/I-VV 었/I-EP
+헸/I-VV:I-EP:1	허/I-VV 았/I-EP
+헸/I-VV:I-EP:2	하/I-VV 였/I-EP
+헸/I-VX:I-EP:0	허/I-VX 었/I-EP
+헸/I-XSA:I-EP:0	허/I-XSA 었/I-EP
+헸/I-XSA:I-EP:1	하/I-XSA 었/I-EP
+헸/I-XSV:I-EP:0	하/I-XSV 였/I-EP
+헸/I-XSV:I-EP:1	허/I-XSV 었/I-EP
+혀/I-EC:0	어/I-EC
+혀/I-VA:I-EC:0	히/I-VA 어/I-EC
+혀/I-VA:I-EF:0	히/I-VA 어/I-EF
+혀/I-VV:I-EC:0	히/I-VV 어/I-EC
+혀/I-VV:I-EC:1	히/I-VV 여/I-EC
+혀/I-VV:I-EC:2	허/I-VV 어/I-EC
+혀/I-VV:I-EC:3	하/I-VV 여/I-EC
+혀/I-VV:I-EC:4	혀/I-VV 어/I-EC
+혀/I-VV:I-EC:5	치/I-VV 어/I-EC
+혀/I-VV:I-EC:6	히/I-VV 아/I-EC
+혀/I-VV:I-EF:0	히/I-VV 어/I-EF
+혀/I-VV:I-EF:1	허/I-VV 어/I-EF
+혀/I-VV:I-ETM:0	히/I-VV ㄴ/I-ETM
+혀/I-VX:I-EC:0	히/I-VX 어/I-EC
+혀/I-VX:I-EF:0	허/I-VX 아/I-EF
+혀/I-VX:I-EF:1	하/I-VX 아/I-EF
+혀/I-XSA:I-EC:0	허/I-XSA 아/I-EC
+혀/I-XSV:I-EC:0	허/I-XSV 어/I-EC
+혀/I-XSV:I-EC:1	혀/I-XSV 어/I-EC
+혀/I-XSV:I-EC:2	하/I-XSV 여/I-EC
+혀/I-XSV:I-EF:0	하/I-XSV 아/I-EF
+혀/I-XSV:I-EF:1	허/I-XSV 어/I-EF
+혀/I-XSV:I-EF:2	히/I-XSV 어/I-EF
+혔/I-VA:I-EP:0	히/I-VA 었/I-EP
+혔/I-VV:I-EP:0	히/I-VV 었/I-EP
+혔/I-VV:I-EP:1	혀/I-VV 었/I-EP
+혔/I-VV:I-EP:2	허/I-VV 었/I-EP
+혔/I-VV:I-EP:3	혀/I-VV 였/I-EP
+혔/I-VX:I-EP:0	혀/I-VX 었/I-EP
+혔/I-XSA:I-EP:0	혀/I-XSA 었/I-EP
+혔/I-XSV:I-EP:0	혀/I-XSV 었/I-EP
+혔/I-XSV:I-EP:1	허/I-XSV 었/I-EP
+혠/I-NNP:I-JX:0	혜/I-NNP ㄴ/I-JX
+혤/I-NNP:I-JKO:0	혜/I-NNP ㄹ/I-JKO
+환/I-NNG:I-JX:0	화/I-NNG ㄴ/I-JX
+활/I-NNG:I-JKO:0	화/I-NNG ㄹ/I-JKO
+횐/I-NNG:I-JX:0	회/I-NNG ㄴ/I-JX
+훓/I-VV:0	훑/I-VV
+휜/I-VV:I-ETM:0	휘/I-VV ㄴ/I-ETM
+휠/I-VV:I-ETM:0	휘/I-VV ㄹ/I-ETM
+휩/I-VV:I-EF:0	휘/I-VV ㅂ/I-EF
+흘/I-VV:I-VV:0	흐/I-VV 르/I-VV
+흰/I-NNP:I-JX:0	희/I-NNP ㄴ/I-JX
+흰/I-NP:I-JX:0	희/I-NP ㄴ/I-JX
+흰/I-VA:I-EC:0	희/I-VA ㄴ/I-EC
+흰/I-VA:I-ETM:0	희/I-VA ㄴ/I-ETM
+흴/I-NP:I-JKO:0	희/I-NP ㄹ/I-JKO
+흴/I-VA:I-ETM:0	희/I-VA ㄹ/I-ETM
+히/I-VV:0	혀/I-VV
+히/I-VV:I-EC:0	혀/I-VV 어/I-EC
+힌/I-MAG:I-JX:0	히/I-MAG ㄴ/I-JX
+힌/I-VA:I-EC:0	히/I-VA ㄴ/I-EC
+힌/I-VA:I-EF:0	히/I-VA ㄴ/I-EF
+힌/I-VA:I-ETM:0	히/I-VA ㄴ/I-ETM
+힌/I-VV:I-EC:0	히/I-VV ㄴ/I-EC
+힌/I-VV:I-EF:0	히/I-VV ㄴ/I-EF
+힌/I-VV:I-ETM:0	히/I-VV ㄴ/I-ETM
+힐/I-VA:I-ETM:0	히/I-VA ㄹ/I-ETM
+힐/I-VV:I-EC:0	히/I-VV ㄹ/I-EC
+힐/I-VV:I-EF:0	히/I-VV ㄹ/I-EF
+힐/I-VV:I-ETM:0	히/I-VV ㄹ/I-ETM
+힘/I-VA:I-ETN:0	히/I-VA ㅁ/I-ETN
+힘/I-VV:I-ETN:0	히/I-VV ㅁ/I-ETN
+힙/I-VV:I-EC:0	히/I-VV ㅂ/I-EC
+힙/I-VV:I-EF:0	히/I-VV ㅂ/I-EF
+힜/I-VV:I-EP:0	히/I-VV 었/I-EP
+＿/I-EC:I-SS:0	아/I-EC ＿/I-SS
+～/I-EC:I-SO:0	어/I-EC ～/I-SO
+～/I-EC:I-SO:1	아/I-EC ～/I-SO
+"/I-SS:I-VCP:0	"/I-SS 이/I-VCP

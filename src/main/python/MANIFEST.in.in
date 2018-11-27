@@ -1,0 +1,4 @@
+include README.md
+include LICENSE
+recursive-include khaiii *
+include @CPACK_SOURCE_PACKAGE_FILE_NAME@.tar.gz

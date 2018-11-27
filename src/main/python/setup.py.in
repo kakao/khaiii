@@ -1,0 +1,96 @@
+# -*- coding: utf-8 -*-
+
+
+"""
+@CPACK_PACKAGE_DESCRIPTION_SUMMARY@
+
+__version__ = '@KHAIII_VERSION@'
+__author__ = '@CPACK_PACKAGE_VENDOR@'
+__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__license__ = 'Apache 2.0'
+__maintainer__ = 'Jamie'
+__email__ = 'jamie.lim@kakaocorp.com'
+"""
+
+
+###########
+# imports #
+###########
+from distutils.command.build import build
+import os
+import shutil
+import subprocess
+import zipfile
+
+from setuptools import setup
+
+
+#############
+# constants #
+#############
+_SRC_NAME = '@CPACK_SOURCE_PACKAGE_FILE_NAME@'
+
+
+#########
+# types #
+#########
+class CustomBuild(build):
+    """
+    custom handler for 'build' command
+    """
+    def run(self):
+        """
+        run build command
+        """
+        with zipfile.ZipFile(f'{_SRC_NAME}.zip', 'r') as src_zip:
+            src_zip.extractall()
+        build_dir = f'{_SRC_NAME}/build'
+        os.makedirs(build_dir, exist_ok=True)
+        subprocess.check_call('cmake ..', cwd=build_dir, shell=True)
+        subprocess.check_call('make -j all resource', cwd=build_dir, shell=True)
+        shutil.rmtree('khaiii/lib', ignore_errors=True)
+        shutil.copytree(f'{build_dir}/lib', 'khaiii/lib')
+        shutil.rmtree('khaiii/share', ignore_errors=True)
+        shutil.copytree(f'{build_dir}/share', 'khaiii/share')
+        shutil.rmtree(_SRC_NAME)
+        build.run(self)
+
+
+#############
+# functions #
+#############
+def readme():
+    """
+    read content from README.md file
+    Returns:
+        long description (content of README.md)
+    """
+    return open('@CMAKE_SOURCE_DIR@/README.md').read()
+
+
+#########
+# setup #
+#########
+setup(
+    name='khaiii',
+    version='@KHAIII_VERSION@',
+    description='@CPACK_PACKAGE_DESCRIPTION_SUMMARY@',
+    long_description=readme(),
+    url='https://github.com/kakao/khaiii',
+    author='@CPACK_PACKAGE_VENDOR@',
+    author_email='jamie.lim@kakaocorp.com',
+    classifiers=[
+        'Development Status :: 5 - Stable',
+        'License :: OSI Approved :: Apache 2.0',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
+    ],
+    license='Apache 2.0',
+    packages=['khaiii', ],
+    include_package_data=True,
+    install_requires=['numpy', 'torch==0.4.1', 'tqdm'],
+    setup_requires=['pytest-runner', ],
+    tests_require=['pytest', ],
+    zip_safe=False,
+    cmdclass={'build': CustomBuild}
+)

@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+
+
+"""
+@CPACK_PACKAGE_DESCRIPTION_SUMMARY@
+
+__version__ = '@KHAIII_VERSION@'
+__author__ = '@CPACK_PACKAGE_VENDOR@'
+__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__license__ = 'Apache 2.0'
+__maintainer__ = 'Jamie'
+__email__ = 'jamie.lim@kakaocorp.com'
+"""
+
+
+from .khaiii import KhaiiiApi, KhaiiiExcept, KhaiiiMorph, KhaiiiWord
