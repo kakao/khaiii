@@ -72,7 +72,7 @@ khaiii의 빌드 및 설치에 관해서는 [빌드 및 설치 문서](doc/setup
 
 License
 ----
-This software is licensed under the [Apache 2 license](LICENSE.txt), quoted below.
+This software is licensed under the [Apache 2 license](LICENSE), quoted below.
 
 Copyright 2018 Kakao Corp. <http://www.kakaocorp.com>
 
