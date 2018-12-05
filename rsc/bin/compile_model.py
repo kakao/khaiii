@@ -37,7 +37,7 @@ def _load_cfg_rsc(rsc_src, model_size):
     Returns:
         (config, resource) pair
     """
-    file_path = '{rsc_src}/{model_size}.config.json'.format(**locals())
+    file_path = '{}/{}.config.json'.format(rsc_src, model_size)
     cfg_dic = json.load(open(file_path, 'r', encoding='UTF-8'))
     logging.info('config: %s', json.dumps(cfg_dic, indent=2))
     cfg = argparse.Namespace()
@@ -101,7 +101,7 @@ def _write_config(cfg, rsc, rsc_dir):
     cfg_dic['class_num'] = len(rsc.vocab_out)
     cfg_dic['conv_kernels'] = [2, 3, 4, 5]
     pathlib.Path(rsc_dir).mkdir(parents=True, exist_ok=True)
-    config_json = '{rsc_dir}/config.json'.format(**locals())
+    config_json = '{}/config.json'.format(rsc_dir)
     with open(config_json, 'w', encoding='UTF-8') as fout:
         json.dump(cfg_dic, fout, indent=2, sort_keys=True)
 
@@ -171,7 +171,7 @@ def _write_data(rsc, state_dict, rsc_dir):
         state_dict:  state dictionary of model
         rsc_dir:  target resource directory
     """
-    with open('{rsc_dir}/embed.bin'.format(**locals()), 'wb') as fout:
+    with open('{}/embed.bin'.format(rsc_dir), 'wb') as fout:
         # key: [input vocab(char)] * 4(float)
         # val: [input vocab(char)] * embed_dim * 4(float)
         _write_embedding(rsc, state_dict, fout)
@@ -179,14 +179,14 @@ def _write_data(rsc, state_dict, rsc_dir):
     for kernel in range(2, 6):
         # weight: [output chan(embed_dim)] * kernel * [input chan(embed_dim)] * 4
         # bias: [output chan] * 4
-        _write_conv('convs', kernel, state_dict, '{rsc_dir}/conv.{kernel}.fil'.format(**locals()))
+        _write_conv('convs', kernel, state_dict, '{}/conv.{}.fil'.format(rsc_dir, kernel))
     # weight: hidden_dim * [cnn layers * output chan(embed_dim)] * 4
     # bias: hidden_dim * 4
-    _write_linear('conv2hidden', state_dict, '{rsc_dir}/cnv2hdn.lin'.format(**locals()))
+    _write_linear('conv2hidden', state_dict, '{}/cnv2hdn.lin'.format(rsc_dir))
 
     # weight: [output vocab(tag)] * hidden_dim * 4
     # bias: [output vocab(tag)] * 4
-    _write_linear('hidden2tag', state_dict, '{rsc_dir}/hdn2tag.lin'.format(**locals()))
+    _write_linear('hidden2tag', state_dict, '{}/hdn2tag.lin'.format(rsc_dir))
 
 
 def run(args):
@@ -196,7 +196,7 @@ def run(args):
         args:  program arguments
     """
     cfg, rsc = _load_cfg_rsc(args.rsc_src, args.model_size)
-    state_dict = torch.load('{args.rsc_src}/{args.model_size}.model.state'.format(**locals()),
+    state_dict = torch.load('{}/{}.model.state'.format(args.rsc_src, args.model_size),
                             map_location=lambda storage, loc: storage)
     _validate_state_dict(cfg, rsc, state_dict)
     _write_config(cfg, rsc, args.rsc_dir)
