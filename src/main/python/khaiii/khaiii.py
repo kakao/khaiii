@@ -170,6 +170,7 @@ class KhaiiiApi:
         logging.debug('khaiii library path: %s', lib_path)
         self._lib = ctypes.CDLL(lib_path)
         self._set_arg_res_types()
+        self.set_log_level('all', 'warn')
 
     def __del__(self):
         self.close()
