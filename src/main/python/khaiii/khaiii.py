@@ -76,7 +76,7 @@ class KhaiiiMorph:
         self.reserved = b''
 
     def __str__(self):
-        return f'{self.lex}/{self.tag}'
+        return '{}/{}'.format(self.lex, self.tag)
 
     def set(self, morph: ctypes.POINTER(_khaiii_morph_t), align: list):
         """
@@ -108,7 +108,7 @@ class KhaiiiWord:
 
     def __str__(self):
         morphs_str = ' + '.join([str(m) for m in self.morphs])
-        return f'{self.lex}\t{morphs_str}'
+        return '{}\t{}'.format(self.lex, morphs_str)
 
     def set(self, word: ctypes.POINTER(_khaiii_word_t), in_str: str, align: list):
         """
@@ -157,16 +157,15 @@ class KhaiiiApi:
         """
         self._handle = -1
         if not lib_path:
-            ext = 'dylib' if platform.system() == 'Darwin' else 'so'
-            lib_name = f'libkhaiii.{ext}'
-            lib_dir = f'{os.path.dirname(__file__)}/lib'
-            lib_path = f'{lib_dir}/{lib_name}'
+            lib_name = 'libkhaiii.dylib' if platform.system() == 'Darwin' else 'libkhaiii.so'
+            lib_dir = os.path.join(os.path.dirname(__file__), 'lib')
+            lib_path = '{}/{}'.format(lib_dir, lib_name)
             if not os.path.exists(lib_path):
                 lib_path = find_library(lib_name)
                 if not lib_path:
                     logging.error('current working directory: %s', os.getcwd())
                     logging.error('library directory: %s', lib_dir)
-                    raise KhaiiiExcept(f'fail to find library: {lib_name}')
+                    raise KhaiiiExcept('fail to find library: {}'.format(lib_name))
         logging.debug('khaiii library path: %s', lib_path)
         self._lib = ctypes.CDLL(lib_path)
         self._set_arg_res_types()
@@ -191,7 +190,7 @@ class KhaiiiApi:
         """
         self.close()
         if not rsc_dir:
-            rsc_dir = f'{os.path.dirname(__file__)}/share/khaiii'
+            rsc_dir = os.path.join(os.path.dirname(__file__), 'share/khaiii')
         self._handle = self._lib.khaiii_open(rsc_dir.encode('UTF-8'), opt_str.encode('UTF-8'))
         if self._handle < 0:
             raise KhaiiiExcept(self._last_error())

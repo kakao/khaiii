@@ -117,7 +117,7 @@ def _load_entries(args):
     """
     good_entries = []
     bad_entries = []
-    for file_path in glob.glob(f'{args.rsc_src}/preanal.*'):
+    for file_path in glob.glob('{}/preanal.*'.format(args.rsc_src)):
         file_name = os.path.basename(file_path)
         logging.info(file_name)
         for line_num, line in enumerate(open(file_path, 'r', encoding='UTF-8'), start=1):
@@ -256,9 +256,9 @@ def _save_trie(rsc_dir, entries):
         val += 1 if entry.is_pfx else 0    # 전망매칭 패턴의 경우 홀수
         trie.insert(entry.word, val)
         total_tag_nums += len(entry.tag_nums)
-    trie.save(f'{rsc_dir}/preanal.tri')
+    trie.save('{}/preanal.tri'.format(rsc_dir))
 
-    val_file = f'{rsc_dir}/preanal.val'
+    val_file = '{}/preanal.val'.format(rsc_dir)
     with open(val_file, 'wb') as fout:
         fout.write(struct.pack('H', 0))    # 인덱스가 1부터 시작하므로 dummy 데이터를 맨 앞에 하나 넣는다.
         for idx, entry in enumerate(entries, start=1):
@@ -277,7 +277,7 @@ def run(args):
         args:  program arguments
     """
     aligner = Aligner(args.rsc_src)
-    restore_dic = load_restore_dic(f'{args.rsc_src}/restore.dic')
+    restore_dic = load_restore_dic('{}/restore.dic'.format(args.rsc_src))
     if not restore_dic:
         sys.exit(1)
     restore_new = defaultdict(dict)

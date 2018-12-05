@@ -12,6 +12,8 @@ __copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
 ###########
 # imports #
 ###########
+from __future__ import print_function
+
 import argparse
 from collections import defaultdict
 import logging
@@ -67,11 +69,11 @@ def load_vocab_out(rsc_src):
     Returns:
         출력 태그 vocabulary
     """
-    file_path = f'{rsc_src}/vocab.out'
+    file_path = '{}/vocab.out'.format(rsc_src)
     vocab_out = [line.strip() for line in open(file_path, 'r', encoding='UTF-8')
                  if line.strip()]
     vocab_out_more = []
-    file_path = f'{rsc_src}/vocab.out.more'
+    file_path = '{}/vocab.out.more'.format(rsc_src)
     if os.path.exists(file_path):
         vocab_out_more = [line.strip() for line in open(file_path, 'r', encoding='UTF-8')
                           if line.strip()]
@@ -87,14 +89,14 @@ def append_new_entries(rsc_src, restore_new, vocab_new):
         vocab_new:  출력 태그 vocabulary에 추가할 엔트리
     """
     if restore_new:
-        with open(f'{rsc_src}/restore.dic', 'a', encoding='UTF-8') as fout:
+        with open('{}/restore.dic'.format(rsc_src), 'a', encoding='UTF-8') as fout:
             for (char, tag_out), tag_num_mrp_chr_dic in restore_new.items():
                 for tag_num, mrp_chr in tag_num_mrp_chr_dic.items():
                     new_entry_str = '{}/{}:{}\t{}'.format(char, tag_out, tag_num, mrp_chr)
                     logging.info('[RESTORE] %s', new_entry_str)
                     print(new_entry_str, file=fout)
     if vocab_new:
-        with open(f'{rsc_src}/vocab.out.more', 'a', encoding='UTF-8') as fout:
+        with open('{}/vocab.out.more'.format(rsc_src), 'a', encoding='UTF-8') as fout:
             new_tags = sorted([(num, tag) for tag, num in vocab_new.items()])
             for _, tag in new_tags:
                 logging.info('[TAG] %s', tag)
@@ -146,8 +148,8 @@ def _save_restore_dic(rsc_dir, bin_dic):
         bin_dic:  binary dictionary
     """
     os.makedirs(rsc_dir, exist_ok=True)
-    with open(f'{rsc_dir}/restore.key', 'wb') as fkey:
-        with open(f'{rsc_dir}/restore.val', 'wb') as fval:
+    with open('{}/restore.key'.format(rsc_dir), 'wb') as fkey:
+        with open('{}/restore.val'.format(rsc_dir), 'wb') as fval:
             for key, vals in sorted(bin_dic.items()):
                 logging.debug('\t0x%08x => %s', key, ' '.join(['0x%08x' % val for val in vals]))
                 fkey.write(struct.pack('I', key))
@@ -168,7 +170,7 @@ def _save_restore_one(rsc_dir, vocab_out, vocab_new):
     idx_tags = sorted([(idx, tag) for tag, idx
                        in list(vocab_out.items()) + list(vocab_new.items())])
     os.makedirs(rsc_dir, exist_ok=True)
-    with open(f'{rsc_dir}/restore.one', 'wb') as fone:
+    with open('{}/restore.one'.format(rsc_dir), 'wb') as fone:
         fone.write(struct.pack('B', 0))   # index 0 is empty(filling) byte
         for idx, out_tag in idx_tags:
             one_tag = out_tag.split(':')[0]
@@ -186,7 +188,7 @@ def run(args):
     Args:
         args:  program arguments
     """
-    restore_dic = load_restore_dic(f'{args.rsc_src}/restore.dic')
+    restore_dic = load_restore_dic('{}/restore.dic'.format(args.rsc_src))
     if not restore_dic:
         sys.exit(1)
     vocab_out = load_vocab_out(args.rsc_src)
