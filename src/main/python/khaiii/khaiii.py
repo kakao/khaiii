@@ -159,7 +159,7 @@ class KhaiiiApi:
         if not lib_path:
             ext = 'dylib' if platform.system() == 'Darwin' else 'so'
             lib_name = 'libkhaiii.{ext}'.format(**locals())
-            lib_dir = '{os.path.dirname(__file__)}/lib'.format(**locals())
+            lib_dir = os.path.join(os.path.dirname(__file__), 'lib')
             lib_path = '{lib_dir}/{lib_name}'.format(**locals())
             if not os.path.exists(lib_path):
                 lib_path = find_library(lib_name)
@@ -191,7 +191,7 @@ class KhaiiiApi:
         """
         self.close()
         if not rsc_dir:
-            rsc_dir = '{os.path.dirname(__file__)}/share/khaiii'.format(**locals())
+            rsc_dir = os.path.join(os.path.dirname(__file__), 'share/khaiii')
         self._handle = self._lib.khaiii_open(rsc_dir.encode('UTF-8'), opt_str.encode('UTF-8'))
         if self._handle < 0:
             raise KhaiiiExcept(self._last_error())
