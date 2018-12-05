@@ -41,11 +41,11 @@ class Resource(object):
         """
         :param  cfg:  config
         """
-        vocab_in_path = f'{cfg.rsc_src}/vocab.in'
+        vocab_in_path = '{cfg.rsc_src}/vocab.in'.format(**locals())
         self.vocab_in = Vocabulary(vocab_in_path, cfg.cutoff, SPECIAL_CHARS)
-        vocab_out_path = f'{cfg.rsc_src}/vocab.out'
+        vocab_out_path = '{cfg.rsc_src}/vocab.out'.format(**locals())
         self.vocab_out = Vocabulary(vocab_out_path, 0, None)
-        restore_dic_path = f'{cfg.rsc_src}/restore.dic'
+        restore_dic_path = '{cfg.rsc_src}/restore.dic'.format(**locals())
         self.restore_dic = self._load_restore_dic(restore_dic_path)
 
     @classmethod
