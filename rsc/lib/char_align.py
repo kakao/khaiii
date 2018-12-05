@@ -84,7 +84,7 @@ class Aligner(object):
         Args:
             rsc_dir:  resource dir
         """
-        file_path = f'{rsc_dir}/char_align.map'
+        file_path = '{rsc_dir}/char_align.map'.format(**locals())
         file_name = os.path.basename(file_path)
         for line_num, line in enumerate(codecs.open(file_path, 'r', encoding='UTF-8'), start=1):
             line = line.rstrip('\r\n')
