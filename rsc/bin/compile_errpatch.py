@@ -205,7 +205,7 @@ def _load_entries(args):
     """
     good_entries = []
     bad_entries = []
-    for file_path in glob.glob('{args.rsc_src}/{args.model_size}.errpatch.*'.format(**locals())):
+    for file_path in glob.glob('{}/{}.errpatch.*'.format(args.rsc_src, args.model_size)):
         file_name = os.path.basename(file_path)
         logging.info(file_name)
         for line_num, line in enumerate(open(file_path, 'r', encoding='UTF-8'), start=1):
@@ -285,9 +285,9 @@ def _save_trie(rsc_dir, entries):
                       entry.right_align)
         rights.append(entry.right_align)
         total_patch += 1
-    trie.save('{rsc_dir}/errpatch.tri'.format(**locals()))
+    trie.save('{}/errpatch.tri'.format(rsc_dir))
 
-    len_file = '{rsc_dir}/errpatch.len'.format(**locals())
+    len_file = '{}/errpatch.len'.format(rsc_dir)
     with open(len_file, 'wb') as fout:
         fout.write(struct.pack('B', 0))    # 인덱스가 1부터 시작하므로 dummy 데이터를 맨 앞에 하나 넣는다.
         for idx, right in enumerate(rights, start=1):
@@ -296,7 +296,7 @@ def _save_trie(rsc_dir, entries):
     logging.info('length saved: %s', len_file)
     logging.info('expected size: %d', len(rights)+1)
 
-    val_file = '{rsc_dir}/errpatch.val'.format(**locals())
+    val_file = '{}/errpatch.val'.format(rsc_dir)
     with open(val_file, 'wb') as fout:
         fout.write(struct.pack('h', 0))    # 인덱스가 1부터 시작하므로 dummy 데이터를 맨 앞에 하나 넣는다.
         for idx, right in enumerate(rights, start=1):
@@ -316,7 +316,7 @@ def run(args):
         args:  program arguments
     """
     aligner = Aligner(args.rsc_src)
-    restore_dic = load_restore_dic('{args.rsc_src}/restore.dic'.format(**locals()))
+    restore_dic = load_restore_dic('{}/restore.dic'.format(args.rsc_src))
     if not restore_dic:
         sys.exit(1)
     vocab_out = load_vocab_out(args.rsc_src)
