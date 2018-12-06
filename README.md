@@ -70,6 +70,10 @@ win 파라미터의 경우 3 혹은 4에서 가장 좋은 성능을 보이며 �
 khaiii의 빌드 및 설치에 관해서는 [빌드 및 설치 문서](doc/setup.md)를 참고하시기 바랍니다.
 
 
+Contributing
+----
+khaiii에 기여하실 분들은 [CONTRIBUTING](CONTRIBUTING.md) 및 [개발자를 위한 가이드](https://github.com/kakao/khaiii/wiki#%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C) 문서를 참고하시기 바랍니다.
+
 License
 ----
 This software is licensed under the [Apache 2 license](LICENSE), quoted below.
