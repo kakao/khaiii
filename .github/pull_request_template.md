@@ -1,6 +1,6 @@
 설명 (Description)
 ----
-_이 문구를 지우고 여기에 내용을 적어주세요. (Remove this sentence and descripbe here.)_
+_이 문구를 지우고 여기에 내용을 적어주세요. (Remove this sentence and describe here.)_
 
 ~~_겁내지 말아요, 저희는 한글을 사랑합니다._~~
 
