@@ -65,7 +65,7 @@ def readme():
     Returns:
         long description (content of README.md)
     """
-    return open('@CMAKE_SOURCE_DIR@/README.md').read()
+    return open('@CMAKE_SOURCE_DIR@/README.md', 'r', encoding='UTF-8').read()
 
 
 #########
