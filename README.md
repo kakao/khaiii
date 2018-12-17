@@ -74,6 +74,12 @@ Contributing
 ----
 khaiii에 기여하실 분들은 [CONTRIBUTING](CONTRIBUTING.md) 및 [개발자를 위한 가이드](https://github.com/kakao/khaiii/wiki#%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C) 문서를 참고하시기 바랍니다.
 
+
+Slack
+----
+khaiii의 슬랙 주소는 https://khaiii.slack.com 입니다. 슬랙 가입 요청 페이지는 https://join-khaiii.herokuapp.com 입니다. 설치 시 발생한 문제에 대해 질문하시거나, 개발에 참여하실 분들은 편하게 가입하셔서 같이 말씀 나누시길 바랍니다.
+
+
 License
 ----
 This software is licensed under the [Apache 2 license](LICENSE), quoted below.
