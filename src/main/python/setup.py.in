@@ -88,8 +88,8 @@ setup(
     license='Apache 2.0',
     packages=['khaiii', ],
     include_package_data=True,
-    install_requires=['numpy', 'torch==0.4.1', 'tqdm'],
-    setup_requires=['pytest-runner', ],
+    install_requires=[],
+    setup_requires=['numpy', 'pytest-runner', 'tqdm'],
     tests_require=['pytest', ],
     zip_safe=False,
     cmdclass={'build': CustomBuild}
