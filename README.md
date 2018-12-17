@@ -77,7 +77,7 @@ khaiii에 기여하실 분들은 [CONTRIBUTING](CONTRIBUTING.md) 및 [개발자�
 
 Slack
 ----
-khaiii의 슬랙 주소는 https://khaiii.slack.com 입니다. 슬랙 가입 요청 페이지는 https://join-khaiii.herokuapp.com 입니다.
+khaiii의 슬랙 주소는 https://khaiii.slack.com 입니다. 슬랙 가입 요청 페이지는 https://join-khaiii.herokuapp.com 입니다. 설치 시 발생한 문제에 대해 질문하시거나, 개발에 참여하실 분들은 편하게 가입하셔서 같이 말씀 나누시길 바랍니다.
 
 
 License
