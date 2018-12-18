@@ -33,7 +33,7 @@ ERRPATCH = \
 all: $(MODEL) $(PREANAL) $(RESTORE) $(ERRPATCH)
 
 $(wordlist 2,100,$(MODEL)): $(firstword $(MODEL))
-$(firstword $(MODEL)): $(RSC_SRC)/$(MODEL_SIZE).config.json $(RSC_SRC)/$(MODEL_SIZE).model.state
+$(firstword $(MODEL)): $(RSC_SRC)/$(MODEL_SIZE).config.json $(RSC_SRC)/$(MODEL_SIZE).model.pickle
 	mkdir -p $(RSC_DIR)
 	PYTHONPATH=$(LIB_DIR) python3 $(BIN_DIR)/compile_model.py --model-size $(MODEL_SIZE) --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
 
