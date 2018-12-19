@@ -41,6 +41,12 @@ cd build
 cmake ..
 ```
 
+만약, Command Line 도구를 설치까지 하신다면, 설치 경로를 바꾸기 위해서는 아래 명령대로 `PREFIX`를 지정하여 실행합니다.  
+(기본값: /usr/local)
+```
+cmake .. -DCMAKE_INSTALL_PREFIX=/path/to/install
+```
+
 이때 [Hunter](https://github.com/ruslo/hunter)를 통해 필요한 패키지들의 소스코드를 GitHub으로부터 $HOME/.hunter 위치에 자동으로 내려받고 빌드합니다.
 
 성공적으로 Makefile이 생성되면 다음과 같이 빌드합니다.
@@ -115,11 +121,8 @@ Total Test time (real) =   0.03 sec
 sudo make install
 ```
 
-이렇게 하면 `PREFIX` 경로 아래에 bin, include, lib, share 디렉터리를 생성하게 됩니다. `PREFIX`의 기본 값은 "/usr/local"이며 이를 변경하고자 할 경우 아래와 같이 cmake 명령 시 경로를 전달합니다.
-
-```
-cmake -DCMAKE_INSTALL_PREFIX=/path/to/install
-```
+이렇게 하면 `PREFIX` 경로 아래에 bin, include, lib, share 디렉터리를 생성하게 됩니다.  
+(`PREFIX` 경로 변경은 [빌드](#빌드) 참고)
 
 ### Python 바인딩
 Python 바인딩은 일단 빌드가 성공적으로 되었다면 다음과 같이 pip 명령을 이용하여 설치할 수 있습니다.
