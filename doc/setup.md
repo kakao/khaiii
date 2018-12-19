@@ -151,19 +151,18 @@ pip install .
 
 정상적으로 설치되었다면 다음과 같이 Python 인터프리터에서 사용할 수 있습니다.
 
+예제코드: 
 ```python
->>> import khaiii
->>> api = khaiii.KhaiiiApi()
->>> api.open()
-[2018-12-24 23:59:59.999] [Resource] [info] NN model loaded
-[2018-12-24 23:59:59.999] [Preanal] [info] preanal dictionary opened
-[2018-12-24 23:59:59.999] [ErrPatch] [info] errpatch dictionary opened
-[2018-12-24 23:59:59.999] [Restore] [info] restore dictionary opened
-[2018-12-24 23:59:59.999] [Resource] [info] PoS tagger opened
->>> for word in api.analyze('안녕, 세상.'):
-...     morphs_str = ' + '.join([(m.lex + '/' + m.tag) for m in word.morphs])
-...     print(f'{word.lex}\t{morphs_str}')
-...
+import khaiii
+api = khaiii.KhaiiiApi()
+api.open()
+
+for word in api.analyze('안녕, 세상.'):
+    morphs_str = ' + '.join([(m.lex + '/' + m.tag) for m in word.morphs])
+    print(f'{word.lex}\t{morphs_str}')
+```
+출력: 
+```
 안녕,	안녕/IC + ,/SP
 세상.	세상/NNG + ./SF
 ```
