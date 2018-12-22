@@ -28,7 +28,6 @@ class TestKhaiii(unittest.TestCase):
     def setUp(self):
         self._api = khaiii.KhaiiiApi()
         self._api.set_log_level('all', 'warn')
-        self._api.open()
 
     def tearDown(self):
         self._api.close()
