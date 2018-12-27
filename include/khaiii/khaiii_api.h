@@ -12,7 +12,7 @@
 // constants //
 ///////////////
 #define KHAIII_VERSION_MAJOR 0
-#define KHAIII_VERSION_MINOR 2
+#define KHAIII_VERSION_MINOR 3
 #define _MAC2STR(m) #m
 #define _JOIN_VER(x,y) _MAC2STR(x) "." _MAC2STR(y)    // NOLINT
 #define KHAIII_VERSION _JOIN_VER(KHAIII_VERSION_MAJOR,KHAIII_VERSION_MINOR)    // NOLINT
