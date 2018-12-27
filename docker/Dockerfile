@@ -8,9 +8,7 @@ RUN pip install cython
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-RUN pip install cmake
 RUN mkdir build
-
 WORKDIR /workspace/khaiii/build
 
 RUN cmake ..

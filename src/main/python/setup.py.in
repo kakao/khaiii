@@ -89,7 +89,7 @@ setup(
     packages=['khaiii', ],
     include_package_data=True,
     install_requires=[],
-    setup_requires=['numpy', 'pytest-runner', 'tqdm'],
+    setup_requires=['cmake>=3.10', 'pytest-runner'],
     tests_require=['pytest', ],
     zip_safe=False,
     cmdclass={'build': CustomBuild}

@@ -1,3 +1,1 @@
 cmake>=3.10
-numpy
-tqdm
