@@ -47,7 +47,7 @@ class CustomBuild(build):
         build_dir = f'{_SRC_NAME}/build'
         os.makedirs(build_dir, exist_ok=True)
         subprocess.check_call('cmake ..', cwd=build_dir, shell=True)
-        subprocess.check_call('make -j all resource', cwd=build_dir, shell=True)
+        subprocess.check_call('make all resource', cwd=build_dir, shell=True)
         shutil.rmtree('khaiii/lib', ignore_errors=True)
         shutil.copytree(f'{build_dir}/lib', 'khaiii/lib')
         shutil.rmtree('khaiii/share', ignore_errors=True)
@@ -65,7 +65,7 @@ def readme():
     Returns:
         long description (content of README.md)
     """
-    return open('@CMAKE_SOURCE_DIR@/README.md').read()
+    return open('@CMAKE_SOURCE_DIR@/README.md', 'r', encoding='UTF-8').read()
 
 
 #########
@@ -88,8 +88,8 @@ setup(
     license='Apache 2.0',
     packages=['khaiii', ],
     include_package_data=True,
-    install_requires=['numpy', 'torch==0.4.1', 'tqdm'],
-    setup_requires=['pytest-runner', ],
+    install_requires=[],
+    setup_requires=['numpy', 'pytest-runner', 'tqdm'],
     tests_require=['pytest', ],
     zip_safe=False,
     cmdclass={'build': CustomBuild}

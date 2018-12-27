@@ -81,9 +81,7 @@ int run(const cxxopts::ParseResult& opts) {
 //////////
 int main(int argc, char** argv) {
     auto _log = spdlog::stderr_color_mt("console");
-#ifdef NDEBUG
     spdlog::set_level(spdlog::level::warn);
-#endif
 
     cxxopts::Options options("khaiii", "analyze with khaiii");
     options.add_options()

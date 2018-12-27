@@ -13,12 +13,14 @@ __copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
 # imports #
 ###########
 import argparse
+from argparse import Namespace
 import ctypes
 from ctypes.util import find_library
 import logging
 import os
-import sys
 import platform
+import sys
+from typing import List
 
 
 #########
@@ -76,9 +78,9 @@ class KhaiiiMorph:
         self.reserved = b''
 
     def __str__(self):
-        return f'{self.lex}/{self.tag}'
+        return '{}/{}'.format(self.lex, self.tag)
 
-    def set(self, morph: ctypes.POINTER(_khaiii_morph_t), align: list):
+    def set(self, morph: ctypes.POINTER(_khaiii_morph_t), align: List[List[int]]):
         """
         khaiii_morph_t 구조체로부터 형태소 객체의 내용을 채운다.
         Args:
@@ -108,7 +110,7 @@ class KhaiiiWord:
 
     def __str__(self):
         morphs_str = ' + '.join([str(m) for m in self.morphs])
-        return f'{self.lex}\t{morphs_str}'
+        return '{}\t{}'.format(self.lex, morphs_str)
 
     def set(self, word: ctypes.POINTER(_khaiii_word_t), in_str: str, align: list):
         """
@@ -127,7 +129,8 @@ class KhaiiiWord:
         self.morphs = self._make_morphs(word.contents.morphs, align)
 
     @classmethod
-    def _make_morphs(cls, morph_head: ctypes.POINTER(_khaiii_morph_t), align: list):
+    def _make_morphs(cls, morph_head: ctypes.POINTER(_khaiii_morph_t), align: list) \
+            -> List[KhaiiiMorph]:
         """
         어절 내에 포함된 형태소의 리스트를 생성한다.
         Args:
@@ -150,31 +153,36 @@ class KhaiiiApi:
     """
     khaiii API 객체
     """
-    def __init__(self, lib_path: str = ''):
+    def __init__(self, lib_path: str = '', rsc_dir: str = '', opt_str: str = '',
+                 log_level: str = 'warn'):
         """
         Args:
             lib_path:  (shared) 라이브러리의 경로
+            rsc_dir:  리소스 디렉토리
+            opt_str:  옵션 문자열 (JSON 포맷)
+            log_level:  로그 레벨 (trace, debug, info, warn, err, critical)
         """
         self._handle = -1
         if not lib_path:
-            ext = 'dylib' if platform.system() == 'Darwin' else 'so'
-            lib_name = f'libkhaiii.{ext}'
-            lib_dir = f'{os.path.dirname(__file__)}/lib'
-            lib_path = f'{lib_dir}/{lib_name}'
+            lib_name = 'libkhaiii.dylib' if platform.system() == 'Darwin' else 'libkhaiii.so'
+            lib_dir = os.path.join(os.path.dirname(__file__), 'lib')
+            lib_path = '{}/{}'.format(lib_dir, lib_name)
             if not os.path.exists(lib_path):
                 lib_path = find_library(lib_name)
                 if not lib_path:
                     logging.error('current working directory: %s', os.getcwd())
                     logging.error('library directory: %s', lib_dir)
-                    raise KhaiiiExcept(f'fail to find library: {lib_name}')
+                    raise KhaiiiExcept('fail to find library: {}'.format(lib_name))
         logging.debug('khaiii library path: %s', lib_path)
         self._lib = ctypes.CDLL(lib_path)
         self._set_arg_res_types()
+        self.set_log_level('all', log_level)
+        self.open(rsc_dir, opt_str)
 
     def __del__(self):
         self.close()
 
-    def version(self):
+    def version(self) -> str:
         """
         khaiii_version() API
         Returns:
@@ -191,7 +199,7 @@ class KhaiiiApi:
         """
         self.close()
         if not rsc_dir:
-            rsc_dir = f'{os.path.dirname(__file__)}/share/khaiii'
+            rsc_dir = os.path.join(os.path.dirname(__file__), 'share/khaiii')
         self._handle = self._lib.khaiii_open(rsc_dir.encode('UTF-8'), opt_str.encode('UTF-8'))
         if self._handle < 0:
             raise KhaiiiExcept(self._last_error())
@@ -206,7 +214,7 @@ class KhaiiiApi:
             logging.debug('khaiii closed')
         self._handle = -1
 
-    def analyze(self, in_str: str, opt_str: str = ''):
+    def analyze(self, in_str: str, opt_str: str = '') -> List[KhaiiiWord]:
         """
         khaiii_analyze() API
         Args:
@@ -224,7 +232,7 @@ class KhaiiiApi:
         self._free_results(results)
         return words
 
-    def analyze_bfr_errpatch(self, in_str: str, opt_str: str = ''):
+    def analyze_bfr_errpatch(self, in_str: str, opt_str: str = '') -> List[int]:
         """
         khaiii_analyze_bfr_errpatch() dev API
         Args:
@@ -278,7 +286,7 @@ class KhaiiiApi:
         assert self._handle >= 0
         self._lib.khaiii_free_results(self._handle, results)
 
-    def _last_error(self):
+    def _last_error(self) -> str:
         """
         khaiii_last_error() API
         Returns:
@@ -312,7 +320,7 @@ class KhaiiiApi:
         self._lib.khaiii_set_log_levels.restype = ctypes.c_int
 
     @classmethod
-    def _make_words(cls, in_str: str, results: ctypes.POINTER(_khaiii_word_t)):
+    def _make_words(cls, in_str: str, results: ctypes.POINTER(_khaiii_word_t)) -> List[KhaiiiWord]:
         """
         linked-list 형태의 API 분석 결과로부터 어절(KhaiiiWord) 객체의 리스트를 생성
         Args:
@@ -332,7 +340,7 @@ class KhaiiiApi:
         return words
 
     @classmethod
-    def _get_align(cls, in_str: str):
+    def _get_align(cls, in_str: str) -> List[List[int]]:
         """
         byte-음절 정렬 정보를 생성. byte 길이 만큼의 각 byte 위치별 음절 위치
         Args:
@@ -350,16 +358,15 @@ class KhaiiiApi:
 #############
 # functions #
 #############
-def run(args):
+def run(args: Namespace):
     """
     run function which is the start point of program
     Args:
         args:  program arguments
     """
-    khaiii_api = KhaiiiApi(args.lib_path if args.lib_path else '')
+    khaiii_api = KhaiiiApi(args.lib_path, args.rsc_dir, args.opt_str)
     if args.set_log:
         khaiii_api.set_log_levels(args.set_log)
-    khaiii_api.open(args.rsc_dir, args.opt_str)
     for line in sys.stdin:
         if args.errpatch:
             print(khaiii_api.analyze_bfr_errpatch(line, ''))
@@ -378,7 +385,7 @@ def main():
     main function processes only argument parsing
     """
     parser = argparse.ArgumentParser(description='khaiii API module test program')
-    parser.add_argument('--lib-path', help='library path', metavar='FILE')
+    parser.add_argument('--lib-path', help='library path', metavar='FILE', default='')
     parser.add_argument('--rsc-dir', help='resource directory', metavar='DIR', default='')
     parser.add_argument('--opt-str', help='option string (JSON format)', metavar='JSON', default='')
     parser.add_argument('--input', help='input file <default: stdin>', metavar='FILE')

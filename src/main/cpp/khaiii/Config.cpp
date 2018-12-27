@@ -62,9 +62,14 @@ Config* Config::copy_and_override(const char* opt_str) {
     if (found != _cfg_cache.end()) return found->second.get();
 
     auto cfg = copy();
-    auto jsn = nlohmann::json::parse(opt_str);
-    cfg->override_members(jsn);
-    _cfg_cache[opt_str] = cfg;
+    try {
+        auto jsn = nlohmann::json::parse(opt_str);
+        cfg->override_members(jsn);
+        _cfg_cache[opt_str] = cfg;
+    } catch (const exception& exc) {
+        throw Except(fmt::format("fail to parse option: {}\n{}", exc.what(), opt_str));
+    }
+
     return cfg.get();
 }
 

@@ -50,7 +50,7 @@ win 파라미터의 경우 3 혹은 4에서 가장 좋은 성능을 보이며 �
 
 세종 코퍼스에서 분석 모호성이 없는 어절들로부터 자동으로 기분석 사전을 추출할 경우 약 8만 개의 엔트리가 생성됩니다. 이를 적용할 경우 약간의 속도 향상도 있어서 base 모델에 적용하면 약 9.2초로 10% 정도 속도 향상이 있었습니다.
 
-기분석 사전의 기술 방법 및 자세한 내용은 [기분석 사전 문서](doc/preanal.md)를 참고하시기 바랍니다.
+기분석 사전의 기술 방법 및 자세한 내용은 [기분석 사전 문서](https://github.com/kakao/khaiii/wiki/%EA%B8%B0%EB%B6%84%EC%84%9D-%EC%82%AC%EC%A0%84)를 참고하시기 바랍니다.
 
 
 ### 오분석 패치
@@ -62,17 +62,23 @@ win 파라미터의 경우 3 혹은 4에서 가장 좋은 성능을 보이며 �
 
 만약 khaiii가 위 "오분석 결과"와 같이 오분석을 발생한 경우에 한해 바른 분석 결과인 "정분석 결과"로 수정합니다. 여기서 "\_"는 어절 간 경계, 즉 공백을 의미합니다.
 
-오분석 패치의 기술 방법 및 자세한 내용은 [오분석 패치 문서](doc/errpatch.md)를 참고하시기 바랍니다.
+오분석 패치의 기술 방법 및 자세한 내용은 [오분석 패치 문서](https://github.com/kakao/khaiii/wiki/%EC%98%A4%EB%B6%84%EC%84%9D-%ED%8C%A8%EC%B9%98)를 참고하시기 바랍니다.
 
 
 빌드 및 설치
 ----
-khaiii의 빌드 및 설치에 관해서는 [빌드 및 설치 문서](doc/setup.md)를 참고하시기 바랍니다.
+khaiii의 빌드 및 설치에 관해서는 [빌드 및 설치 문서](https://github.com/kakao/khaiii/wiki/%EB%B9%8C%EB%93%9C-%EB%B0%8F-%EC%84%A4%EC%B9%98)를 참고하시기 바랍니다.
 
 
 Contributing
 ----
 khaiii에 기여하실 분들은 [CONTRIBUTING](CONTRIBUTING.md) 및 [개발자를 위한 가이드](https://github.com/kakao/khaiii/wiki#%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C) 문서를 참고하시기 바랍니다.
+
+
+Slack
+----
+khaiii의 슬랙 주소는 https://khaiii.slack.com 입니다. 슬랙 가입 요청 페이지는 https://join-khaiii.herokuapp.com 입니다. 설치 시 발생한 문제에 대해 질문하시거나, 개발에 참여하실 분들은 편하게 가입하셔서 같이 말씀 나누시길 바랍니다.
+
 
 License
 ----
