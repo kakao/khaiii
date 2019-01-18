@@ -5,36 +5,38 @@
 """
 기분석 사전을 빌드하는 스크립트
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-import argparse
+from argparse import ArgumentParser, Namespace
 from collections import defaultdict
 import glob
 import logging
 import os
 import struct
 import sys
+from typing import Dict, List, Tuple
+
+from khaiii.munjong import sejong_corpus
+from khaiii.resource.char_align import Aligner, AlignError, MrpChr
+from khaiii.resource.morphs import Morph, ParseError
+from khaiii.resource.trie import Trie
 
 from compile_restore import load_restore_dic, load_vocab_out, append_new_entries
-from char_align import Aligner, AlignError, MrpChr
-from morphs import Morph, ParseError
-import sejong_corpus
-from trie import Trie
 
 
 #########
 # types #
 #########
-class Entry(object):
+class Entry:
     """
     pre-analyzed dictionary entry
     """
-    def __init__(self, file_path, line_num, line):
+    def __init__(self, file_path: str, line_num: int, line: str):
         """
         Args:
             file_path:  파일 경로
@@ -59,7 +61,7 @@ class Entry(object):
         line = '# {}'.format(self.line) if self.is_sharp else self.line
         if self.err_msg:
             return '{}{}: "{}"'.format(file_num, self.err_msg, line)
-        elif self.is_sharp:
+        if self.is_sharp:
             return '{}: "{}"'.format(file_num, line)
         return '{}{}\t{}'.format(self.word, '*' if self.is_pfx else '', Morph.to_str(self.morphs))
 
@@ -94,7 +96,7 @@ class Entry(object):
 #############
 # functions #
 #############
-def print_errors(entries):
+def print_errors(entries: List[Entry]):
     """
     에러가 발생한 엔트리를 출력하고 프로그램을 종료한다.
     Args:
@@ -107,7 +109,7 @@ def print_errors(entries):
         sys.exit(1)
 
 
-def _load_entries(args):
+def _load_entries(args: Namespace) -> List[Entry]:
     """
     사전 엔트리를 파일로부터 로드한다.
     Args:
@@ -133,7 +135,7 @@ def _load_entries(args):
     return good_entries
 
 
-def _check_dup(entries):
+def _check_dup(entries: List[Entry]):
     """
     중복된 엔트리가 없는 지 확인한다.
     Args:
@@ -151,7 +153,7 @@ def _check_dup(entries):
     print_errors(bad_entries)
 
 
-def _set_align(aligner, Word, entries):    # pylint: disable=invalid-name
+def _set_align(aligner: Aligner, Word: type, entries: List[Entry]):    # pylint: disable=invalid-name
     """
     음절과 형태소 분석 결과를 정렬한다.
     Args:
@@ -173,7 +175,9 @@ def _set_align(aligner, Word, entries):    # pylint: disable=invalid-name
     print_errors(bad_entries)
 
 
-def align_to_tag(raw_word, alignment, restore, vocab):
+def align_to_tag(raw_word: str, alignment: List[List[str]], restore: Tuple[dict, dict],
+                 vocab: Tuple[Dict[str, int], Dict[str, int]]) \
+        -> Tuple[List[str], List[int]]:
     """
     어절의 원문과 정렬 정보를 활용해 음절과 매핑된 태그를 생성한다.
     Args:
@@ -224,7 +228,8 @@ def align_to_tag(raw_word, alignment, restore, vocab):
     return tag_outs, tag_nums
 
 
-def _set_tag_out(restore_dic, restore_new, vocab_out, vocab_new, entries):
+def _set_tag_out(restore_dic: dict, restore_new: dict, vocab_out: Dict[str, int],
+                 vocab_new: Dict[str, int], entries: List[Entry]):
     """
     음절 정렬로부터 출력 태그를 결정하고 출력 태그의 번호를 매핑한다.
     Args:
@@ -240,7 +245,7 @@ def _set_tag_out(restore_dic, restore_new, vocab_out, vocab_new, entries):
                                                       (vocab_out, vocab_new))
 
 
-def _save_trie(rsc_dir, entries):
+def _save_trie(rsc_dir: str, entries: List[Entry]):
     """
     트라이를 저장한다.
     Args:
@@ -270,7 +275,7 @@ def _save_trie(rsc_dir, entries):
                  (sum([len(e.tag_nums) for e in entries])+1) * struct.Struct('H').size)
 
 
-def run(args):
+def run(args: Namespace):
     """
     run function which is the start point of program
     Args:
@@ -301,7 +306,7 @@ def main():
     """
     main function processes only argument parsing
     """
-    parser = argparse.ArgumentParser(description='기분석 사전을 빌드하는 스크립트')
+    parser = ArgumentParser(description='기분석 사전을 빌드하는 스크립트')
     parser.add_argument('--rsc-src', help='source directory (text) <default: ./src>',
                         metavar='DIR', default='./src')
     parser.add_argument('--rsc-dir', help='target directory (binary) <default: ./share/khaiii>',

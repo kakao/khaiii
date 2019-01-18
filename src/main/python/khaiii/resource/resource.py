@@ -4,18 +4,19 @@
 """
 resources for training and tagging
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-import codecs
+from argparse import Namespace
 import logging
 import os
+from typing import Dict
 
-from vocabulary import Vocabulary
+from khaiii.resource.vocabulary import Vocabulary
 
 
 #############
@@ -33,13 +34,14 @@ PAD_CHR = '<p>'    # sepcial character for padding
 #########
 # types #
 #########
-class Resource(object):
+class Resource:
     """
     resources
     """
-    def __init__(self, cfg):
+    def __init__(self, cfg: Namespace):
         """
-        :param  cfg:  config
+        Args:
+            cfg:  config
         """
         vocab_in_path = '{}/vocab.in'.format(cfg.rsc_src)
         self.vocab_in = Vocabulary(vocab_in_path, cfg.cutoff, SPECIAL_CHARS)
@@ -49,14 +51,16 @@ class Resource(object):
         self.restore_dic = self._load_restore_dic(restore_dic_path)
 
     @classmethod
-    def _load_restore_dic(cls, path):
+    def _load_restore_dic(cls, path: str) -> Dict[str, str]:
         """
         load character to output tag mapping
-        :param  path:  file path
-        :return:  dictionary
+        Args:
+            path:  file path
+        Returns:
+            dictionary
         """
         dic = {}
-        for line in codecs.open(path, 'r', encoding='UTF-8'):
+        for line in open(path, 'r', encoding='UTF-8'):
             line = line.rstrip('\r\n')
             if not line:
                 continue
