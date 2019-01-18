@@ -4,29 +4,71 @@
 """
 형태소 분석 결과와 원문의 음절을 정렬하는 모듈
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-import codecs
 from collections import Counter, defaultdict
 import logging
 import os
+from typing import List, Tuple
 
-import jaso
+from khaiii.munjong.sejong_corpus import Word
+from khaiii.resource import jaso
+from khaiii.resource.morphs import Morph
 
 
 #########
 # types #
 #########
-class Aligner(object):
+class MrpChr:    # pylint: disable=too-few-public-methods
+    """
+    음절과 태그 pair
+    """
+    def __init__(self, char: str, tag: str):
+        """
+        Args:
+            char:  음절
+            tag:  태그
+        """
+        self.char = char
+        self.tag = tag
+
+    def __str__(self):
+        return '{}/{}'.format(self.char, self.tag)
+
+    def __hash__(self):
+        return hash(str(self))
+
+    def __eq__(self, other: 'MrpChr'):
+        """
+        Args:
+            other:  다른 객체
+        Returns:
+            같을 경우 True
+        """
+        return self.char == other.char and self.tag == other.tag
+
+    @classmethod
+    def to_str(cls, mrp_chrs: List['MrpChr']):
+        """
+        MrpChr 객체 리스트를 문자열로 변환하는 메소드
+        Args:
+            mrp_chrs:  MrpChr 객체 리스트
+        Returns:
+            변환된 문자열
+        """
+        return ' '.join([str(m) for m in mrp_chrs])
+
+
+class Aligner:
     """
     음절과 형태소 분석 결과의 정렬을 수행하는 클래스
     """
-    def __init__(self, rsc_src):
+    def __init__(self, rsc_src: str):
         """
         리소스를 오픈하고 초기화한다.
         Args:
@@ -37,7 +79,7 @@ class Aligner(object):
         self.middle_unmapped = defaultdict(Counter)
         self._open(rsc_src)
 
-    def align(self, word):
+    def align(self, word: Word) -> List[List[MrpChr]]:
         """
         어절의 원문과 분석 결과를 음절 단위로 정렬(매핑)한다.
         Args:
@@ -78,7 +120,7 @@ class Aligner(object):
         logging.info('total number of unmapped pairs: %d',
                      sum([sum(cnt.values()) for cnt in self.middle_unmapped.values()]))
 
-    def _open(self, rsc_dir):
+    def _open(self, rsc_dir: str):
         """
         initialize resources
         Args:
@@ -86,7 +128,7 @@ class Aligner(object):
         """
         file_path = '{}/char_align.map'.format(rsc_dir)
         file_name = os.path.basename(file_path)
-        for line_num, line in enumerate(codecs.open(file_path, 'r', encoding='UTF-8'), start=1):
+        for line_num, line in enumerate(open(file_path, 'r', encoding='UTF-8'), start=1):
             line = line.rstrip('\r\n')
             if not line or line[0] == '#':
                 continue
@@ -105,7 +147,7 @@ class Aligner(object):
             self.align_map[key] = map_nums
 
     @classmethod
-    def _get_morph_raw(cls, word):
+    def _get_morph_raw(cls, word: Word) -> str:
         """
         get raw string from morphemes
         Args:
@@ -116,7 +158,7 @@ class Aligner(object):
         return ''.join([m.lex for m in word.morphs])
 
     @classmethod
-    def _norm(cls, text):
+    def _norm(cls, text: str) -> str:
         """
         unicode normalization of text
         Args:
@@ -127,7 +169,7 @@ class Aligner(object):
         return jaso.decompose(text)
 
     @classmethod
-    def _align_phoneme(cls, raw_word, mrp_chrs):
+    def _align_phoneme(cls, raw_word: str, mrp_chrs: List[MrpChr]) -> List[List[MrpChr]]:
         """
         align word with morpheme which is same phoneme
         Args:
@@ -163,7 +205,7 @@ class Aligner(object):
         return maps
 
     @classmethod
-    def _align_forward(cls, raw_word, mrp_chrs):
+    def _align_forward(cls, raw_word: str, mrp_chrs: List[MrpChr]) -> Tuple[int, int]:
         """
         align from front of word
         Args:
@@ -192,7 +234,7 @@ class Aligner(object):
         return word_idx, mrp_chrs_idx
 
     @classmethod
-    def _align_backward(cls, raw_word, mrp_chrs):
+    def _align_backward(cls, raw_word: str, mrp_chrs: List[MrpChr]) -> Tuple[int, int]:
         """
         align from back of word
         Args:
@@ -226,7 +268,7 @@ class Aligner(object):
         return word_idx+1, mrp_chrs_idx+1
 
     @classmethod
-    def _is_verb_ending(cls, verb, ending):
+    def _is_verb_ending(cls, verb: Morph, ending: Morph) -> bool:
         """
         whether is verb + ending pattern or not
         Args:
@@ -241,7 +283,7 @@ class Aligner(object):
             ending_tag in {'EC', 'EP', 'EF', 'ETN', 'ETM'}
 
     @classmethod
-    def _are_first_last_phoneme_same(cls, raw_word, mrp_chrs):
+    def _are_first_last_phoneme_same(cls, raw_word: str, mrp_chrs: List[MrpChr]) -> bool:
         """
         whether are same the first phoneme and last phoneme
         Args:
@@ -255,7 +297,7 @@ class Aligner(object):
         return word_norm[0] == morph_norm[0] and word_norm[-1] == morph_norm[-1]
 
     @classmethod
-    def _is_ah_ending_verb(cls, mrp_chr):
+    def _is_ah_ending_verb(cls, mrp_chr: MrpChr) -> bool:
         """
         whether 'ㅏ' ending verb or not
         Args:
@@ -269,7 +311,7 @@ class Aligner(object):
         return len(norm_char) == 2 and norm_char[1] == 'ᅡ'    # code is 4449, not 12623
 
     @classmethod
-    def _is_eo_ending_verb(cls, mrp_chr):
+    def _is_eo_ending_verb(cls, mrp_chr: MrpChr) -> bool:
         """
         whether 'ㅓ', 'ㅐ' ending verb or not
         Args:
@@ -284,7 +326,8 @@ class Aligner(object):
                 norm_char[1] in ['ᅥ', 'ᅧ', 'ᅢ'])    # code is 4453, 4455, 4450
 
     @classmethod
-    def _align_middle_zero2one(cls, pfx_word, pfx_map, mdl_mrp_chrs, sfx_word, sfx_map):
+    def _align_middle_zero2one(cls, pfx_word: Word, pfx_map: List[MrpChr],
+                               mdl_mrp_chrs: List[MrpChr], sfx_word: Word, sfx_map: List[MrpChr]):
         """
         align middle chunks after forward/backward aligning which has no middle raw character,
             but has a remaining middle single morpheme character
@@ -322,7 +365,7 @@ class Aligner(object):
             raise RuntimeError('nowhere attach to')
 
     @classmethod
-    def _is_share_phoneme(cls, mdl_word, mdl_mrp_chrs):
+    def _is_share_phoneme(cls, mdl_word: str, mdl_mrp_chrs: List[MrpChr]) -> bool:
         """
         whether middle word characters and morpheme characters share same phoneme
         Args:
@@ -342,7 +385,7 @@ class Aligner(object):
                 return False
         return True
 
-    def _align_middle_by_dic(self, mdl_word, mdl_mrp_chrs):
+    def _align_middle_by_dic(self, mdl_word: str, mdl_mrp_chrs: List[MrpChr]) -> List[List[MrpChr]]:
         """
         align middle chunks after forward/backward aligning with mapping dictionary
         Args:
@@ -364,7 +407,8 @@ class Aligner(object):
                 idx += int(map_num)
         return maps
 
-    def _align_middle(self, mdl_word, mdl_mrp_chrs, raw_word, mrp_chrs):
+    def _align_middle(self, mdl_word: str, mdl_mrp_chrs: List[MrpChr], raw_word: str,
+                      mrp_chrs: List[MrpChr]) -> List[List[MrpChr]]:
         """
         align middle chunks after forward/backward aligning
         Args:
@@ -417,7 +461,9 @@ class Aligner(object):
         return maps
 
     @classmethod
-    def _align_middle_preproc(cls, pfx_mrp_chrs, pfx_map, mdl_mrp_chrs, sfx_mrp_chrs, sfx_map):
+    def _align_middle_preproc(cls, pfx_mrp_chrs: List[MrpChr], pfx_map: List[List[MrpChr]],
+                              mdl_mrp_chrs: List[MrpChr], sfx_mrp_chrs: List[MrpChr],
+                              sfx_map: List[List[MrpChr]]):
         """
         pre-processing middle part after forward/backward mapping before applying rules
         Args:
@@ -454,7 +500,7 @@ class Aligner(object):
                 sfx_map[0].insert(0, mdl_mrp_chrs[-1])
                 del mdl_mrp_chrs[-1]
 
-    def _get_pfx_mdl_sfx(self, raw_word, mrp_chrs):
+    def _get_pfx_mdl_sfx(self, raw_word: str, mrp_chrs: List[MrpChr]) -> Tuple:
         """
         get prefix, middle, suffix after forward/backward align
         Args:
@@ -481,7 +527,7 @@ class Aligner(object):
                (pfx_mrp_chrs, mdl_mrp_chrs, sfx_mrp_chrs), \
                (pfx_map, sfx_map)
 
-    def _align_forward_backward(self, raw_word, mrp_chrs):
+    def _align_forward_backward(self, raw_word: str, mrp_chrs: List[MrpChr]) -> List[str]:
         """
         align word with morpheme which is same phoneme
         Args:
@@ -497,7 +543,7 @@ class Aligner(object):
 
         if not mdl_word and not mdl_mrp_chrs:
             return pfx_map + sfx_map
-        elif not mdl_word:
+        if not mdl_word:
             if len(mdl_mrp_chrs) == 1:
                 self._align_middle_zero2one(pfx_word, pfx_map, mdl_mrp_chrs, sfx_word, sfx_map)
                 return pfx_map + sfx_map
@@ -529,7 +575,7 @@ class AlignError(Exception):
     """
     음절 정렬 과정에서 나타나는 예외
     """
-    def __init__(self, pfx):
+    def __init__(self, pfx: str):
         """
         Args:
             pfx:  예외 출력 시 보여줄 prefix (카테고리)
@@ -541,50 +587,10 @@ class AlignError(Exception):
     def __str__(self):
         return '\n'.join(['%s %s' % (self._pfx, _) for _ in self._msgs] + ['', ])
 
-    def add_msg(self, msg):
+    def add_msg(self, msg: str):
         """
         메세제를 추가한다.
         Args:
             msg:  에러 메세지
         """
         self._msgs.append(msg)
-
-
-class MrpChr(object):    # pylint: disable=too-few-public-methods
-    """
-    음절과 태그 pair
-    """
-    def __init__(self, char, tag):
-        """
-        Args:
-            char:  음절
-            tag:  태그
-        """
-        self.char = char
-        self.tag = tag
-
-    def __str__(self):
-        return '%s/%s' % (self.char, self.tag)
-
-    def __hash__(self):
-        return hash(str(self))
-
-    def __eq__(self, other):
-        """
-        Args:
-            other:  다른 객체
-        Returns:
-            같을 경우 True
-        """
-        return self.char == other.char and self.tag == other.tag
-
-    @classmethod
-    def to_str(cls, mrp_chrs):
-        """
-        MrpChr 객체 리스트를 문자열로 변환하는 메소드
-        Args:
-            mrp_chrs:  MrpChr 객체 리스트
-        Returns:
-            변환된 문자열
-        """
-        return ' '.join([str(_) for _ in mrp_chrs])

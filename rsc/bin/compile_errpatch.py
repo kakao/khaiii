@@ -5,14 +5,14 @@
 """
 오분석 패치를 빌드하는 스크립트
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-import argparse
+from argparse import ArgumentParser, Namespace
 from collections import defaultdict
 import glob
 import itertools
@@ -20,14 +20,16 @@ import logging
 import os
 import struct
 import sys
+from typing import Dict, List, Tuple
 
-from char_align import Aligner, AlignError
+from khaiii.munjong import sejong_corpus
+from khaiii.resource.char_align import Aligner, AlignError
+from khaiii.resource.morphs import Morph, ParseError
+from khaiii.resource.morphs import WORD_DELIM_STR, SENT_DELIM_STR, WORD_DELIM_NUM, SENT_DELIM_NUM
+from khaiii.resource.trie import Trie
+
 from compile_preanal import align_to_tag, print_errors
 from compile_restore import load_restore_dic, load_vocab_out
-from morphs import Morph, ParseError
-from morphs import WORD_DELIM_STR, SENT_DELIM_STR, WORD_DELIM_NUM, SENT_DELIM_NUM
-import sejong_corpus
-from trie import Trie
 
 
 #########
@@ -37,7 +39,7 @@ class Entry:
     """
     error patch entry
     """
-    def __init__(self, file_path, line_num, line):
+    def __init__(self, file_path: str, line_num: int, line: str):
         """
         Args:
             file_path:  파일 경로
@@ -65,7 +67,7 @@ class Entry:
             return '{}: "{}"'.format(file_num, line)
         return '{}\t{}\t{}'.format(self.raw, Morph.to_str(self.left), Morph.to_str(self.right))
 
-    def key_str(self):
+    def key_str(self) -> str:
         """
         패치의 중복 검사를 하기 위해 원문과 left를 이용하여 키를 생성
         Returns:
@@ -102,7 +104,7 @@ class Entry:
 #############
 # functions #
 #############
-def _split_list(lst, delim):
+def _split_list(lst: List[str], delim: str) -> List[List[str]]:
     """
     리스트를 delimiter로 split하는 함수
 
@@ -125,7 +127,8 @@ def _split_list(lst, delim):
     return sublists
 
 
-def align_patch(rsc_src, raw, morph_str):
+def align_patch(rsc_src: Tuple[Aligner, Dict, Dict[str, int]], raw: str, morph_str: str) \
+        -> List[int]:
     """
     패치의 원문과 분석 결과를 음절단위 매핑(정렬)을 수행한다.
     Args:
@@ -171,7 +174,7 @@ def align_patch(rsc_src, raw, morph_str):
     return tag_nums
 
 
-def mix_char_tag(chars, tags):
+def mix_char_tag(chars: str, tags: List[int]) -> List[int]:
     """
     음절과 출력 태그를 비트 연산으로 합쳐서 하나의 (32비트) 숫자로 표현한다.
     Args:
@@ -195,11 +198,11 @@ def mix_char_tag(chars, tags):
     return char_nums
 
 
-def _load_entries(args):
+def _load_entries(args: Namespace) -> List[Entry]:
     """
     패치 엔트리를 파일로부터 로드한다.
     Args:
-        args:  arguments
+        args:  program arguments
     Returns:
         엔트리 리스트
     """
@@ -221,7 +224,7 @@ def _load_entries(args):
     return good_entries
 
 
-def _check_dup(entries):
+def _check_dup(entries: List[Entry]):
     """
     중복된 엔트리가 없는 지 확인한다.
     Args:
@@ -239,7 +242,7 @@ def _check_dup(entries):
     print_errors(bad_entries)
 
 
-def _set_align(rsc_src, entries):    # pylint: disable=invalid-name
+def _set_align(rsc_src: Tuple[Aligner, dict, Dict[str, int]], entries: List[Entry]):
     """
     음절과 형태소 분석 결과를 정렬한다.
     Args:
@@ -265,7 +268,7 @@ def _set_align(rsc_src, entries):    # pylint: disable=invalid-name
     print_errors(bad_entries)
 
 
-def _save_trie(rsc_dir, entries):
+def _save_trie(rsc_dir: str, entries: List[Entry]):
     """
     트라이를 저장한다.
     Args:
@@ -309,7 +312,7 @@ def _save_trie(rsc_dir, entries):
                  (sum([len(r) for r in rights])+1) * struct.Struct('h').size)
 
 
-def run(args):
+def run(args: Namespace):
     """
     run function which is the start point of program
     Args:
@@ -338,7 +341,7 @@ def main():
     """
     main function processes only argument parsing
     """
-    parser = argparse.ArgumentParser(description='기분석 사전을 빌드하는 스크립트')
+    parser = ArgumentParser(description='기분석 사전을 빌드하는 스크립트')
     parser.add_argument('--model-size', help='model size <default: base>',
                         metavar='SIZE', default='base')
     parser.add_argument('--rsc-src', help='source directory (text) <default: ./src>',

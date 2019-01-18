@@ -4,8 +4,14 @@
 """
 한글 자소 관련 유틸리티 모듈
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
+
+
+###########
+# imports #
+###########
+from typing import Tuple
 
 
 #############
@@ -31,7 +37,7 @@ _LAST = ['\u3131', '\u3132', '\u3133', '\u3134', '\u3135',    # 종성
 #############
 # functions #
 #############
-def _decomp_char(char):
+def _decomp_char(char: str) -> Tuple[str, str, str]:
     """
     한글 음절 하나를 자소로 분해한다.
     Args:

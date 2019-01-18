@@ -5,15 +5,14 @@
 """
 compile trained model for C/C++ decoder
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-import argparse
-from argparse import Namespace
+from argparse import ArgumentParser, Namespace
 import json
 import logging
 import os
@@ -21,7 +20,7 @@ import pathlib
 import pickle
 from typing import Tuple
 
-from resource import Resource    # pylint: disable=wrong-import-order
+from khaiii.resource.resource import Resource
 
 
 #############
@@ -40,7 +39,7 @@ def load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
     file_path = '{}/{}.config.json'.format(rsc_src, model_size)
     cfg_dic = json.load(open(file_path, 'r', encoding='UTF-8'))
     logging.info('config: %s', json.dumps(cfg_dic, indent=2))
-    cfg = argparse.Namespace()
+    cfg = Namespace()
     for key, val in cfg_dic.items():
         setattr(cfg, key, val)
     cwd = os.path.realpath(os.getcwd())
@@ -159,7 +158,7 @@ def main():
     """
     main function processes only argument parsing
     """
-    parser = argparse.ArgumentParser(description='part-of-speech tagger')
+    parser = ArgumentParser(description='part-of-speech tagger')
     parser.add_argument('--model-size', help='model size <default: base>',
                         metavar='SIZE', default='base')
     parser.add_argument('--rsc-src', help='source directory (model) <default: ./src>',
