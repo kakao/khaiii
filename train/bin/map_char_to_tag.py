@@ -161,8 +161,8 @@ def main():
     parser = ArgumentParser(description='어절 내에서 원문과 형태소 사이에 정렬을 수행하고'
                                         ' 음절기반 학습 코퍼스를 생성')
     parser.add_argument('-c', '--corpus-dir', help='corpus dir', metavar='DIR', required=True)
-    parser.add_argument('--rsc-src', help='train resource dir <default: ../rsc/src>', metavar='DIR',
-                        default='../rsc/src')
+    parser.add_argument('--rsc-src', help='resource source dir <default: ../rsc/src>',
+                        metavar='DIR', default='../rsc/src')
     parser.add_argument('--output', help='output file <default: stdout>', metavar='FILE')
     parser.add_argument('--restore-dic', help='restore dic output file', metavar='FILE')
     parser.add_argument('--unmapped', help='unmapped log file', metavar='FILE')
