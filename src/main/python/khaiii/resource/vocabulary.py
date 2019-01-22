@@ -60,23 +60,8 @@ class Vocabulary:
         except KeyError:
             return 0    # unknown word number
 
-    def __len__(self) -> int:
+    def __len__(self):
         return len(self.dic)
-
-    '''
-    # 리소스 빌드 시 pytorch 의존성 제거를 위해 임시로 메서드를 제거합니다.
-    # 추후 학습 코드를 추가할 때 이 부분을 리팩토링 합니다.
-    def get_embedding(self, dim, padding_idx=None):
-        """
-        embedding을 리턴합니다.
-        Args:
-            dim:  embedding dimension
-            padding_idx:  padding index
-        """
-        if padding_idx:
-            return nn.Embedding(len(self), dim, padding_idx=padding_idx)
-        return nn.Embedding(len(self), dim)
-    '''    # pylint: disable=pointless-string-statement
 
     def padding_idx(self) -> int:
         """
