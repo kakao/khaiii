@@ -43,7 +43,7 @@ def _load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
     for key, val in cfg_dic.items():
         setattr(cfg, key, val)
     cwd = os.path.realpath(os.getcwd())
-    train_dir = os.path.realpath('{}/..'.format(rsc_src))
+    train_dir = os.path.realpath('{}/../../train'.format(rsc_src))
     if cwd != train_dir:
         os.chdir(train_dir)
     rsc = Resource(cfg)

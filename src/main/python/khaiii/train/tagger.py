@@ -31,19 +31,18 @@ class PosTagger:
     """
     part-of-speech tagger
     """
-    def __init__(self, rsc_src: str):
+    def __init__(self, model_dir: str):
         """
         Args:
-            rsc_src:  resource dir
+            model_dir:  model dir
         """
-        cfg_dict = json.load(open('{}/config.json'.format(rsc_src), 'r', encoding='UTF-8'))
+        cfg_dict = json.load(open('{}/config.json'.format(model_dir), 'r', encoding='UTF-8'))
         self.cfg = Namespace()
         for key, val in cfg_dict.items():
             setattr(self.cfg, key, val)
-        self.cfg.rsc_src = rsc_src
         self.rsc = Resource(self.cfg)
         self.model = CnnModel(self.cfg, self.rsc)
-        self.model.load('{}/model.state'.format(rsc_src))
+        self.model.load('{}/model.state'.format(model_dir))
         self.model.eval()
 
     def tag_raw(self, raw_sent: str, enable_restore: bool = True) -> PosSentTensor:
