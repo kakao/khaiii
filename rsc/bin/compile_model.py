@@ -26,7 +26,7 @@ from khaiii.resource.resource import Resource
 #############
 # functions #
 #############
-def load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
+def _load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
     """
     load config and resource from source directory
     Args:
@@ -38,7 +38,7 @@ def load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
     """
     file_path = '{}/{}.config.json'.format(rsc_src, model_size)
     cfg_dic = json.load(open(file_path, 'r', encoding='UTF-8'))
-    logging.info('config: %s', json.dumps(cfg_dic, indent=2))
+    logging.info('config: %s', json.dumps(cfg_dic, indent=4, sort_keys=True))
     cfg = Namespace()
     for key, val in cfg_dic.items():
         setattr(cfg, key, val)
@@ -145,7 +145,7 @@ def run(args: Namespace):
     Args:
         args:  program arguments
     """
-    cfg, rsc = load_cfg_rsc(args.rsc_src, args.model_size)
+    cfg, rsc = _load_cfg_rsc(args.rsc_src, args.model_size)
     data = pickle.load(open('{}/{}.model.pickle'.format(args.rsc_src, args.model_size), 'rb'))
     _write_config(cfg, rsc, args.rsc_dir)
     _write_data(data, args.rsc_dir)
