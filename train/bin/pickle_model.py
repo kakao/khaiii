@@ -184,7 +184,7 @@ def _load_resource(cfg: Namespace, rsc_src: str) -> Resource:
         Resource object
     """
     cwd = os.path.realpath(os.getcwd())
-    train_dir = os.path.realpath('{}/..'.format(rsc_src))
+    train_dir = os.path.realpath('{}/../../train'.format(rsc_src))
     if cwd != train_dir:
         os.chdir(train_dir)
     rsc = Resource(cfg)
