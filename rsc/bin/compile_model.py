@@ -15,7 +15,6 @@ __copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 from argparse import ArgumentParser, Namespace
 import json
 import logging
-import os
 import pathlib
 import pickle
 from typing import Tuple
@@ -42,13 +41,8 @@ def _load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
     cfg = Namespace()
     for key, val in cfg_dic.items():
         setattr(cfg, key, val)
-    cwd = os.path.realpath(os.getcwd())
-    train_dir = os.path.realpath('{}/../../train'.format(rsc_src))
-    if cwd != train_dir:
-        os.chdir(train_dir)
+    setattr(cfg, 'rsc_src', rsc_src)
     rsc = Resource(cfg)
-    if cwd != train_dir:
-        os.chdir(cwd)
     return cfg, rsc
 
 
