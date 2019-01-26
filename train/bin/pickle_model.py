@@ -16,7 +16,6 @@ from argparse import ArgumentParser, Namespace
 from array import array
 import json
 import logging
-import os
 import pickle
 import re
 
@@ -174,25 +173,6 @@ def _load_config(path: str) -> Namespace:
     return cfg
 
 
-def _load_resource(cfg: Namespace, rsc_src: str) -> Resource:
-    """
-    load resources
-    Args:
-        cfg:  config
-        rsc_src:  resource source dir
-    Returns:
-        Resource object
-    """
-    cwd = os.path.realpath(os.getcwd())
-    train_dir = os.path.realpath('{}/../../train'.format(rsc_src))
-    if cwd != train_dir:
-        os.chdir(train_dir)
-    rsc = Resource(cfg)
-    if cwd != train_dir:
-        os.chdir(cwd)
-    return rsc
-
-
 def run(args: Namespace):
     """
     run function which is the start point of program
@@ -200,7 +180,8 @@ def run(args: Namespace):
         args:  program arguments
     """
     cfg = _load_config('{}/config.json'.format(args.in_dir))
-    rsc = _load_resource(cfg, args.rsc_src)
+    setattr(cfg, 'rsc_src', args.rsc_src)
+    rsc = Resource(cfg)
     state_dict = torch.load('{}/model.state'.format(args.in_dir),
                             map_location=lambda storage, loc: storage)
     _validate_state_dict(cfg, rsc, state_dict)
