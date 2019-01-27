@@ -12,13 +12,15 @@ __copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 # imports #
 ###########
 from collections import Counter, defaultdict
+import itertools
 import logging
 import os
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 
 from khaiii.munjong.sejong_corpus import Word
 from khaiii.resource import jaso
 from khaiii.resource.morphs import Morph
+from khaiii.resource.morphs import WORD_DELIM_NUM, WORD_DELIM_STR, SENT_DELIM_NUM, SENT_DELIM_STR
 
 
 #########
@@ -594,3 +596,127 @@ class AlignError(Exception):
             msg:  에러 메세지
         """
         self._msgs.append(msg)
+
+
+#############
+# functions #
+#############
+def align_to_tag(raw_word: str, alignment: List[List[str]], restore: Tuple[dict, dict],
+                 vocab: Tuple[Dict[str, int], Dict[str, int]]) -> Tuple[List[str], List[int]]:
+    """
+    어절의 원문과 정렬 정보를 활용해 음절과 매핑된 태그를 생성한다.
+    Args:
+        raw_word:  어절 원문
+        alignment:  정렬 정보
+        restore:  (원형복원 사전, 원형복원 사전에 추가할 엔트리) pair
+        vocab:  (출력 태그 사전, 출력 태그 사전에 추가할 새로운 태그) pair
+    Returns:
+        음절별 출력 태그
+        음절별 출력 태그의 번호
+    """
+    assert len(raw_word) == len(alignment)
+    restore_dic, restore_new = restore
+    vocab_out, vocab_new = vocab
+    tag_outs = []
+    tag_nums = []
+    for char, mrp_chrs in zip(raw_word, alignment):
+        if len(mrp_chrs) == 1 and mrp_chrs[0].char == char:
+            tag_outs.append(mrp_chrs[0].tag)
+        else:
+            tag_str = ':'.join([m.tag for m in mrp_chrs])
+            mrp_chr_str_key = MrpChr.to_str(mrp_chrs)
+            found = -1
+            max_num = -1
+            for num, mrp_chr_str_val in restore_dic[char, tag_str].items():
+                if num > max_num:
+                    max_num = num
+                if mrp_chr_str_key == mrp_chr_str_val:
+                    found = num
+                    break
+            if found >= 0:
+                tag_outs.append('{}:{}'.format(tag_str, found))
+            else:
+                new_num = max_num + 1
+                restore_dic[char, tag_str][new_num] = mrp_chr_str_key
+                restore_new[char, tag_str][new_num] = mrp_chr_str_key
+                tag_outs.append('{}:{}'.format(tag_str, new_num))
+        tag = tag_outs[-1]
+        if tag in vocab_out:
+            tag_nums.append(vocab_out[tag])
+        elif tag in vocab_new:
+            tag_nums.append(vocab_new[tag])
+        else:
+            new_tag_num = len(vocab_out) + len(vocab_new) + 1
+            logging.debug('new output tag: [%d] %s', new_tag_num, tag)
+            vocab_new[tag] = new_tag_num
+            tag_nums.append(new_tag_num)
+    return tag_outs, tag_nums
+
+
+def _split_list(lst: List[str], delim: str) -> List[List[str]]:
+    """
+    리스트를 delimiter로 split하는 함수
+
+    >>> _split_list(['가/JKS', '_', '너/NP'], '_')
+    [['가/JKS'], ['너/NP']]
+
+    Args:
+        lst:  리스트
+        delim:  delimiter
+    Returns:
+        list of sublists
+    """
+    sublists = []
+    while lst:
+        prefix = [x for x in itertools.takewhile(lambda x: x != delim, lst)]
+        sublists.append(prefix)
+        lst = lst[len(prefix):]
+        delims = [x for x in itertools.takewhile(lambda x: x == delim, lst)]
+        lst = lst[len(delims):]
+    return sublists
+
+
+def align_patch(rsc_src: Tuple[Aligner, Dict, Dict[str, int]], raw: str, morph_str: str) \
+        -> List[int]:
+    """
+    패치의 원문과 분석 결과를 음절단위 매핑(정렬)을 수행한다.
+    Args:
+        rsc_src:  (Aligner, restore dic, vocab out) resource triple
+        raw:  원문
+        morph_str:  형태소 분석 결과 (패치 기술 형식)
+    Returns:
+        정렬에 기반한 출력 태그 번호
+    """
+    aligner, restore_dic, vocab_out = rsc_src
+    raw_words = raw.strip().split()
+    morphs = morph_str.split(' + ')
+    morphs_strip = morphs
+    if morphs[0] in [WORD_DELIM_STR, SENT_DELIM_STR]:
+        morphs_strip = morphs_strip[1:]
+    if morphs[-1] in [WORD_DELIM_STR, SENT_DELIM_STR]:
+        morphs_strip = morphs_strip[:-1]
+    morph_words = _split_list(morphs_strip, WORD_DELIM_STR)
+    tag_nums = []
+    restore_new = defaultdict(dict)
+    vocab_new = defaultdict(list)
+    for raw_word, morph_word in zip(raw_words, morph_words):
+        word = Word.parse('\t'.join(['', raw_word, ' + '.join(morph_word)]), '', 0)
+        try:
+            word_align = aligner.align(word)
+            _, word_tag_nums = align_to_tag(raw_word, word_align, (restore_dic, restore_new),
+                                            (vocab_out, vocab_new))
+            if restore_new or vocab_new:
+                logging.debug('needs dic update: %s', word)
+                return []
+        except AlignError as algn_err:
+            logging.debug('alignment error: %s', word)
+            logging.debug(str(algn_err))
+            return []
+        if tag_nums:
+            tag_nums.append(WORD_DELIM_NUM)
+        tag_nums.extend(word_tag_nums)
+    if morphs[0] in [WORD_DELIM_STR, SENT_DELIM_STR]:
+        tag_nums.insert(0, WORD_DELIM_NUM if morphs[0] == WORD_DELIM_STR else SENT_DELIM_NUM)
+    if morphs[-1] in [WORD_DELIM_STR, SENT_DELIM_STR]:
+        tag_nums.append(WORD_DELIM_NUM if morphs[-1] == WORD_DELIM_STR else SENT_DELIM_NUM)
+    return tag_nums

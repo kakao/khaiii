@@ -13,14 +13,14 @@ __copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 # imports #
 ###########
 from argparse import ArgumentParser, Namespace
-from collections import defaultdict
 import logging
 import os
 import struct
 import sys
-from typing import Dict, Tuple
+from typing import Dict
 
 from khaiii.resource.morphs import TAG_SET
+from khaiii.resource.resource import load_restore_dic, load_vocab_out
 
 
 #############
@@ -32,53 +32,6 @@ MAX_VAL_LEN = 4    # 원형복원 사전의 오른쪽 value 부분의 최대 길
 #############
 # functions #
 #############
-def load_restore_dic(file_path: str) -> Dict[Tuple[str, str], Dict[int, str]]:
-    """
-    원형복원 사전을 로드한다.
-    Args:
-        file_path:  파일 경로
-    Returns:
-        사전
-    """
-    file_name = os.path.basename(file_path)
-    restore_dic = defaultdict(dict)
-    for line_num, line in enumerate(open(file_path, 'r', encoding='UTF-8'), start=1):
-        line = line.rstrip()
-        if not line or line[0] == '#':
-            continue
-        char_tag_num, mrp_chr_str = line.split('\t')
-        char, tag_num = char_tag_num.rsplit('/', 1)
-        tag, num = tag_num.rsplit(':', 1)
-        num = int(num)
-        if (char, tag) in restore_dic:
-            num_mrp_chrs_dic = restore_dic[char, tag]
-            if num in num_mrp_chrs_dic:
-                logging.error('%s:%d: duplicated with %s: %s', file_name, line_num,
-                              num_mrp_chrs_dic[num], line)
-                return {}
-        restore_dic[char, tag][num] = mrp_chr_str
-    return restore_dic
-
-
-def load_vocab_out(rsc_src: str) -> Dict[str, int]:
-    """
-    출력 태그 vocabulary를 로드한다.
-    Args:
-        rsc_src:  리소스 디렉토리
-    Returns:
-        출력 태그 vocabulary
-    """
-    file_path = '{}/vocab.out'.format(rsc_src)
-    vocab_out = [line.strip() for line in open(file_path, 'r', encoding='UTF-8')
-                 if line.strip()]
-    vocab_out_more = []
-    file_path = '{}/vocab.out.more'.format(rsc_src)
-    if os.path.exists(file_path):
-        vocab_out_more = [line.strip() for line in open(file_path, 'r', encoding='UTF-8')
-                          if line.strip()]
-    return {tag: idx for idx, tag in enumerate(vocab_out + vocab_out_more, start=1)}
-
-
 def append_new_entries(rsc_src: str, restore_new: dict, vocab_new: Dict[str, int]):
     """
     기분석 사전 빌드 중에 새로 추가가 필요한 사전 엔트리를 해당 사전에 추가한다.

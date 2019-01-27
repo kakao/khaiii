@@ -42,8 +42,8 @@ def main():
     parser = ArgumentParser(description='train model from data')
     parser.add_argument('-i', '--in-pfx', help='input data path prefix', metavar='NAME',
                         required=True)
-    parser.add_argument('--rsc-src', help='train resource dir <default: ../rsc/src>', metavar='DIR',
-                        default='../rsc/src')
+    parser.add_argument('--rsc-src', help='resource source dir <default: ../rsc/src>',
+                        metavar='DIR', default='../rsc/src')
     parser.add_argument('--logdir', help='tensorboard log dir <default: ./logdir>', metavar='DIR',
                         default='./logdir')
     parser.add_argument('--window', help='left/right character window length <default: 3>',
