@@ -19,14 +19,16 @@ import logging
 import os
 import struct
 import sys
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 from khaiii.munjong import sejong_corpus
-from khaiii.resource.char_align import Aligner, AlignError, MrpChr
+from khaiii.resource.char_align import Aligner, AlignError, align_to_tag
 from khaiii.resource.morphs import Morph, ParseError
+from khaiii.resource.resource import load_restore_dic, load_vocab_out
 from khaiii.resource.trie import Trie
 
-from compile_restore import load_restore_dic, load_vocab_out, append_new_entries
+from compile_restore import append_new_entries
+
 
 
 #########
@@ -173,59 +175,6 @@ def _set_align(aligner: Aligner, Word: type, entries: List[Entry]):    # pylint:
             logging.error(map_exc)
             bad_entries.append(entry)
     print_errors(bad_entries)
-
-
-def align_to_tag(raw_word: str, alignment: List[List[str]], restore: Tuple[dict, dict],
-                 vocab: Tuple[Dict[str, int], Dict[str, int]]) \
-        -> Tuple[List[str], List[int]]:
-    """
-    어절의 원문과 정렬 정보를 활용해 음절과 매핑된 태그를 생성한다.
-    Args:
-        raw_word:  어절 원문
-        alignment:  정렬 정보
-        restore:  (원형복원 사전, 원형복원 사전에 추가할 엔트리) pair
-        vocab:  (출력 태그 사전, 출력 태그 사전에 추가할 새로운 태그) pair
-    Returns:
-        음절별 출력 태그
-        음절별 출력 태그의 번호
-    """
-    assert len(raw_word) == len(alignment)
-    restore_dic, restore_new = restore
-    vocab_out, vocab_new = vocab
-    tag_outs = []
-    tag_nums = []
-    for char, mrp_chrs in zip(raw_word, alignment):
-        if len(mrp_chrs) == 1 and mrp_chrs[0].char == char:
-            tag_outs.append(mrp_chrs[0].tag)
-        else:
-            tag_str = ':'.join([m.tag for m in mrp_chrs])
-            mrp_chr_str_key = MrpChr.to_str(mrp_chrs)
-            found = -1
-            max_num = -1
-            for num, mrp_chr_str_val in restore_dic[char, tag_str].items():
-                if num > max_num:
-                    max_num = num
-                if mrp_chr_str_key == mrp_chr_str_val:
-                    found = num
-                    break
-            if found >= 0:
-                tag_outs.append('{}:{}'.format(tag_str, found))
-            else:
-                new_num = max_num + 1
-                restore_dic[char, tag_str][new_num] = mrp_chr_str_key
-                restore_new[char, tag_str][new_num] = mrp_chr_str_key
-                tag_outs.append('{}:{}'.format(tag_str, new_num))
-        tag = tag_outs[-1]
-        if tag in vocab_out:
-            tag_nums.append(vocab_out[tag])
-        elif tag in vocab_new:
-            tag_nums.append(vocab_new[tag])
-        else:
-            new_tag_num = len(vocab_out) + len(vocab_new) + 1
-            logging.debug('new output tag: [%d] %s', new_tag_num, tag)
-            vocab_new[tag] = new_tag_num
-            tag_nums.append(new_tag_num)
-    return tag_outs, tag_nums
 
 
 def _set_tag_out(restore_dic: dict, restore_new: dict, vocab_out: Dict[str, int],

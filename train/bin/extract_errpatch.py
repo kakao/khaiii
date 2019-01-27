@@ -325,8 +325,11 @@ def main():
     """
     parser = ArgumentParser(description='오분석 패치 후보를 추출하는 스크립트')
     parser.add_argument('-c', '--corpus-dir', help='corpus dir', metavar='DIR', required=True)
-    parser.add_argument('--lib-path', help='khaiii shared library path', metavar='FILE', default='')
-    parser.add_argument('--rsc-dir', help='resource dir', metavar='DIR', default='')
+    parser.add_argument('--lib-path', help='khaiii shared library path' \
+                                           ' <default ../build/lib/libkhaiii.so>',
+                        metavar='FILE', default='../build/lib/libkhaiii.so')
+    parser.add_argument('--rsc-dir', help='resource dir <default: ../build/share/khaiii>',
+                        metavar='DIR', default='../build/share/khaiii')
     parser.add_argument('--output', help='output file <default: stdout>', metavar='FILE')
     parser.add_argument('--with-freq', help='print with frequency', action='store_true')
     parser.add_argument('--min-freq', help='minimum frequency <default: 10>', metavar='FREQ',

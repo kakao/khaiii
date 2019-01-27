@@ -127,3 +127,30 @@ class Morph:
         if tag not in TAG_SET:
             raise ParseError('invalid pos tag: {}'.format(tag))
         return Morph(lex, tag)
+
+
+#############
+# functions #
+#############
+def mix_char_tag(chars: str, tags: List[int]) -> List[int]:
+    """
+    음절과 출력 태그를 비트 연산으로 합쳐서 하나의 (32비트) 숫자로 표현한다.
+    Args:
+        chars:  음절 (유니코드) 리스트 (문자열)
+        tags:  출력 태그 번호의 리스트
+    Returns:
+        합쳐진 숫자의 리스트
+    """
+    char_nums = [ord(c) for c in chars]
+    if tags[0] == SENT_DELIM_NUM:
+        char_nums.insert(0, SENT_DELIM_NUM)
+    if tags[-1] == SENT_DELIM_NUM:
+        char_nums.append(SENT_DELIM_NUM)
+    for idx, char_num in enumerate(char_nums):
+        if char_num == ord(' '):
+            char_nums[idx] = WORD_DELIM_NUM
+            continue
+        elif tags[idx] == SENT_DELIM_NUM:
+            continue
+        char_nums[idx] = char_num << 12 | tags[idx]
+    return char_nums
