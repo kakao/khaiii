@@ -12,9 +12,9 @@ function print_usage() {
     echo "  -h, --help        show this help message and exit"
     echo "  -i FILE           input file"
     echo "  -c DIR            corpus dir"
-    echo "  --rsc-src=DIR     <default: ../../rsc/src>"
-    echo "  --lib-path=FILE   <default: ../../build/lib/libkhaiii.so>"
-    echo "  --rsc-dir=DIR     <default: ../../build/share/khaiii>"
+    echo "  --rsc-src=DIR     <default: ../rsc/src>"
+    echo "  --lib-path=FILE   <default: ../build/lib/libkhaiii.so>"
+    echo "  --rsc-dir=DIR     <default: ../build/share/khaiii>"
     echo "  --num-mapper=NUM  <default: 1000>"
     if [ -z "${msg}" ]; then
         exit 0
@@ -84,13 +84,13 @@ function parse_args() {
     fi
 
     if [ -z "${RSC_SRC}" ]; then
-        RSC_SRC=../../rsc/src
+        RSC_SRC=../rsc/src
     fi
     if [ -z "${LIB_PATH}" ]; then
-        LIB_PATH=../../build/lib/libkhaiii.so
+        LIB_PATH=../build/lib/libkhaiii.so
     fi
     if [ -z "${RSC_DIR}" ]; then
-        RSC_DIR=../../build/share/khaiii
+        RSC_DIR=../build/share/khaiii
     fi
     if [ -z "${NUM_MAPPER}" ]; then
         NUM_MAPPER=1000
@@ -135,7 +135,7 @@ function cache_files() {
     hadoop fs -test -e ${CACHE_DIR} && hadoop fs -rm -skipTrash -r ${CACHE_DIR}
     hadoop fs -mkdir -p ${CACHE_DIR}
 
-    hadoop fs -put ../../src/main/python/khaiii ${CACHE_DIR}
+    hadoop fs -put ../src/main/python/khaiii ${CACHE_DIR}
     hadoop fs -mkdir -p ${CACHE_DIR}/khaiii/lib
     hadoop fs -put ${LIB_PATH} ${CACHE_DIR}/khaiii/lib
 
@@ -188,7 +188,7 @@ parse_args $@
 cd "$(dirname $0)"
 init_envs
 
-# split_input
-# cache_files
+split_input
+cache_files
 run_hadoop
 del_temp
