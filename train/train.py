@@ -57,10 +57,12 @@ def main():
                         type=float, default=0.001)
     parser.add_argument('--lr-decay', help='learning rate decay <default: 0.9>', metavar='REAL',
                         type=float, default=0.9)
-    parser.add_argument('--batch-size', help='batch size <default: 1000>', metavar='INT', type=int,
-                        default=1000)
+    parser.add_argument('--batch-size', help='batch size <default: 500>', metavar='INT', type=int,
+                        default=500)
     parser.add_argument('--check-step', help='check every N step <default: 10000>', metavar='INT',
                         type=int, default=10000)
+    parser.add_argument('--batch-grow', help='grow batch size by 1 per N step <default: 10000>',
+                        metavar='INT', type=int, default=10000)
     parser.add_argument('--patience', help='maximum patience count to revert model <default: 10>',
                         metavar='INT', type=int, default=10)
     parser.add_argument('--gpu-num', help='GPU number to use <default: 0>', metavar='INT', type=int,
