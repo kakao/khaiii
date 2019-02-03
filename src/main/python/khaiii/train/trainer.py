@@ -55,10 +55,9 @@ class Trainer:
         self.criterion = nn.CrossEntropyLoss()
         self.evaler = Evaluator()
         self._load_dataset()
-        if 'step' not in cfg.__dict__:
+        if 'epoch' not in cfg.__dict__:
             setattr(cfg, 'epoch', 0)
-            setattr(cfg, 'step', 0)
-            setattr(cfg, 'best_step', 0)
+            setattr(cfg, 'best_epoch', 0)
         self.log_file = None    # tab separated log file
         self.sum_wrt = None    # tensorboard summary writer
         self.loss_trains = []
@@ -67,7 +66,6 @@ class Trainer:
         self.acc_words = []
         self.f_scores = []
         self.learning_rates = []
-        self.batch_sizes = []
 
     @classmethod
     def model_id(cls, cfg: Namespace) -> str:
@@ -87,8 +85,6 @@ class Trainer:
             'lr{}'.format(cfg.learning_rate),
             'lrd{}'.format(cfg.lr_decay),
             'bs{}'.format(cfg.batch_size),
-            'cs{}'.format(cfg.check_step),
-            'bg{}'.format(cfg.batch_grow),
         ]
         return '.'.join(model_cfgs)
 
@@ -99,6 +95,9 @@ class Trainer:
         dataset_dev_path = '{}.dev'.format(self.cfg.in_pfx)
         self.dataset_dev = PosDataset(self.cfg, self.rsc.restore_dic,
                                       open(dataset_dev_path, 'r', encoding='UTF-8'))
+        dataset_test_path = '{}.test'.format(self.cfg.in_pfx)
+        self.dataset_test = PosDataset(self.cfg, self.rsc.restore_dic,
+                                       open(dataset_test_path, 'r', encoding='UTF-8'))
         dataset_train_path = '{}.train'.format(self.cfg.in_pfx)
         self.dataset_train = PosDataset(self.cfg, self.rsc.restore_dic,
                                         open(dataset_train_path, 'r', encoding='UTF-8'))
@@ -152,25 +151,23 @@ class Trainer:
             line = line.rstrip('\r\n')
             if not line:
                 continue
-            (epoch, step, loss_train, loss_dev, acc_char, acc_word, f_score, learning_rate,
-             batch_size) = line.split('\t')
+            (epoch, loss_train, loss_dev, acc_char, acc_word, f_score, learning_rate) = \
+                    line.split('\t')
             self.cfg.epoch = int(epoch) + 1
-            self.cfg.step = self.cfg.best_step = (int(step)+1) * self.cfg.check_step
+            self.cfg.best_epoch = self.cfg.epoch
             self.loss_trains.append(float(loss_train))
             self.loss_devs.append(float(loss_dev))
             self.acc_chars.append(float(acc_char))
             self.acc_words.append(float(acc_word))
             self.f_scores.append(float(f_score))
             self.learning_rates.append(float(learning_rate))
-            self.batch_sizes.append(int(batch_size))
             if float(f_score) > f_score_best:
                 f_score_best = float(f_score)
                 best_idx = idx
-        logging.info('---- [%d|%d] los(trn/dev): %.4f / %.4f, acc(chr/wrd): %.4f / %.4f, ' \
-                     'f-score: %.4f, lr: %.8f, bs: %d ----', self.cfg.epoch,
-                     self.cfg.step // self.cfg.check_step, self.loss_trains[best_idx],
-                     self.loss_devs[best_idx], self.acc_chars[best_idx], self.acc_words[best_idx],
-                     self.f_scores[best_idx], self.learning_rates[-1], self.batch_sizes[-1])
+        logging.info('---- [%d] los(trn/dev): %.4f / %.4f, acc(chr/wrd): %.4f / %.4f, ' \
+                     'f-score: %.4f, lr: %.8f ----', self.cfg.epoch,
+                     self.loss_trains[best_idx], self.loss_devs[best_idx], self.acc_chars[best_idx],
+                     self.acc_words[best_idx], self.f_scores[best_idx], self.learning_rates[-1])
 
     def train(self):
         """
@@ -188,21 +185,25 @@ class Trainer:
         self.sum_wrt = SummaryWriter(self.cfg.out_dir)
         patience = self.cfg.patience
         for _ in range(1000000):
-            has_best = self._train_epoch()
-            if has_best:
+            is_best = self._train_epoch()
+            if is_best:
                 patience = self.cfg.patience
                 continue
             if patience <= 0:
                 break
             self._revert_to_best(True)
             patience -= 1
-            tqdm.write('==== revert to check: {}, f-score: {:.4f}, patience: {} ===='.format( \
-                    self.cfg.best_step // self.cfg.check_step, max(self.f_scores), patience))
+            logging.info('==== revert to EPOCH[%d], f-score: %.4f, patience: %d ====',
+                         self.cfg.best_epoch, max(self.f_scores), patience)
 
         train_end = datetime.now()
         train_elapsed = self._elapsed(train_end - train_begin)
-        logging.info('}}}} training end: %s, elapsed: %s, epoch: %d, step: %dk }}}}',
-                     self._dt_str(train_end), train_elapsed, self.cfg.epoch, self.cfg.step // 1000)
+        logging.info('}}}} training end: %s, elapsed: %s, epoch: %s }}}}',
+                     self._dt_str(train_end), train_elapsed, self.cfg.epoch)
+
+        avg_loss, acc_char, acc_word, f_score = self.evaluate(False)
+        logging.info('==== test loss: %.4f, char acc: %.4f, word acc: %.4f, f-score: %.4f ====',
+                     avg_loss, acc_char, acc_word, f_score)
 
     def _revert_to_best(self, is_decay_lr: bool):
         """
@@ -219,64 +220,51 @@ class Trainer:
         """
         한 epoch을 학습한다. 배치 단위는 글자 단위
         Returns:
-            best f-score를 기록한 step 여부
+            현재 epoch이 best 성능을 나타냈는 지 여부
         """
-        has_best = False
-        loss_batch = torch.tensor(0.0)    # pylint: disable=not-callable
-        num_in_batch = 0
-        batch_size = self.cfg.batch_size
-        if self.cfg.batch_grow > 0:
-            batch_size = self.cfg.batch_size + self.cfg.step // self.cfg.batch_grow
+        batches = []
         loss_trains = []
         for train_sent in tqdm(self.dataset_train, 'EPOCH[{}]'.format(self.cfg.epoch),
-                               mininterval=1, ncols=100):
+                               len(self.dataset_train), mininterval=1, ncols=100):
             train_labels, train_contexts = train_sent.to_tensor(self.cfg, self.rsc, True)
             if torch.cuda.is_available():
                 train_labels = train_labels.cuda()
                 train_contexts = train_contexts.cuda()
-                loss_batch = loss_batch.cuda()
 
             self.model.train()
             train_outputs = self.model(train_contexts)
-            train_outputs.requires_grad_()
-            loss_train = self.criterion(train_outputs, train_labels)
-            loss_train.backward()
-            loss_trains.append(loss_train.item())
-            loss_batch += loss_train
-            num_in_batch += len(train_labels)
-            if num_in_batch < batch_size:
+            batches.append((train_labels, train_outputs))
+            if sum([batch[0].size(0) for batch in batches]) < self.cfg.batch_size:
                 continue
 
+            batch_label = torch.cat([x[0] for x in batches], 0)    # pylint: disable=no-member
+            batch_output = torch.cat([x[1] for x in batches], 0)    # pylint: disable=no-member
+            batches = []
+
+            batch_output.requires_grad_()
+            loss_train = self.criterion(batch_output, batch_label)
+            loss_trains.append(loss_train.item())
+            loss_train.backward()
             self.optimizer.step()
             self.optimizer.zero_grad()
-            self.sum_wrt.add_scalar('loss-batch', loss_batch.item(), self.cfg.step)
-            self.cfg.step += 1
-            loss_batch = torch.tensor(0.0)    # pylint: disable=not-callable
-            num_in_batch = 0
 
-            if self.cfg.step % self.cfg.check_step == 0:
-                avg_loss_dev, acc_char, acc_word, f_score = self.evaluate()
-                has_best |= self._check(loss_trains, avg_loss_dev, acc_char, acc_word, f_score,
-                                        batch_size)
-            if self.cfg.batch_grow > 0 and self.cfg.step % self.cfg.batch_grow == 0:
-                batch_size = self.cfg.batch_size + self.cfg.step // self.cfg.batch_grow
-
+        avg_loss_dev, acc_char, acc_word, f_score = self.evaluate(True)
+        is_best = self._check_epoch(loss_trains, avg_loss_dev, acc_char, acc_word, f_score)
         self.cfg.epoch += 1
-        return has_best
+        return is_best
 
-    def _check(self, loss_trains: List[float], avg_loss_dev: float, acc_char: float,
-               acc_word: float, f_score: float, batch_size: int) -> bool:
+    def _check_epoch(self, loss_trains: List[float], avg_loss_dev: float, acc_char: float,
+                     acc_word: float, f_score: float) -> bool:
         """
-        cfg.check_step번의 step마다 수행하는 체크
+        매 epoch마다 수행하는 체크
         Args:
-            loss_trains:  train 코퍼스에서 각 배치별 loss 리스트
+            loss_trains:   train 코퍼스에서 각 배치별 loss 리스트
             avg_loss_dev:  dev 코퍼스 문장 별 평균 loss
             acc_char:  음절 정확도
             acc_word:  어절 정확도
             f_score:  f-score
-            batch_size:  배치 크기
         Returns:
-            현재 step이 best 성능을 나타냈는 지 여부
+            현재 epoch이 best 성능을 나타냈는 지 여부
         """
         avg_loss_train = sum(loss_trains) / len(loss_trains)
         loss_trains.clear()
@@ -286,38 +274,34 @@ class Trainer:
         self.acc_words.append(acc_word)
         self.f_scores.append(f_score)
         self.learning_rates.append(self.cfg.learning_rate)
-        self.batch_sizes.append(batch_size)
-        check_id = self.cfg.step // self.cfg.check_step - 1
         is_best = self._is_best()
         is_best_str = 'BEST' if is_best else '< {:.4f}'.format(max(self.f_scores))
-        tqdm.write('    [{:3d}|{:5d}]  [Los trn]  [Los dev]  [Acc chr]  [Acc wrd]  [F-score]'
-                   '           [LR]        [BS]'.format(self.cfg.epoch, check_id))
-        tqdm.write('                 {:9.4f}  {:9.4f}  {:9.4f}  {:9.4f}  {:9.4f} {:8}  {:.8f}  {}' \
+        logging.info('[Los trn]  [Los dev]  [Acc chr]  [Acc wrd]  [F-score]           [LR]')
+        logging.info('{:9.4f}  {:9.4f}  {:9.4f}  {:9.4f}  {:9.4f} {:8}  {:.8f}' \
                 .format(avg_loss_train, avg_loss_dev, acc_char, acc_word, f_score, is_best_str,
-                        self.cfg.learning_rate, batch_size))
-        print('{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}'.format( \
-                self.cfg.epoch, check_id, avg_loss_train, avg_loss_dev, acc_char, acc_word, f_score,
-                self.cfg.learning_rate, batch_size), file=self.log_file)
+                        self.cfg.learning_rate))
+        print('{}\t{}\t{}\t{}\t{}\t{}\t{}'.format(self.cfg.epoch, avg_loss_train, avg_loss_dev,
+                                                  acc_char, acc_word, f_score,
+                                                  self.cfg.learning_rate), file=self.log_file)
         self.log_file.flush()
-        self.sum_wrt.add_scalar('loss-train', avg_loss_train, check_id)
-        self.sum_wrt.add_scalar('loss-dev', avg_loss_dev, check_id)
-        self.sum_wrt.add_scalar('acc-char', acc_char, check_id)
-        self.sum_wrt.add_scalar('acc-word', acc_word, check_id)
-        self.sum_wrt.add_scalar('f-score', f_score, check_id)
-        self.sum_wrt.add_scalar('learning-rate', self.cfg.learning_rate, check_id)
-        self.sum_wrt.add_scalar('batch-size', batch_size, check_id)
+        self.sum_wrt.add_scalar('loss-train', avg_loss_train, self.cfg.epoch)
+        self.sum_wrt.add_scalar('loss-dev', avg_loss_dev, self.cfg.epoch)
+        self.sum_wrt.add_scalar('acc-char', acc_char, self.cfg.epoch)
+        self.sum_wrt.add_scalar('acc-word', acc_word, self.cfg.epoch)
+        self.sum_wrt.add_scalar('f-score', f_score, self.cfg.epoch)
+        self.sum_wrt.add_scalar('learning-rate', self.cfg.learning_rate, self.cfg.epoch)
         return is_best
 
     def _is_best(self) -> bool:
         """
-        이번 step에 가장 좋은 성능을 냈는 지 확인하고 그럴 경우 현재 상태를 저장한다.
+        이번 epoch에 가장 좋은 성능을 냈는 지 확인하고 그럴 경우 현재 상태를 저장한다.
         Returns:
-            best 여부
+            마지막 f-score의 best 여부
         """
         if len(self.f_scores) > 1 and max(self.f_scores[:-1]) >= self.f_scores[-1]:
             return False
-        # this step hits new max value
-        self.cfg.best_step = self.cfg.step
+        # this epoch hits new max value
+        self.cfg.best_epoch = self.cfg.epoch
         self.model.save('{}/model.state'.format(self.cfg.out_dir))
         self._save_optim('{}/optim.state'.format(self.cfg.out_dir))
         with open('{}/config.json'.format(self.cfg.out_dir), 'w', encoding='UTF-8') as fout:
@@ -347,31 +331,33 @@ class Trainer:
         self.optimizer.load_state_dict(state_dict)
         self.optimizer.param_groups[0]['lr'] = learning_rate
 
-    def evaluate(self) -> Tuple[float, float, float, float]:
+    def evaluate(self, is_dev: bool) -> Tuple[float, float, float, float]:
         """
         evaluate f-score
+        Args:
+            is_dev:  whether evaluate on dev set or not
         Returns:
             average dev loss
             character accuracy
             word accuracy
             f-score
         """
+        dataset = self.dataset_dev if is_dev else self.dataset_test
         self.model.eval()
-        loss_devs = []
-        for dev_sent in self.dataset_dev:
+        losses = []
+        for sent in dataset:
             # 만약 spc_dropout이 1.0 이상이면 공백을 전혀 쓰지 않는 것이므로 평가 시에도 적용한다.
-            dev_labels, dev_contexts = dev_sent.to_tensor(self.cfg, self.rsc,
-                                                          self.cfg.spc_dropout >= 1.0)
+            labels, contexts = sent.to_tensor(self.cfg, self.rsc, self.cfg.spc_dropout >= 1.0)
             if torch.cuda.is_available():
-                dev_labels = dev_labels.cuda()
-                dev_contexts = dev_contexts.cuda()
-            dev_outputs = self.model(dev_contexts)
-            loss_dev = self.criterion(dev_outputs, dev_labels)
-            loss_devs.append(loss_dev.item())
-            _, predicts = F.softmax(dev_outputs, dim=1).max(1)
+                labels = labels.cuda()
+                contexts = contexts.cuda()
+            outputs = self.model(contexts)
+            loss = self.criterion(outputs, labels)
+            losses.append(loss.item())
+            _, predicts = F.softmax(outputs, dim=1).max(1)
             pred_tags = [self.rsc.vocab_out[t.item()] for t in predicts]
-            pred_sent = copy.deepcopy(dev_sent)
+            pred_sent = copy.deepcopy(sent)
             pred_sent.set_pos_result(pred_tags, self.rsc.restore_dic)
-            self.evaler.count(dev_sent, pred_sent)
-        avg_loss_dev = sum(loss_devs) / len(loss_devs)
-        return (avg_loss_dev, ) + self.evaler.evaluate()
+            self.evaler.count(sent, pred_sent)
+        avg_loss = sum(losses) / len(losses)
+        return (avg_loss, ) + self.evaler.evaluate()
