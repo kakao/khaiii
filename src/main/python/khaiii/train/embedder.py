@@ -33,17 +33,22 @@ class Embedder(nn.Module):
         super().__init__()
         self.cfg = cfg
         self.rsc = rsc
-        self.embedding = nn.Embedding(len(rsc.vocab_in), cfg.embed_dim)
+        self.embedding = nn.Embedding(len(rsc.vocab_in), cfg.embed_dim, 0)
 
     def forward(self, inputs):    # pylint: disable=arguments-differ
         """
         임베딩을 생성하는 메소드
         Args:
-            inputs:  contexts of batch size
+            inputs:  batch size list of (context, left space mask, right space mask)
         Returns:
             embedding
         """
-        embeds = self.embedding(inputs)
+        contexts, left_spc_masks, right_spc_masks = inputs
+        embeds = self.embedding(contexts)
+        embeds += self.embedding(left_spc_masks)
+        embeds += self.embedding(right_spc_masks)
+        # 왼쪽과 오른쪽 패딩에는 zero 벡터인데 아래 positional encoding이 더해짐
+        # 사소하지만 아래도 패딩 영역에 대해 마스킹 후 더해줘야 하지 않을까?
         embeds += positional_encoding(self.cfg.context_len, self.cfg.context_len,
                                       self.cfg.embed_dim, 1)
         return embeds

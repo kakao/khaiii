@@ -54,10 +54,12 @@ class PosTagger:
             PosSentTensor object
         """
         pos_sent = PosSentTensor(raw_sent)
-        _, contexts = pos_sent.to_tensor(self.cfg, self.rsc, False)
+        _, contexts, left_spc_masks, right_spc_masks = pos_sent.to_tensor(self.cfg, self.rsc, False)
         if torch.cuda.is_available():
             contexts = contexts.cuda()
-        outputs = self.model(contexts)
+            left_spc_masks = left_spc_masks.cuda()
+            right_spc_masks = right_spc_masks.cuda()
+        outputs = self.model((contexts, left_spc_masks, right_spc_masks))
         _, predicts = F.softmax(outputs, dim=1).max(1)
         tags = [self.rsc.vocab_out[t.item()] for t in predicts]
         pos_sent.set_pos_result(tags, self.rsc.restore_dic if enable_restore else None)

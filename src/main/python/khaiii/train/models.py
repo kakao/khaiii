@@ -88,15 +88,15 @@ class CnnModel(PosModel):
         # hidden => tag
         self.hidden2tag = nn.Linear(cfg.hidden_dim, len(rsc.vocab_out))
 
-    def forward(self, contexts):    # pylint: disable=arguments-differ
+    def forward(self, inputs):    # pylint: disable=arguments-differ
         """
         forward path
         Args:
-            contexts:  batch size list of character and context
+            inputs:  batch size list of (context, left space mask, right space mask)
         Returns:
             output score
         """
-        embeds = self.embedder(contexts)
+        embeds = self.embedder(inputs)
         embeds_t = embeds.transpose(1, 2)
 
         pool_outs = []
@@ -105,7 +105,7 @@ class CnnModel(PosModel):
             pool_outs.append(F.max_pool1d(conv_out, conv_out.size(2)))
 
         # conv => hidden
-        features = torch.cat([p.view(contexts.size(0), -1) for p in pool_outs], dim=1)    # pylint: disable=no-member
+        features = torch.cat([p.view(embeds.size(0), -1) for p in pool_outs], dim=1)    # pylint: disable=no-member
         features_drop = F.dropout(features)
         hidden_out = F.relu(self.conv2hidden(features_drop))
 

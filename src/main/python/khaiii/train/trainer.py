@@ -152,7 +152,7 @@ class Trainer:
             if not line:
                 continue
             (epoch, loss_train, loss_dev, acc_char, acc_word, f_score, learning_rate) = \
-                    line.split('\t')
+                line.split('\t')
             self.cfg.epoch = int(epoch) + 1
             self.cfg.best_epoch = self.cfg.epoch
             self.loss_trains.append(float(loss_train))
@@ -184,7 +184,7 @@ class Trainer:
         self.log_file = open('{}/log.tsv'.format(self.cfg.out_dir), 'at')
         self.sum_wrt = SummaryWriter(self.cfg.out_dir)
         patience = self.cfg.patience
-        for _ in range(1000000):
+        for _ in range(100000):
             is_best = self._train_epoch()
             if is_best:
                 patience = self.cfg.patience
@@ -226,13 +226,16 @@ class Trainer:
         loss_trains = []
         for train_sent in tqdm(self.dataset_train, 'EPOCH[{}]'.format(self.cfg.epoch),
                                len(self.dataset_train), mininterval=1, ncols=100):
-            train_labels, train_contexts = train_sent.to_tensor(self.cfg, self.rsc, True)
+            train_labels, train_contexts, left_spc_masks, right_spc_masks = \
+                    train_sent.to_tensor(self.cfg, self.rsc, True)
             if torch.cuda.is_available():
                 train_labels = train_labels.cuda()
                 train_contexts = train_contexts.cuda()
+                left_spc_masks = left_spc_masks.cuda()
+                right_spc_masks = right_spc_masks.cuda()
 
             self.model.train()
-            train_outputs = self.model(train_contexts)
+            train_outputs = self.model((train_contexts, left_spc_masks, right_spc_masks))
             batches.append((train_labels, train_outputs))
             if sum([batch[0].size(0) for batch in batches]) < self.cfg.batch_size:
                 continue
@@ -347,11 +350,14 @@ class Trainer:
         losses = []
         for sent in dataset:
             # 만약 spc_dropout이 1.0 이상이면 공백을 전혀 쓰지 않는 것이므로 평가 시에도 적용한다.
-            labels, contexts = sent.to_tensor(self.cfg, self.rsc, self.cfg.spc_dropout >= 1.0)
+            labels, contexts, left_spc_masks, right_spc_masks = \
+                    sent.to_tensor(self.cfg, self.rsc, self.cfg.spc_dropout >= 1.0)
             if torch.cuda.is_available():
                 labels = labels.cuda()
                 contexts = contexts.cuda()
-            outputs = self.model(contexts)
+                left_spc_masks = left_spc_masks.cuda()
+                right_spc_masks = right_spc_masks.cuda()
+            outputs = self.model((contexts, left_spc_masks, right_spc_masks))
             loss = self.criterion(outputs, labels)
             losses.append(loss.item())
             _, predicts = F.softmax(outputs, dim=1).max(1)
@@ -360,4 +366,5 @@ class Trainer:
             pred_sent.set_pos_result(pred_tags, self.rsc.restore_dic)
             self.evaler.count(sent, pred_sent)
         avg_loss = sum(losses) / len(losses)
-        return (avg_loss, ) + self.evaler.evaluate()
+        char_acc, word_acc, f_score = self.evaler.evaluate()
+        return avg_loss, char_acc, word_acc, f_score
