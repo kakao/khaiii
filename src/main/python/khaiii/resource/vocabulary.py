@@ -4,17 +4,17 @@
 """
 vocabulary library
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-import codecs
 import copy
 import logging
 import os
+from typing import List
 
 
 #########
@@ -24,7 +24,7 @@ class Vocabulary:
     """
     vocabulary class
     """
-    def __init__(self, path, cutoff=1, special=None, padding=''):
+    def __init__(self, path: str, cutoff: int = 1, special: List[str] = None, padding: str = ''):
         """
         Args:
             path:  file path
@@ -63,22 +63,7 @@ class Vocabulary:
     def __len__(self):
         return len(self.dic)
 
-    '''
-    # 리소스 빌드 시 pytorch 의존성 제거를 위해 임시로 메서드를 제거합니다.
-    # 추후 학습 코드를 추가할 때 이 부분을 리팩토링 합니다.
-    def get_embedding(self, dim, padding_idx=None):
-        """
-        embedding을 리턴합니다.
-        Args:
-            dim:  embedding dimension
-            padding_idx:  padding index
-        """
-        if padding_idx:
-            return nn.Embedding(len(self), dim, padding_idx=padding_idx)
-        return nn.Embedding(len(self), dim)
-    '''    # pylint: disable=pointless-string-statement
-
-    def padding_idx(self):
+    def padding_idx(self) -> int:
         """
         맨 마지막에 추가한 패딩의 인덱스를 리턴한다.
         Returns:
@@ -88,7 +73,7 @@ class Vocabulary:
             raise RuntimeError('vocabulary has no padding')
         return self.dic[self.padding]
 
-    def _load(self, path, cutoff=1):
+    def _load(self, path: str, cutoff: int = 1):
         """
         load vocabulary from file
         Args:
@@ -97,7 +82,7 @@ class Vocabulary:
         """
         append_num = 0
         cutoff_num = 0
-        for line in codecs.open(path, 'r', encoding='UTF-8'):
+        for line in open(path, 'r', encoding='UTF-8'):
             line = line.rstrip('\r\n')
             if not line:
                 continue

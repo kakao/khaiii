@@ -5,29 +5,27 @@
 """
 compile trained model for C/C++ decoder
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-import argparse
-from argparse import Namespace
+from argparse import ArgumentParser, Namespace
 import json
 import logging
-import os
 import pathlib
 import pickle
 from typing import Tuple
 
-from resource import Resource    # pylint: disable=wrong-import-order
+from khaiii.resource.resource import Resource
 
 
 #############
 # functions #
 #############
-def load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
+def _load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
     """
     load config and resource from source directory
     Args:
@@ -39,17 +37,12 @@ def load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
     """
     file_path = '{}/{}.config.json'.format(rsc_src, model_size)
     cfg_dic = json.load(open(file_path, 'r', encoding='UTF-8'))
-    logging.info('config: %s', json.dumps(cfg_dic, indent=2))
-    cfg = argparse.Namespace()
+    logging.info('config: %s', json.dumps(cfg_dic, indent=4, sort_keys=True))
+    cfg = Namespace()
     for key, val in cfg_dic.items():
         setattr(cfg, key, val)
-    cwd = os.path.realpath(os.getcwd())
-    train_dir = os.path.realpath('{}/..'.format(rsc_src))
-    if cwd != train_dir:
-        os.chdir(train_dir)
+    setattr(cfg, 'rsc_src', rsc_src)
     rsc = Resource(cfg)
-    if cwd != train_dir:
-        os.chdir(cwd)
     return cfg, rsc
 
 
@@ -146,7 +139,7 @@ def run(args: Namespace):
     Args:
         args:  program arguments
     """
-    cfg, rsc = load_cfg_rsc(args.rsc_src, args.model_size)
+    cfg, rsc = _load_cfg_rsc(args.rsc_src, args.model_size)
     data = pickle.load(open('{}/{}.model.pickle'.format(args.rsc_src, args.model_size), 'rb'))
     _write_config(cfg, rsc, args.rsc_dir)
     _write_data(data, args.rsc_dir)
@@ -159,7 +152,7 @@ def main():
     """
     main function processes only argument parsing
     """
-    parser = argparse.ArgumentParser(description='part-of-speech tagger')
+    parser = ArgumentParser(description='part-of-speech tagger')
     parser.add_argument('--model-size', help='model size <default: base>',
                         metavar='SIZE', default='base')
     parser.add_argument('--rsc-src', help='source directory (model) <default: ./src>',

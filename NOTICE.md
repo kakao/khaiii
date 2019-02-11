@@ -97,16 +97,6 @@ Copyright 2013-2018 Niels Lohmann
 MIT License 
 
 
- **NumPy**
-
-https://github.com/numpy/numpy
-
-Copyright 2005-2018, NumPy Developers.
-
-
-BSD 3-Clause "New" or "Revised" License 
-
-
  **PyTorch**
 
 https://github.com/pytorch/pytorch
@@ -122,6 +112,16 @@ BSD 3-Clause "New" or "Revised" License
 https://github.com/gabime/spdlog
 
 Copyright 2016 Gabi Melman
+
+
+MIT License 
+
+
+ **tensorboardX**
+
+https://github.com/lanpa/tensorboardX
+
+Copyright 2017 Tzu-Wei Huang
 
 
 MIT License 

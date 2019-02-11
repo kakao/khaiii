@@ -4,29 +4,73 @@
 """
 형태소 분석 결과와 원문의 음절을 정렬하는 모듈
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-import codecs
 from collections import Counter, defaultdict
+import itertools
 import logging
 import os
+from typing import Dict, List, Tuple
 
-import jaso
+from khaiii.munjong.sejong_corpus import Word
+from khaiii.resource import jaso
+from khaiii.resource.morphs import Morph
+from khaiii.resource.morphs import WORD_DELIM_NUM, WORD_DELIM_STR, SENT_DELIM_NUM, SENT_DELIM_STR
 
 
 #########
 # types #
 #########
-class Aligner(object):
+class MrpChr:    # pylint: disable=too-few-public-methods
+    """
+    음절과 태그 pair
+    """
+    def __init__(self, char: str, tag: str):
+        """
+        Args:
+            char:  음절
+            tag:  태그
+        """
+        self.char = char
+        self.tag = tag
+
+    def __str__(self):
+        return '{}/{}'.format(self.char, self.tag)
+
+    def __hash__(self):
+        return hash(str(self))
+
+    def __eq__(self, other: 'MrpChr'):
+        """
+        Args:
+            other:  다른 객체
+        Returns:
+            같을 경우 True
+        """
+        return self.char == other.char and self.tag == other.tag
+
+    @classmethod
+    def to_str(cls, mrp_chrs: List['MrpChr']):
+        """
+        MrpChr 객체 리스트를 문자열로 변환하는 메소드
+        Args:
+            mrp_chrs:  MrpChr 객체 리스트
+        Returns:
+            변환된 문자열
+        """
+        return ' '.join([str(m) for m in mrp_chrs])
+
+
+class Aligner:
     """
     음절과 형태소 분석 결과의 정렬을 수행하는 클래스
     """
-    def __init__(self, rsc_src):
+    def __init__(self, rsc_src: str):
         """
         리소스를 오픈하고 초기화한다.
         Args:
@@ -37,7 +81,7 @@ class Aligner(object):
         self.middle_unmapped = defaultdict(Counter)
         self._open(rsc_src)
 
-    def align(self, word):
+    def align(self, word: Word) -> List[List[MrpChr]]:
         """
         어절의 원문과 분석 결과를 음절 단위로 정렬(매핑)한다.
         Args:
@@ -78,7 +122,7 @@ class Aligner(object):
         logging.info('total number of unmapped pairs: %d',
                      sum([sum(cnt.values()) for cnt in self.middle_unmapped.values()]))
 
-    def _open(self, rsc_dir):
+    def _open(self, rsc_dir: str):
         """
         initialize resources
         Args:
@@ -86,7 +130,7 @@ class Aligner(object):
         """
         file_path = '{}/char_align.map'.format(rsc_dir)
         file_name = os.path.basename(file_path)
-        for line_num, line in enumerate(codecs.open(file_path, 'r', encoding='UTF-8'), start=1):
+        for line_num, line in enumerate(open(file_path, 'r', encoding='UTF-8'), start=1):
             line = line.rstrip('\r\n')
             if not line or line[0] == '#':
                 continue
@@ -105,7 +149,7 @@ class Aligner(object):
             self.align_map[key] = map_nums
 
     @classmethod
-    def _get_morph_raw(cls, word):
+    def _get_morph_raw(cls, word: Word) -> str:
         """
         get raw string from morphemes
         Args:
@@ -116,7 +160,7 @@ class Aligner(object):
         return ''.join([m.lex for m in word.morphs])
 
     @classmethod
-    def _norm(cls, text):
+    def _norm(cls, text: str) -> str:
         """
         unicode normalization of text
         Args:
@@ -127,7 +171,7 @@ class Aligner(object):
         return jaso.decompose(text)
 
     @classmethod
-    def _align_phoneme(cls, raw_word, mrp_chrs):
+    def _align_phoneme(cls, raw_word: str, mrp_chrs: List[MrpChr]) -> List[List[MrpChr]]:
         """
         align word with morpheme which is same phoneme
         Args:
@@ -163,7 +207,7 @@ class Aligner(object):
         return maps
 
     @classmethod
-    def _align_forward(cls, raw_word, mrp_chrs):
+    def _align_forward(cls, raw_word: str, mrp_chrs: List[MrpChr]) -> Tuple[int, int]:
         """
         align from front of word
         Args:
@@ -192,7 +236,7 @@ class Aligner(object):
         return word_idx, mrp_chrs_idx
 
     @classmethod
-    def _align_backward(cls, raw_word, mrp_chrs):
+    def _align_backward(cls, raw_word: str, mrp_chrs: List[MrpChr]) -> Tuple[int, int]:
         """
         align from back of word
         Args:
@@ -226,7 +270,7 @@ class Aligner(object):
         return word_idx+1, mrp_chrs_idx+1
 
     @classmethod
-    def _is_verb_ending(cls, verb, ending):
+    def _is_verb_ending(cls, verb: Morph, ending: Morph) -> bool:
         """
         whether is verb + ending pattern or not
         Args:
@@ -241,7 +285,7 @@ class Aligner(object):
             ending_tag in {'EC', 'EP', 'EF', 'ETN', 'ETM'}
 
     @classmethod
-    def _are_first_last_phoneme_same(cls, raw_word, mrp_chrs):
+    def _are_first_last_phoneme_same(cls, raw_word: str, mrp_chrs: List[MrpChr]) -> bool:
         """
         whether are same the first phoneme and last phoneme
         Args:
@@ -255,7 +299,7 @@ class Aligner(object):
         return word_norm[0] == morph_norm[0] and word_norm[-1] == morph_norm[-1]
 
     @classmethod
-    def _is_ah_ending_verb(cls, mrp_chr):
+    def _is_ah_ending_verb(cls, mrp_chr: MrpChr) -> bool:
         """
         whether 'ㅏ' ending verb or not
         Args:
@@ -269,7 +313,7 @@ class Aligner(object):
         return len(norm_char) == 2 and norm_char[1] == 'ᅡ'    # code is 4449, not 12623
 
     @classmethod
-    def _is_eo_ending_verb(cls, mrp_chr):
+    def _is_eo_ending_verb(cls, mrp_chr: MrpChr) -> bool:
         """
         whether 'ㅓ', 'ㅐ' ending verb or not
         Args:
@@ -284,7 +328,8 @@ class Aligner(object):
                 norm_char[1] in ['ᅥ', 'ᅧ', 'ᅢ'])    # code is 4453, 4455, 4450
 
     @classmethod
-    def _align_middle_zero2one(cls, pfx_word, pfx_map, mdl_mrp_chrs, sfx_word, sfx_map):
+    def _align_middle_zero2one(cls, pfx_word: Word, pfx_map: List[MrpChr],
+                               mdl_mrp_chrs: List[MrpChr], sfx_word: Word, sfx_map: List[MrpChr]):
         """
         align middle chunks after forward/backward aligning which has no middle raw character,
             but has a remaining middle single morpheme character
@@ -322,7 +367,7 @@ class Aligner(object):
             raise RuntimeError('nowhere attach to')
 
     @classmethod
-    def _is_share_phoneme(cls, mdl_word, mdl_mrp_chrs):
+    def _is_share_phoneme(cls, mdl_word: str, mdl_mrp_chrs: List[MrpChr]) -> bool:
         """
         whether middle word characters and morpheme characters share same phoneme
         Args:
@@ -342,7 +387,7 @@ class Aligner(object):
                 return False
         return True
 
-    def _align_middle_by_dic(self, mdl_word, mdl_mrp_chrs):
+    def _align_middle_by_dic(self, mdl_word: str, mdl_mrp_chrs: List[MrpChr]) -> List[List[MrpChr]]:
         """
         align middle chunks after forward/backward aligning with mapping dictionary
         Args:
@@ -364,7 +409,8 @@ class Aligner(object):
                 idx += int(map_num)
         return maps
 
-    def _align_middle(self, mdl_word, mdl_mrp_chrs, raw_word, mrp_chrs):
+    def _align_middle(self, mdl_word: str, mdl_mrp_chrs: List[MrpChr], raw_word: str,
+                      mrp_chrs: List[MrpChr]) -> List[List[MrpChr]]:
         """
         align middle chunks after forward/backward aligning
         Args:
@@ -417,7 +463,9 @@ class Aligner(object):
         return maps
 
     @classmethod
-    def _align_middle_preproc(cls, pfx_mrp_chrs, pfx_map, mdl_mrp_chrs, sfx_mrp_chrs, sfx_map):
+    def _align_middle_preproc(cls, pfx_mrp_chrs: List[MrpChr], pfx_map: List[List[MrpChr]],
+                              mdl_mrp_chrs: List[MrpChr], sfx_mrp_chrs: List[MrpChr],
+                              sfx_map: List[List[MrpChr]]):
         """
         pre-processing middle part after forward/backward mapping before applying rules
         Args:
@@ -454,7 +502,7 @@ class Aligner(object):
                 sfx_map[0].insert(0, mdl_mrp_chrs[-1])
                 del mdl_mrp_chrs[-1]
 
-    def _get_pfx_mdl_sfx(self, raw_word, mrp_chrs):
+    def _get_pfx_mdl_sfx(self, raw_word: str, mrp_chrs: List[MrpChr]) -> Tuple:
         """
         get prefix, middle, suffix after forward/backward align
         Args:
@@ -481,7 +529,7 @@ class Aligner(object):
                (pfx_mrp_chrs, mdl_mrp_chrs, sfx_mrp_chrs), \
                (pfx_map, sfx_map)
 
-    def _align_forward_backward(self, raw_word, mrp_chrs):
+    def _align_forward_backward(self, raw_word: str, mrp_chrs: List[MrpChr]) -> List[str]:
         """
         align word with morpheme which is same phoneme
         Args:
@@ -497,7 +545,7 @@ class Aligner(object):
 
         if not mdl_word and not mdl_mrp_chrs:
             return pfx_map + sfx_map
-        elif not mdl_word:
+        if not mdl_word:
             if len(mdl_mrp_chrs) == 1:
                 self._align_middle_zero2one(pfx_word, pfx_map, mdl_mrp_chrs, sfx_word, sfx_map)
                 return pfx_map + sfx_map
@@ -529,7 +577,7 @@ class AlignError(Exception):
     """
     음절 정렬 과정에서 나타나는 예외
     """
-    def __init__(self, pfx):
+    def __init__(self, pfx: str):
         """
         Args:
             pfx:  예외 출력 시 보여줄 prefix (카테고리)
@@ -541,7 +589,7 @@ class AlignError(Exception):
     def __str__(self):
         return '\n'.join(['%s %s' % (self._pfx, _) for _ in self._msgs] + ['', ])
 
-    def add_msg(self, msg):
+    def add_msg(self, msg: str):
         """
         메세제를 추가한다.
         Args:
@@ -550,41 +598,125 @@ class AlignError(Exception):
         self._msgs.append(msg)
 
 
-class MrpChr(object):    # pylint: disable=too-few-public-methods
+#############
+# functions #
+#############
+def align_to_tag(raw_word: str, alignment: List[List[str]], restore: Tuple[dict, dict],
+                 vocab: Tuple[Dict[str, int], Dict[str, int]]) -> Tuple[List[str], List[int]]:
     """
-    음절과 태그 pair
+    어절의 원문과 정렬 정보를 활용해 음절과 매핑된 태그를 생성한다.
+    Args:
+        raw_word:  어절 원문
+        alignment:  정렬 정보
+        restore:  (원형복원 사전, 원형복원 사전에 추가할 엔트리) pair
+        vocab:  (출력 태그 사전, 출력 태그 사전에 추가할 새로운 태그) pair
+    Returns:
+        음절별 출력 태그
+        음절별 출력 태그의 번호
     """
-    def __init__(self, char, tag):
-        """
-        Args:
-            char:  음절
-            tag:  태그
-        """
-        self.char = char
-        self.tag = tag
+    assert len(raw_word) == len(alignment)
+    restore_dic, restore_new = restore
+    vocab_out, vocab_new = vocab
+    tag_outs = []
+    tag_nums = []
+    for char, mrp_chrs in zip(raw_word, alignment):
+        if len(mrp_chrs) == 1 and mrp_chrs[0].char == char:
+            tag_outs.append(mrp_chrs[0].tag)
+        else:
+            tag_str = ':'.join([m.tag for m in mrp_chrs])
+            mrp_chr_str_key = MrpChr.to_str(mrp_chrs)
+            found = -1
+            max_num = -1
+            for num, mrp_chr_str_val in restore_dic[char, tag_str].items():
+                if num > max_num:
+                    max_num = num
+                if mrp_chr_str_key == mrp_chr_str_val:
+                    found = num
+                    break
+            if found >= 0:
+                tag_outs.append('{}:{}'.format(tag_str, found))
+            else:
+                new_num = max_num + 1
+                restore_dic[char, tag_str][new_num] = mrp_chr_str_key
+                restore_new[char, tag_str][new_num] = mrp_chr_str_key
+                tag_outs.append('{}:{}'.format(tag_str, new_num))
+        tag = tag_outs[-1]
+        if tag in vocab_out:
+            tag_nums.append(vocab_out[tag])
+        elif tag in vocab_new:
+            tag_nums.append(vocab_new[tag])
+        else:
+            new_tag_num = len(vocab_out) + len(vocab_new) + 1
+            logging.debug('new output tag: [%d] %s', new_tag_num, tag)
+            vocab_new[tag] = new_tag_num
+            tag_nums.append(new_tag_num)
+    return tag_outs, tag_nums
 
-    def __str__(self):
-        return '%s/%s' % (self.char, self.tag)
 
-    def __hash__(self):
-        return hash(str(self))
+def _split_list(lst: List[str], delim: str) -> List[List[str]]:
+    """
+    리스트를 delimiter로 split하는 함수
 
-    def __eq__(self, other):
-        """
-        Args:
-            other:  다른 객체
-        Returns:
-            같을 경우 True
-        """
-        return self.char == other.char and self.tag == other.tag
+    >>> _split_list(['가/JKS', '_', '너/NP'], '_')
+    [['가/JKS'], ['너/NP']]
 
-    @classmethod
-    def to_str(cls, mrp_chrs):
-        """
-        MrpChr 객체 리스트를 문자열로 변환하는 메소드
-        Args:
-            mrp_chrs:  MrpChr 객체 리스트
-        Returns:
-            변환된 문자열
-        """
-        return ' '.join([str(_) for _ in mrp_chrs])
+    Args:
+        lst:  리스트
+        delim:  delimiter
+    Returns:
+        list of sublists
+    """
+    sublists = []
+    while lst:
+        prefix = [x for x in itertools.takewhile(lambda x: x != delim, lst)]
+        sublists.append(prefix)
+        lst = lst[len(prefix):]
+        delims = [x for x in itertools.takewhile(lambda x: x == delim, lst)]
+        lst = lst[len(delims):]
+    return sublists
+
+
+def align_patch(rsc_src: Tuple[Aligner, Dict, Dict[str, int]], raw: str, morph_str: str) \
+        -> List[int]:
+    """
+    패치의 원문과 분석 결과를 음절단위 매핑(정렬)을 수행한다.
+    Args:
+        rsc_src:  (Aligner, restore dic, vocab out) resource triple
+        raw:  원문
+        morph_str:  형태소 분석 결과 (패치 기술 형식)
+    Returns:
+        정렬에 기반한 출력 태그 번호
+    """
+    aligner, restore_dic, vocab_out = rsc_src
+    raw_words = raw.strip().split()
+    morphs = morph_str.split(' + ')
+    morphs_strip = morphs
+    if morphs[0] in [WORD_DELIM_STR, SENT_DELIM_STR]:
+        morphs_strip = morphs_strip[1:]
+    if morphs[-1] in [WORD_DELIM_STR, SENT_DELIM_STR]:
+        morphs_strip = morphs_strip[:-1]
+    morph_words = _split_list(morphs_strip, WORD_DELIM_STR)
+    tag_nums = []
+    restore_new = defaultdict(dict)
+    vocab_new = defaultdict(list)
+    for raw_word, morph_word in zip(raw_words, morph_words):
+        word = Word.parse('\t'.join(['', raw_word, ' + '.join(morph_word)]), '', 0)
+        try:
+            word_align = aligner.align(word)
+            _, word_tag_nums = align_to_tag(raw_word, word_align, (restore_dic, restore_new),
+                                            (vocab_out, vocab_new))
+            if restore_new or vocab_new:
+                logging.debug('needs dic update: %s', word)
+                return []
+        except AlignError as algn_err:
+            logging.debug('alignment error: %s', word)
+            logging.debug(str(algn_err))
+            return []
+        if tag_nums:
+            tag_nums.append(WORD_DELIM_NUM)
+        tag_nums.extend(word_tag_nums)
+    if morphs[0] in [WORD_DELIM_STR, SENT_DELIM_STR]:
+        tag_nums.insert(0, WORD_DELIM_NUM if morphs[0] == WORD_DELIM_STR else SENT_DELIM_NUM)
+    if morphs[-1] in [WORD_DELIM_STR, SENT_DELIM_STR]:
+        tag_nums.append(WORD_DELIM_NUM if morphs[-1] == WORD_DELIM_STR else SENT_DELIM_NUM)
+    return tag_nums
