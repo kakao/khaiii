@@ -2,10 +2,17 @@
 
 
 """
-형태소 분석 결과를 기술한 문자열을 파싱하는 모듈
+형태소 분석 결과를 기술한 문자열을 파싱하는 모듈.
+TODO(jamie): sejong_corpus 모듈의 Morph 클래스와 중복되므로 정리 필요
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
+
+
+###########
+# imports #
+###########
+from typing import List
 
 
 #############
@@ -36,14 +43,13 @@ class ParseError(Exception):
     """
     형태소 분석 결과 문자열을 파싱하면서 발생하는 오류
     """
-    pass
 
 
-class Morph(object):
+class Morph:
     """
     형태소
     """
-    def __init__(self, lex, tag):
+    def __init__(self, lex: str, tag: str):
         """
         Arguments:
             lex:  형태소(어휘)
@@ -57,7 +63,7 @@ class Morph(object):
             return self.lex
         return '{}/{}'.format(self.lex, self.tag)
 
-    def is_word_delim(self):
+    def is_word_delim(self) -> bool:
         """
         어절의 경계를 나타태는 지 여부
         Returns:
@@ -65,7 +71,7 @@ class Morph(object):
         """
         return not self.tag and self.lex == WORD_DELIM_STR
 
-    def is_sent_delim(self):
+    def is_sent_delim(self) -> bool:
         """
         문장의 경계를 나타태는 지 여부
         Returns:
@@ -74,7 +80,7 @@ class Morph(object):
         return not self.tag and self.lex == SENT_DELIM_STR
 
     @classmethod
-    def to_str(cls, morphs):
+    def to_str(cls, morphs: List['Morph']) -> str:
         """
         Morph 객체 리스트를 문자열로 변환한다.
         Arguments:
@@ -85,7 +91,7 @@ class Morph(object):
         return ' + '.join([str(m) for m in morphs])
 
     @classmethod
-    def parse(cls, morphs_str):
+    def parse(cls, morphs_str: str) -> List['Morph']:
         """
         형태소 분석 결과 형태의 문자열을 파싱하여 Morph 객체 리스트를 반환하는 파싱 함수
         Arguments:
@@ -98,7 +104,7 @@ class Morph(object):
         return [cls._parse_one(m) for m in morphs_str.split(' + ')]
 
     @classmethod
-    def _parse_one(cls, morph_str):
+    def _parse_one(cls, morph_str: str) -> 'Morph':
         """
         하나의 형태소 객체를 기술한 문자열을 파싱한다.
         Arguments:
@@ -121,3 +127,30 @@ class Morph(object):
         if tag not in TAG_SET:
             raise ParseError('invalid pos tag: {}'.format(tag))
         return Morph(lex, tag)
+
+
+#############
+# functions #
+#############
+def mix_char_tag(chars: str, tags: List[int]) -> List[int]:
+    """
+    음절과 출력 태그를 비트 연산으로 합쳐서 하나의 (32비트) 숫자로 표현한다.
+    Args:
+        chars:  음절 (유니코드) 리스트 (문자열)
+        tags:  출력 태그 번호의 리스트
+    Returns:
+        합쳐진 숫자의 리스트
+    """
+    char_nums = [ord(c) for c in chars]
+    if tags[0] == SENT_DELIM_NUM:
+        char_nums.insert(0, SENT_DELIM_NUM)
+    if tags[-1] == SENT_DELIM_NUM:
+        char_nums.append(SENT_DELIM_NUM)
+    for idx, char_num in enumerate(char_nums):
+        if char_num == ord(' '):
+            char_nums[idx] = WORD_DELIM_NUM
+            continue
+        elif tags[idx] == SENT_DELIM_NUM:
+            continue
+        char_nums[idx] = char_num << 12 | tags[idx]
+    return char_nums

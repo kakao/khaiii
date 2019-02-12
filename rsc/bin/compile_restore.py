@@ -5,23 +5,22 @@
 """
 원형복원 사전을 빌드하는 스크립트
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-from __future__ import print_function
-
-import argparse
-from collections import defaultdict
+from argparse import ArgumentParser, Namespace
 import logging
 import os
 import struct
 import sys
+from typing import Dict
 
-from morphs import TAG_SET
+from khaiii.resource.morphs import TAG_SET
+from khaiii.resource.resource import load_restore_dic, load_vocab_out
 
 
 #############
@@ -33,54 +32,7 @@ MAX_VAL_LEN = 4    # 원형복원 사전의 오른쪽 value 부분의 최대 길
 #############
 # functions #
 #############
-def load_restore_dic(file_path):
-    """
-    원형복원 사전을 로드한다.
-    Args:
-        file_path:  파일 경로
-    Returns:
-        사전
-    """
-    file_name = os.path.basename(file_path)
-    restore_dic = defaultdict(dict)
-    for line_num, line in enumerate(open(file_path, 'r', encoding='UTF-8'), start=1):
-        line = line.rstrip()
-        if not line or line[0] == '#':
-            continue
-        char_tag_num, mrp_chr_str = line.split('\t')
-        char, tag_num = char_tag_num.rsplit('/', 1)
-        tag, num = tag_num.rsplit(':', 1)
-        num = int(num)
-        if (char, tag) in restore_dic:
-            num_mrp_chrs_dic = restore_dic[char, tag]
-            if num in num_mrp_chrs_dic:
-                logging.error('%s:%d: duplicated with %s: %s', file_name, line_num,
-                              num_mrp_chrs_dic[num], line)
-                return {}
-        restore_dic[char, tag][num] = mrp_chr_str
-    return restore_dic
-
-
-def load_vocab_out(rsc_src):
-    """
-    출력 태그 vocabulary를 로드한다.
-    Args:
-        rsc_src:  리소스 디렉토리
-    Returns:
-        출력 태그 vocabulary
-    """
-    file_path = '{}/vocab.out'.format(rsc_src)
-    vocab_out = [line.strip() for line in open(file_path, 'r', encoding='UTF-8')
-                 if line.strip()]
-    vocab_out_more = []
-    file_path = '{}/vocab.out.more'.format(rsc_src)
-    if os.path.exists(file_path):
-        vocab_out_more = [line.strip() for line in open(file_path, 'r', encoding='UTF-8')
-                          if line.strip()]
-    return {tag: idx for idx, tag in enumerate(vocab_out + vocab_out_more, start=1)}
-
-
-def append_new_entries(rsc_src, restore_new, vocab_new):
+def append_new_entries(rsc_src: str, restore_new: dict, vocab_new: Dict[str, int]):
     """
     기분석 사전 빌드 중에 새로 추가가 필요한 사전 엔트리를 해당 사전에 추가한다.
     Args:
@@ -103,7 +55,7 @@ def append_new_entries(rsc_src, restore_new, vocab_new):
                 print(tag, file=fout)
 
 
-def _make_bin(restore_dic, vocab_out, vocab_new):
+def _make_bin(restore_dic: dict, vocab_out: Dict[str, int], vocab_new: Dict[str, int]) -> dict:
     """
     두 텍스트 사전을 읽어들여 바이너리 형태의 key-value 사전을 만든다.
     Args:
@@ -140,7 +92,7 @@ def _make_bin(restore_dic, vocab_out, vocab_new):
     return bin_dic
 
 
-def _save_restore_dic(rsc_dir, bin_dic):
+def _save_restore_dic(rsc_dir: str, bin_dic: dict):
     """
     원형복원 바이너리 사전을 저장한다.
     Args:
@@ -158,14 +110,13 @@ def _save_restore_dic(rsc_dir, bin_dic):
     logging.info('restore.val: %d', 4 * sum([len(vals) for vals in bin_dic.values()]))
 
 
-def _save_restore_one(rsc_dir, vocab_out, vocab_new):
+def _save_restore_one(rsc_dir: str, vocab_out: Dict[str, int], vocab_new: Dict[str, int]):
     """
     출력 태그 번호 별 원형복원을 하지 않는 비복원 사전을 저장한다.
     Args:
         rsc_dir:  resource directory
         vocab_out:  출력 태그 사전
         vocab_new:  출력 태그 사전에 추가할 새로운 태그
-    :return:
     """
     idx_tags = sorted([(idx, tag) for tag, idx
                        in list(vocab_out.items()) + list(vocab_new.items())])
@@ -182,7 +133,7 @@ def _save_restore_one(rsc_dir, vocab_out, vocab_new):
     logging.info('restore.one: %d', 1 + len(idx_tags))
 
 
-def run(args):
+def run(args: Namespace):
     """
     run function which is the start point of program
     Args:
@@ -210,7 +161,7 @@ def main():
     """
     main function processes only argument parsing
     """
-    parser = argparse.ArgumentParser(description='기분석 사전을 빌드하는 스크립트')
+    parser = ArgumentParser(description='기분석 사전을 빌드하는 스크립트')
     parser.add_argument('--rsc-src', help='source directory (text) <default: ./src>',
                         metavar='DIR', default='./src')
     parser.add_argument('--rsc-dir', help='target directory (binary) <default: ./share/khaiii>',

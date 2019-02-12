@@ -5,29 +5,27 @@
 """
 오분석 패치를 빌드하는 스크립트
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-import argparse
-from collections import defaultdict
+from argparse import ArgumentParser, Namespace
 import glob
-import itertools
 import logging
 import os
 import struct
 import sys
+from typing import Dict, List, Tuple
 
-from char_align import Aligner, AlignError
-from compile_preanal import align_to_tag, print_errors
-from compile_restore import load_restore_dic, load_vocab_out
-from morphs import Morph, ParseError
-from morphs import WORD_DELIM_STR, SENT_DELIM_STR, WORD_DELIM_NUM, SENT_DELIM_NUM
-import sejong_corpus
-from trie import Trie
+from khaiii.resource.char_align import Aligner, align_patch
+from khaiii.resource.resource import load_restore_dic, load_vocab_out
+from khaiii.resource.morphs import Morph, ParseError, mix_char_tag
+from khaiii.resource.trie import Trie
+
+from compile_preanal import print_errors
 
 
 #########
@@ -37,7 +35,7 @@ class Entry:
     """
     error patch entry
     """
-    def __init__(self, file_path, line_num, line):
+    def __init__(self, file_path: str, line_num: int, line: str):
         """
         Args:
             file_path:  파일 경로
@@ -65,7 +63,7 @@ class Entry:
             return '{}: "{}"'.format(file_num, line)
         return '{}\t{}\t{}'.format(self.raw, Morph.to_str(self.left), Morph.to_str(self.right))
 
-    def key_str(self):
+    def key_str(self) -> str:
         """
         패치의 중복 검사를 하기 위해 원문과 left를 이용하여 키를 생성
         Returns:
@@ -102,104 +100,11 @@ class Entry:
 #############
 # functions #
 #############
-def _split_list(lst, delim):
-    """
-    리스트를 delimiter로 split하는 함수
-
-    >>> _split_list(['가/JKS', '_', '너/NP'], '_')
-    [['가/JKS'], ['너/NP']]
-
-    Args:
-        lst:  리스트
-        delim:  delimiter
-    Returns:
-        list of sublists
-    """
-    sublists = []
-    while lst:
-        prefix = [x for x in itertools.takewhile(lambda x: x != delim, lst)]
-        sublists.append(prefix)
-        lst = lst[len(prefix):]
-        delims = [x for x in itertools.takewhile(lambda x: x == delim, lst)]
-        lst = lst[len(delims):]
-    return sublists
-
-
-def align_patch(rsc_src, raw, morph_str):
-    """
-    패치의 원문과 분석 결과를 음절단위 매핑(정렬)을 수행한다.
-    Args:
-        rsc_src:  (Aligner, restore dic, vocab out) resource triple
-        raw:  원문
-        morph_str:  형태소 분석 결과 (패치 기술 형식)
-    Returns:
-        정렬에 기반한 출력 태그 번호
-    """
-    aligner, restore_dic, vocab_out = rsc_src
-    raw_words = raw.strip().split()
-    morphs = morph_str.split(' + ')
-    morphs_strip = morphs
-    if morphs[0] in [WORD_DELIM_STR, SENT_DELIM_STR]:
-        morphs_strip = morphs_strip[1:]
-    if morphs[-1] in [WORD_DELIM_STR, SENT_DELIM_STR]:
-        morphs_strip = morphs_strip[:-1]
-    morph_words = _split_list(morphs_strip, WORD_DELIM_STR)
-    tag_nums = []
-    restore_new = defaultdict(dict)
-    vocab_new = defaultdict(list)
-    for raw_word, morph_word in zip(raw_words, morph_words):
-        word = sejong_corpus.Word.parse('\t'.join(['', raw_word, ' + '.join(morph_word)]), '', 0)
-        try:
-            word_align = aligner.align(word)
-            _, word_tag_nums = \
-                align_to_tag(raw_word, word_align, (restore_dic, restore_new),
-                             (vocab_out, vocab_new))
-            if restore_new or vocab_new:
-                logging.debug('needs dic update: %s', word)
-                return []
-        except AlignError as algn_err:
-            logging.debug('alignment error: %s', word)
-            logging.debug(str(algn_err))
-            return []
-        if tag_nums:
-            tag_nums.append(WORD_DELIM_NUM)
-        tag_nums.extend(word_tag_nums)
-    if morphs[0] in [WORD_DELIM_STR, SENT_DELIM_STR]:
-        tag_nums.insert(0, WORD_DELIM_NUM if morphs[0] == WORD_DELIM_STR else SENT_DELIM_NUM)
-    if morphs[-1] in [WORD_DELIM_STR, SENT_DELIM_STR]:
-        tag_nums.append(WORD_DELIM_NUM if morphs[-1] == WORD_DELIM_STR else SENT_DELIM_NUM)
-    return tag_nums
-
-
-def mix_char_tag(chars, tags):
-    """
-    음절과 출력 태그를 비트 연산으로 합쳐서 하나의 (32비트) 숫자로 표현한다.
-    Args:
-        chars:  음절 (유니코드) 리스트 (문자열)
-        tags:  출력 태그 번호의 리스트
-    Returns:
-        합쳐진 숫자의 리스트
-    """
-    char_nums = [ord(c) for c in chars]
-    if tags[0] == SENT_DELIM_NUM:
-        char_nums.insert(0, SENT_DELIM_NUM)
-    if tags[-1] == SENT_DELIM_NUM:
-        char_nums.append(SENT_DELIM_NUM)
-    for idx, char_num in enumerate(char_nums):
-        if char_num == ord(' '):
-            char_nums[idx] = WORD_DELIM_NUM
-            continue
-        elif tags[idx] == SENT_DELIM_NUM:
-            continue
-        char_nums[idx] = char_num << 12 | tags[idx]
-    return char_nums
-
-
-def _load_entries(args):
+def _load_entries(args: Namespace) -> List[Entry]:
     """
     패치 엔트리를 파일로부터 로드한다.
     Args:
-        args:  arguments
+        args:  program arguments
     Returns:
         엔트리 리스트
     """
@@ -221,7 +126,7 @@ def _load_entries(args):
     return good_entries
 
 
-def _check_dup(entries):
+def _check_dup(entries: List[Entry]):
     """
     중복된 엔트리가 없는 지 확인한다.
     Args:
@@ -239,7 +144,7 @@ def _check_dup(entries):
     print_errors(bad_entries)
 
 
-def _set_align(rsc_src, entries):    # pylint: disable=invalid-name
+def _set_align(rsc_src: Tuple[Aligner, dict, Dict[str, int]], entries: List[Entry]):
     """
     음절과 형태소 분석 결과를 정렬한다.
     Args:
@@ -265,7 +170,7 @@ def _set_align(rsc_src, entries):    # pylint: disable=invalid-name
     print_errors(bad_entries)
 
 
-def _save_trie(rsc_dir, entries):
+def _save_trie(rsc_dir: str, entries: List[Entry]):
     """
     트라이를 저장한다.
     Args:
@@ -309,7 +214,7 @@ def _save_trie(rsc_dir, entries):
                  (sum([len(r) for r in rights])+1) * struct.Struct('h').size)
 
 
-def run(args):
+def run(args: Namespace):
     """
     run function which is the start point of program
     Args:
@@ -338,7 +243,7 @@ def main():
     """
     main function processes only argument parsing
     """
-    parser = argparse.ArgumentParser(description='기분석 사전을 빌드하는 스크립트')
+    parser = ArgumentParser(description='기분석 사전을 빌드하는 스크립트')
     parser.add_argument('--model-size', help='model size <default: base>',
                         metavar='SIZE', default='base')
     parser.add_argument('--rsc-src', help='source directory (text) <default: ./src>',

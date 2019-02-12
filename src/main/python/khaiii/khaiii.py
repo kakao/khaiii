@@ -12,8 +12,7 @@ __copyright__ = 'Copyright (C) 2018-, Kakao Corp. All rights reserved.'
 ###########
 # imports #
 ###########
-import argparse
-from argparse import Namespace
+from argparse import ArgumentParser, Namespace
 import ctypes
 from ctypes.util import find_library
 import logging
@@ -26,11 +25,10 @@ from typing import List
 #########
 # types #
 #########
-class _khaiii_morph_t(ctypes.Structure):    # pylint: disable=invalid-name
+class _khaiii_morph_t(ctypes.Structure):    # pylint: disable=invalid-name,too-few-public-methods
     """
     khaiii_morph_t structure
     """
-    pass
 
 
 _khaiii_morph_t._fields_ = [    # pylint: disable=protected-access
@@ -43,11 +41,10 @@ _khaiii_morph_t._fields_ = [    # pylint: disable=protected-access
 ]
 
 
-class _khaiii_word_t(ctypes.Structure):    # pylint: disable=invalid-name
+class _khaiii_word_t(ctypes.Structure):    # pylint: disable=invalid-name,too-few-public-methods
     """
     khaiii_word_t structure
     """
-    pass
 
 
 _khaiii_word_t._fields_ = [    # pylint: disable=protected-access
@@ -63,7 +60,6 @@ class KhaiiiExcept(Exception):
     """
     khaiii API를 위한 표준 예외 클래스
     """
-    pass
 
 
 class KhaiiiMorph:
@@ -384,7 +380,7 @@ def main():
     """
     main function processes only argument parsing
     """
-    parser = argparse.ArgumentParser(description='khaiii API module test program')
+    parser = ArgumentParser(description='khaiii API module test program')
     parser.add_argument('--lib-path', help='library path', metavar='FILE', default='')
     parser.add_argument('--rsc-dir', help='resource directory', metavar='DIR', default='')
     parser.add_argument('--opt-str', help='option string (JSON format)', metavar='JSON', default='')
