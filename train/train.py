@@ -14,7 +14,6 @@ __copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 ###########
 from argparse import ArgumentParser, Namespace
 import logging
-import os
 
 from khaiii.train.trainer import Trainer
 
@@ -60,12 +59,11 @@ def main():
                         default=500)
     parser.add_argument('--patience', help='maximum patience count to revert model <default: 10>',
                         metavar='INT', type=int, default=10)
-    parser.add_argument('--gpu-num', help='GPU number to use <default: 0>', metavar='INT', type=int,
-                        default=0)
+    parser.add_argument('--gpu-num', help='GPU number to use <default: -1 for CPU>', metavar='INT',
+                        type=int, default=-1)
     parser.add_argument('--debug', help='enable debug', action='store_true')
     args = parser.parse_args()
 
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(args.gpu_num)
     if args.debug:
         logging.basicConfig(level=logging.DEBUG)
     else:

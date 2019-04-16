@@ -18,7 +18,8 @@ import os
 import random
 from typing import List, TextIO, Tuple
 
-from torch import LongTensor, Tensor    # pylint: disable=no-member, no-name-in-module
+import torch
+from torch import Tensor
 from tqdm import tqdm
 
 from khaiii.resource.resource import Resource
@@ -44,6 +45,20 @@ class PosSentTensor(PosSentence):
         if self.pos_tagged_words:
             return sum([len(w.raw) for w in self.pos_tagged_words]) + len(self.pos_tagged_words) + 1
         return 0
+
+    @classmethod
+    def to_tensor(cls, arr: List, gpu_num: int = -1) -> Tensor:
+        """
+        Args:
+            arr:  array to convert
+            gpu_num:  GPU device number. default: -1 for CPU
+        Returns:
+            tensor
+        """
+        # pylint: disable=no-member
+        device = torch.device('cuda', gpu_num) if torch.cuda.is_available() and gpu_num >= 0 \
+                                               else torch.device('cpu')
+        return torch.tensor(arr, device=device)    # pylint: disable=not-callable
 
     def make_contexts(self, window: int) -> List[List[str]]:
         """
@@ -139,35 +154,56 @@ class PosSentTensor(PosSentence):
             _filter_right_spc_mask(right_spc_mask)
         return right_spc_masks
 
-    def to_tensor(self, cfg: Namespace, rsc: Resource, do_spc_dropout: bool) \
-            -> Tuple[Tensor, Tensor, Tensor, Tensor]:
+    def get_contexts(self, cfg: Namespace, rsc: Resource) -> List[List[int]]:
         """
-        문장 내에 포함된 전체 음절들과 태그를 모델의 forward 메소드에 넣을 수 있는 텐서로 변환한다.
+        문맥을 반환하는 메서드
         Args:
             cfg:  config
             rsc:  Resource object
-            do_spc_dropout:  whether do space dropout or not
-        Returns:
-            labels tensor
-            contexts tensor
-            left space masks tensor
-            right space masks tensor
+        Returns
+            문맥 리스트. shape: [(문장 내 음절 길이), (문맥의 크기)]
         """
-        # 차원: [문장내 음절 갯수, ]
-        label_nums = [rsc.vocab_out[tag] for pos_word in self.pos_tagged_words \
-                                         for tag in pos_word.tags]
-        labels_tensor = LongTensor(label_nums)
-        # 차원: [문장내 음절 갯수 x context 크기]
         contexts = self.make_contexts(cfg.window)
-        context_nums = [[rsc.vocab_in[c] for c in context] for context in contexts]
-        contexts_tensor = LongTensor(context_nums)
+        return [[rsc.vocab_in[c] for c in context] for context in contexts]
+
+    def get_spc_masks(self, cfg: Namespace, rsc: Resource, do_spc_dropout: bool) \
+                -> Tuple[List[List[int]], List[List[int]]]:
+        """
+        공백 마스킹 벡터를 반환하는 메소드
+        Args:
+            cfg:  config
+            rsc:  Resource object
+            do_spc_dropout:  공백 마스크 시 dropout 적용 여부
+        Returns
+            좌측 공백 마스킹 벡터. shape: [(문장 내 음절 길이), (문맥의 크기)]
+            우측 공백 마스킹 벡터. shape: [(문장 내 음절 길이), (문맥의 크기)]
+        """
         spc_dropout = cfg.spc_dropout if do_spc_dropout else 0.0
         left_spc_masks = self.make_left_spc_masks(cfg.window, rsc.vocab_in['<w>'], spc_dropout)
-        left_spc_masks_tensor = LongTensor(left_spc_masks)
         right_spc_masks = self.make_right_spc_masks(cfg.window, rsc.vocab_in['</w>'], spc_dropout)
-        right_spc_masks_tensor = LongTensor(right_spc_masks)
+        return left_spc_masks, right_spc_masks
 
-        return labels_tensor, contexts_tensor, left_spc_masks_tensor, right_spc_masks_tensor
+    def get_labels(self, rsc: Resource) -> List[int]:
+        """
+        레이블(출력 태그)를 반환하는 메서드
+        Args:
+            rsc:  Resource object
+        Returns
+            레이블 리스트. shape: [(문장 내 음절 길이), ]
+        """
+        return [rsc.vocab_out[tag] for pos_word in self.pos_tagged_words for tag in pos_word.tags]
+
+    def get_spaces(self) -> List[int]:
+        """
+        음절 별 공백 여부를 반환하는 메서드
+        Returns
+            공백 여부 리스트. shape: [(문장 내 음절 길이), ]
+        """
+        spaces = []
+        for word in self.words:
+            spaces.extend([0, ] * (len(word)-1))
+            spaces.append(1)
+        return spaces
 
 
 class PosDataset:

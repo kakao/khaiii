@@ -35,7 +35,7 @@ class Embedder(nn.Module):
         self.rsc = rsc
         self.embedding = nn.Embedding(len(rsc.vocab_in), cfg.embed_dim, 0)
 
-    def forward(self, inputs):    # pylint: disable=arguments-differ
+    def forward(self, *inputs):    # pylint: disable=arguments-differ
         """
         임베딩을 생성하는 메소드
         Args:
@@ -45,12 +45,14 @@ class Embedder(nn.Module):
         """
         contexts, left_spc_masks, right_spc_masks = inputs
         embeds = self.embedding(contexts)
-        embeds += self.embedding(left_spc_masks)
-        embeds += self.embedding(right_spc_masks)
+        if left_spc_masks is not None:
+            embeds += self.embedding(left_spc_masks)
+        if right_spc_masks is not None:
+            embeds += self.embedding(right_spc_masks)
         # 왼쪽과 오른쪽 패딩에는 zero 벡터인데 아래 positional encoding이 더해짐
         # 사소하지만 아래도 패딩 영역에 대해 마스킹 후 더해줘야 하지 않을까?
         embeds += positional_encoding(self.cfg.context_len, self.cfg.context_len,
-                                      self.cfg.embed_dim, 1)
+                                      self.cfg.embed_dim, 1, self.cfg.gpu_num)
         return embeds
 
 
@@ -76,7 +78,8 @@ def memoize(func):
 
 
 @memoize
-def positional_encoding(sent_len: int, max_dim: int, embed_dim: int, method: int = 1) -> Tensor:
+def positional_encoding(sent_len: int, max_dim: int, embed_dim: int, method: int = 1,
+                        gpu_num: int = -1) -> Tensor:
     """
     positional encoding Tensor 출력.
     embeds [batch_size, context_len, embed_dim]에 Broadcasting 으로 더해짐
@@ -85,10 +88,12 @@ def positional_encoding(sent_len: int, max_dim: int, embed_dim: int, method: int
         max_dim:  maximum dimension
         embed_dim:  embedding dimension
         method:  method number (1. end-to-end memory networks or 2. attention is all you need)
+        gpu_num:  GPU device number. default: -1 for CPU
     Returns:
         pe [context_len, embed_dim]
     """
-    pe_tensor = torch.zeros([max_dim, embed_dim])    # pylint: disable=no-member
+    device = gpu_num if gpu_num >= 0 else None
+    pe_tensor = torch.zeros([max_dim, embed_dim], device=device)    # pylint: disable=no-member
     for pos in range(1, sent_len + 1):
         for i in range(1, embed_dim+1):
             if method == 1:
@@ -101,7 +106,5 @@ def positional_encoding(sent_len: int, max_dim: int, embed_dim: int, method: int
                     pe_tensor[pos-1, i-1] = math.sin(pos / 10000 ** (2*i / embed_dim))
                 else:
                     pe_tensor[pos-1, i-1] = math.cos(pos / 10000 ** (2*i / embed_dim))
-    if torch.cuda.is_available():
-        pe_tensor = pe_tensor.cuda()
     pe_tensor.detach()
     return pe_tensor
