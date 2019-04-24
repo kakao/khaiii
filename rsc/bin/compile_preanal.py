@@ -24,7 +24,7 @@ from typing import Dict, List
 from khaiii.munjong import sejong_corpus
 from khaiii.resource.char_align import Aligner, AlignError, align_to_tag
 from khaiii.resource.morphs import Morph, ParseError
-from khaiii.resource.resource import load_restore_dic, load_vocab_out
+from khaiii.resource.resource import load_vocab_out, parse_restore_dic
 from khaiii.resource.trie import Trie
 
 from compile_restore import append_new_entries
@@ -231,7 +231,7 @@ def run(args: Namespace):
         args:  program arguments
     """
     aligner = Aligner(args.rsc_src)
-    restore_dic = load_restore_dic('{}/restore.dic'.format(args.rsc_src))
+    restore_dic = parse_restore_dic('{}/restore.dic'.format(args.rsc_src))
     if not restore_dic:
         sys.exit(1)
     restore_new = defaultdict(dict)

@@ -14,7 +14,7 @@ __copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 import logging
 import re
 
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 
 
 #########
@@ -112,7 +112,7 @@ class PosWord:
         """
         return self.res_chrs == other.res_chrs and self.res_tags == other.res_tags
 
-    def set_pos_result(self, tags: List[str], restore_dic: dict = None):
+    def set_pos_result(self, tags: List[str], restore_dic: Dict[str, str] = None):
         """
         외부에서 생성된 PosWord객체의 정보를 현재 인스턴스에 설정합니다.
         Args:
@@ -125,7 +125,7 @@ class PosWord:
         assert len(self.raw) == len(self.tags)    # 음절수와 태그수는 동일해야 한다.
         self.pos_tagged_morphs = self._make_pos_morphs(restore_dic)
 
-    def _make_pos_morphs(self, restore_dic: dict = None):
+    def _make_pos_morphs(self, restore_dic: Dict[str, str] = None):
         """
         형태소 태그리스트를 대상으로 B/I 로 병합되는 위치를 구합니다.
         Args:
@@ -159,7 +159,7 @@ class PosWord:
                                      (lex, iob_tag, self.res_chrs, self.res_tags))
         return pos_morphs
 
-    def _restore(self, restore_dic: dict):
+    def _restore(self, restore_dic: Dict[str, str]):
         """
         원형 복원 사전을 이용하여 형태소의 원형을 복원한다.
         Args:
@@ -234,7 +234,7 @@ class PosSentence(Sentence):
         for word in self.words:
             self.pos_tagged_words.append(PosWord(word))
 
-    def set_pos_result(self, tags: List[str], restore_dic: dict = None):
+    def set_pos_result(self, tags: List[str], restore_dic: Dict[str, str] = None):
         """
         문장 전체에 대한 형태소 태그 출력 레이블 정보를 세팅하고 형태소를 복원한다.
         Args:

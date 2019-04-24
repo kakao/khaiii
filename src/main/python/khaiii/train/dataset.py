@@ -16,7 +16,7 @@ import itertools
 import logging
 import os
 import random
-from typing import List, TextIO, Tuple
+from typing import Dict, List, TextIO, Tuple
 
 import torch
 from torch import Tensor
@@ -210,7 +210,7 @@ class PosDataset:
     """
     part-of-speech tag dataset
     """
-    def __init__(self, cfg: Namespace, restore_dic: dict, fin: TextIO):
+    def __init__(self, cfg: Namespace, restore_dic: Dict[str, str], fin: TextIO):
         """
         Args:
             cfg:  config

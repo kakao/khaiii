@@ -44,10 +44,10 @@ class Resource:
         vocab_out_path = '{}/vocab.out'.format(cfg.rsc_src)
         self.vocab_out = Vocabulary(vocab_out_path)    # no unknown, no special
         restore_dic_path = '{}/restore.dic'.format(cfg.rsc_src)
-        self.restore_dic = self._load_restore_dic(restore_dic_path)
+        self.restore_dic = self.load_restore_dic(restore_dic_path)
 
     @classmethod
-    def _load_restore_dic(cls, path: str) -> Dict[str, str]:
+    def load_restore_dic(cls, path: str) -> Dict[str, str]:
         """
         load character to output tag mapping
         Args:
@@ -69,7 +69,7 @@ class Resource:
 #############
 # functions #
 #############
-def load_restore_dic(file_path: str) -> Dict[Tuple[str, str], Dict[int, str]]:
+def parse_restore_dic(file_path: str) -> Dict[Tuple[str, str], Dict[int, str]]:
     """
     원형복원 사전을 로드한다.
     Args:
