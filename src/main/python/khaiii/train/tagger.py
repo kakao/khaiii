@@ -30,15 +30,17 @@ class PosTagger:
     """
     part-of-speech tagger
     """
-    def __init__(self, model_dir: str):
+    def __init__(self, model_dir: str, gpu_num: int = -1):
         """
         Args:
             model_dir:  model dir
+            gpu_num:  GPU number to override
         """
         cfg_dict = json.load(open('{}/config.json'.format(model_dir), 'r', encoding='UTF-8'))
         self.cfg = Namespace()
         for key, val in cfg_dict.items():
             setattr(self.cfg, key, val)
+        setattr(self.cfg, 'gpu_num', gpu_num)
         self.rsc = Resource(self.cfg)
         self.model = Model(self.cfg, self.rsc)
         self.model.load('{}/model.state'.format(model_dir))

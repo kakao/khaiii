@@ -143,8 +143,10 @@ class Trainer:
             return
         logging.info('==== continue training: %s ====', self.cfg.model_id)
         cfg = json.load(open(cfg_path, 'r', encoding='UTF-8'))
+        gpu_num = self.cfg.gpu_num
         for key, val in cfg.items():
             setattr(self.cfg, key, val)
+        setattr(self.cfg, 'gpu_num', gpu_num)
         self._revert_to_best(False)
 
         f_score_best = 0.0

@@ -44,13 +44,13 @@ def main():
                         metavar='DIR', default='../rsc/src')
     parser.add_argument('--logdir', help='tensorboard log dir <default: ./logdir>', metavar='DIR',
                         default='./logdir')
-    parser.add_argument('--window', help='left/right character window length <default: 3>',
-                        metavar='INT', type=int, default=3)
-    parser.add_argument('--spc-dropout', help='space(word delimiter) dropout rate <default: 0.0>',
-                        metavar='REAL', type=float, default=0.0)
+    parser.add_argument('--window', help='left/right character window length <default: 4>',
+                        metavar='INT', type=int, default=4)
+    parser.add_argument('--spc-dropout', help='space(word delimiter) dropout rate <default: 0.1>',
+                        metavar='REAL', type=float, default=0.1)
     parser.add_argument('--cutoff', help='cutoff <default: 2>', metavar='INT', type=int, default=2)
-    parser.add_argument('--embed-dim', help='embedding dimension <default: 30>', metavar='INT',
-                        type=int, default=30)
+    parser.add_argument('--embed-dim', help='embedding dimension <default: 35>', metavar='INT',
+                        type=int, default=35)
     parser.add_argument('--learning-rate', help='learning rate <default: 0.001>', metavar='REAL',
                         type=float, default=0.001)
     parser.add_argument('--lr-decay', help='learning rate decay <default: 0.9>', metavar='REAL',
