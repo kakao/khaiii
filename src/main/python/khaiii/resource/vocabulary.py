@@ -36,7 +36,7 @@ class Vocabulary:
         """
         self.dic = {}    # {entry: number} dictionary
         self.unk = unk
-        self.rev = ['', unk] if unk else ['', ]    # reverse dictionary
+        self.rev = ['', unk] if unk else []    # reverse dictionary
         if special:
             self.rev.extend(special)
         for num, entry in enumerate(self.rev):
