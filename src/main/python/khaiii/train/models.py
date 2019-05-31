@@ -102,9 +102,9 @@ class Model(nn.Module):
         contexts, left_spc_masks, right_spc_masks = inputs
         features_pos = self.conv_layer(contexts, left_spc_masks, right_spc_masks)
         features_spc = self.conv_layer(contexts, None, None)
-        logit_pos = self.hidden_layer_pos(features_pos)
-        logit_spc = self.hidden_layer_spc(features_spc)
-        return logit_pos, logit_spc
+        logits_pos = self.hidden_layer_pos(features_pos)
+        logits_spc = self.hidden_layer_spc(features_spc)
+        return logits_pos, logits_spc
 
     def save(self, path: str):
         """
