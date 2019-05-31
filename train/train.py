@@ -48,7 +48,7 @@ def main():
                         metavar='INT', type=int, default=4)
     parser.add_argument('--spc-dropout', help='space(word delimiter) dropout rate <default: 0.1>',
                         metavar='REAL', type=float, default=0.1)
-    parser.add_argument('--cutoff', help='cutoff <default: 2>', metavar='INT', type=int, default=2)
+    parser.add_argument('--cutoff', help='cutoff <default: 1>', metavar='INT', type=int, default=1)
     parser.add_argument('--embed-dim', help='embedding dimension <default: 35>', metavar='INT',
                         type=int, default=35)
     parser.add_argument('--learning-rate', help='learning rate <default: 0.001>', metavar='REAL',
