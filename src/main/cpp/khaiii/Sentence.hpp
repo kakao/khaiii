@@ -47,6 +47,22 @@ class Sentence {
         return _raw;
     }
 
+    /**
+     * get delta from left word boundary to this character
+     * @param  wrd_idx  word index
+     * @param  chr_idx  character index
+     * @return  delta (always less or equal to 0)
+     */
+    int get_lwb_delta(int wrd_idx, int chr_idx);
+
+    /**
+     * get delta from right word boundary to this character
+     * @param  wrd_idx  word index
+     * @param  chr_idx  character index
+     * @return  delta (always more or equal to 0)
+     */
+    int get_rwb_delta(int wrd_idx, int chr_idx);
+
  private:
     static std::shared_ptr<spdlog::logger> _log;    ///< logger
 
