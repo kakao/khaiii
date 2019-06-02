@@ -11,6 +11,7 @@
 // includes //
 //////////////
 #include <exception>
+#include <memory>
 
 #include "khaiii/Config.hpp"
 #include "khaiii/KhaiiiApi.hpp"
