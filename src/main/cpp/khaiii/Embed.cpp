@@ -56,7 +56,7 @@ void Embed::close() {
 const embedding_t& Embed::operator[](wchar_t chr) const {
     const wchar_t* found = reinterpret_cast<const wchar_t*>(
             bsearch(&chr, _keys, _vals.size(), sizeof(wchar_t), Embed::_key_cmp));
-    int idx = 0;
+    int idx = 1;    // unknown character index is 1
     if (found != nullptr) idx = found - _keys;
 #ifndef NDEBUG
     wchar_t wstr[2] = {chr, 0};
@@ -67,22 +67,22 @@ const embedding_t& Embed::operator[](wchar_t chr) const {
 
 
 const embedding_t& Embed::left_word_bound() const {
-    return _vals.at(1);
-}
-
-
-const embedding_t& Embed::right_word_bound() const {
     return _vals.at(2);
 }
 
 
-const embedding_t& Embed::left_padding() const {
+const embedding_t& Embed::right_word_bound() const {
     return _vals.at(3);
 }
 
 
+const embedding_t& Embed::left_padding() const {
+    return _vals.at(0);    // padding index is 0 which is zero vector
+}
+
+
 const embedding_t& Embed::right_padding() const {
-    return _vals.at(4);
+    return _vals.at(0);    // padding index is 0 which is zero vector
 }
 
 

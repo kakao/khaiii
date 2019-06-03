@@ -55,8 +55,8 @@ Morph::Morph(wstring wlex, pos_tag_t tag, const wchar_t* wbegin, int wlength)
 // methods //
 /////////////
 const char* Morph::pos_str(pos_tag_t num) {
-    assert(num < POS_TAG_SIZE);
-    return _TAG_SET[num];
+    assert(0 < num && num <= POS_TAG_SIZE);
+    return _TAG_SET[num-1];
 }
 
 void Morph::organize(const wstring& wraw, const vector<int>& wbegins, const vector<int>& wends) {

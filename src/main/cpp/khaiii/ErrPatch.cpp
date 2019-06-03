@@ -11,6 +11,7 @@
 // includes //
 //////////////
 #include <exception>
+#include <memory>
 #include <vector>
 
 #include "khaiii/KhaiiiApi.hpp"

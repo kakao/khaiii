@@ -81,7 +81,7 @@ void Restore::open(string dir) {
     _one_mmf.open(dir + "/restore.one");
 #ifndef NDEBUG
     for (int i = 0; i < _one_mmf.size(); ++i) {
-        _log->trace("{}: {}, ", i, _one_mmf.data()[i]);
+        SPDLOG_TRACE(_log, "{}: {}, ", i, _one_mmf.data()[i]);
     }
 #endif
     _log->info("restore dictionary opened");

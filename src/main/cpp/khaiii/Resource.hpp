@@ -11,6 +11,7 @@
 //////////////
 // includes //
 //////////////
+#include <memory>
 #include <string>
 
 #include "spdlog/spdlog.h"

@@ -47,6 +47,16 @@ extern activation_t RELU;
  */
 void add_positional_enc(float* data, int len, int dim);
 
+/**
+ * add two vector in-place (update left vector)
+ * @param  left  vector (will be updated)
+ * @param  right  vector
+ */
+inline void add_vec(float* left, const float* right, int dim) {
+    assert(dim > 0);
+    for (; dim > 0; --dim) *left++ += *right++;
+}
+
 
 }    // namespace nn
 }    // namespace khaiii

@@ -57,11 +57,11 @@ void Word::set_embeds(const Resource& rsc) {
 }
 
 
-void Word::add_morph(const wstringstream& wlex, uint8_t tag1, int begin_idx, int end_idx) {
+void Word::add_morph(const wstringstream& wlex, uint8_t tag, int begin_idx, int end_idx) {
     const wchar_t* morph_wbegin = wbegin + begin_idx;
     int morph_wlength = end_idx - begin_idx + 1;
-    pos_tag_t tag0 = static_cast<pos_tag_t>(tag1 - 1);
-    morph_vec.emplace_back(make_shared<Morph>(wlex.str(), tag0, morph_wbegin, morph_wlength));
+    morph_vec.emplace_back(make_shared<Morph>(wlex.str(), static_cast<pos_tag_t>(tag), morph_wbegin,
+                           morph_wlength));
 }
 
 

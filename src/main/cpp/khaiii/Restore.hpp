@@ -11,6 +11,7 @@
 //////////////
 // includes //
 //////////////
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -34,13 +35,12 @@ struct chr_tag_t {
     BI bi;    ///< B-, I- notation
 
     inline void set_tag(uint16_t tag_out) {
-        assert(tag_out <= 2 * POS_TAG_SIZE);
-        tag = tag_out - 1;
-        if (tag >= POS_TAG_SIZE) {
+        assert(0 < tag_out && tag_out <= 2 * POS_TAG_SIZE);
+        tag = tag_out;
+        if (tag > POS_TAG_SIZE) {
             tag -= POS_TAG_SIZE;
             bi = I;
         }
-        tag += 1;
     }
 
     inline void from_val(uint32_t val) {

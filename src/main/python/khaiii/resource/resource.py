@@ -23,13 +23,8 @@ from khaiii.resource.vocabulary import Vocabulary
 #############
 # constants #
 #############
-SPECIAL_CHARS = [
-    '<u>',    # unknown character
-    '<w>', '</w>',    # begin/end of word
-    '<s>', '</s>'    # begin/end of sentence
-]
-
-PAD_CHR = '<p>'    # sepcial character for padding
+UNK_CHR = '@@UNKNOWN@@'
+SPECIAL_CHARS = ['<w>', '</w>']    # begin/end of word
 
 
 #########
@@ -45,14 +40,14 @@ class Resource:
             cfg:  config
         """
         vocab_in_path = '{}/vocab.in'.format(cfg.rsc_src)
-        self.vocab_in = Vocabulary(vocab_in_path, cfg.cutoff, SPECIAL_CHARS)
+        self.vocab_in = Vocabulary(vocab_in_path, cfg.cutoff, UNK_CHR, SPECIAL_CHARS)
         vocab_out_path = '{}/vocab.out'.format(cfg.rsc_src)
-        self.vocab_out = Vocabulary(vocab_out_path, 0, None)
+        self.vocab_out = Vocabulary(vocab_out_path)    # no unknown, no special
         restore_dic_path = '{}/restore.dic'.format(cfg.rsc_src)
-        self.restore_dic = self._load_restore_dic(restore_dic_path)
+        self.restore_dic = self.load_restore_dic(restore_dic_path)
 
     @classmethod
-    def _load_restore_dic(cls, path: str) -> Dict[str, str]:
+    def load_restore_dic(cls, path: str) -> Dict[str, str]:
         """
         load character to output tag mapping
         Args:
@@ -74,7 +69,7 @@ class Resource:
 #############
 # functions #
 #############
-def load_restore_dic(file_path: str) -> Dict[Tuple[str, str], Dict[int, str]]:
+def parse_restore_dic(file_path: str) -> Dict[Tuple[str, str], Dict[int, str]]:
     """
     원형복원 사전을 로드한다.
     Args:

@@ -12,15 +12,17 @@ __copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 # imports #
 ###########
 from argparse import Namespace
+import itertools
 import logging
 import os
 import random
-from typing import List, TextIO, Tuple
+from typing import Dict, List, TextIO, Tuple
 
-from torch import LongTensor, Tensor    # pylint: disable=no-member, no-name-in-module
+import torch
+from torch import Tensor
 from tqdm import tqdm
 
-from khaiii.resource.resource import PAD_CHR, Resource
+from khaiii.resource.resource import Resource
 from khaiii.train.sentence import PosSentence, PosWord
 
 
@@ -44,104 +46,171 @@ class PosSentTensor(PosSentence):
             return sum([len(w.raw) for w in self.pos_tagged_words]) + len(self.pos_tagged_words) + 1
         return 0
 
-    def make_labels(self, with_spc: bool) -> List[str]:
+    @classmethod
+    def to_tensor(cls, arr: List, gpu_num: int = -1) -> Tensor:
         """
-        각 음절별로 출력 레이블(태그)를 생성한다.
         Args:
-            with_spc:  공백(어절 경계) 포함 여부
+            arr:  array to convert
+            gpu_num:  GPU device number. default: -1 for CPU
         Returns:
-            레이블 리스트
+            tensor
         """
-        if not with_spc:
-            # 문장 경계, 어절 경계 등 가상 음절을 제외하고 순수한 음절들의 레이블
-            return [tag for pos_word in self.pos_tagged_words for tag in pos_word.tags]
-        labels = [PAD_CHR, ]    # 문장 시작
-        for pos_word in self.pos_tagged_words:
-            if len(labels) > 1:
-                labels.append(PAD_CHR)    # 어절 경계
-            labels.extend(pos_word.tags)
-        labels.append(PAD_CHR)    # 문장 종료
-        return labels
+        # pylint: disable=no-member
+        device = torch.device('cuda', gpu_num) if torch.cuda.is_available() and gpu_num >= 0 \
+                                               else torch.device('cpu')
+        return torch.tensor(arr, device=device)    # pylint: disable=not-callable
 
-    def make_contexts(self, window: int, spc_dropout: float) -> List[str]:
+    def make_contexts(self, window: int) -> List[List[str]]:
         """
         각 음절 별로 좌/우 window 크기 만큼 context를 만든다.
         Args:
             window:  left/right window size
-            spc_dropout:  space(word delimiter) dropout rate
         Returns:
             contexts
         """
-        contexts = []
-        for wrd_idx, word in enumerate(self.words):
-            for chr_idx, char in enumerate(word):
-                left_context = list(reversed(word[:chr_idx]))
-                if random.random() >= spc_dropout:
-                    left_context.append('<w>')
-                for left_word in reversed(self.words[:wrd_idx]):
-                    left_context.extend(reversed(left_word))
-                    if len(left_context) >= window:
-                        break
-                if len(left_context) < window:
-                    left_context.extend(['<s>', ] * (window - len(left_context)))
-                left_context = list(reversed(left_context[:window]))
-                assert len(left_context) == window
-
-                right_context = list(word[chr_idx+1:])
-                if random.random() >= spc_dropout:
-                    right_context.append('</w>')
-                for right_word in self.words[wrd_idx+1:]:
-                    right_context.extend(list(right_word))
-                    if len(right_context) >= window:
-                        break
-                if len(right_context) < window:
-                    right_context.extend(['</s>', ] * (window - len(right_context)))
-                right_context = right_context[:window]
-                assert len(right_context) == window
-                contexts.append(left_context + [char, ] + right_context)
+        chars = [c for w in self.words for c in w]
+        chars_len = len(chars)
+        chars_padded = ['', ] * window + chars + ['', ] * window
+        contexts = [chars_padded[idx-window:idx+window+1]
+                    for idx in range(window, chars_len + window)]
         return contexts
 
-    def to_tensor(self, cfg: Namespace, rsc: Resource, is_train: bool) -> Tuple[Tensor, Tensor]:
+    @classmethod
+    def _flatten(cls, list_of_lists):
         """
-        문장 내에 포함된 전체 음절들과 태그를 모델의 forward 메소드에 넣을 수 있는 텐서로 변환한다.
+        flatten one level of nesting
+        Args:
+            list_of_lists:  list of lists
+        Returns:
+            flattened list
+        """
+        return list(itertools.chain.from_iterable(list_of_lists))
+
+    def make_left_spc_masks(self, window: int, left_vocab_id: int, spc_dropout: float) \
+            -> List[List[int]]:
+        """
+        각 음절 별로 좌/우 window 크기 만큼 context를 만든다.
+        Args:
+            window:  left/right window size
+            left_vocab_id:  vocabulary ID for '<w>'
+            spc_dropout:  space dropout rate
+        Returns:
+            left space masks
+        """
+        def _filter_left_spc_mask(left_spc_mask):
+            """
+            중심 음절로부터 첫번째 왼쪽 공백만 남기고 나머지는 제거한다.
+            Args:
+                left_spc_mask:  왼쪽 공백 마스크
+            """
+            for idx in range(window, -1, -1):
+                if left_spc_mask[idx] == left_vocab_id:
+                    if random.random() < spc_dropout:
+                        left_spc_mask[idx] = 0
+                    for jdx in range(idx-1, -1, -1):
+                        left_spc_mask[jdx] = 0
+                    break
+
+        left_spcs = self._flatten([[left_vocab_id, ] + [0, ] * (len(word)-1)
+                                   for word in self.words])
+        left_padded = [0, ] * window + left_spcs + [0, ] * window
+        left_spc_masks = [left_padded[idx-window:idx+1] + [0, ] * window
+                          for idx in range(window, len(left_spcs) + window)]
+        for left_spc_mask in left_spc_masks:
+            _filter_left_spc_mask(left_spc_mask)
+        return left_spc_masks
+
+    def make_right_spc_masks(self, window: int, right_vocab_id: int, spc_dropout: float) \
+            -> List[List[int]]:
+        """
+        각 음절 별로 좌/우 window 크기 만큼 context를 만든다.
+        Args:
+            window:  left/right window size
+            right_vocab_id:  vocabulary ID for '</w>'
+            spc_dropout:  space dropout rate
+        Returns:
+            right space masks
+        """
+        def _filter_right_spc_mask(right_spc_mask):
+            """
+            중심 음절로부터 첫번째 오른쪽 공백만 남기고 나머지는 제거한다.
+            Args:
+                right_spc_mask:  오른쪽 공백 마스크
+            """
+            for idx in range(window, len(right_spc_mask)):
+                if right_spc_mask[idx] == right_vocab_id:
+                    if random.random() < spc_dropout:
+                        right_spc_mask[idx] = 0
+                    for jdx in range(idx+1, len(right_spc_mask)):
+                        right_spc_mask[jdx] = 0
+                    break
+
+        right_spcs = self._flatten([[0, ] * (len(word)-1) + [right_vocab_id, ]
+                                    for word in self.words])
+        right_padded = [0, ] * window + right_spcs + [0, ] * window
+        right_spc_masks = [[0, ] * window + right_padded[idx:idx+window+1]
+                           for idx in range(window, len(right_spcs) + window)]
+        for right_spc_mask in right_spc_masks:
+            _filter_right_spc_mask(right_spc_mask)
+        return right_spc_masks
+
+    def get_contexts(self, cfg: Namespace, rsc: Resource) -> List[List[int]]:
+        """
+        문맥을 반환하는 메서드
         Args:
             cfg:  config
             rsc:  Resource object
-            is_train:  whether is train or not
-        Returns:
-            labels tensor
-            contexts tensor
+        Returns
+            문맥 리스트. shape: [(문장 내 음절 길이), (문맥의 크기)]
         """
-        # 차원: [문장내 음절 갯수, ]
-        label_nums = [rsc.vocab_out[l] for l in self.make_labels(False)]
-        labels_tensor = LongTensor(label_nums)
-        # 차원: [문장내 음절 갯수 x context 크기]
-        spc_dropout = cfg.spc_dropout if is_train else 0.0
-        context_nums = [[rsc.vocab_in[c] for c in context] \
-                        for context in self.make_contexts(cfg.window, spc_dropout)]
-        contexts_tensor = LongTensor(context_nums)
-        return labels_tensor, contexts_tensor
+        contexts = self.make_contexts(cfg.window)
+        return [[rsc.vocab_in[c] for c in context] for context in contexts]
 
-    def make_chars(self) -> List[str]:
+    def get_spc_masks(self, cfg: Namespace, rsc: Resource, do_spc_dropout: bool) \
+                -> Tuple[List[List[int]], List[List[int]]]:
         """
-        문장 내 포함된 음절들을 만든다. 문장 경계 및 어절 경계를 포함한다.
-        Returns:
-            음절의 리스트
+        공백 마스킹 벡터를 반환하는 메소드
+        Args:
+            cfg:  config
+            rsc:  Resource object
+            do_spc_dropout:  공백 마스크 시 dropout 적용 여부
+        Returns
+            좌측 공백 마스킹 벡터. shape: [(문장 내 음절 길이), (문맥의 크기)]
+            우측 공백 마스킹 벡터. shape: [(문장 내 음절 길이), (문맥의 크기)]
         """
-        chars = ['<s>', ]    # 문장 시작
+        spc_dropout = cfg.spc_dropout if do_spc_dropout else 0.0
+        left_spc_masks = self.make_left_spc_masks(cfg.window, rsc.vocab_in['<w>'], spc_dropout)
+        right_spc_masks = self.make_right_spc_masks(cfg.window, rsc.vocab_in['</w>'], spc_dropout)
+        return left_spc_masks, right_spc_masks
+
+    def get_labels(self, rsc: Resource) -> List[int]:
+        """
+        레이블(출력 태그)를 반환하는 메서드
+        Args:
+            rsc:  Resource object
+        Returns
+            레이블 리스트. shape: [(문장 내 음절 길이), ]
+        """
+        return [rsc.vocab_out[tag] for pos_word in self.pos_tagged_words for tag in pos_word.tags]
+
+    def get_spaces(self) -> List[int]:
+        """
+        음절 별 공백 여부를 반환하는 메서드
+        Returns
+            공백 여부 리스트. shape: [(문장 내 음절 길이), ]
+        """
+        spaces = []
         for word in self.words:
-            if len(chars) > 1:
-                chars.append('<w>')    # 어절 경계
-            chars.extend(word)
-        chars.append('</s>')    # 문장 종료
-        return chars
+            spaces.extend([0, ] * (len(word)-1))
+            spaces.append(1)
+        return spaces
 
 
 class PosDataset:
     """
     part-of-speech tag dataset
     """
-    def __init__(self, cfg: Namespace, restore_dic: dict, fin: TextIO):
+    def __init__(self, cfg: Namespace, restore_dic: Dict[str, str], fin: TextIO):
         """
         Args:
             cfg:  config

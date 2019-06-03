@@ -1,847 +1,546 @@
-＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿	＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS + |	＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + |
-아야지 하	아야지/EC + _ + 하/VX	아야지/EC + _ + 하/VV
- 승승장구	_ + 승승/NNG + 장구/NNG	_ + 승승장구/NNG
-＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿	＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS + ＿＿/SS	＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS + ＿/SS
- 어불성설	_ + 어불/NNG + 성설/NNG	_ + 어불성설/NNG
-닥터 오는	닥터/NNG + _ + 오/VV + 는/ETM	닥터/NNG + _ + 오/NNP + 는/JX
-라기보다	이/VCP + 라/ETN + 기/NNG + 보다/JKB	이/VCP + 라기/ETN + 보다/JKB
- 만병통치약	_ + 만병/NNG + 통치약/NNG	_ + 만병통치약/NNG
-한국야구위원회	한국야/NNP + 구/NNG + 위/NNP + 원회/NNG	한국야구위원회/NNP
-원시토기문화	원시/NNG + 토기문화/NNG	원시/NNG + 토기/NNG + 문화/NNG
- 박장대소	_ + 박장/NNG + 대소/NNG	_ + 박장대소/NNG
-블록버스터	블록버스/NNG + 터/NNP	블록버스터/NNG
-국제통화기금(	국제/NNG + 통화/NNG + 기금/NNG + (/SS	국제통화기금/NNP + (/SS
-총영사관	총영/NNG + 사관/NNG	총영사관/NNG
- 방울방울	_ + 방울/NNG + 방울/NNP	_ + 방울방울/NNG
- 자동차회사	_ + 자동/NNG + 차회사/NNG	_ + 자동차/NNG + 회사/NNG
-지나친 솟구침'	지나치/VA + ㄴ/ETM + _ + 솟/VV + 구/NNP + 치/VV + ㅁ/ETN + '/SS	지나치/VA + ㄴ/ETM + _ + 솟구치/VV + ㅁ/ETN + '/SS
- 로마시대	_ + 로마시/NNP + 대/NNG	_ + 로마/NNP + 시대/NNG
- 기성회비	_ + 기성/NNG + 회비/NNG	_ + 기성회비/NNG
-과 음악사이"	과/JKB + _ + 음악사이/NNG + "/SS	과/JKB + _ + 음악/NNG + 사이/NNG + "/SS
-보통 사람	보/NNG + 통/MAG + _ + 사람/NNG	보통/NNG + _ + 사람/NNG
- 피투성이	_ + 피투/NNG + 성이/XSN	_ + 피/NNG + 투성이/XSN
-과 의논	과/JC + _ + 의논/NNG	과/JKB + _ + 의논/NNG
-알타스투르 소르노바	알타스투르/NNP + _ + 소르노바/NNP	알타스투르/NNG + _ + 소르노바/NNG
-통일국가	통일국가/NNG	통일/NNG + 국가/NNG
-승승장구하	승승/NNG + 장구/NNG + 하/XSV	승승장구/NNG + 하/XSV
-더라니까.	더/EC + 라니까/EF + ./SF	더라니까/EF + ./SF
- 전지전능한	_ + 전지/NNG + 전능/NNG + 하/XSA + ㄴ/ETM	_ + 전지전능/NNG + 하/XSA + ㄴ/ETM
- 규모면에서	_ + 규모면/NNG + 에서/JKB	_ + 규모/NNG + 면/NNG + 에서/JKB
- 원상회복	_ + 원상/NNG + 회복/NNG	_ + 원상회복/NNG
-대외경제정책연구원	대외/NNG + 경제정책/NNG + 연구원/NNG	대외/NNG + 경제/NNG + 정책/NNG + 연구원/NNG
-올라가 있	올라가/VV + 아/EC + _ + 있/VV	올라가/VV + 아/EC + _ + 있/VX
-해설 및 감상	해설/NNG + _ + 및/MAG + _ + 감상/NNG	해설/NNG + _ + 및/MAJ + _ + 감상/NNG
- 인지상정	_ + 인지/NNG + 상정/NNG	_ + 인지상정/NNG
-을 한 차원	을/JKO + _ + 하/VV + ㄴ/ETM + _ + 차원/NNG	을/JKO + _ + 한/MM + _ + 차원/NNG
-지나친 솟구침	지나치/VA + ㄴ/ETM + _ + 솟/VV + 구/NNP + 치/VV + ㅁ/ETN	지나치/VA + ㄴ/ETM + _ + 솟구치/VV + ㅁ/ETN
-여러 가지	여러/MM + _ + 가/VV + 지/NNB	여러/MM + _ + 가지/NNB
-세계 대전 이후	세계/NNG + _ + 대/NNG + 전/NNP + _ + 이후/NNG	세계/NNG + _ + 대전/NNG + _ + 이후/NNG
-방울방울	방울/NNG + 방울/NNP	방울방울/NNG
-했겠어요	하/VV + 였겠/EP + 어요/EF	하/VV + 였/EP + 겠/EP + 어요/EF
-아침 국제신문	아침/NNG + _ + 국제/NNG + 신문/NNG	아침/NNG + _ + 국제신문/NNP
-의 서구화	의/JKG + _ + 서/NNP + 구/NNG + 화/XSN	의/JKG + _ + 서구/NNP + 화/XSN
-통행금지	통행/NNG + 금지/NNG	통행금지/NNG
-<전국패트롤>	</SS + 전/NNG + 국패/NNP + 트/NNG + 롤/NNP + >/SS	</SS + 전국패트롤/NNP + >/SS
-제일 기획	제/XPN + 일/NR + _ + 기획/NNG	제일/NNP + _ + 기획/NNG
-<전국패트롤	</SS + 전/NNG + 국패/NNP + 트/NNG + 롤/NNP	</SS + 전국패트롤/NNP
- 패션모델	_ + 패션/NNG + 모델/NNG	_ + 패션모델/NNG
- 나르시시즘	_ + 나/NNP + 르시시즘/NNG	_ + 나르시시즘/NNG
- 가치중립적	_ + 가치/NNG + 중립/NNG + 적/XSN	_ + 가치중립/NNG + 적/XSN
-아버지가 아니	아버지/NNG + 가/JKS + _ + 아니/VCN	아버지/NNG + 가/JKC + _ + 아니/VCN
-생활환경	생활/NNG + 환경/NNG	생활환경/NNG
- 우진각지붕	_ + 우진각지붕/NNG	_ + 우진각/NNG + 지붕/NNG
-남아프리카공화국	남아프리카공화/NNP + 국/NNG	남아프리카공화국/NNP
-을 했겠	을/JKO + _ + 하/VV + 였겠/EP	을/JKO + _ + 하/VV + 였/EP + 겠/EP
-알 턱이	알/VV + ㄹ/ETM + _ + 턱/NNG + 이/JKS	알/VV + ㄹ/ETM + _ + 턱/NNB + 이/JKS
- 공주에서	_ + 공주/NNG + 에서/JKB	_ + 공주/NNP + 에서/JKB
-가족계획	가족/NNG + 계획/NNG	가족계획/NNG
- 무임승차	_ + 무임/NNG + 승차/NNG	_ + 무임승차/NNG
-「소설발견	「/SS + 소설/NNG + 발견/NNG	「/SS + 소설발견/NNP
-모여 들	모이/VV + 어/EC + _ + 들/VV	모이/VV + 어/EC + _ + 들/VX
-CD공동망	CD/SL + 공동망/NNG	CD/SL + 공동/NNG + 망/NNG
-포로수용소	포로/NNG + 수용소/NNG	포로수용소/NNG
-애틀랜타행	애틀랜타/NNP + 행/NNG	애틀랜타행/NNG
-불안정감	불/XPN + 안/NNG + 정감/NNG	불/XPN + 안정감/NNG
-한 바람에	하/XSA + ㄴ/ETM + _ + 바람/NNB + 에/JKB	하/XSA + ㄴ/ETM + _ + 바람/NNG + 에/JKB
-은 편은	은/ETM + _ + 편/NNG + 은/JX	은/ETM + _ + 편/NNB + 은/JX
- 인사이동	_ + 인사/NNG + 이동/NNG	_ + 인사이동/NNG
- 전문학자	_ + 전문학자/NNG	_ + 전문/NNG + 학자/NNG
-생태주의	생태주의/NNG	생태/NNG + 주의/NNG
-경제정의실천	경제/NNG + 정/NNG + 의/NNP + 실천/NNG	경제/NNG + 정의/NNG + 실천/NNG
-성선택론	성선택/NNG + 론/XSN	성/NNG + 선택/NNG + 론/XSN
- 다문화주의	_ + 다문화주의/NNG	_ + 다문화/NNG + 주의/NNG
-세면도구	세면/NNG + 도구/NNG	세면도구/NNG
- 아랍국가	_ + 아/NNP + 랍국가/NNG	_ + 아랍/NNP + 국가/NNG
-그래 놓	그/IC + 러/VV + 어/EC + _ + 놓/VX	그러/VV + 어/EC + _ + 놓/VX
-의 알 권리	의/JKG + _ + 알/NNG + _ + 권리/NNG	의/JKG + _ + 알/VV + ㄹ/ETM + _ + 권리/NNG
-일부다처제	일부/NNG + 다처/NNG + 제/XSN	일부다처/NNG + 제/XSN
-업종전문화	업종/NNG + 전문화/NNG	업종/NNG + 전문/NNG + 화/XSN
-하나하나를	하/MAG + 나하나/NNG + 를/JKO	하나하나/NNG + 를/JKO
-전교조는	전교/NNP + 조/NNG + 는/JX	전교조/NNP + 는/JX
- 승승장구하	_ + 승승/NNG + 장구/NNG + 하/XSV	_ + 승승장구/NNG + 하/XSV
-이 된다	이/VCP + _ + 되/VV + ㄴ다/EF	이/JKC + _ + 되/VV + ㄴ다/EF
-투란도트	투란도/NNP + 트/NNG	투란도트/NNP
-우편함에	우편/NNG + 하/XSA + ㅁ/ETN + 에/JKB	우편함/NNG + 에/JKB
-세종문화회관	세종문화회/NNP + 관/NNG	세종문화회관/NNP
- 제때제때	_ + 제때제때/NNG	_ + 제때/NNG + 제때/NNG
-·중증급성호흡기증후군	·/SP + 중증급/NNG + 성호흡기/NNG + 증후군/NNG	·/SP + 중증/NNG + 급성/NNG + 호흡기/NNG + 증후군/NNG
-다는구나.	다/EC + 는구나/EF + ./SF	다는구나/EF + ./SF
-수입제한조치	수입/NNG + 제한조치/NNG	수입/NNG + 제한/NNG + 조치/NNG
- 세대교체	_ + 세대/NNG + 교체/NNG	_ + 세대교체/NNG
-네 사람	너/NP + 의/JKG + _ + 사람/NNG	네/MM + _ + 사람/NNG
-구조조정본부	구조/NNG + 조정본부/NNG	구조/NNG + 조정/NNG + 본부/NNG
-부당내부거래	부당내부/NNG + 거래/NNG	부당/NNG + 내부/NNG + 거래/NNG
-타임스는	타/NNG + 임스/NNP + 는/JX	타임스/NNG + 는/JX
-의 고정관념	의/JKG + _ + 고정/NNG + 관념/NNG	의/JKG + _ + 고정관념/NNG
-아비와 어미	아비/NNG + 와/JKB + _ + 어미/NNG	아비/NNG + 와/JC + _ + 어미/NNG
-장관급회담 	장관/NNG + 급회담/NNG + _	장관/NNG + 급/NNG + 회담/NNG + _
- 부당이득	_ + 부당이득/NNG	_ + 부당/NNG + 이득/NNG
- 국제통화기금	_ + 국제/NNG + 통화/NNG + 기금/NNG	_ + 국제통화기금/NNP
-승승장구	승승/NNG + 장구/NNG	승승장구/NNG
- 담임교사	_ + 담임/NNG + 교사/NNG	_ + 담임교사/NNG
-가열살균	가열살균/NNG	가열/NNG + 살균/NNG
-매사추세츠	매/NNG + 사추세츠/NNP	매사추세츠/NNP
-다마네기	다/NNP + 마네기/NNG	다마네기/NNG
-이 쳐진	이/JKS + _ + 쳐/VV + 지/VX + ㄴ/ETM	이/JKS + _ + 치/VV + 어/EC + 지/VX + ㄴ/ETM
- 국제통화기금(	_ + 국제/NNG + 통화/NNG + 기금/NNG + (/SS	_ + 국제통화기금/NNP + (/SS
- 했겠는가	_ + 하/VV + 였겠/EP + 는가/EF	_ + 하/VV + 였/EP + 겠/EP + 는가/EF
- 신진귀족세력	_ + 신진귀족/NNG + 세력/NNG	_ + 신진/NNG + 귀족/NNG + 세력/NNG
-아테네올림픽	아테네올/NNP + 림픽/NNG	아테네/NNP + 올림픽/NNG
-"남북한	"/SS + 남북한/NNP	"/SS + 남/NNP + 북한/NNP
- 영양권장량	_ + 영양권장량/NNG	_ + 영양/NNG + 권장/NNG + 량/NNG
-캐리커처	캐리/NNG + 커처/NNG	캐리커처/NNG
- 유럽공동체	_ + 유럽공동/NNP + 체/NNG	_ + 유럽공동체/NNP
-[어부사시사	[/SS + 어부/NNG + 사시사/NNP	[/SS + 어부사시사/NNP
-한방에서	| + 한/MM + 방/NNG + 에서/JKB	| + 한방/NNG + 에서/JKB
-봉두완이	봉두완/NNP + 이/NNG	봉두완이/NNP
-민속마을	민속마을/NNG	민속/NNG + 마을/NNG
-세계 대전	세계/NNG + _ + 대/NNG + 전/NNP	세계/NNG + _ + 대전/NNG
-을 고려,	을/JKO + _ + 고려/NNP + ,/SP	을/JKO + _ + 고려/NNG + ,/SP
-창작과비평사	창작/NNG + 과/NNG + 비평사/NNP	창작과비평사/NNP
-자존심이 상하	자존심/NNG + 이/VCP + _ + 상하/VV	자존심/NNG + 이/JKS + _ + 상하/VV
-원상회복	원상/NNG + 회복/NNG	원상회복/NNG
-통일국가 수립	통일국가/NNG + _ + 수립/NNG	통일/NNG + 국가/NNG + _ + 수립/NNG
-지는 말	지/EC + 는/ETM + _ + 말/VX	지/EC + 는/JX + _ + 말/VX
-지역포럼	지역포럼/NNG	지역/NNG + 포럼/NNG
-열 예정	열/NR + _ + 예정/NNG	열/VV + ㄹ/ETM + _ + 예정/NNG
-소련 동구권	소련/NNP + _ + 동/NNG + 구/NNP + 권/XSN	소련/NNP + _ + 동구/NNP + 권/XSN
- 신진귀족	_ + 신진귀족/NNG	_ + 신진/NNG + 귀족/NNG
- 수사의문문	_ + 수사의문문/NNG	_ + 수사/NNG + 의문문/NNG
- 했겠어요	_ + 하/VV + 였겠/EP + 어요/EF	_ + 하/VV + 였/EP + 겠/EP + 어요/EF
- 유럽공동체(	_ + 유럽공동/NNP + 체/NNG + (/SS	_ + 유럽공동체/NNP + (/SS
- 애틀랜타행	_ + 애틀랜타/NNP + 행/NNG	_ + 애틀랜타행/NNG
-버렸습니다	버/VX + 리/VV + 었/EP + 습니다/EF	버리/VX + 었/EP + 습니다/EF
-서해도발	서해도/NNP + 발/NNG	서해/NNP + 도발/NNG
- 아세안지역안보	_ + 아세/NNP + 안지역/NNG + 안보/NNG	_ + 아세안/NNP + 지역/NNG + 안보/NNG
-대성공이	대/XPN + 성/NNP + 공/NNG + 이/VCP	대/XPN + 성공/NNG + 이/VCP
-재산형성	재산형성/NNG	재산/NNG + 형성/NNG
-와 통하	와/JC + _ + 통하/VV	와/JKB + _ + 통하/VV
-포도나무집	포도나무집/NNG	포도/NNG + 나무/NNG + 집/NNG
-에서 있었	에서/JKB + _ + 있/VX + 었/EP	에서/JKB + _ + 있/VV + 었/EP
- 국제회의장	_ + 국제회의장/NNG	_ + 국제/NNG + 회의장/NNG
-국문학연구	국문/NNG + 학연구/NNG	국문학/NNG + 연구/NNG
- 민주주의민족전선	_ + 민주주의민족/NNG + 전선/NNG	_ + 민주주의/NNG + 민족/NNG + 전선/NNG
-반신불수	반신/NNG + 불수/NNG	반신불수/NNG
-일제치하	일제치하/NNG	일제/NNG + 치하/NNG
-벤처캐피털리스트	벤처/NNG + 캐피털리스트/NNG	벤처캐피털리스트/NNG
-들과 의논	들/XSN + 과/JC + _ + 의논/NNG	들/XSN + 과/JKB + _ + 의논/NNG
- 우편함에	_ + 우편/NNG + 하/XSA + ㅁ/ETN + 에/JKB	_ + 우편함/NNG + 에/JKB
- 노발대발	_ + 노발/NNG + 대발/NNG	_ + 노발대발/NNG
-주인공이 되	주인공/NNG + 이/VCP + _ + 되/VV	주인공/NNG + 이/JKC + _ + 되/VV
-들어가 있	들어가/VV + 아/EC + _ + 있/VV	들어가/VV + 아/EC + _ + 있/VX
-나 있고	나/VV + 아/EC + _ + 있/VV + 고/EC	나/VV + 아/EC + _ + 있/VX + 고/EC
-에 온 힘	에/JKB + _ + 오/VV + ㄴ/ETM + _ + 힘/NNG	에/JKB + _ + 온/MM + _ + 힘/NNG
-패션모델	패션/NNG + 모델/NNG	패션모델/NNG
-우리하고	우리/NP + 하/JKB + 고/EC	우리/NP + 하고/JKB
-세상만사	세상/NNG + 만사/NNG	세상만사/NNG
- 독립국가연합	_ + 독립국/NNG + 가/NNP + 연합/NNG	_ + 독립/NNG + 국가/NNG + 연합/NNG
- 미식축구	_ + 미식/NNG + 축구/NNG	_ + 미식축구/NNG
-더라니까요.	더/EC + 라니까요/EF + ./SF	더라니까요/EF + ./SF
- 교통질서	_ + 교통/NNG + 질서/NNG	_ + 교통질서/NNG
- 되살아나기	_ + 되살아/VV + 나/VX + 기/ETN	_ + 되살아나/VV + 기/ETN
-문화재관리국	문화/NNG + 재관리국/NNG	문화재/NNG + 관리국/NNG
-, 즉 ‘	,/SP + _ + 즉/MAG + _ + ‘/SS	,/SP + _ + 즉/MAJ + _ + ‘/SS
-영등포구	영등포/NNP + 구/NNG	영등포구/NNP
- 울려나왔	_ + 울려나오/VV + 았/EP	_ + 울리/VV + 어/EC + 나오/VV + 았/EP
-세대교체	세대/NNG + 교체/NNG	세대교체/NNG
-비동기식	비동기식/NNG	비/XPN + 동기식/NNG
-인신공격	인신/NNG + 공격/NNG	인신공격/NNG
- 사정사정	_ + 사정/NNG + 사정/NNG	_ + 사정사정/NNG
-그래선지	그/IC + 렇/VA + 어서/EC + 이/VCP + ㄴ지/EC	그렇/VA + 어서/EC + 이/VCP + ㄴ지/EC
- 역컴파일	_ + 역컴/NNG + 파일/NNG	_ + 역컴파일/NNG
-아세안지역포럼	아세안/NNP + 지역포럼/NNG	아세안/NNP + 지역/NNG + 포럼/NNG
-가 있던	가/VV + 아/EC + _ + 있/VV + 던/ETM	가/VV + 아/EC + _ + 있/VX + 던/ETM
-아르세모	아르세/NNP + 모/NNG	아르세모/NNP
-다 되도록	다/MAG + _ + 되/MAG + 도록/EC	다/MAG + _ + 되/VV + 도록/EC
-「소설발견」	「/SS + 소설/NNG + 발견/NNG + 」/SS	「/SS + 소설발견/NNP + 」/SS
-어업통제선	어업/NNG + 통제선/NNG	어업/NNG + 통제/NNG + 선/NNG
- 광주사태	_ + 광주사/NNP + 태/NNG	_ + 광주/NNP + 사태/NNG
-러 왔다	어/EC + _ + 오/VV + 았/EP + 다/EF	어/EC + _ + 오/VX + 았/EP + 다/EF
-와신상담	와신/NNG + 상담/NNG	와신상담/NNG
-전지훈련	전지/NNG + 훈련/NNG	전지훈련/NNG
-여성민우회	여성/NNG + 민/NNG + 우/NNP + 회/NNG	여성/NNG + 민우회/NNG
-질서 있	질서/NNG + _ + 있/VX	질서/NNG + _ + 있/VV
-일본철학사	일본/NNP + 철/NNG + 학사/NNP	일본/NNP + 철학사/NNG
- 이전투구	_ + 이전/NNG + 투구/NNG	_ + 이전투구/NNG
- 서먹서먹	_ + 서/VV + 먹서먹/XR	_ + 서먹서먹/XR
-부모형제	부모/NNG + 형/XSN + 제/NNG	부모/NNG + 형제/NNG
-아이러니	아이러/NNG + 니/EC	아이러니/NNG
-이라크전	이/NNP + 라크전/NNG	이라크전/NNG
-개인이기주의	개인/NNG + 이/VCP + 기주의/NNG	개인/NNG + 이기주의/NNG
-자동차부품	자동차부품/NNG	자동차/NNG + 부품/NNG
-어내려가	어/EC + 내리/VV + 어/EC + 가/VX	어/EC + 내려가/VV
- 망연자실	_ + 망연/NNG + 자실/NNG	_ + 망연자실/NNG
- 고추잠자리	_ + 고추/NNG + 잠자리/NNG	_ + 고추잠자리/NNG
-어부사시사]	어부/NNG + 사시사/NNP + ]/SS	어부사시사/NNP + ]/SS
-가 있기	가/JKS + _ + 있/VX + 기/ETN	가/JKS + _ + 있/VV + 기/ETN
-과 너무나	과/JC + _ + 너무나/MAG	과/JKB + _ + 너무나/MAG
-음악사이"	음악사이/NNG + "/SS	음악/NNG + 사이/NNG + "/SS
-북대서양조약기구(	북대서양조/NNP + 약/NNG + 기/NNP + 구/NNG + (/SS	북대서양조약기구/NNP + (/SS
- 부정기적	_ + 부정기/NNG + 적/XSN	_ + 부/XPN + 정기/NNG + 적/XSN
-김포매립지	김포매/NNP + 립지/NNG	김포/NNP + 매립지/NNG
- 제국의회	_ + 제국의회/NNG	_ + 제국/NNG + 의회/NNG
-성신여대 	성/NNG + 신여대/NNP + _	성신여대/NNP + _
-패가망신	패가/NNG + 망신/NNG	패가망신/NNG
-디어헌터	디어헌/NNP + 터/NNG	디어헌터/NNP
-장성급회담	장성/NNG + 급회담/NNG	장성/NNG + 급/NNG + 회담/NNG
-된다는 것	되/XSV + ㄴ다/EF + 는/ETM + _ + 것/NNB	되/XSV + ㄴ다는/ETM + _ + 것/NNB
-저녁나절	저녁/NNG + 나절/NNG	저녁나절/NNG
-·중증급성호흡기	·/SP + 중증급/NNG + 성호흡기/NNG	·/SP + 중증/NNG + 급성/NNG + 호흡기/NNG
-제국의회	제국의회/NNG	제국/NNG + 의회/NNG
- 남북대화	_ + 남북대/NNP + 화/NNG	_ + 남북/NNP + 대화/NNG
-아세안지역안보	아세/NNP + 안지역/NNG + 안보/NNG	아세안/NNP + 지역/NNG + 안보/NNG
- 과천경마장	_ + 과천경/NNP + 마장/NNG	_ + 과천경마장/NNP
-영국상사	영국/NNP + 상사/NNG	영국상사/NNP
-공 목사	공/NNG + _ + 목사/NNG	공/NNP + _ + 목사/NNG
- 제국주의시대	_ + 제국주의시대/NNG	_ + 제국주의/NNG + 시대/NNG
-세든 사람	세들/VV + ㄴ/ETM + _ + 사람/NNG	세/NNG + 들/VV + ㄴ/ETM + _ + 사람/NNG
-규모면에서	규모면/NNG + 에서/JKB	규모/NNG + 면/NNG + 에서/JKB
-인기드라마	인기드라마/NNG	인기/NNG + 드라마/NNG
-신화 통신	신화/NNG + _ + 통신/NNG	신화/NNP + _ + 통신/NNG
-[어부사시사]	[/SS + 어부/NNG + 사시사/NNP + ]/SS	[/SS + 어부사시사/NNP + ]/SS
-중증급성호흡기	중증급/NNG + 성호흡기/NNG	중증/NNG + 급성/NNG + 호흡기/NNG
-요지부동이	요지/NNG + 부동/NNG + 이/VCP	요지부동/NNG + 이/VCP
-그래선지 	| + 그/IC + 렇/VA + 어서/EC + 이/VCP + ㄴ지/EC + _	| + 그렇/VA + 어서/EC + 이/VCP + ㄴ지/EC + _
- 패가망신	_ + 패가/NNG + 망신/NNG	_ + 패가망신/NNG
-실사구시	실사/NNG + 구시/NNG	실사구시/NNG
-통일국가 	통일국가/NNG + _	통일/NNG + 국가/NNG + _
- 독립국가	_ + 독립국/NNG + 가/NNP	_ + 독립/NNG + 국가/NNG
-현대 의학	현/NNP + 대/NNG + _ + 의학/NNG	현대/NNG + _ + 의학/NNG
-용양봉저정	용양봉/NNP + 저정/NNG	용양봉저정/NNP
-이나 지금	이/JX + 나/JC + _ + 지금/NNG	이나/JC + _ + 지금/NNG
-전년동월대비,	전년/NNG + 동월대비/NNG + ,/SP	전년/NNG + 동월/NNG + 대비/NNG + ,/SP
-이란 바로	이/VCP + 란/ETM + _ + 바로/MAG	이란/JX + _ + 바로/MAG
- 주심포식	_ + 주심/NNG + 포식/NNG	_ + 주심포식/NNG
-과 불교	과/JKB + _ + 불교/NNG	과/JC + _ + 불교/NNG
- 국제신문	_ + 국제/NNG + 신문/NNG	_ + 국제신문/NNP
-무임승차	무임/NNG + 승차/NNG	무임승차/NNG
- 눈여겨보	_ + 눈여겨/VV + 보/VX	_ + 눈여겨보/VV
-개발 도상국	개발/NNG + _ + 도상/NNG + 국/NNP	개발/NNG + _ + 도상국/NNG
-미스 리	미스/NNG + _ + 리/NNG	미스/NNG + _ + 리/NNP
-하고 뒤팡	| + 하/VV + 고/EC + _ + 뒤팡/NNP	| + 하고/JKQ + _ + 뒤팡/NNP
- 장난기가	_ + 장난기/NNG + 가/JKS	_ + 장난/NNG + 기/XSN + 가/JKS
-국제통화기금	국제/NNG + 통화/NNG + 기금/NNG	국제통화기금/NNP
-만나 볼	만나/VV + 아/EC + _ + 보/VV + ㄹ/ETM	만나/VV + 아/EC + _ + 보/VX + ㄹ/ETM
- 전통식품	_ + 전통식품/NNG	_ + 전통/NNG + 식품/NNG
-혁명간부학교	혁명/NNG + 간부학교/NNG	혁명/NNG + 간부/NNG + 학교/NNG
- 화학제품	_ + 화학/NNG + 제품/NNG	_ + 화학제품/NNG
- 거무스름	_ + 거/VA + 무/XR + 스/NNG + 름/XR	_ + 거무스름/XR
-미스 양	미스/NNG + _ + 양/NNG	미스/NNG + _ + 양/NNP
-이름 석자	이름/NNG + _ + 석자/NNG	이름/NNG + _ + 석/MM + 자/NNG
-이 될지	이/VCP + _ + 되/VV + ㄹ지/EC	이/JKC + _ + 되/VV + ㄹ지/EC
- 미치광이	_ + 미치광/NNG + 이/JKS	_ + 미치광이/NNG
-결정권자	결정/NNG + 권/XSN + 자/NNG	결정권자/NNG
- 파운드화	_ + 파운드/NNG + 화/XSN	_ + 파운드화/NNG
- 최저생계비	_ + 최저생계비/NNG	_ + 최저/NNG + 생계비/NNG
-언어문화	언어/NNG + 문화/NNG	언어문화/NNG
-평화시장	평화/NNG + 시장/NNG	평화시장/NNP
-기 일원론	기/NNG + _ + 일원/NNG + 론/XSN	기/NNG + _ + 일원론/NNG
-그래선지	| + 그/IC + 렇/VA + 어서/EC + 이/VCP + ㄴ지/EC	| + 그렇/VA + 어서/EC + 이/VCP + ㄴ지/EC
-은 시기상조	은/JX + _ + 시기/NNG + 상조/NNG	은/JX + _ + 시기상조/NNG
-(정순자,	(/SS + 정순/NNP + 자/NNG + ,/SP	(/SS + 정순자/NNP + ,/SP
- 하나하나를	_ + 하/MAG + 나하나/NNG + 를/JKO	_ + 하나하나/NNG + 를/JKO
- 액세서리	_ + 액세/NNG + 서리/NNG	_ + 액세서리/NNG
-유럽공동체(	유럽공동/NNP + 체/NNG + (/SS	유럽공동체/NNP + (/SS
- 내구소비재	_ + 내구소비재/NNG	_ + 내구/NNG + 소비재/NNG
-검지손가락	검지손가락/NNG	검지/NNG + 손가락/NNG
-산티니케탄	산티니케/NNP + 탄/NNG	산티니케탄/NNP
-성평등성	성평등/NNG + 성/XSN	성/NNG + 평등/NNG + 성/XSN
-결혼 전	결혼/NNG + _ + 전/MM	결혼/NNG + _ + 전/NNG
-시네마스코프	시네마스코/NNG + 프/NNP	시네마스코프/NNG
-는 사실	는/JX + _ + 사/MAG + 실/NNG	는/JX + _ + 사실/MAG
- 사사건건 	_ + 사사건/MAG + 건/NNG + _	_ + 사사건건/MAG + _
-년 봄호	년/NNB + _ + 봄호/NNG	년/NNB + _ + 봄/NNG + 호/NNB
-1학년때	1/SN + 학년때/NNG	1/SN + 학년/NNG + 때/NNG
-지식인이 차지	지식인/NNG + 이/VCP + _ + 차지/NNG	지식인/NNG + 이/JKS + _ + 차지/NNG
-·부여·	·/SP + 부/NNP + 여/NNG + ·/SP	·/SP + 부여/NNP + ·/SP
-부녀회장	부녀/NNG + 회장/NNG	부녀회장/NNG
-마지막날(	마지막날/NNG + (/SS	마지막/NNG + 날/NNG + (/SS
-그래선지 	그/IC + 렇/VA + 어서/EC + 이/VCP + ㄴ지/EC + _	그렇/VA + 어서/EC + 이/VCP + ㄴ지/EC + _
-노동신문	노동/NNG + 신문/NNG	노동신문/NNP
-말괄량이 	말괄량/NNG + 이/JKS + _	말괄량이/NNG + _
-의 돌토끼	의/JKG + _ + 돌토끼/NNG	의/JKG + _ + 돌/NNG + 토끼/NNG
- 포로수용소	_ + 포로/NNG + 수용소/NNG	_ + 포로수용소/NNG
-변호사법	변호/NNG + 사법/NNG	변호사법/NNG
- 곤두박질	_ + 곤두/VV + 박질/NNG	_ + 곤두박질/NNG
-점말 용굴	점말/NNG + _ + 용굴/NNG	점말/NNP + _ + 용굴/NNP
-이란 이름	이/VCP + 란/JX + _ + 이름/NNG	이/VCP + 란/ETM + _ + 이름/NNG
-대전까지	대/NNP + 전/NNG + 까지/JX	대전/NNP + 까지/JX
-마지막날	마지막날/NNG	마지막/NNG + 날/NNG
-우진각지붕	우진각지붕/NNG	우진각/NNG + 지붕/NNG
-전문학자	전문학자/NNG	전문/NNG + 학자/NNG
-약속이나	약속/NNG + 이/JC + 나/JX	약속/NNG + 이나/JX
-그 반벌거숭이	그/MM + _ + 반벌/NNG + 거숭이/NNG	그/MM + _ + 반/NNG + 벌거숭이/NNG
-무성영화	무/XPN + 성/NNG + 영화/NNG	무성/NNG + 영화/NNG
- 재무제표	_ + 재무/NNG + 제표/NNG	_ + 재무제표/NNG
- 병무청장	_ + 병무/NNG + 청장/NNG	_ + 병무청장/NNG
-한국교육개발원	한국/NNP + 교/NNG + 육개발/NNP + 원/NNG	한국교육개발원/NNP
-소방대원	소방/NNG + 대원/NNG	소방대원/NNG
-와 전혀	와/JC + _ + 전혀/MAG	와/JKB + _ + 전혀/MAG
-포인트나	포인트/NNG + 나/JC	포인트/NNG + 나/JX
-눈여겨보	눈여겨/VV + 보/VX	눈여겨보/VV
-오매리 절골	오매리/NNG + _ + 절골/NNG	오매리/NNP + _ + 절골/NNP
-지 말기를	지/EC + _ + 말기/NNG + 를/JKO	지/EC + _ + 말/VX + 기/ETN + 를/JKO
-방물장수	방물/NNG + 장수/NNG	방물장수/NNG
-취사선택하	취사/NNG + 선택/NNG + 하/XSV	취사선택/NNG + 하/XSV
-훈민정음	훈민정/NNP + 음/NNG	훈민정음/NNP
-울려나왔	울려나오/VV + 았/EP	울리/VV + 어/EC + 나오/VV + 았/EP
-그림공부	그림공부/NNG	그림/NNG + 공부/NNG
-현대 그룹	현/NNG + 대/NNP + _ + 그룹/NNG	현대/NNP + _ + 그룹/NNG
-친척집에	친척집/NNG + 에/JKB	친척/NNG + 집/NNG + 에/JKB
-보통 사람	보/MAG + 통/NNG + _ + 사람/NNG	보통/NNG + _ + 사람/NNG
- 요지부동이	_ + 요지/NNG + 부동/NNG + 이/VCP	_ + 요지부동/NNG + 이/VCP
- 음악사이"	_ + 음악사이/NNG + "/SS	_ + 음악/NNG + 사이/NNG + "/SS
-교도통신	교도/NNG + 통신/NNG	교도통신/NNP
-적이나마	적/XSN + 이/VCP + 나마/JX	적/XSN + 이나마/JX
-과 음악사이	과/JKB + _ + 음악사이/NNG	과/JKB + _ + 음악/NNG + 사이/NNG
-박종철 군	박종철/NNP + _ + 군/NNG	박종철/NNP + _ + 군/NNB
-경기 침체	경/NNP + 기/NNG + _ + 침체/NNG	경기/NNG + _ + 침체/NNG
-대전 이후	대/NNG + 전/NNP + _ + 이후/NNG	대전/NNG + _ + 이후/NNG
-알 권리	알/NNG + _ + 권리/NNG	알/VV + ㄹ/ETM + _ + 권리/NNG
-스튜어트 밀	스튜어트/NNP + _ + 밀/NNG	스튜어트/NNP + _ + 밀/NNP
-남목고개	남목고개/NNG	남목/NNP + 고개/NNG
-남대문시장	남대문/NNP + 시장/NNG	남대문시장/NNP
-원소 기호	원소/NNG + _ + 기호/NNP	원소/NNG + _ + 기호/NNG
-사려 깊	사/NNG + 려/EC + _ + 깊/VA	사려/NNG + _ + 깊/VA
-되살아나기	되살아/VV + 나/VX + 기/ETN	되살아나/VV + 기/ETN
-본격 수필	본격/NNG + _ + 수필/NNG	본격/XR + _ + 수필/NNG
-지난주말	지난주말/NNG	지난주/NNG + 말/NNB
- 가치중립	_ + 가치/NNG + 중립/NNG	_ + 가치중립/NNG
-제때제때	제때제때/NNG	제때/NNG + 제때/NNG
-지 마시고	지/EC + _ + 마시/VV + 고/EC	지/EC + _ + 말/VX + 시/EP + 고/EC
-가 봐야	가/VV + 아/EC + _ + 보/VV + 아야/EC	가/VV + 아/EC + _ + 보/VX + 아야/EC
- 질소산화물	_ + 질소산화물/NNG	_ + 질소/NNG + 산화물/NNG
-만병통치약	만병/NNG + 통치약/NNG	만병통치약/NNG
-·반분단	·/SP + 반분단/NNG	·/SP + 반/XPN + 분단/NNG
-보조기억장치	보조/NNG + 기억장치/NNG	보조/NNG + 기억/NNG + 장치/NNG
-들어가 있다	들어가/VV + 아/EC + _ + 있/VV + 다/EF	들어가/VV + 아/EC + _ + 있/VX + 다/EF
-까지든지	까지/JX + 든지/EC	까지/JX + 이/VCP + 든지/EC
-독자신당	독자/NNG + 신당/NNG	독자/NNG + 신/XPN + 당/NNG
-신부전증	신부/NNG + 전증/NNG	신부전증/NNG
-경성제대	경성/NNP + 제대/NNG	경성제대/NNP
-을 눈여겨보	을/JKO + _ + 눈여겨/VV + 보/VX	을/JKO + _ + 눈여겨보/VV
- 인간문화재	_ + 인간/NNG + 문화재/NNG	_ + 인간문화재/NNG
-호랑이야	호랑이/NNG + 야/EF	호랑이/NNG + 이/VCP + 야/EF
-다고 지적,	다고/EC + _ + 지/NNG + 적/XSN + ,/SP	다고/EC + _ + 지적/NNG + ,/SP
-독립국가연합	독립국/NNG + 가/NNP + 연합/NNG	독립/NNG + 국가/NNG + 연합/NNG
-나 있었	나/VV + 아/EC + _ + 있/VV + 었/EP	나/VV + 아/EC + _ + 있/VX + 었/EP
-전년동월대비	전년/NNG + 동월대비/NNG	전년/NNG + 동월/NNG + 대비/NNG
-미성년자 	미성년자/NNG + _	미/XPN + 성년자/NNG + _
-아시아경기대회	아시아경기/NNP + 대회/NNG	아시아/NNP + 경기/NNG + 대회/NNG
-이판사판	이판/NNG + 사판/NNG	이판사판/NNG
-수도 서울	수/NNG + 도/JX + _ + 서울/NNP	수도/NNG + _ + 서울/NNP
- 취사선택하	_ + 취사/NNG + 선택/NNG + 하/XSV	_ + 취사선택/NNG + 하/XSV
-북대서양조약기구	북대서양조/NNP + 약/NNG + 기/NNP + 구/NNG	북대서양조약기구/NNP
-더러 있었	더러/MAG + _ + 있/VX + 었/EP	더러/MAG + _ + 있/VV + 었/EP
- 마지막날	_ + 마지막날/NNG	_ + 마지막/NNG + 날/NNG
-이 가장	이/VCP + _ + 가장/MAG	이/JKS + _ + 가장/MAG
- 비분강개	_ + 비분/NNG + 강개/NNG	_ + 비분강개/NNG
- 불로소득	_ + 불로소득/NNG	_ + 불로/NNG + 소득/NNG
- 세르비아인	_ + 세르비아/NNP + 인/NNG	_ + 세르비아인/NNG
-망연자실	망연/NNG + 자실/NNG	망연자실/NNG
-할인매장	할인매장/NNG	할인/NNG + 매장/NNG
-독립국가	독립국/NNG + 가/NNP	독립/NNG + 국가/NNG
-소설발견」	소설/NNG + 발견/NNG + 」/SS	소설발견/NNP + 」/SS
- 생활환경	_ + 생활/NNG + 환경/NNG	_ + 생활환경/NNG
-해방 전	해방/NNG + _ + 전/MM	해방/NNG + _ + 전/NNG
-원소 기호는	원소/NNG + _ + 기호/NNP + 는/JX	원소/NNG + _ + 기호/NNG + 는/JX
- 대전까지	_ + 대/NNP + 전/NNG + 까지/JX	_ + 대전/NNP + 까지/JX
-현대 문명	현/NNG + 대/NNP + _ + 문명/NNG	현대/NNG + _ + 문명/NNG
-천진난만	천/NNP + 진난/NNG + 만/NNB	천진난만/NNG
-소련 동구	소련/NNP + _ + 동/NNG + 구/NNP	소련/NNP + _ + 동구/NNP
-복제 양	복제/NNG + _ + 양/NNB	복제/NNG + _ + 양/NNG
- 하지만,	_ + 하지/MAJ + 만/EC + ,/SP	_ + 하지만/MAJ + ,/SP
-동문서답	동문/NNG + 서답/NNG	동문서답/NNG
-아세안지역	아세/NNP + 안지역/NNG	아세안/NNP + 지역/NNG
- 입후보자	_ + 입후/NNG + 보자/NNG	_ + 입후보자/NNG
- 교보문고	_ + 교보문/NNP + 고/NNG	_ + 교보문고/NNP
-데이트하	데/NNP + 이트/NNG + 하/XSV	데이트/NNG + 하/XSV
-포인트나 	포인트/NNG + 나/JC + _	포인트/NNG + 나/JX + _
-것과 거의	것/NNB + 과/JC + _ + 거의/MAG	것/NNB + 과/JKB + _ + 거의/MAG
- 기조실장	_ + 기조/NNG + 실장/NNG	_ + 기조실장/NNG
-경지 정리	경/NNP + 지/NNG + _ + 정리/NNG	경지/NNG + _ + 정리/NNG
- 무성영화	_ + 무/XPN + 성/NNG + 영화/NNG	_ + 무성/NNG + 영화/NNG
- 공공건물	_ + 공공/NNG + 건물/NNG	_ + 공공건물/NNG
-민족화해	민족/NNG + 화/XSN + 해/NNG	민족/NNG + 화해/NNG
-내려가 있	내려가/VV + 아/EC + _ + 있/VV	내려가/VV + 아/EC + _ + 있/VX
-투성이의	투/NNG + 성이/XSN + 의/JKG	투성이/XSN + 의/JKG
-한다기보다	하/XSV + ㄴ/EC + 다기/ETN + 보다/JKB	하/XSV + ㄴ다기/ETN + 보다/JKB
-신역사주의	신역/NNG + 사주의/NNG	신/XPN + 역사주의/NNG
-구조조정	구조조정/NNG	구조/NNG + 조정/NNG
-어보였다	어/EC + 보/VX + 이/VV + 었/EP + 다/EF	어/EC + 보이/VV + 었/EP + 다/EF
-이를 데	이/NP + 르/VV + ㄹ/ETM + _ + 데/NNB	이르/VV + ㄹ/ETM + _ + 데/NNB
- 서비스업종	_ + 서비스업종/NNG	_ + 서비스/NNG + 업종/NNG
-적이나마 	적/XSN + 이/VCP + 나마/JX + _	적/XSN + 이나마/JX + _
-서전의원	서/NNP + 전의원/NNG	서/NNP + 전/MM + 의원/NNG
-적이 아니	적/XSN + 이/VCP + _ + 아니/VCN	적/XSN + 이/JKC + _ + 아니/VCN
- 생활쓰레기	_ + 생활쓰레기/NNG	_ + 생활/NNG + 쓰레기/NNG
-지나치면	지나/VA + 치/VV + 면/EC	지나치/VA + 면/EC
-세계정세	세계/NNG + 정세/NNG	세계정세/NNG
-규합총서	| + 규/NNG + 합/NNP + 총서/NNG	| + 규합총서/NNP
-피투성이	피투/NNG + 성이/XSN	피/NNG + 투성이/XSN
-에그머니나	에그/IC + 머/MAG + 니나/IC	에그머니나/IC
-부정기적	부정기/NNG + 적/XSN	부/XPN + 정기/NNG + 적/XSN
-빅토르 위고	빅토르/NNP + _ + 위고/NNG	빅토르/NNP + _ + 위고/NNP
-들락날락거리	들/MAG + 락날락거리/VV	들락날락거리/VV
-건강하시	건강/NNG + 하/XSV + 시/EP	건강/NNG + 하/XSA + 시/EP
- 혼수상태	_ + 혼수/NNG + 상태/NNG	_ + 혼수상태/NNG
- 날벼락이	_ + 날벼락/NNG + 이/VCP	_ + 날/XPN + 벼락/NNG + 이/VCP
- 타임스는	_ + 타/NNG + 임스/NNP + 는/JX	_ + 타임스/NNG + 는/JX
- 음담패설	_ + 음담/NNG + 패설/NNG	_ + 음담패설/NNG
-솟구침'	솟/VV + 구/NNP + 치/VV + ㅁ/ETN + '/SS	솟구치/VV + ㅁ/ETN + '/SS
- 화랭이패	_ + 화랭이패/NNG	_ + 화랭이/NNG + 패/NNG
-소강상태	소강/NNG + 상태/NNG	소강상태/NNG
-확대재생산	확대/NNG + 재생산/NNG	확대/NNG + 재/XPN + 생산/NNG
-노발대발	노발/NNG + 대발/NNG	노발대발/NNG
-민주주의민족전선	민주주의민족/NNG + 전선/NNG	민주주의/NNG + 민족/NNG + 전선/NNG
-햇병아리	햇병/NNG + 아리/NNG	햇병아리/NNG
-공무집행방해죄	공무/NNG + 집행방해죄/NNG	공무/NNG + 집행/NNG + 방해죄/NNG
-시청취자	시청/NNG + 취자/NNG	시청취자/NNG
-오십보백보	오/NR + 십보백보/NNG	오십보백보/NNG
- 서구문학	_ + 서/NNP + 구/NNG + 문학/NNG	_ + 서구/NNP + 문학/NNG
-배 영감	배/NNG + _ + 영감/NNG	배/NNP + _ + 영감/NNG
-경동맥동 	경동/NNG + 맥동/NNG + _	경동맥동/NNG + _
-개구장이	개구장/NNG + 이/JKS	개구장이/NNG
-부정한 방법	부정/NNG + 하/XSV + ㄴ/ETM + _ + 방법/NNG	부정/NNG + 하/XSA + ㄴ/ETM + _ + 방법/NNG
- 안하무인	_ + 안/MAG + 하무인/NNG	_ + 안하무인/NNG
-과 합류	과/JC + _ + 합류/NNG	과/JKB + _ + 합류/NNG
- 솟구침'	_ + 솟/VV + 구/NNP + 치/VV + ㅁ/ETN + '/SS	_ + 솟구치/VV + ㅁ/ETN + '/SS
-프랜차이즈	프/NNG + 랜/NNP + 차이즈/NNG	프랜차이즈/NNG
-인지상정	인지/NNG + 상정/NNG	인지상정/NNG
-고층아파트	고층아파트/NNG	고층/NNG + 아파트/NNG
- 동물학자	_ + 동물/NNG + 학자/NNG	_ + 동물학자/NNG
-에서와는	에서와/JKB + 는/JX	에서/JKB + 와/JKB + 는/JX
-인공위성	인공위/NNG + 성/XSN	인공위성/NNG
- 본질주의	_ + 본질주의/NNG	_ + 본질/NNG + 주의/NNG
-과 합치	과/JC + _ + 합치/NNG	과/JKB + _ + 합치/NNG
-고위급회담	고위/NNG + 급회담/NNG	고위급/NNG + 회담/NNG
-이 차지	이/VCP + _ + 차지/NNG	이/JKS + _ + 차지/NNG
-최저생계비	최저생계비/NNG	최저/NNG + 생계비/NNG
- 개인연금	_ + 개인/NNG + 연금/NNG	_ + 개인연금/NNG
-시기상조	시기/NNG + 상조/NNG	시기상조/NNG
-태평양전쟁기	태평양/NNP + 전쟁기/NNG	태평양전쟁기/NNG
-양 돌리	양/NNB + _ + 돌리/NNP	양/NNG + _ + 돌리/NNP
-인정사정 	인정/NNG + 사정/NNG + _	인정사정/NNG + _
-박장대소	박장/NNG + 대소/NNG	박장대소/NNG
-조차 있	조차/JX + _ + 있/VX	조차/JX + _ + 있/VV
-네 이름	네/MM + _ + 이름/NNG	너/NP + 의/JKG + _ + 이름/NNG
-음악사이	음악사이/NNG	음악/NNG + 사이/NNG
-설 자리	설/NNG + _ + 자리/NNG	서/VV + ㄹ/ETM + _ + 자리/NNG
- 통행금지	_ + 통행/NNG + 금지/NNG	_ + 통행금지/NNG
-이스라엘인	이스라엘/NNP + 인/NNG	이스라엘인/NNG
- 마지막날(	_ + 마지막날/NNG + (/SS	_ + 마지막/NNG + 날/NNG + (/SS
- 서해도발	_ + 서해도/NNP + 발/NNG	_ + 서해/NNP + 도발/NNG
-다는 말	다는/ETM + _ + 말/NNB	다는/ETM + _ + 말/NNG
-'장화,	'/SS + 장화/NNG + ,/SP	'/SS + 장화/NNP + ,/SP
-수로 부인	수/NNG + 로/JKB + _ + 부인/NNG	수로/NNP + _ + 부인/NNG
-세르비아인	세르비아/NNP + 인/NNG	세르비아인/NNG
-여러 가지다	여러/MM + _ + 가/VV + 지/NNB + 이/VCP + 다/EF	여러/MM + _ + 가지/NNB + 이/VCP + 다/EF
-일본철학사》	일본/NNP + 철/NNG + 학사/NNP + 》/SS	일본/NNP + 철학사/NNG + 》/SS
-중증급성호흡기증후군	중증급/NNG + 성호흡기/NNG + 증후군/NNG	중증/NNG + 급성/NNG + 호흡기/NNG + 증후군/NNG
-전통식품	전통식품/NNG	전통/NNG + 식품/NNG
-실수요자	실수/NNG + 요자/NNG	실수요자/NNG
-파리 /	| + 파리/NNP + _ + //SP	| + 파리/NNG + _ + //SP
- 도이구지	_ + 도이구/NNP + 지/NNG	_ + 도이구지/NNP
-가치중립적	가치/NNG + 중립/NNG + 적/XSN	가치중립/NNG + 적/XSN
- 전세자금	_ + 전세자금/NNG	_ + 전세/NNG + 자금/NNG
-방울방울 	방울/NNG + 방울/NNP + _	방울방울/NNG + _
-군사쿠데타	군사쿠데타/NNG	군사/NNG + 쿠데타/NNG
-비분강개	비분/NNG + 강개/NNG	비분강개/NNG
-인사이동	인사/NNG + 이동/NNG	인사이동/NNG
- 브로콜리	_ + 브/NNP + 로콜리/NNG	_ + 브로콜리/NNG
-마지막이 될지	마지막/NNG + 이/VCP + _ + 되/VV + ㄹ지/EC	마지막/NNG + 이/JKC + _ + 되/VV + ㄹ지/EC
-닥터 오가	닥터/NNG + _ + 오/NNG + 가/JKS	닥터/NNG + _ + 오/NNP + 가/JKS
-시키자는	시키/XSV + 자/ETM + 는/JX	시키/XSV + 자는/ETM
- 지나치면	_ + 지나/VA + 치/VV + 면/EC	_ + 지나치/VA + 면/EC
-질소산화물	질소산화물/NNG	질소/NNG + 산화물/NNG
-삼성자동차	삼성자동/NNP + 차/NNG	삼성자동차/NNP
-애프터서비스	애프터/NNG + 서비스/NNG	애프터서비스/NNG
- 방울방울 	_ + 방울/NNG + 방울/NNP + _	_ + 방울방울/NNG + _
-독불장군	독불/NNG + 장군/NNG	독불장군/NNG
-이닝동안	이닝동안/NNG	이닝/NNG + 동안/NNG
-가치중립	가치/NNG + 중립/NNG	가치중립/NNG
-규합총서	규/NNG + 합/NNP + 총서/NNG	규합총서/NNP
- 취업자수	_ + 취업/NNG + 자수/NNG	_ + 취업자/NNG + 수/NNG
-성냥개비	성냥/NNG + 개비/NNG	성냥개비/NNG
-닥터 오	닥터/NNG + _ + 오/NNG	닥터/NNG + _ + 오/NNP
- 의미심장	_ + 의미심/XR + 장/NNG	_ + 의미심장/XR
-다용도실	다용/NNG + 도실/NNG	다용도실/NNG
-음악학교	음악학교/NNG	음악/NNG + 학교/NNG
-패스티시	패스티/NNG + 시/NNP	패스티시/NNG
-죽기살기	죽기살/VV + 기/ETN	죽/VV + 기/ETN + 살/VV + 기/ETN
-반전평화	반/XPN + 전/NNG + 평화/NNG	반전/NNG + 평화/NNG
-그레고리력	그레/NNP + 고리력/NNG	그레고리력/NNG
-광주시장	광주시/NNP + 장/NNG	광주/NNP + 시장/NNG
-부지기수	부지/NNG + 기수/NNG	부지기수/NNG
-거무스름	거/VA + 무/XR + 스/NNG + 름/XR	거무스름/XR
-, 대파	,/SP + _ + 대파/NNG	,/SP + _ + 대/XPN + 파/NNG
- 패스티시	_ + 패스티/NNG + 시/NNP	_ + 패스티시/NNG
- 세계정세	_ + 세계/NNG + 정세/NNG	_ + 세계정세/NNG
-대학교수	대학/NNG + 교수/NNG	대학교수/NNG
- 버렸습니다	_ + 버/VX + 리/VV + 었/EP + 습니다/EF	_ + 버리/VX + 었/EP + 습니다/EF
- 대학교수	_ + 대학/NNG + 교수/NNG	_ + 대학교수/NNG
-하고 뒤팡	하/VV + 고/EC + _ + 뒤팡/NNP	하고/JKQ + _ + 뒤팡/NNP
-동구 밖	동구/NNP + _ + 밖/NNG	동구/NNG + _ + 밖/NNG
-"이봐요	"/SS + 이봐/IC + 요/EF	"/SS + 이봐요/IC
- 평화시장	_ + 평화/NNG + 시장/NNG	_ + 평화시장/NNP
-가격인하	가격인하/NNG	가격/NNG + 인하/NNG
-와 얘기	와/JC + _ + 얘기/NNG	와/JKB + _ + 얘기/NNG
- 남대문시장	_ + 남대문/NNP + 시장/NNG	_ + 남대문시장/NNP
-파리 /	파리/NNP + _ + //SP	파리/NNG + _ + //SP
-전용면적 	전용면적/NNG + _	전용/NNG + 면적/NNG + _
-미식축구	미식/NNG + 축구/NNG	미식축구/NNG
-개구장이 	개구장/NNG + 이/JKS + _	개구장이/NNG + _
-및 감상	및/MAG + _ + 감상/NNG	및/MAJ + _ + 감상/NNG
-복제 양 돌리	복제/NNG + _ + 양/NNB + _ + 돌리/NNP	복제/NNG + _ + 양/NNG + _ + 돌리/NNP
-이닝동안 	이닝동안/NNG + _	이닝/NNG + 동안/NNG + _
-재무제표	재무/NNG + 제표/NNG	재무제표/NNG
-통합신당	통합/NNG + 신당/NNG	통합/NNG + 신/XPN + 당/NNG
- 개성사람	_ + 개/NNP + 성/NNG + 사람/NNG	_ + 개성/NNP + 사람/NNG
- 경성제대	_ + 경성/NNP + 제대/NNG	_ + 경성제대/NNP
- 애프터서비스	_ + 애프터/NNG + 서비스/NNG	_ + 애프터서비스/NNG
-현모양처	현모/NNG + 양처/NNG	현모양처/NNG
-칼 맑스	칼/NNG + _ + 맑스/NNP	칼/NNP + _ + 맑스/NNP
-보 반 러이	보/NNG + _ + 반/NNG + _ + 러이/NNP	보/NNP + _ + 반/NNP + _ + 러이/NNP
- 총영사관	_ + 총영/NNG + 사관/NNG	_ + 총영사관/NNG
- 한국교사휴양원	_ + 한국교사휴/NNP + 양원/NNG	_ + 한국교사휴양원/NNP
-기조실장	기조/NNG + 실장/NNG	기조실장/NNG
-는 마당에	는/ETM + _ + 마/NNG + 당/NNB + 에/JKB	는/ETM + _ + 마당/NNB + 에/JKB
-의 순유출	의/JKG + _ + 순유출/NNG	의/JKG + _ + 순/MM + 유출/NNG
-정당방위	정당/NNG + 방위/NNG	정당방위/NNG
-과 손잡	과/JC + _ + 손잡/VV	과/JKB + _ + 손잡/VV
- 벤처캐피털리스트	_ + 벤처/NNG + 캐피털리스트/NNG	_ + 벤처캐피털리스트/NNG
-이라크 내	이라크/NNP + _ + 나/NP + 의/JKG	이라크/NNP + _ + 내/NNB
- 아세안지역	_ + 아세/NNP + 안지역/NNG	_ + 아세안/NNP + 지역/NNG
- 전방위적	_ + 전방위/NNG + 적/XSN	_ + 전/MM + 방위/NNG + 적/XSN
-날벼락이	날벼락/NNG + 이/VCP	날/XPN + 벼락/NNG + 이/VCP
-어부사시사	어부/NNG + 사시사/NNP	어부사시사/NNP
-아니야,	아니/VCN + 야/IC + ,/SP	아니/VCN + 야/EC + ,/SP
-전국패트롤	전/NNG + 국패/NNP + 트/NNG + 롤/NNP	전국패트롤/NNP
-교수직을	교수직/NNG + 을/JKO	교수/NNG + 직/NNG + 을/JKO
-안과 밖	안과/NNG + _ + 밖/NNG	안/NNG + 과/JC + _ + 밖/NNG
-에서 있을	에서/JKB + _ + 있/VX + 을/ETM	에서/JKB + _ + 있/VV + 을/ETM
- 가상학교	_ + 가상학교/NNG	_ + 가상/NNG + 학교/NNG
-시끌시끌	시/MAG + 끌시/XR + 끌/MAG	시끌시끌/XR
- 산전수전	_ + 산전/NNG + 수전/NNG	_ + 산전수전/NNG
-우리 편	우리/NP + _ + 편/NNB	우리/NP + _ + 편/NNG
- 실사구시	_ + 실사/NNG + 구시/NNG	_ + 실사구시/NNG
-강경포구	강경포/NNP + 구/NNG	강경/NNP + 포구/NNG
-국제회의장	국제회의장/NNG	국제/NNG + 회의장/NNG
-장례식장	장례/NNG + 식장/NNG	장례식장/NNG
- 로비스트	_ + 로/NNP + 비스트/NNG	_ + 로비스트/NNG
-사실 등	사실/MAG + _ + 등/NNB	사실/NNG + _ + 등/NNB
- 자자손손	_ + 자자/NNG + 손손/NNG	_ + 자자손손/NNG
-한 개가	한/MM + _ + 개/NNG + 가/JKS	한/MM + _ + 개/NNB + 가/JKS
-더라니까	더/EC + 라니까/EF	더라니까/EF
-소이다.	소/EF + 이/VCP + 다/EF + ./SF	소이다/EF + ./SF
-공사채형	공사/NNG + 채/NNG + 형/XSN	공사채/NNG + 형/XSN
-전세자금	전세자금/NNG	전세/NNG + 자금/NNG
- 수공예품	_ + 수공/NNG + 예품/NNG	_ + 수공예품/NNG
-신진귀족세력	신진귀족/NNG + 세력/NNG	신진/NNG + 귀족/NNG + 세력/NNG
-한 바람	하/XSA + ㄴ/ETM + _ + 바람/NNB	하/XSA + ㄴ/ETM + _ + 바람/NNG
-아랍국가	아/NNP + 랍국가/NNG	아랍/NNP + 국가/NNG
-조금 전	조금/MAG + _ + 전/MM	조금/MAG + _ + 전/NNG
-스테레오	스테/NNG + 레오/NNP	스테레오/NNG
-사회단체	사회/NNG + 단체/NNG	사회단체/NNG
-반 러이	반/NNG + _ + 러이/NNP	반/NNP + _ + 러이/NNP
- 들락날락거리	_ + 들/MAG + 락날락거리/VV	_ + 들락날락거리/VV
-하지만,	| + 하지/MAJ + 만/EC + ,/SP	| + 하지만/MAJ + ,/SP
-역컴파일	역컴/NNG + 파일/NNG	역컴파일/NNG
- 하나하나	_ + 하/MAG + 나하나/NNG	_ + 하나하나/NNG
-교통질서	교통/NNG + 질서/NNG	교통질서/NNG
- 군사쿠데타	_ + 군사쿠데타/NNG	_ + 군사/NNG + 쿠데타/NNG
-보건복지부	보건/NNG + 복지부/NNG	보건/NNG + 복지/NNG + 부/NNG
-부당내부	부당내부/NNG	부당/NNG + 내부/NNG
-와 매우	와/JC + _ + 매우/MAG	와/JKB + _ + 매우/MAG
- 해창거리	_ + 해창거리/NNG	_ + 해창/NNP + 거리/NNG
-말괄량이	말괄량/NNG + 이/JKS	말괄량이/NNG
-서구문학	서/NNP + 구/NNG + 문학/NNG	서구/NNP + 문학/NNG
- 자가당착	_ + 자가/NNG + 당착/NNG	_ + 자가당착/NNG
- 가격인하	_ + 가격인하/NNG	_ + 가격/NNG + 인하/NNG
-와 사귀	와/JC + _ + 사귀/VV	와/JKB + _ + 사귀/VV
- 돼지머리	_ + 돼지머리/NNG	_ + 돼지/NNG + 머리/NNG
- 부지기수	_ + 부지/NNG + 기수/NNG	_ + 부지기수/NNG
-질문의문문	질문의문문/NNG	질문/NNG + 의문문/NNG
- 탄화수소	_ + 탄화/NNG + 수소/NNG	_ + 탄화수소/NNG
-쁘사트메이	쁘사트메/NNP + 이/NNG	쁘사트메이/NNP
-시험공부	시험/NNG + 공부/NNG	시험공부/NNG
-임정법통론	임정/NNG + 법통론/NNG	임정/NNG + 법/NNG + 통론/NNG
-수공예품	수공/NNG + 예품/NNG	수공예품/NNG
-증시안정기금	증시/NNG + 안정기금/NNG	증시/NNG + 안정/NNG + 기금/NNG
-사사건건 	사사건/MAG + 건/NNG + _	사사건건/MAG + _
-나이로비	나/NNP + 이/NNG + 로/NNP + 비/NNG	나이로비/NNP
- 그림공부	_ + 그림공부/NNG	_ + 그림/NNG + 공부/NNG
-일기 시작	일/VV + 기/NNG + _ + 시작/NNG	일/VV + 기/ETN + _ + 시작/NNG
-예술가촌	예술가촌/NNG	예술가/NNG + 촌/NNG
-틈새시장	틈새/NNG + 시장/NNG	틈새시장/NNG
-전 의원	전/NNG + _ + 의원/NNG	전/MM + _ + 의원/NNG
-으리라는 	으/EC + 리라는/ETM + _	으리라는/ETM + _
- 시끌시끌	_ + 시/MAG + 끌시/XR + 끌/MAG	_ + 시끌시끌/XR
-남북대화	남북대/NNP + 화/NNG	남북/NNP + 대화/NNG
-와 바꾸	와/JC + _ + 바꾸/VV	와/JKB + _ + 바꾸/VV
-이심전심	이심/NNG + 전심/NNG	이심전심/NNG
-이 상하	이/VCP + _ + 상하/VV	이/JKS + _ + 상하/VV
-액세서리	액세/NNG + 서리/NNG	액세서리/NNG
-즉 여성	| + 즉/MAG + _ + 여성/NNG	| + 즉/MAJ + _ + 여성/NNG
-입안 가득	입안/NNG + _ + 가득/MAG	입/NNG + 안/NNG + _ + 가득/MAG
-신진귀족	신진귀족/NNG	신진/NNG + 귀족/NNG
-곤두박질	곤두/VV + 박질/NNG	곤두박질/NNG
-자급자족	자급/NNG + 자족/NNG	자급자족/NNG
-다문화주의	다문화주의/NNG	다문화/NNG + 주의/NNG
-특급호텔	특급/NNG + 호/NNG + 텔/NNP	특급/NNG + 호텔/NNG
-외아들인	외아/NNG + 들/XSN + 이/VCP + ㄴ/ETM	외아들/NNG + 이/VCP + ㄴ/ETM
-남녀평등	남녀/NNG + 평등/NNG	남녀평등/NNG
-이나 다름없이	이/JC + 나/JX + _ + 다름없이/MAG	이나/JX + _ + 다름없이/MAG
-병무청장	병무/NNG + 청장/NNG	병무청장/NNG
-미치광이	미치광/NNG + 이/JKS	미치광이/NNG
-그 돌토끼	그/MM + _ + 돌토끼/NNG	그/MM + _ + 돌/NNG + 토끼/NNG
-일부다처	일부/NNG + 다처/NNG	일부다처/NNG
-토지공개념	토지/NNG + 공개념/NNG	토지/NNG + 공/NNG + 개념/NNG
-전국패트롤>	전/NNG + 국패/NNP + 트/NNG + 롤/NNP + >/SS	전국패트롤/NNP + >/SS
-논리정연	논리정/NNG + 연/XR	논리/NNG + 정연/XR
-통일전선정부	통일/NNG + 전선정부/NNG	통일/NNG + 전선/NNG + 정부/NNG
- 미술사가	_ + 미술/NNG + 사가/NNG	_ + 미술사가/NNG
-담임교사	담임/NNG + 교사/NNG	담임교사/NNG
-월북작가	월북작가/NNG	월북/NNG + 작가/NNG
- 반벌거숭이	_ + 반벌/NNG + 거숭이/NNG	_ + 반/NNG + 벌거숭이/NNG
-그래 놓	| + 그/IC + 러/VV + 어/EC + _ + 놓/VX	| + 그러/VV + 어/EC + _ + 놓/VX
- 요지부동	_ + 요지/NNG + 부동/NNG	_ + 요지부동/NNG
-남한학계	남한학/NNP + 계/XSN	남한/NNP + 학계/NNG
-경기 전	경기/NNP + _ + 전/MM	경기/NNG + _ + 전/NNG
- 성냥개비	_ + 성냥/NNG + 개비/NNG	_ + 성냥개비/NNG
-방랑시인	방랑시인/NNG	방랑/NNG + 시인/NNG
-인신매매범	인신/NNG + 매매범/NNG	인신매매범/NNG
-호이 호이	호이/NNG + _ + 호이/NNG	호이/MAG + _ + 호이/MAG
-같으니라구	같/VA + 으/EC + 니라구/EF	같/VA + 으니라구/EF
-사정사정	사정/NNG + 사정/NNG	사정사정/NNG
-공원묘지	공원/NNG + 묘지/NNG	공원묘지/NNG
+·중증급성호흡기증후군	·/SP + 중증급/NNG + 성/XSN + 호흡기증후군/NNG	·/SP + 중증/NNG + 급성/NNG + 호흡기/NNG + 증후군/NNG
+·중증급성호흡기증후군)	·/SP + 중증급/NNG + 성/XSN + 호흡기증후군/NNG + )/SS	·/SP + 중증/NNG + 급성/NNG + 호흡기/NNG + 증후군/NNG + )/SS
+ 신보수주의	_ + 신보수주의/NNG	_ + 신/XPN + 보수주의/NNG
+동아시아문학사비교론》	동아시아문/NNP + 학/NNG + 사비교론/NNP + 》/SS	동아시아문학사비교론/NNP + 》/SS
+세시 풍속	세/MM + 시/NNG + _ + 풍속/NNG	세/MM + 시/NNB + _ + 풍속/NNG
+주워들었	줍/VV + 어/EC + 들/VV + 었/EP	주워듣/VV + 었/EP
+의 절대 다수	의/JKG + _ + 절/MAG + 대/NNG + _ + 다수/NNG	의/JKG + _ + 절대/NNG + _ + 다수/NNG
+펴 나가	펴/VV + 어/EC + _ + 나/VV + 가/VX	펴/VV + 어/EC + _ + 나가/VX
+《동아시아문학사비교론》	《/SS + 동아시아문/NNP + 학/NNG + 사비교론/NNP + 》/SS	《/SS + 동아시아문학사비교론/NNP + 》/SS
+가죽가방	가죽가방/NNG	가죽/NNG + 가방/NNG
+배 코리안 리그	배/NNB + _ + 코/NNG + 리/NNP + 안/NNG + _ + 리그/NNG	배/NNB + _ + 코리안/NNG + _ + 리그/NNG
+카니 정	카니/NNP + _ + 정/NNG	카니/NNP + _ + 정/NNP
+남북 고위급 회담	남북/NNP + _ + 고위/NNG + 급/NNG + _ + 회담/NNG	남북/NNP + _ + 고위급/NNG + _ + 회담/NNG
+ 정신착란	_ + 정신착란/NNG	_ + 정신/NNG + 착란/NNG
+ 후생복지	_ + 후생복지/NNG	_ + 후생/NNG + 복지/NNG
+이탈리아전	이탈/NNP + 리아전/NNG	이탈리아전/NNG
+배 코리안	배/NNB + _ + 코/NNG + 리/NNP + 안/NNG	배/NNB + _ + 코리안/NNG
+벤처기업육성	벤처/NNG + 기업육/NNG + 성/XSN	벤처/NNG + 기업/NNG + 육성/NNG
+알 로버릭	알/NNG + _ + 로버릭/NNP	알/NNP + _ + 로버릭/NNP
+가져다줄 	가지/VV + 어다/EC + 주/VX + ㄹ/ETM + _	가져다주/VV + ㄹ/ETM + _
+중증급성호흡기증후군)	중증급/NNG + 성/XSN + 호흡기증후군/NNG + )/SS	중증/NNG + 급성/NNG + 호흡기/NNG + 증후군/NNG + )/SS
+이 되살아났	이/JKC + _ + 되살아나/VV + 았/EP	이/JKS + _ + 되살아나/VV + 았/EP
+ 완전식민지	_ + 완전식민지/NNG	_ + 완전/NNG + 식민지/NNG
+떠나야 했	떠나/VV + 아야/EC + _ + 하/VX + 였/EP	떠나/VV + 야/EC + _ + 하/VX + 였/EP
+ 정아무개	_ + 정/NNG + 아무개/NP	_ + 정/NNP + 아무개/NP
+남북대화	남/NNG + 북/NNP + 대화/NNG	남북/NNP + 대화/NNG
+기능면에서	기능면/NNG + 에서/JKB	기능/NNG + 면/NNG + 에서/JKB
+절대 다수	절/MAG + 대/NNG + _ + 다수/NNG	절대/NNG + _ + 다수/NNG
+《동아시아문학사비교론	《/SS + 동아시아문/NNP + 학/NNG + 사비교론/NNP	《/SS + 동아시아문학사비교론/NNP
+불공정보도	불/XPN + 공정보도/NNG	불/XPN + 공정/NNG + 보도/NNG
+고위급 회담	고위/NNG + 급/NNG + _ + 회담/NNG	고위급/NNG + _ + 회담/NNG
+미래지향적	미래지향/NNG + 적/XSN	미래/NNG + 지향/NNG + 적/XSN
+만기 형	만/NNG + 기/NNP + _ + 형/NNG	만기/NNP + _ + 형/NNG
+"물론입니다	"/SS + 물/MAG + 론/NNG + 이/VCP + ㅂ니다/EF	"/SS + 물론/NNG + 이/VCP + ㅂ니다/EF
+"부처님	"/SS + 부처/NNG + 님/XSN	"/SS + 부처/NNP + 님/XSN
+비정규직	비/XPN + 정/NNG + 규직/NNG	비/XPN + 정규/NNG + 직/NNG
+고칼슘혈증	고칼슘/NNG + 혈증/NNG	고/XPN + 칼슘/NNG + 혈증/NNG
+경남 마산합포	경남/NNP + _ + 마산합포/NNP	경남/NNP + _ + 마산/NNP + 합포/NNP
+ 국제통화기금(	_ + 국제/NNG + 통화기금/NNG + (/SS	_ + 국제통화기금/NNP + (/SS
+이올시다.	이/VCP + 오/VV + ㄹ시다/EF + ./SF	이/VCP + 올시다/EF + ./SF
+민 중위	민/NNG + _ + 중위/NNG	민/NNP + _ + 중위/NNG
+동아시아문학사비교론	동아시아문/NNP + 학/NNG + 사비교론/NNP	동아시아문학사비교론/NNP
+하고 이원명	하/VV + 고/JKQ + _ + 이원명/NNP	하/VV + 고/EC + _ + 이원명/NNP
+가계금전신탁	가계금전/NNG + 신탁/NNG	가계/NNG + 금전/NNG + 신탁/NNG
+의 부정부패	의/JKG + _ + 부정/NNG + 부패/NNG	의/JKG + _ + 부정부패/NNG
+(한국시각	(/SS + 한/NNG + 국/NNP + 시각/NNG	(/SS + 한국/NNP + 시각/NNG
+을 한 눈	을/JKO + _ + 하/VV + ㄴ/ETM + _ + 눈/NNG	을/JKO + _ + 한/MM + _ + 눈/NNG
+ 서비스산업	_ + 서비스산업/NNG	_ + 서비스/NNG + 산업/NNG
+ 사각지대	_ + 사각/NNG + 지대/NNG	_ + 사각지대/NNG
+태조 왕건	태조/NNP + _ + 왕건/NNG	태조/NNP + _ + 왕건/NNP
 여성주의	여성주의/NNG	여성/NNG + 주의/NNG
- 위기관리	_ + 위기/NNG + 관리/NNG	_ + 위기관리/NNG
-하루하루	| + 하/NNG + 루하루/MAG	| + 하루하루/MAG
-까지 나가	까지/JX + _ + 나/VV + 가/VX	까지/JX + _ + 나가/VV
-탄소배출권	탄소배출/NNG + 권/XSN	탄소/NNG + 배출/NNG + 권/XSN
-안전지대	안전/NNG + 지대/NNG	안전지대/NNG
- 캐리커처	_ + 캐리/NNG + 커처/NNG	_ + 캐리커처/NNG
-의미심장	의미심/XR + 장/NNG	의미심장/XR
-적이 되	적/XSN + 이/VCP + _ + 되/VV	적/XSN + 이/JKC + _ + 되/VV
-다는 것	다/EF + 는/ETM + _ + 것/NNB	다는/ETM + _ + 것/NNB
- 아이러니	_ + 아이러/NNG + 니/EC	_ + 아이러니/NNG
-다고 생각	다/EF + 고/EC + _ + 생각/NNG	다고/EC + _ + 생각/NNG
-소이기아	소/NNG + 이기아/NNP	소이기아/NNP
-적반하장	적반/NNG + 하장/NNG	적반하장/NNG
-컴퓨터그래픽스	컴퓨터그래픽스/NNG	컴퓨터/NNG + 그래픽스/NNG
-민족상잔	민족/NNG + 상잔/NNG	민족상잔/NNG
-경제정의	경제/NNG + 정/NNG + 의/NNP	경제/NNG + 정의/NNG
-국립국어연구원	국립국어/NNG + 연구원/NNG	국립국어연구원/NNP
- 현모양처	_ + 현모/NNG + 양처/NNG	_ + 현모양처/NNG
-신보수주의	신/XPN + 보/NNG + 수주의/NNG	신/XPN + 보수주의/NNG
-기로서니 	기/ETN + 로서니/EC + _	기로서니/EC + _
-네 사람	| + 너/NP + 의/JKG + _ + 사람/NNG	| + 네/MM + _ + 사람/NNG
-계열사간	계열/NNG + 사/NNG + 간/NNB	계열사/NNG + 간/NNB
-사립학교	사립/NNG + 학교/NNG	사립학교/NNG
-위기관리	위기/NNG + 관리/NNG	위기관리/NNG
-와 헤어져	와/JC + _ + 헤어지/VV + 어/EC	와/JKB + _ + 헤어지/VV + 어/EC
-학력고사	학력/NNG + 고사/NNG	학력고사/NNG
-천진난만	천진난/NNG + 만/NNB	천진난만/NNG
- 틈새시장	_ + 틈새/NNG + 시장/NNG	_ + 틈새시장/NNG
-핵심인물	핵심인물/NNG	핵심/NNG + 인물/NNG
-아 나서	아/EC + _ + 나/VX + 서/VV	아/EC + _ + 나서/VV
- 블록버스터	_ + 블록버스/NNG + 터/NNP	_ + 블록버스터/NNG
-보수주의	보/NNG + 수주의/NNG	보수주의/NNG
-대외경제정책	대외/NNG + 경제정책/NNG	대외/NNG + 경제/NNG + 정책/NNG
-해설 및	해설/NNG + _ + 및/MAG	해설/NNG + _ + 및/MAJ
- 성평등성	_ + 성평등/NNG + 성/XSN	_ + 성/NNG + 평등/NNG + 성/XSN
-주심포식	주심/NNG + 포식/NNG	주심포식/NNG
-한국교사휴양원	한국교사휴/NNP + 양원/NNG	한국교사휴양원/NNP
-{장자}	{/SS + 장/NNP + 자/NNG + }/SS	{/SS + 장자/NNP + }/SS
-한국방송사	한국방/NNP + 송사/NNG	한국/NNP + 방송사/NNG
- 논리정연	_ + 논리정/NNG + 연/XR	_ + 논리/NNG + 정연/XR
- 천진난만	_ + 천/NNP + 진난/NNG + 만/NNB	_ + 천진난만/NNG
-'란 '	'/SS + 이/VCP + 란/ETM + _ + '/SS	'/SS + 란/JX + _ + '/SS
-김포매립지 	김포매/NNP + 립지/NNG + _	김포/NNP + 매립지/NNG + _
-겨울리그	겨울리그/NNG	겨울/NNG + 리그/NNG
- 태평성대	_ + 태평/NNG + 성대/NNG	_ + 태평성대/NNG
-에서 등을	에서/JKB + _ + 등/NNB + 을/JKO	에서/JKB + _ + 등/NNG + 을/JKO
-로마시대	로마시/NNP + 대/NNG	로마/NNP + 시대/NNG
-을 막아서	을/JKO + _ + 막/VV + 아/EC + 서/VV	을/JKO + _ + 막아서/VV
-지 말기	지/EC + _ + 말기/NNG	지/EC + _ + 말/VX + 기/ETN
- 전력투구	_ + 전력/NNG + 투구/NNG	_ + 전력투구/NNG
-제국주의시대	제국주의시대/NNG	제국주의/NNG + 시대/NNG
-안하무인	안/MAG + 하무인/NNG	안하무인/NNG
- 자급자족	_ + 자급/NNG + 자족/NNG	_ + 자급자족/NNG
-방송사노조	방송/NNG + 사노조/NNG	방송사/NNG + 노조/NNG
-자가당착	자가/NNG + 당착/NNG	자가당착/NNG
-개체수가	개체수/NNG + 가/JKS	개체/NNG + 수/NNG + 가/JKS
-사회민주당	사회/NNG + 민주당/NNG	사회민주당/NNP
- 반전평화	_ + 반/XPN + 전/NNG + 평화/NNG	_ + 반전/NNG + 평화/NNG
-이전투구	이전/NNG + 투구/NNG	이전투구/NNG
-나무그늘	나무그늘/NNG	나무/NNG + 그늘/NNG
-조정실장	조정실장/NNG	조정/NNG + 실장/NNG
- 국제법상	_ + 국제/NNG + 법/NNG + 상/XSN	_ + 국제법/NNG + 상/XSN
- 산전수전 	_ + 산전/NNG + 수전/NNG + _	_ + 산전수전/NNG + _
-▽상소=	▽/SW + 상소/NNG + =/SW	▽/SW + 상소/NNP + =/SW
- 방랑시인	_ + 방랑시인/NNG	_ + 방랑/NNG + 시인/NNG
-장난기가	장난기/NNG + 가/JKS	장난/NNG + 기/XSN + 가/JKS
-하지만,	하지/MAJ + 만/EC + ,/SP	하지만/MAJ + ,/SP
- 핵심인물	_ + 핵심인물/NNG	_ + 핵심/NNG + 인물/NNG
-………"	…/SE + ……/SE + "/SS	…/SE + …/SE + …/SE + "/SS
-본질주의	본질주의/NNG	본질/NNG + 주의/NNG
-다고 지적	다고/EC + _ + 지/NNG + 적/XSN	다고/EC + _ + 지적/NNG
-손 오공	손/NNG + _ + 오공/NNG	손/NNP + _ + 오공/NNP
-이란 개념	이란/JX + _ + 개념/NNG	이/VCP + 란/ETM + _ + 개념/NNG
-취업자수	취업/NNG + 자수/NNG	취업자/NNG + 수/NNG
-밸런타인감독	밸/NNP + 런/NNG + 타인/NNP + 감독/NNG	밸런타인/NNP + 감독/NNG
-연중무휴	연중/NNG + 무휴/NNG	연중무휴/NNG
-물항아리	물항아리/NNG	물/NNG + 항아리/NNG
-농촌진흥청	농촌/NNG + 진흥청/NNG	농촌/NNG + 진흥/NNG + 청/NNG
- 신부전증	_ + 신부/NNG + 전증/NNG	_ + 신부전증/NNG
- 대구지역	_ + 대구지/NNP + 역/NNG	_ + 대구/NNP + 지역/NNG
-불국사의	불국/NNP + 사/NNG + 의/JKG	불국사/NNP + 의/JKG
-깨나 있	깨나/JX + _ + 있/VX	깨나/JX + _ + 있/VV
-간 쇠고기	가/VV + ㄴ/ETM + _ + 쇠고기/NNG	갈/VV + ㄴ/ETM + _ + 쇠고기/NNG
-동네아이	동네아이/NNG	동네/NNG + 아이/NNG
-현대 문명	| + 현/NNG + 대/NNP + _ + 문명/NNG	| + 현대/NNG + _ + 문명/NNG
-경남지역	경남지/NNP + 역/NNG	경남/NNP + 지역/NNG
-이탈리아전	이탈리/NNP + 아전/NNG	이탈리아전/NNG
-이목구비	이목/NNG + 구비/NNG	이목구비/NNG
- 삼성자동차	_ + 삼성자동/NNP + 차/NNG	_ + 삼성자동차/NNP
-반벌거숭이	반벌/NNG + 거숭이/NNG	반/NNG + 벌거숭이/NNG
- 실수요자	_ + 실수/NNG + 요자/NNG	_ + 실수요자/NNG
-장 담그	장/NNP + _ + 담그/VV	장/NNG + _ + 담그/VV
-무역자유화	무역/NNG + 자유화/NNG	무역/NNG + 자유/NNG + 화/XSN
-조차 하다	조차/JX + _ + 하/VV + 다/EF	조차/JX + _ + 하/VX + 다/EF
-하나하나	하/MAG + 나하나/NNG	하나하나/NNG
- 전지전능	_ + 전지/NNG + 전능/NNG	_ + 전지전능/NNG
-브로콜리	브/NNP + 로콜리/NNG	브로콜리/NNG
-제스프리	제스프/NNP + 리/NNG	제스프리/NNP
-저 자신	| + 저/MM + _ + 자신/NNG	| + 저/NP + _ + 자신/NNG
-전용면적	전용면적/NNG	전용/NNG + 면적/NNG
-생활쓰레기	생활쓰레기/NNG	생활/NNG + 쓰레기/NNG
-한편 1997	| + 한편/MAG + _ + 1997/SN	| + 한편/NNG + _ + 1997/SN
-나 보지	나/EC + _ + 보/VV + 지/EF	나/EC + _ + 보/VX + 지/EF
-16쿠데타	16/SN + 쿠/NNP + 데타/NNG	16/SN + 쿠데타/NNG
-으리라는	으/EC + 리라는/ETM	으리라는/ETM
-절대 빈곤	절대/MAG + _ + 빈곤/NNG	절대/NNG + _ + 빈곤/NNG
-진오기굿	진오기굿/NNG	진오기/NNG + 굿/NNG
-서먹서먹	서/VV + 먹서먹/XR	서먹서먹/XR
-으니라구	으/EC + 니라구/EF	으니라구/EF
-나르시시즘	나/NNP + 르시시즘/NNG	나르시시즘/NNG
-요지부동	요지/NNG + 부동/NNG	요지부동/NNG
-이슬람 교도	이슬람/NNG + _ + 교도/NNG	이슬람/NNP + _ + 교도/NNG
-제네바협정	제네바협정/NNP	제네바/NNP + 협정/NNG
- 가족계획	_ + 가족/NNG + 계획/NNG	_ + 가족계획/NNG
- 화기애애	_ + 화/NNG + 기애애/XR	_ + 화기애애/XR
-태평성대	태평/NNG + 성대/NNG	태평성대/NNG
-국어교과서	국어교과서/NNG	국어/NNG + 교과서/NNG
-성의 있	성/NNG + 의/JKG + _ + 있/VV	성의/NNG + _ + 있/VV
-탄화수소	탄화/NNG + 수소/NNG	탄화수소/NNG
-한편 1997	한편/MAG + _ + 1997/SN	한편/NNG + _ + 1997/SN
- 전원도시	_ + 전원/NNG + 도시/NNG	_ + 전원도시/NNG
-그러니만큼 	그러/VV + 니만/EC + 큼/JKB + _	그러/VV + 니만큼/EC + _
- 음악사이	_ + 음악사이/NNG	_ + 음악/NNG + 사이/NNG
-질서 있는	질서/NNG + _ + 있/VX + 는/ETM	질서/NNG + _ + 있/VV + 는/ETM
-자자손손	자자/NNG + 손손/NNG	자자손손/NNG
-통신업체	통신/NNG + 업체/NNG	통신업체/NNG
-수사의문문	수사의문문/NNG	수사/NNG + 의문문/NNG
-밸런타인	밸/NNP + 런/NNG + 타인/NNP	밸런타인/NNP
-서울지역	서울지/NNP + 역/NNG	서울/NNP + 지역/NNG
-우리교육	우/NNP + 리/NNG + 교육/NNG	우리교육/NNP
-대처 총리	대처/NNG + _ + 총리/NNG	대처/NNP + _ + 총리/NNG
- 봉두완이	_ + 봉두완/NNP + 이/NNG	_ + 봉두완이/NNP
-기성회비	기성/NNG + 회비/NNG	기성회비/NNG
- 재산형성	_ + 재산형성/NNG	_ + 재산/NNG + 형성/NNG
- 장례식장	_ + 장례/NNG + 식장/NNG	_ + 장례식장/NNG
-과 어긋나	과/JC + _ + 어긋나/VV	과/JKB + _ + 어긋나/VV
-영양권장량	영양권장량/NNG	영양/NNG + 권장/NNG + 량/NNG
-사사건건	사사건/MAG + 건/NNG	사사건건/MAG
-받아쓰기	받아쓰/VV + 기/ETN	받아쓰기/NNG
-인간문화재	인간/NNG + 문화재/NNG	인간문화재/NNG
- 전지훈련	_ + 전지/NNG + 훈련/NNG	_ + 전지훈련/NNG
-입후보자	입후/NNG + 보자/NNG	입후보자/NNG
-부당이득	부당이득/NNG	부당/NNG + 이득/NNG
-시키자는 	시키/XSV + 자/ETM + 는/JX + _	시키/XSV + 자는/ETM + _
-와 어미	와/JKB + _ + 어미/NNG	와/JC + _ + 어미/NNG
-공주에서	공주/NNG + 에서/JKB	공주/NNP + 에서/JKB
-을 지나치	을/JKO + _ + 지나/VV + 치/VA	을/JKO + _ + 지나치/VV
-교육학과	교육학과/NNG	교육학/NNG + 과/NNG
-동국세시기	동국/NNP + 세시기/NNG	동국세시기/NNP
- 영화감독	_ + 영화/NNG + 감독/NNG	_ + 영화감독/NNG
-미술사가	미술/NNG + 사가/NNG	미술사가/NNG
-공공건물	공공/NNG + 건물/NNG	공공건물/NNG
-정순자,	정순/NNP + 자/NNG + ,/SP	정순자/NNP + ,/SP
-화랭이패	화랭이패/NNG	화랭이/NNG + 패/NNG
-삼성투신운용	삼성투신운/NNP + 용/NNG	삼성투신운용/NNP
-고추잠자리	고추/NNG + 잠자리/NNG	고추잠자리/NNG
-자동차회사	자동/NNG + 차회사/NNG	자동차/NNG + 회사/NNG
-도이구지	도이구/NNP + 지/EC	도이구지/NNP
-(정순자	(/SS + 정순/NNP + 자/NNG	(/SS + 정순자/NNP
-파운드화	파운드/NNG + 화/XSN	파운드화/NNG
-카지노업소	카지/NNG + 노업소/NNG	카지노/NNG + 업소/NNG
- 이목구비	_ + 이목/NNG + 구비/NNG	_ + 이목구비/NNG
-그러니만큼	그러/VV + 니만/EC + 큼/JKB	그러/VV + 니만큼/EC
-야심만만	야/NNG + 심만만/XR	야심만만/XR
-전력투구	전력/NNG + 투구/NNG	전력투구/NNG
-외눈박이 	외눈박/NNG + 이/JKS + _	외눈박이/NNG + _
- 반신불수	_ + 반신/NNG + 불수/NNG	_ + 반신불수/NNG
-하루하루 	| + 하/NNG + 루하루/MAG + _	| + 하루하루/MAG + _
- 인신공격	_ + 인신/NNG + 공격/NNG	_ + 인신공격/NNG
- 교통수단	_ + 교통/NNG + 수단/NNG	_ + 교통수단/NNG
- 시기상조	_ + 시기/NNG + 상조/NNG	_ + 시기상조/NNG
- 사립학교	_ + 사립/NNG + 학교/NNG	_ + 사립학교/NNG
-해창거리	해창거리/NNG	해창/NNP + 거리/NNG
-돼지머리	돼지머리/NNG	돼지/NNG + 머리/NNG
-한국철도차량	한국/NNP + 철/NNG + 도차량/NNG	한국철도차량/NNP
-일 교도	일/NNG + _ + 교도/NNG	일/NNP + _ + 교도/NNP
-이란 자기	이/VCP + 란/JX + _ + 자기/NP	이란/JX + _ + 자기/NP
-가상학교	가상학교/NNG	가상/NNG + 학교/NNG
-이해집단	이해집단/NNG	이해/NNG + 집단/NNG
-약속이나 	약속/NNG + 이/JC + 나/JX + _	약속/NNG + 이나/JX + _
-지만 아직	지/EC + 만/MAJ + _ + 아직/MAG	지만/EC + _ + 아직/MAG
- 프랜차이즈	_ + 프/NNG + 랜/NNP + 차이즈/NNG	_ + 프랜차이즈/NNG
-서해대교	서해대/NNP + 교/NNG	서해대교/NNP
-코피 아난	코피/NNG + _ + 아난/NNP	코피/NNP + _ + 아난/NNP
-동물학자	동물/NNG + 학자/NNG	동물학자/NNG
-구 소련	구/NNG + _ + 소련/NNP	구/XPN + _ + 소련/NNP
-개성사람	개/NNP + 성/NNG + 사람/NNG	개성/NNP + 사람/NNG
-회중전등	회중/NNG + 전등/NNG	회중전등/NNG
-일부일처	일부/NNG + 일처/NNG	일부일처/NNG
- 오산학교	_ + 오산/NNP + 학교/NNG	_ + 오산학교/NNP
-음담패설	음담/NNG + 패설/NNG	음담패설/NNG
-민자역사	민자/NNG + 역사/NNG	민자/NNP + 역사/NNG
-성신여대	성/NNG + 신여대/NNP	성신여대/NNP
-전문대학원	전문대학원/NNG	전문/NNG + 대학원/NNG
- 사사건건	_ + 사사건/MAG + 건/NNG	_ + 사사건건/MAG
-아들녀석	아들/NNG + 녀/NNB + 석/NNG	아들/NNG + 녀석/NNB
- 나무그늘	_ + 나무그늘/NNG	_ + 나무/NNG + 그늘/NNG
-다는구나	다/EC + 는구나/EF	다는구나/EF
-더라니까요	더/EC + 라니까요/EF	더라니까요/EF
-이른바 `	이른바/MAG + _ + `/SS	이른바/MAJ + _ + `/SS
-어불성설	어불/NNG + 성설/NNG	어불성설/NNG
-유럽공동체	유럽공동/NNP + 체/NNG	유럽공동체/NNP
-천생연분	천생/NNG + 연분/NNG	천생연분/NNG
-와 부합	와/JC + _ + 부합/NNG	와/JKB + _ + 부합/NNG
-외눈박이	외눈박/NNG + 이/JKS	외눈박이/NNG
-금리인하	금리인하/NNG	금리/NNG + 인하/NNG
-과천경마장	과천경/NNP + 마장/NNG	과천경마장/NNP
-, 북,	,/SP + _ + 북/NNP + ,/SP	,/SP + _ + 북/NNG + ,/SP
-화기애애	화/NNG + 기애애/XR	화기애애/XR
+ 큰소리치	_ + 큰/NNG + 소리치/VV	_ + 큰소리치/VV
+에게 유리하고	에게/JKB + _ + 유리/NNG + 하/XSV + 고/EC	에게/JKB + _ + 유리/XR + 하/XSA + 고/EC
+ 정보처장	_ + 정보/NNG + 처장/NNG	_ + 정보처장/NNG
+의 생활상	의/JKG + _ + 생활/NNG + 상/XSN	의/JKG + _ + 생활상/NNG
+ 조개껍질	_ + 조개/NNG + 껍질/NNG	_ + 조개껍질/NNG
+이 뜨거워졌	이/JKS + _ + 뜨거워/VV + 지/VX + 었/EP	이/JKS + _ + 뜨거워지/VV + 었/EP
+운전기사	운전/NNG + 기사/NNG	운전기사/NNG
+한국시각	한/NNG + 국/NNP + 시각/NNG	한국/NNP + 시각/NNG
+의 대가	의/JKG + _ + 대/NNG + 가/JKS	의/JKG + _ + 대가/NNG
+『금양잡록』	『/SS + 금/NNG + 양잡록/NNP + 』/SS	『/SS + 금양잡록/NNP + 』/SS
+금양잡록』	금/NNG + 양잡록/NNP + 』/SS	금양잡록/NNP + 』/SS
+을 벗겨내	을/JKO + _ + 벗겨/VV + 내/VX	을/JKO + _ + 벗기/VV + 어/EC + 내/VX
+고 이원명	고/JKQ + _ + 이원명/NNP	고/EC + _ + 이원명/NNP
+ 하루종일	_ + 하루종일/NNG	_ + 하루/NNG + 종일/NNG
+ 이겁니다.	_ + 이/NNG + 것/NP + 이/VCP + ㅂ니다/EF + ./SF	_ + 이것/NP + 이/VCP + ㅂ니다/EF + ./SF
+이지마는 	이/VCP + 지마/EC + 는/JX + _	이/VCP + 지마는/EC + _
+ 방울방울 	_ + 방울/NNG + 방울/NNG + _	_ + 방울방울/NNG + _
+그 민 경위	그/MM + _ + 민/NNG + _ + 경위/NNG	그/MM + _ + 민/NNP + _ + 경위/NNG
+임수경 양	임수경/NNP + _ + 양/NNG	임수경/NNP + _ + 양/NNB
+아세안지역안보포럼	아세안/NNP + 지역안보포럼/NNG	아세안/NNP + 지역/NNG + 안보/NNG + 포럼/NNG
+을 적은	을/JKO + _ + 적/VA + 은/ETM	을/JKO + _ + 적/VV + 은/ETM
+ 위험천만	_ + 위험천/NNG + 만/JX	_ + 위험천만/NNG
+ 바람개비	_ + 바람/NNG + 개비/NNG	_ + 바람개비/NNG
+소련 동구	소련/NNP + _ + 동구/NNG	소련/NNP + _ + 동구/NNP
+의 이해관계를	의/JKG + _ + 이해/NNG + 관계/NNG + 를/JKO	의/JKG + _ + 이해관계/NNG + 를/JKO
+ 이겁니다	_ + 이/NNG + 것/NP + 이/VCP + ㅂ니다/EF	_ + 이것/NP + 이/VCP + ㅂ니다/EF
+ 가져다줄 	_ + 가지/VV + 어다/EC + 주/VX + ㄹ/ETM + _	_ + 가져다주/VV + ㄹ/ETM + _
+신자유주의	신/XPN + 자/NNG + 유주의/NNG	신/XPN + 자유주의/NNG
+지난 지금	지나/VV + ㄴ/ETM + _ + 지/NNG + 금/MAG	지나/VV + ㄴ/ETM + _ + 지금/MAG
+일상생활에서	일상/NNG + 생활/NNG + 에서/JKB	일상생활/NNG + 에서/JKB
+ 특수학교	_ + 특수/NNG + 학교/NNG	_ + 특수학교/NNG
+의 사회상	의/JKG + _ + 사회/NNG + 상/XSN	의/JKG + _ + 사회상/NNG
+권상무가	| + 권상무/NNG + 가/JKS	| + 권/NNP + 상무/NNG + 가/JKS
+가져다줄	가지/VV + 어다/EC + 주/VX + ㄹ/ETM	가져다주/VV + ㄹ/ETM
+조개껍질	조개/NNG + 껍질/NNG	조개껍질/NNG
+노이로제	노이/NNG + 로/NNP + 제/NNG	노이로제/NNG
+창씨개명	창/NNP + 씨/NNB + 개명/NNG	창씨개명/NNG
+ 유유자적	_ + 유유자/NNG + 적/XSN	_ + 유유자적/NNG
+정부기구	정부기구/NNG	정부/NNG + 기구/NNG
+소련 동구권	소련/NNP + _ + 동구/NNG + 권/XSN	소련/NNP + _ + 동구/NNP + 권/XSN
+암중모색	암중/NNG + 모색/NNG	암중모색/NNG
+소매치기	소매/NNG + 치/VV + 기/ETN	소매치기/NNG
+만족할 수	만족/NNG + 하/XSV + ㄹ/ETM + _ + 수/NNB	만족/NNG + 하/XSA + ㄹ/ETM + _ + 수/NNB
+을 가져다줄	을/JKO + _ + 가지/VV + 어다/EC + 주/VX + ㄹ/ETM	을/JKO + _ + 가져다주/VV + ㄹ/ETM
+'이라고도	'/SS + 이/JKQ + 라/EC + 고/JKQ + 도/JX	'/SS + 이라고/JKQ + 도/JX
+ 의미심장	_ + 의/NNG + 미심장/XR	_ + 의미심장/XR
+중증급성호흡기증후군	중증급/NNG + 성/XSN + 호흡기증후군/NNG	중증/NNG + 급성/NNG + 호흡기/NNG + 증후군/NNG
+유치원생	유치원생/NNG	유치원/NNG + 생/XSN
+현대건설	현대건/NNP + 설/NNG	현대건설/NNP
+불기소처분	불기소처분/NNG	불/XPN + 기소/NNG + 처분/NNG
+옛날얘기	옛날얘기/NNG	옛날/NNG + 얘기/NNG
+브리티시 스틸	브리/NNG + 티시/NNP + _ + 스틸/NNG	브리티시/NNG + _ + 스틸/NNG
+물론입니다	물/MAG + 론/NNG + 이/VCP + ㅂ니다/EF	물론/NNG + 이/VCP + ㅂ니다/EF
+2002월드컵/	2002/SN + 월/NNB + 드컵/NNG + //SP	2002/SN + 월드컵/NNG + //SP
+ 흘러내려	_ + 흘러내/VV + 려/EC	_ + 흘러내리/VV + 어/EC
+타이틀곡 	타이틀곡/NNG + _	타이틀/NNG + 곡/NNG + _
+공동체운동	공동/NNG + 체/NNG + 운동/NNG	공동체/NNG + 운동/NNG
+ 소매치기	_ + 소매치/NNG + 기/ETN	_ + 소매치기/NNG
+테크노픽션'	테크노픽션/NNG + '/SS	테크노/NNG + 픽션/NNG + '/SS
+ 국제통화기금	_ + 국제/NNG + 통화기금/NNG	_ + 국제통화기금/NNP
+[날개]	[/SS + 날개/NNG + ]/SS	[/SS + 날개/NNP + ]/SS
+ 옛날얘기	_ + 옛날얘기/NNG	_ + 옛날/NNG + 얘기/NNG
+을 거친	을/JKO + _ + 거/VA + 치/VV + ㄴ/ETM	을/JKO + _ + 거치/VV + ㄴ/ETM
+최우수선수	최/XPN + 우/NNG + 수/NNG + 선수/NNG	최/XPN + 우수/NNG + 선수/NNG
+ 곡창지대	_ + 곡창지대/NNG	_ + 곡창/NNG + 지대/NNG
+디지털시대	디지털시대/NNG	디지털/NNG + 시대/NNG
+아이러니	아이러/NNG + 니/MAG	아이러니/NNG
+구 소련	구/NNP + _ + 소련/NNP	구/XPN + _ + 소련/NNP
+피해 보상	피/VV + 해/NNG + _ + 보상/NNG	피해/NNG + _ + 보상/NNG
+핵폐기장	핵폐기장/NNG	핵/NNG + 폐기장/NNG
+의 노동조합	의/JKG + _ + 노동/NNG + 조합/NNG	의/JKG + _ + 노동조합/NNG
+ 들어올려	_ + 들어올리/VV + 어/EC	_ + 들/VV + 어/EC + 올리/VV + 어/EC
+ 요령부득	_ + 요령/NNG + 부득/NNG	_ + 요령부득/NNG
+어나갔다	어/EC + 나/VV + 가/VX + 았/EP + 다/EF	어/EC + 나가/VV + 았/EP + 다/EF
+ 발로자에게	_ + 발로자/NNG + 에게/JKB	_ + 발로자/NNP + 에게/JKB
+ 반사회적	_ + 반사회/NNG + 적/XSN	_ + 반/XPN + 사회/NNG + 적/XSN
+의 끝자락	의/JKG + _ + 끝자락/NNG	의/JKG + _ + 끝/NNG + 자락/NNG
+그리하여,	| + 그/MAJ + 리/MAG + 하여/MAJ + ,/SP	| + 그리하여/MAJ + ,/SP
+이사직을	이사직/NNG + 을/JKO	이사/NNG + 직/NNG + 을/JKO
+『금양잡록	『/SS + 금/NNG + 양잡록/NNP	『/SS + 금양잡록/NNP
+의 진수를	의/JKG + _ + 진/NNP + 수/NNG + 를/JKO	의/JKG + _ + 진수/NNG + 를/JKO
+ 삼삼오오	_ + 삼삼/NNG + 오오/NNP	_ + 삼삼오오/NNG
+ 만주지방	_ + 만주지방/NNG	_ + 만주/NNP + 지방/NNG
+ 가계금전신탁	_ + 가계금전/NNG + 신탁/NNG	_ + 가계/NNG + 금전/NNG + 신탁/NNG
+자나깨나	자나/NNG + 깨/JX + 나/JC	자/VV + 나/EC + 깨/VV + 나/EC
+ 방울방울	_ + 방울/NNG + 방울/NNG	_ + 방울방울/NNG
+ 방송민주화	_ + 방송민주/NNG + 화/XSN	_ + 방송/NNG + 민주/NNG + 화/XSN
+까지밖에	까지밖에/JX	까지/JX + 밖에/JX
+된 조국	되/XSV + ㄴ/ETM + _ + 조국/NNP	되/XSV + ㄴ/ETM + _ + 조국/NNG
+제임스 박	제임스/NNP + _ + 박/NNG	제임스/NNP + _ + 박/NNP
+세계선수권	세계/NNG + 선수/NNG + 권/XSN	세계/NNG + 선수권/NNG
+유고슬라비아	유/NNG + 고슬라비아/NNP	유고슬라비아/NNP
+대형 전광판	대형/NNG + _ + 전광판/NNG	대/NNG + 형/XSN + _ + 전광판/NNG
+남북 고위급	남북/NNP + _ + 고위/NNG + 급/NNG	남북/NNP + _ + 고위급/NNG
+국가보안법	국가보안법/NNG	국가/NNG + 보안법/NNG
+민 경위	밀/VV + ㄴ/ETM + _ + 경위/NNG	민/NNP + _ + 경위/NNG
+에게 유리하	에게/JKB + _ + 유리/NNG + 하/XSV	에게/JKB + _ + 유리/XR + 하/XSA
+농수산물	농수/NNG + 산물/NNG	농수산물/NNG
+는 군.	는/ETM + _ + 군/NNB + ./SF	는/ETM + _ + 군/NNG + ./SF
+점심식사	점심식사/NNG	점심/NNG + 식사/NNG
+배반포기	배반/NNG + 포기/NNG	배반포기/NNG
+나인 우리	나/NP + 인/NNG + _ + 우리/NP	나/NP + 이/VCP + ㄴ/ETM + _ + 우리/NP
+ 사회정의	_ + 사회정의/NNG	_ + 사회/NNG + 정의/NNG
+것 말고	것/NNB + _ + 말/VX + 고/EC	것/NNB + _ + 말/VV + 고/EC
+소문나 있다	소문나/VV + 아/EC + _ + 있/VV + 다/EF	소문나/VV + 아/EC + _ + 있/VX + 다/EF
+이 불어왔	이/JKS + _ + 불어/VV + 오/VX + 았/EP	이/JKS + _ + 불어오/VV + 았/EP
+ 권상무가	_ + 권상무/NNG + 가/JKS	_ + 권/NNP + 상무/NNG + 가/JKS
+의 의복색	의/JKG + _ + 의복색/NNG	의/JKG + _ + 의복/NNG + 색/NNG
+의 상관관계를	의/JKG + _ + 상관/NNG + 관계/NNG + 를/JKO	의/JKG + _ + 상관관계/NNG + 를/JKO
+ 기독교도	_ + 기독/NNG + 교도/NNG	_ + 기독교도/NNG
+ 고정관념	_ + 고정/NNG + 관념/NNG	_ + 고정관념/NNG
+장군바위	장군바위/NNG	장군/NNG + 바위/NNG
+의 자연환경	의/JKG + _ + 자연/NNG + 환경/NNG	의/JKG + _ + 자연환경/NNG
+으로 걸었	으로/JKB + _ + 걸/VV + 었/EP	으로/JKB + _ + 걷/VV + 었/EP
+사담 후세인	사담/NNG + _ + 후세인/NNP	사담/NNP + _ + 후세인/NNP
+수로 부인	수로/NNG + _ + 부인/NNG	수로/NNP + _ + 부인/NNG
+생선초밥	생선초밥/NNG	생선/NNG + 초밥/NNG
+'테크노픽션'	'/SS + 테크노픽션/NNG + '/SS	'/SS + 테크노/NNG + 픽션/NNG + '/SS
+기대 앉	기대/NNG + _ + 앉/VV	기대/VV + 어/EC + _ + 앉/VV
+새로 산	새로/MAG + _ + 살/VV + ㄴ/ETM	새로/MAG + _ + 사/VV + ㄴ/ETM
+이란 바로	이/JX + 란/ETM + _ + 바로/MAG	이란/JX + _ + 바로/MAG
+을 내려주	을/JKO + _ + 내려주/VV	을/JKO + _ + 내리/VV + 어/EC + 주/VX
+왁자지껄한	왁자지껄/MAG + 하/XSA + ㄴ/ETM	왁자지껄/MAG + 하/XSV + ㄴ/ETM
+경제정의	경제정/NNG + 의/JKG	경제/NNG + 정의/NNG
+자나깨나 	자나/NNG + 깨/JX + 나/JC + _	자/VV + 나/EC + 깨/VV + 나/EC + _
+황당 무계	황당/NNG + _ + 무계/NNG	황당/XR + _ + 무계/XR
+ 삼삼오오	_ + 삼삼/NNG + 오/NNP + 오/NNG	_ + 삼삼오오/NNG
+월드컵/	월/NNB + 드컵/NNG + //SP	월드컵/NNG + //SP
+후세인 정권	후세/NNG + 인/NNP + _ + 정권/NNG	후세인/NNP + _ + 정권/NNG
+한 줄로	한/MM + _ + 줄/NNB + 로/JKB	한/MM + _ + 줄/NNG + 로/JKB
+불안정성	불/XPN + 안/NNG + 정/NNG + 성/XSN	불/XPN + 안정/NNG + 성/XSN
+ 일상생활에서	_ + 일상/NNG + 생활/NNG + 에서/JKB	_ + 일상생활/NNG + 에서/JKB
+ 술래잡기	_ + 술래/NNG + 잡/VV + 기/ETN	_ + 술래잡기/NNG
+ 연석회의에서	_ + 연석/NNG + 회의/NNG + 에서/JKB	_ + 연석회의/NNG + 에서/JKB
+국제통화기금	국제/NNG + 통화기금/NNG	국제통화기금/NNP
+곡창지대	곡창지대/NNG	곡창/NNG + 지대/NNG
+ 유치원생	_ + 유치원생/NNG	_ + 유치원/NNG + 생/XSN
+서비스산업	서비스산업/NNG	서비스/NNG + 산업/NNG
+주제넘은	주제/NNG + 넘/VV + 은/ETM	주제넘/VA + 은/ETM
+의 도는	의/JKG + _ + 돌/VV + 는/JX	의/JKG + _ + 도/NNG + 는/JX
+시비거리	시비거리/NNG	시비/NNG + 거리/NNB
+뮤추얼펀드	뮤추얼/NNG + 펀드/NNG	뮤추얼펀드/NNG
+유유자적	유유자/NNG + 적/XSN	유유자적/NNG
+강경대 군	강경대/NNP + _ + 군/NNG	강경대/NNP + _ + 군/NNB
+미래지향	미래지향/NNG	미래/NNG + 지향/NNG
+이 뜨거워졌다	이/JKS + _ + 뜨거워/VV + 지/VX + 었/EP + 다/EF	이/JKS + _ + 뜨거워지/VV + 었/EP + 다/EF
+잠잘 때	잠/NNG + 자/VV + ㄹ/ETM + _ + 때/NNG	잠자/VV + ㄹ/ETM + _ + 때/NNG
+브리티시 	브리/NNG + 티시/NNP + _	브리티시/NNG + _
+ 하루종일 	_ + 하루종일/NNG + _	_ + 하루/NNG + 종일/NNG + _
+ 가죽가방	_ + 가죽가방/NNG	_ + 가죽/NNG + 가방/NNG
+사사건건	사사/NNG + 건건/MAG	사사건건/MAG
+ 방송민주	_ + 방송민주/NNG	_ + 방송/NNG + 민주/NNG
+얘기 들었	얘기/NNG + _ + 들/VV + 었/EP	얘기/NNG + _ + 듣/VV + 었/EP
+경제정의실천	경제정/NNG + 의/JKG + 실천/NNG	경제/NNG + 정의/NNG + 실천/NNG
+ 부풀어오르	_ + 부풀어오르/VV	_ + 부풀/VV + 어/EC + 오르/VV
+나 실장	나/NNG + _ + 실장/NNG	나/NNP + _ + 실장/NNG
+알 파치노	알/NNG + _ + 파치노/NNG	알/NNP + _ + 파치노/NNP
+과 화려	과/JKB + _ + 화려/XR	과/JC + _ + 화려/XR
+월 들어서는	월/NNB + _ + 들어/VV + 서/EC + 는/JX	월/NNB + _ + 들/VV + 어서/EC + 는/JX
+남목고개	남목/NNG + 고개/NNG	남목/NNP + 고개/NNG
+ 명예퇴직	_ + 명예/NNG + 퇴직/NNG	_ + 명예퇴직/NNG
+, 아니	,/SP + _ + 아/MAG + 니/IC	,/SP + _ + 아니/IC
+▴ 이 =	▴/SW + _ + 이/MM + _ + =/SW	▴/SW + _ + 이/NNP + _ + =/SW
+소주잔을	소주/NNG + 잔/NNG + 을/JKO	소주잔/NNG + 을/JKO
+ 대중가요	_ + 대중/NNG + 가요/NNG	_ + 대중가요/NNG
+공정보도	공정보도/NNG	공정/NNG + 보도/NNG
+소문나 있	소문나/VV + 아/EC + _ + 있/VV	소문나/VV + 아/EC + _ + 있/VX
+예측 불허	예측/NNG + _ + 불/XPN + 허/NNG	예측/NNG + _ + 불허/NNG
+이겁니다.	이/NNG + 것/NP + 이/VCP + ㅂ니다/EF + ./SF	이것/NP + 이/VCP + ㅂ니다/EF + ./SF
+그리하여,	그/MAJ + 리/MAG + 하여/MAJ + ,/SP	그리하여/MAJ + ,/SP
+자동차사업	자동차사업/NNG	자동차/NNG + 사업/NNG
+ 사설시조	_ + 사설/NNG + 시조/NNG	_ + 사설시조/NNG
+·가명)	·/SP + 가/NNG + 명/NNP + )/SS	·/SP + 가명/NNG + )/SS
+ 대북사업	_ + 대북사업/NNG	_ + 대북/NNG + 사업/NNG
+의 발로	의/JKG + _ + 발/NNG + 로/NNP	의/JKG + _ + 발로/NNG
+ 신춘문예	_ + 신춘/NNG + 문예/NNG	_ + 신춘문예/NNG
+술래잡기	술래/NNG + 잡/VV + 기/ETN	술래잡기/NNG
+천만다행	천/NR + 만다행/NNG	천만다행/NNG
+을 한 단계	을/JKO + _ + 하/VV + ㄴ/ETM + _ + 단계/NNG	을/JKO + _ + 한/MM + _ + 단계/NNG
+치 못하	하/XSA + 지/EC + _ + 못/MAG + 하/VX	하/XSA + 지/EC + _ + 못하/VX
+풍비박산	풍비/NNG + 박산/NNG	풍비박산/NNG
+부풀어오르	부풀어오르/VV	부풀/VV + 어/EC + 오르/VV
+흘러내려	흘러내/VV + 려/EC	흘러내리/VV + 어/EC
+법계도>	법/NNG + 계도/NNP + >/SS	법계도/NNP + >/SS
+비닐가방	비닐가방/NNG	비닐/NNG + 가방/NNG
+과 만나	과/JC + _ + 만나/VV + 아/EC	과/JKB + _ + 만나/VV + 아/EC
+기업개선작업)	기업/NNG + 개선작업/NNG + )/SS	기업/NNG + 개선/NNG + 작업/NNG + )/SS
+아 보기	아/EC + _ + 보/VV + 기/ETN	아/EC + _ + 보/VX + 기/ETN
+2회전에서	2/SN + 회/NNB + 전/NNG + 에서/JKB	2/SN + 회전/NNB + 에서/JKB
+지난 지금,	지나/VV + ㄴ/ETM + _ + 지/NNG + 금/MAG + ,/SP	지나/VV + ㄴ/ETM + _ + 지금/MAG + ,/SP
+ 안기부장	_ + 안기/NNG + 부장/NNG	_ + 안기부장/NNG
+에게 물려주	에게/JKB + _ + 물려/VV + 주/VX	에게/JKB + _ + 물려주/VV
+지역안보포럼	지역안보포럼/NNG	지역/NNG + 안보/NNG + 포럼/NNG
+ 대우전에서	_ + 대우전/NNP + 에서/JKB	_ + 대우전/NNG + 에서/JKB
+민 경위	민/NNG + _ + 경위/NNG	민/NNP + _ + 경위/NNG
+묵묵부답	묵묵/NNG + 부답/NNG	묵묵부답/NNG
+ 상관없이 	_ + 상/MAG + 관/NNG + 없이/MAG + _	_ + 상관없이/MAG + _
+제네바협정	제네바협/NNP + 정/NNG	제네바/NNP + 협정/NNG
+의 경지	의/JKG + _ + 경/NNG + 지/NNP	의/JKG + _ + 경지/NNG
+ 구경거리였	_ + 구경/NNG + 거리/NNG + 이/VCP + 었/EP	_ + 구경거리/NNG + 이/VCP + 었/EP
+전국민적	전국민/NNG + 적/XSN	전/MM + 국민/NNG + 적/XSN
+나 실장	| + 나/NP + _ + 실장/NNG	| + 나/NNP + _ + 실장/NNG
+구경거리였	구경/NNG + 거리/NNG + 이/VCP + 었/EP	구경거리/NNG + 이/VCP + 었/EP
+이지마는	이/VCP + 지마/EC + 는/JX	이/VCP + 지마는/EC
+실업학교	실업/NNG + 학교/NNG	실업학교/NNG
+동위원소	동위원소/NNG	동위/NNG + 원소/NNG
+하루종일 	하루종일/NNG + _	하루/NNG + 종일/NNG + _
+하청업체	하청업체/NNG	하청/NNG + 업체/NNG
+의 일본관	의/JKG + _ + 일본/NNP + 관/NNG	의/JKG + _ + 일본관/NNG
+(총상금 	(/SS + 총상금/NNG + _	(/SS + 총/MM + 상금/NNG + _
+반리얼리즘	반리얼리즘/NNG	반/XPN + 리얼리즘/NNG
+ 미래지향적	_ + 미래지향/NNG + 적/XSN	_ + 미래/NNG + 지향/NNG + 적/XSN
+ 주워들었	_ + 줍/VV + 어/EC + 들/VV + 었/EP	_ + 주워듣/VV + 었/EP
+가잘 씨	가잘/NNP + _ + 씨/NNG	가잘/NNP + _ + 씨/NNB
+발로자에게	발로자/NNG + 에게/JKB	발로자/NNP + 에게/JKB
+ 의미심장하	_ + 의/NNG + 미심장/XR + 하/XSA	_ + 의미심장/XR + 하/XSA
+먹을거리	먹/VV + 을거리/NNG	먹을거리/NNG
+이나 좀	이/JC + 나/JX + _ + 좀/MAG	이나/JX + _ + 좀/MAG
+지하도시	지하도시/NNG	지하/NNG + 도시/NNG
+ 대성공이	_ + 대성공/NNG + 이/VCP	_ + 대/XPN + 성공/NNG + 이/VCP
+아니요,	아니/IC + 요/EC + ,/SP	아니요/IC + ,/SP
+ 반리얼리즘	_ + 반리얼리즘/NNG	_ + 반/XPN + 리얼리즘/NNG
+기술씨름	기술씨름/NNG	기술/NNG + 씨름/NNG
+의 신진대사	의/JKG + _ + 신진/NNG + 대사/NNG	의/JKG + _ + 신진대사/NNG
+오늘밤은	오늘밤/NNG + 은/JX	오늘/NNG + 밤/NNG + 은/JX
+비인간화	비/XPN + 인/NNG + 간/NNG + 화/XSN	비/XPN + 인간/NNG + 화/XSN
+2002월드컵	2002/SN + 월/NNB + 드컵/NNG	2002/SN + 월드컵/NNG
+그러면,	그/VV + 러면/MAJ + ,/SP	그러면/MAJ + ,/SP
+레이디경향	레/NNP + 이/NNG + 디/NNP + 경향/NNG	레이디경향/NNP
+반사회적	반사회/NNG + 적/XSN	반/XPN + 사회/NNG + 적/XSN
+서 있을	서/VV + 어/EC + _ + 있/VV + 을/ETM	서/VV + 어/EC + _ + 있/VX + 을/ETM
+제임스 박과	제임스/NNP + _ + 박/NNG + 과/JC	제임스/NNP + _ + 박/NNP + 과/JC
+우리교육	우리/NP + 교육/NNG	우리교육/NNP
+매 순간	매/NNG + _ + 순간/NNG	매/MM + _ + 순간/NNG
+무동답교놀이	무동답교놀이/NNG	무동/NNG + 답교놀이/NNG
+ 반민중적	_ + 반민중/NNG + 적/XSN	_ + 반/XPN + 민중/NNG + 적/XSN
+기업개선작업	기업/NNG + 개선작업/NNG	기업/NNG + 개선/NNG + 작업/NNG
+완전식민지	완전식민지/NNG	완전/NNG + 식민지/NNG
+ 만화가게	_ + 만화가게/NNG	_ + 만화/NNG + 가게/NNG
+협궤열차	협궤열차/NNG	협궤/NNG + 열차/NNG
+국제통화기금(	국제/NNG + 통화기금/NNG + (/SS	국제통화기금/NNP + (/SS
+보내 달	보내/VV + 어/EC + _ + 달/VV	보내/VV + 어/EC + _ + 달/VX
+ 보릿고개	_ + 보릿/NNG + 고개/NNG	_ + 보릿고개/NNG
+비정부기구	비/XPN + 정부기구/NNG	비/XPN + 정부/NNG + 기구/NNG
+사회정의	사회정의/NNG	사회/NNG + 정의/NNG
+을 가져다주	을/JKO + _ + 가져다/VV + 주/VX	을/JKO + _ + 가져다주/VV
+한편 1997	한/MAG + 편/NNG + _ + 1997/SN	한편/NNG + _ + 1997/SN
+파이프오르간	파이프오르간/NNG	파이프/NNG + 오르간/NNG
+빙고게임	빙고게임/NNG	빙고/NNG + 게임/NNG
+신보수주의	신보수주의/NNG	신/XPN + 보수주의/NNG
+ 미래지향	_ + 미래지향/NNG	_ + 미래/NNG + 지향/NNG
+보릿고개	보릿/NNG + 고개/NNG	보릿고개/NNG
+낼 아침	내/VV + ㄹ/ETM + _ + 아침/NNG	낼/NNG + _ + 아침/NNG
+ 들추어내	_ + 들추/VV + 어/EC + 내/VV	_ + 들추어내/VV
+코리안 리그	코/NNG + 리/NNP + 안/NNG + _ + 리그/NNG	코리안/NNG + _ + 리그/NNG
+기 탤런트	기/NNB + _ + 탤런트/NNG	기/NNG + _ + 탤런트/NNG
+한편 1997	| + 한/MAG + 편/NNG + _ + 1997/SN	| + 한편/NNG + _ + 1997/SN
+복합오염	복합/NNG + 오염/NNG	복합오염/NNG
+의 부주의	의/JKG + _ + 부주의/NNG	의/JKG + _ + 부/XPN + 주의/NNG
+삼삼오오 	삼삼/NNG + 오오/NNP + _	삼삼오오/NNG + _
+그 승신목	그/MM + _ + 승신목/NNG	그/MM + _ + 승신목/NNP
+과소평가	과소/NNG + 평가/NNG	과소평가/NNG
+편집기자	편집기자/NNG	편집/NNG + 기자/NNG
+이올시다	이/VCP + 오/VV + ㄹ시다/EF	이/VCP + 올시다/EF
+오래 전	오래/MAG + _ + 전/MM	오래/MAG + _ + 전/NNG
+삼삼오오	삼삼/NNG + 오/NNP + 오/NNG	삼삼오오/NNG
+사사건건 	사사/NNG + 건건/MAG + _	사사건건/MAG + _
+방울방울	방울/NNG + 방울/NNG	방울방울/NNG
+찬 공기	차/VV + ㄴ/ETM + _ + 공기/NNG	차/VA + ㄴ/ETM + _ + 공기/NNG
+ 비닐가방	_ + 비닐가방/NNG	_ + 비닐/NNG + 가방/NNG
+ 대통령제	_ + 대통령제/NNG	_ + 대통령/NNG + 제/XSN
+소매치기	소매치/NNG + 기/ETN	소매치기/NNG
+들추어내	들추/VV + 어/EC + 내/VV	들추어내/VV
+왁자지껄한 	왁자지껄/MAG + 하/XSA + ㄴ/ETM + _	왁자지껄/MAG + 하/XSV + ㄴ/ETM + _
+ 가져다줄	_ + 가지/VV + 어다/EC + 주/VX + ㄹ/ETM	_ + 가져다주/VV + ㄹ/ETM
+현대 물리학	현/NNP + 대/NNG + _ + 물리학/NNG	현대/NNG + _ + 물리학/NNG
+ 공립학교	_ + 공립/NNG + 학교/NNG	_ + 공립학교/NNG
+, 부정부패	,/SP + _ + 부정/NNG + 부패/NNG	,/SP + _ + 부정부패/NNG
+ 소주잔을	_ + 소주/NNG + 잔/NNG + 을/JKO	_ + 소주잔/NNG + 을/JKO
+후생복지	후생복지/NNG	후생/NNG + 복지/NNG
+의 절대	의/JKG + _ + 절/MAG + 대/NNG	의/JKG + _ + 절대/NNG
+<법계도>	</SS + 법/NNG + 계도/NNP + >/SS	</SS + 법계도/NNP + >/SS
+연석회의에서	연석/NNG + 회의/NNG + 에서/JKB	연석회의/NNG + 에서/JKB
+타이틀곡 '	타이틀곡/NNG + _ + '/SS	타이틀/NNG + 곡/NNG + _ + '/SS
+ 하청업체	_ + 하청업체/NNG	_ + 하청/NNG + 업체/NNG
+자산운용	자산운용/NNG	자산/NNG + 운용/NNG
+그러면,	| + 그/VV + 러면/MAJ + ,/SP	| + 그러면/MAJ + ,/SP
+이나 있	이나/JX + _ + 있/VX	이나/JX + _ + 있/VV
+ 옛사람들	_ + 옛/MM + 사람/NNG + 들/XSN	_ + 옛사람/NNG + 들/XSN
+ 동성연애자	_ + 동성/NNG + 연애자/NNG	_ + 동성연애자/NNG
+리바운드)	리바운/NNG + 드/NNP + )/SS	리바운드/NNG + )/SS
+고 방안으로	고/EC + _ + 방안/NNG + 으로/JKB	고/EC + _ + 방/NNG + 안/NNG + 으로/JKB
+ 배반포기	_ + 배반/NNG + 포기/NNG	_ + 배반포기/NNG
+ 마을주민	_ + 마을주민/NNG	_ + 마을/NNG + 주민/NNG
+사회 내	사회/NNG + _ + 나/NP + 의/JKG	사회/NNG + _ + 내/NNB
+기사회생	기사/NNG + 회생/NNG	기사회생/NNG
+신춘문예	신춘/NNG + 문예/NNG	신춘문예/NNG
+안기부장	안기/NNG + 부장/NNG	안기부장/NNG
+개편안을	개편안/NNG + 을/JKO	개편/NNG + 안/NNG + 을/JKO
+크리스마스	크리/NNG + 스/NNP + 마스/NNG	크리스마스/NNG
+너랑 나	너/NP + 랑/JKB + _ + 나/NP	너/NP + 랑/JC + _ + 나/NP
+한 송이	한/MM + _ + 송/NNG + 이/JKS	한/MM + _ + 송이/NNG
+가상공간	가상/NNG + 공간/NNG	가상공간/NNG
+ 남북대화	_ + 남/NNG + 북/NNP + 대화/NNG	_ + 남북/NNP + 대화/NNG
+향벽설위	향벽/NNG + 설위/NNG	향벽설위/NNG
+미스 민을	미스/NNG + _ + 민/NNG + 을/JKO	미스/NNG + _ + 민/NNP + 을/JKO
+전 부장	전/MM + _ + 부장/NNG	전/NNP + _ + 부장/NNG
+ 부스러기	_ + 부스러/NNG + 기/ETN	_ + 부스러기/NNG
+위험천만	위험천/NNG + 만/JX	위험천만/NNG
+그녀와 나	그녀/NP + 와/JKB + _ + 나/NP	그녀/NP + 와/JC + _ + 나/NP
+"낼 아침	"/SS + 내/VV + ㄹ/ETM + _ + 아침/NNG	"/SS + 낼/NNG + _ + 아침/NNG
+ 주막거리	_ + 주막거/NNG + 리/NNB	_ + 주막거리/NNG
+ 암중모색	_ + 암중/NNG + 모색/NNG	_ + 암중모색/NNG
+남존여비	남존/NNG + 여비/NNG	남존여비/NNG
+기와 지붕	기/NNG + 와/JC + _ + 지붕/NNG	기와/NNG + _ + 지붕/NNG
+는가 등	는가/EC + _ + 등/NNG	는가/EC + _ + 등/NNB
+매일경제신문사	매일경제신/NNP + 문사/NNG	매일경제신문사/NNP
+리바운드	리바운/NNG + 드/NNP	리바운드/NNG
+ 전국민적	_ + 전국민/NNG + 적/XSN	_ + 전/MM + 국민/NNG + 적/XSN
+우찌무라 간조	우찌무라/NNG + _ + 간조/NNG	우찌무라/NNP + _ + 간조/NNP
+가 방안	가/JKS + _ + 방안/NNG	가/JKS + _ + 방/NNG + 안/NNG
+큰소리치	큰/NNG + 소리치/VV	큰소리치/VV
+평가절하	평가절하/NNG	평가/NNG + 절하/NNG
+단도직입	단도/NNG + 직입/NNG	단도직입/NNG
+사사건건 	사/MAG + 사/NNG + 건건/MAG + _	사사건건/MAG + _
+사담 후세인	사/NNG + 담/NNP + _ + 후세인/NNP	사담/NNP + _ + 후세인/NNP
+공동주최	공동주최/NNG	공동/NNG + 주최/NNG
+연해주에	연해/NNP + 주/NNG + 에/JKB	연해주/NNP + 에/JKB
+<법계도	</SS + 법/NNG + 계도/NNP	</SS + 법계도/NNP
+ 동위원소	_ + 동위원소/NNG	_ + 동위/NNG + 원소/NNG
+반민중적	반민중/NNG + 적/XSN	반/XPN + 민중/NNG + 적/XSN
+정신없이 	정/MAG + 신/NNG + 없이/MAG + _	정신없이/MAG + _
+자유주의	자/NNG + 유주의/NNG	자유주의/NNG
+ 공동주최	_ + 공동주최/NNG	_ + 공동/NNG + 주최/NNG
+ 비타협적	_ + 비타협/NNG + 적/XSN	_ + 비/XPN + 타협/NNG + 적/XSN
+의 진수	의/JKG + _ + 진/NNP + 수/NNG	의/JKG + _ + 진수/NNG
+고려대학교	고려대학/NNP + 교/NNG	고려대학교/NNP
+에서 있은	에서/JKB + _ + 있/VX + 은/ETM	에서/JKB + _ + 있/VV + 은/ETM
+ 자연환경	_ + 자연/NNG + 환경/NNG	_ + 자연환경/NNG
+만주지방	만주지방/NNG	만주/NNP + 지방/NNG
+ 점심시간	_ + 점심/NNG + 시간/NNG	_ + 점심시간/NNG
+에 방안	에/JKB + _ + 방안/NNG	에/JKB + _ + 방/NNG + 안/NNG
+인간관계의	인간/NNG + 관계/NNG + 의/JKG	인간관계/NNG + 의/JKG
+ 가계금전	_ + 가계금전/NNG	_ + 가계/NNG + 금전/NNG
+ 군부권위주의	_ + 군부권위주의/NNG	_ + 군부/NNG + 권위주의/NNG
+조선왕조실록	조선왕조실/NNP + 록/NNG	조선왕조실록/NNP
+이겁니다	이/NNG + 것/NP + 이/VCP + ㅂ니다/EF	이것/NP + 이/VCP + ㅂ니다/EF
+ 전문학교	_ + 전문/NNG + 학교/NNG	_ + 전문학교/NNG
+권상무가	권상무/NNG + 가/JKS	권/NNP + 상무/NNG + 가/JKS
+수수방관	수수/NNG + 방관/NNG	수수방관/NNG
+인간관계	| + 인간/NNG + 관계/NNG	| + 인간관계/NNG
+경비행기	경비/NNG + 행기/NNG	경비행기/NNG
+ 미스코리아	_ + 미/NNG + 스코리아/NNP	_ + 미스/NNG + 코리아/NNP
+가 보면	가/VV + 아/EC + _ + 보/VV + 면/EC	가/VV + 아/EC + _ + 보/VX + 면/EC
+ 정치권력과	_ + 정치/NNG + 권력/NNG + 과/JKB	_ + 정치권력/NNG + 과/JKB
+정아무개	정/NNG + 아무개/NP	정/NNP + 아무개/NP
+백과사전	백과/NNG + 사전/NNG	백과사전/NNG
+사설시조	사설/NNG + 시조/NNG	사설시조/NNG
+우수선수	우/NNG + 수/NNG + 선수/NNG	우수/NNG + 선수/NNG
+백만장자	백만/NR + 장자/NNG	백만장자/NNG
+ 일편단심	_ + 일편/NNG + 단심/NNG	_ + 일편단심/NNG
+부모형제	부모형제/NNG	부모/NNG + 형제/NNG
+ 삼삼오오 	_ + 삼삼/NNG + 오/NNP + 오/NNG + _	_ + 삼삼오오/NNG + _
+ 남존여비	_ + 남존/NNG + 여비/NNG	_ + 남존여비/NNG
+ 덩그러니	_ + 덩/VA + 그/VV + 렇/VA + 니/EC	_ + 덩그렇/VA + 니/EC
+, 방안	,/SP + _ + 방안/NNG	,/SP + _ + 방/NNG + 안/NNG
+부르조아	부르/NNG + 조아/NNG	부르조아/NNG
+요령부득	요령/NNG + 부득/NNG	요령부득/NNG
+수다쟁이	수다쟁/NNG + 이/XSN	수다/NNG + 쟁이/XSN
+을 벗겨	을/JKO + _ + 벗겨/VV	을/JKO + _ + 벗기/VV + 어/EC
+ 가상공간	_ + 가상/NNG + 공간/NNG	_ + 가상공간/NNG
+(총상금	(/SS + 총상금/NNG	(/SS + 총/MM + 상금/NNG
+대성공이	대성공/NNG + 이/VCP	대/XPN + 성공/NNG + 이/VCP
+까지밖에 	까지밖에/JX + _	까지/JX + 밖에/JX + _
+풍수지리	| + 풍수/NNG + 지리/NNG	| + 풍수지리/NNG
+허 별감	허/NNG + _ + 별감/NNG	허/NNP + _ + 별감/NNG
+ 편집기자	_ + 편집기자/NNG	_ + 편집/NNG + 기자/NNG
+ 인간관계의	_ + 인간/NNG + 관계/NNG + 의/JKG	_ + 인간관계/NNG + 의/JKG
+의 초상화	의/JKG + _ + 초상/NNG + 화/XSN	의/JKG + _ + 초상화/NNG
+에서처럼 	에서처럼/JKB + _	에서/JKB + 처럼/JKB + _
+그 새는	그/MM + _ + 새/VV + 는/JX	그/MM + _ + 새/NNG + 는/JX
+를 걸었	를/JKO + _ + 걷/VV + 었/EP	를/JKO + _ + 걸/VV + 었/EP
+정치권력과	정치/NNG + 권력/NNG + 과/JKB	정치권력/NNG + 과/JKB
+기하급수	기하/NNG + 급수/NNG	기하급수/NNG
+고 적음	고/EC + _ + 적음/NNG	고/EC + _ + 적/VA + 음/ETN
+호찌민박물관	호찌민박물/NNP + 관/NNG	호찌민박물관/NNP
+삼삼오오 	삼삼/NNG + 오/NNP + 오/NNG + _	삼삼오오/NNG + _
+ 천만다행	_ + 천/NR + 만다행/NNG	_ + 천만다행/NNG
+의미심장하	의/NNG + 미심장/XR + 하/XSA	의미심장/XR + 하/XSA
+월 들어서	월/NNB + _ + 들어/VV + 서/EC	월/NNB + _ + 들/VV + 어서/EC
+삼삼오오	삼삼/NNG + 오오/NNP	삼삼오오/NNG
+타이거 우즈	타/NNG + 이거/NNP + _ + 우즈/NNP	타이거/NNP + _ + 우즈/NNP
+탈식민주의	탈/XPN + 식/NNG + 민주의/NNG	탈/XPN + 식민주의/NNG
+(사진)	(/SS + 사진/NNP + )/SS	(/SS + 사진/NNG + )/SS
+산간벽지	산간/NNG + 벽지/NNG	산간벽지/NNG
+정치권력은	| + 정치/NNG + 권력/NNG + 은/JX	| + 정치권력/NNG + 은/JX
+'테크노픽션	'/SS + 테크노픽션/NNG	'/SS + 테크노/NNG + 픽션/NNG
+비타협적	비타협/NNG + 적/XSN	비/XPN + 타협/NNG + 적/XSN
+상하수도	상하수/NNG + 도/JX	상하수도/NNG
+신춘문예 	신춘/NNG + 문예/NNG + _	신춘문예/NNG + _
+ 방망이질	_ + 방망이질/NNG	_ + 방망이/NNG + 질/XSN
+의 물적	의/JKG + _ + 물적/NNG	의/JKG + _ + 물/NNG + 적/XSN
+대우전에서	대우전/NNP + 에서/JKB	대우전/NNG + 에서/JKB
+살구나무	살/VV + 구나무/NNG	살구나무/NNG
+마을주민	마을주민/NNG	마을/NNG + 주민/NNG
+주사바늘	주사바늘/NNG	주사/NNG + 바늘/NNG
+미스 민	미스/NNG + _ + 민/NNG	미스/NNG + _ + 민/NNP
+ 수수방관	_ + 수수/NNG + 방관/NNG	_ + 수수방관/NNG
+포르투갈전	포르투갈/NNP + 전/NNG	포르투갈전/NNG
+경덕왕대	경덕왕대/NNP	경덕왕/NNP + 대/NNB
+하기에는	하/VV + 기/ETN + 에/EC + 는/JX	하/VV + 기에/EC + 는/JX
+ 커피가게	_ + 커피가게/NNG	_ + 커피/NNG + 가게/NNG
+군부권위주의	군부권위주의/NNG	군부/NNG + 권위주의/NNG
+결혼기념일	결혼/NNG + 기념일/NNG	결혼기념일/NNG
+과 마주치	과/JC + _ + 마주치/VV	과/JKB + _ + 마주치/VV
+그래 그래	그래/IC + _ + 그/IC + 러/VV + 어/EF	그래/IC + _ + 그래/IC
+미스 김	미스/NNG + _ + 김/NNG	미스/NNG + _ + 김/NNP
+얼마전에	얼마전/NNG + 에/JKB	얼마/NNG + 전/NNG + 에/JKB
+자연환경	자연/NNG + 환경/NNG	자연환경/NNG
+국어사전	국어/NNG + 사전/NNG	국어사전/NNG
+뜨거워지	뜨거워/VV + 지/VX	뜨거워지/VV
+덩그러니	덩/VA + 그/VV + 렇/VA + 니/EC	덩그렇/VA + 니/EC
+ 프로세서	_ + 프로/NNG + 세서/NNG	_ + 프로세서/NNG
+ 부모형제	_ + 부모형제/NNG	_ + 부모/NNG + 형제/NNG
+로 나서	로/JKB + _ + 나/VV + 아서/EC	로/JKB + _ + 나서/VV + 어/EC
+사사건건	사/MAG + 사/NNG + 건건/MAG	사사건건/MAG
+부스러기	부스러/NNG + 기/ETN	부스러기/NNG
+에서처럼	에서처럼/JKB	에서/JKB + 처럼/JKB
+금양잡록	금/NNG + 양잡록/NNP	금양잡록/NNP
+위원회(	위원/NNG + 회/NNP + (/SS	위원회/NNG + (/SS
+ 경제정의	_ + 경제정/NNG + 의/JKG	_ + 경제/NNG + 정의/NNG
+현대 문명	현/NNP + 대/NNG + _ + 문명/NNG	현대/NNG + _ + 문명/NNG
+지 말란	지/EC + _ + 말/NNG + 란/ETM	지/EC + _ + 말/VX + 란/ETM
+방울방울 	방울/NNG + 방울/NNG + _	방울방울/NNG + _
+ 과소평가	_ + 과소/NNG + 평가/NNG	_ + 과소평가/NNG
+연합고사	연합/NNG + 고사/NNG	연합고사/NNG
+ 아이러니	_ + 아이러/NNG + 니/MAG	_ + 아이러니/NNG
+작가회의	작가회의/NNG	작가/NNG + 회의/NNG
+ 뜨거워지	_ + 뜨거워/VV + 지/VX	_ + 뜨거워지/VV
+의미심장	의/NNG + 미심장/XR	의미심장/XR
+의 끝부분	의/JKG + _ + 끝부분/NNG	의/JKG + _ + 끝/NNG + 부분/NNG
+[이새끼	[/SS + 이새끼/NNG	[/SS + 이/MM + 새끼/NNG
+신 여사	신/NNG + _ + 여사/NNG	신/NNP + _ + 여사/NNG
+, 고양이	,/SP + _ + 고양/NNG + 이/JKS	,/SP + _ + 고양이/NNG
+사각지대	사각/NNG + 지대/NNG	사각지대/NNG
+동성연애자	동성/NNG + 연애자/NNG	동성연애자/NNG
+서해교전	서해교전/NNG	서해/NNP + 교전/NNG
+ 산간벽지	_ + 산간/NNG + 벽지/NNG	_ + 산간벽지/NNG
+여러 대의	여러/MM + _ + 대/NNG + 의/JKG	여러/MM + _ + 대/NNB + 의/JKG
+ 결혼기념일	_ + 결혼/NNG + 기념일/NNG	_ + 결혼기념일/NNG
+개 있다	개/NNB + _ + 있/VX + 다/EF	개/NNB + _ + 있/VV + 다/EF
+대중가요	대중/NNG + 가요/NNG	대중가요/NNG
+보내 주	보내/VV + 어/EC + _ + 주/VV	보내/VV + 어/EC + _ + 주/VX
+공립학교	공립/NNG + 학교/NNG	공립학교/NNG
+ 삼삼오오 	_ + 삼삼/NNG + 오오/NNP + _	_ + 삼삼오오/NNG + _
+ 흥미진진	_ + 흥/NNG + 미진진/XR	_ + 흥미진진/XR
+하루종일	하루종일/NNG	하루/NNG + 종일/NNG
+ 남북국시대	_ + 남북국시대/NNG	_ + 남북국/NNG + 시대/NNG
+정보처장	정보/NNG + 처장/NNG	정보처장/NNG
+아직 채	아직/MAG + _ + 채/NNB	아직/MAG + _ + 채/MAG
+만화가게	만화가게/NNG	만화/NNG + 가게/NNG
+바람개비	바람/NNG + 개비/NNG	바람개비/NNG
+기독교도	기독/NNG + 교도/NNG	기독교도/NNG
+기초학교	기초학교/NNG	기초/NNG + 학교/NNG
+환경오염 	환경/NNG + 오염/NNG + _	환경오염/NNG + _
+방망이질	방망이질/NNG	방망이/NNG + 질/XSN
+커피가게	커피가게/NNG	커피/NNG + 가게/NNG
+ 백만장자	_ + 백만/NR + 장자/NNG	_ + 백만장자/NNG
+은 방안	은/JX + _ + 방안/NNG	은/JX + _ + 방/NNG + 안/NNG
+들어올려	들어올리/VV + 어/EC	들/VV + 어/EC + 올리/VV + 어/EC
+주막거리	주막거/NNG + 리/NNB	주막거리/NNG
+광창마을	광창마을/NNP	광창/NNP + 마을/NNG
+사담 후세인	사담/NNG + _ + 후세/NNG + 인/NNP	사담/NNP + _ + 후세인/NNP
+러시아군	러시아/NNP + 군/NNG	러시아군/NNG
+ 인천시장	_ + 인천시/NNP + 장/NNG	_ + 인천/NNP + 시장/NNG
+대북사업	대북사업/NNG	대북/NNG + 사업/NNG
+기성회장	기성/NNG + 회장/NNG	기성회장/NNG
+상관없이 	상/MAG + 관/NNG + 없이/MAG + _	상관없이/MAG + _
+무진 애	무/VA + 진/NNG + _ + 애/NNG	무진/MAG + _ + 애/NNG
+시멘트바닥	시멘트바닥/NNG	시멘트/NNG + 바닥/NNG
+대통령제	대통령제/NNG	대통령/NNG + 제/XSN
+자동차회사	자동차회사/NNG	자동차/NNG + 회사/NNG
+수사본부	수사/NNG + 본부/NNG	수사본부/NNG
+인천시장	인천시/NNP + 장/NNG	인천/NNP + 시장/NNG
+타이틀곡	타이틀곡/NNG	타이틀/NNG + 곡/NNG
+박람회장	박람/NNG + 회장/NNG	박람회장/NNG
+전문학교	전문/NNG + 학교/NNG	전문학교/NNG
+정신없이	정/MAG + 신/NNG + 없이/MAG	정신없이/MAG
+일편단심	일편/NNG + 단심/NNG	일편단심/NNG
+영 마음	영/NNG + _ + 마음/NNG	영/MAG + _ + 마음/NNG
+우체국장	우체/NNG + 국장/NNG	우체국장/NNG
+특수학교	특수/NNG + 학교/NNG	특수학교/NNG
+흥미진진	흥/NNG + 미진진/XR	흥미진진/XR
+도교육청	도교육청/NNG	도/NNG + 교육청/NNG
+정신착란	정신착란/NNG	정신/NNG + 착란/NNG

@@ -38,9 +38,12 @@ class Evaluator:
         """
         char_acc = self.cnt['match_chars'] / self.cnt['total_chars']
         word_acc = self.cnt['match_words'] / self.cnt['total_words']
-        recall = self.cnt['match_morphs'] / self.cnt['total_gold_morphs']
-        precision = self.cnt['match_morphs'] / self.cnt['total_pred_morphs']
-        f_score = 2.0 * recall * precision / (recall + precision)
+        if self.cnt['match_morphs'] == 0:
+            recall = precision = f_score = 0.0
+        else:
+            recall = self.cnt['match_morphs'] / self.cnt['total_gold_morphs']
+            precision = self.cnt['match_morphs'] / self.cnt['total_pred_morphs']
+            f_score = 2.0 * recall * precision / (recall + precision)
         self.cnt.clear()
         return char_acc, word_acc, f_score
 
@@ -104,13 +107,17 @@ class Evaluator:
     def report(self, fout: TextIO):
         """
         report recall/precision to file
-        :param  fout:  output file
+        Args:
+            fout:  output file
         """
         print('word accuracy: %d / %d = %.4f' % (self.cnt['match_words'], self.cnt['total_words'],
                                                  self.cnt['match_words'] / self.cnt['total_words']),
               file=fout)
-        recall = self.cnt['match_morphs'] / self.cnt['total_gold_morphs']
-        precision = self.cnt['match_morphs'] / self.cnt['total_pred_morphs']
-        f_score = 2.0 * recall * precision / (recall + precision)
+        if self.cnt['match_morphs'] == 0:
+            recall = precision = f_score = 0.0
+        else:
+            recall = self.cnt['match_morphs'] / self.cnt['total_gold_morphs']
+            precision = self.cnt['match_morphs'] / self.cnt['total_pred_morphs']
+            f_score = 2.0 * recall * precision / (recall + precision)
         print('f-score / (recall, precision): %.4f / (%.4f, %.4f)' % (f_score, recall, precision),
               file=fout)

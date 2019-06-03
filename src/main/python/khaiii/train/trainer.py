@@ -27,9 +27,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
 
-from khaiii.train.dataset import PosDataset
+from khaiii.train.dataset import PosDataset, PosSentTensor
 from khaiii.train.evaluator import Evaluator
-from khaiii.train.models import CnnModel
+from khaiii.train.models import Model
 from khaiii.resource.resource import Resource
 
 
@@ -50,7 +50,9 @@ class Trainer:
         setattr(cfg, 'out_dir', '{}/{}'.format(cfg.logdir, cfg.model_id))
         setattr(cfg, 'context_len', 2 * cfg.window + 1)
         self.rsc = Resource(cfg)
-        self.model = CnnModel(cfg, self.rsc)
+        self.model = Model(cfg, self.rsc)
+        if torch.cuda.is_available() and cfg.gpu_num >= 0:
+            self.model.cuda(device=cfg.gpu_num)
         self.optimizer = torch.optim.Adam(self.model.parameters(), cfg.learning_rate)
         self.criterion = nn.CrossEntropyLoss()
         self.evaler = Evaluator()
@@ -141,8 +143,10 @@ class Trainer:
             return
         logging.info('==== continue training: %s ====', self.cfg.model_id)
         cfg = json.load(open(cfg_path, 'r', encoding='UTF-8'))
+        gpu_num = self.cfg.gpu_num
         for key, val in cfg.items():
             setattr(self.cfg, key, val)
+        setattr(self.cfg, 'gpu_num', gpu_num)
         self._revert_to_best(False)
 
         f_score_best = 0.0
@@ -151,8 +155,8 @@ class Trainer:
             line = line.rstrip('\r\n')
             if not line:
                 continue
-            (epoch, loss_train, loss_dev, acc_char, acc_word, f_score, learning_rate) = \
-                    line.split('\t')
+            (epoch, loss_train, loss_dev, acc_char, acc_word, f_score, learning_rate) \
+                = line.split('\t')
             self.cfg.epoch = int(epoch) + 1
             self.cfg.best_epoch = self.cfg.epoch
             self.loss_trains.append(float(loss_train))
@@ -178,13 +182,11 @@ class Trainer:
 
         train_begin = datetime.now()
         logging.info('{{{{ training begin: %s {{{{', self._dt_str(train_begin))
-        if torch.cuda.is_available():
-            self.model.cuda()
         pathlib.Path(self.cfg.out_dir).mkdir(parents=True, exist_ok=True)
         self.log_file = open('{}/log.tsv'.format(self.cfg.out_dir), 'at')
         self.sum_wrt = SummaryWriter(self.cfg.out_dir)
         patience = self.cfg.patience
-        for _ in range(1000000):
+        for _ in range(100000):
             is_best = self._train_epoch()
             if is_best:
                 patience = self.cfg.patience
@@ -214,7 +216,7 @@ class Trainer:
         self.model.load('{}/model.state'.format(self.cfg.out_dir))
         if is_decay_lr:
             self.cfg.learning_rate *= self.cfg.lr_decay
-        self._load_optim('{}/optim.state'.format(self.cfg.out_dir), self.cfg.learning_rate)
+        self._load_optim(self.cfg.learning_rate)
 
     def _train_epoch(self) -> bool:
         """
@@ -222,39 +224,56 @@ class Trainer:
         Returns:
             현재 epoch이 best 성능을 나타냈는 지 여부
         """
-        batches = []
+        batch_contexts = []
+        batch_left_spc_masks = []
+        batch_right_spc_masks = []
+        batch_labels = []
+        batch_spaces = []
         loss_trains = []
         for train_sent in tqdm(self.dataset_train, 'EPOCH[{}]'.format(self.cfg.epoch),
                                len(self.dataset_train), mininterval=1, ncols=100):
-            train_labels, train_contexts = train_sent.to_tensor(self.cfg, self.rsc, True)
-            if torch.cuda.is_available():
-                train_labels = train_labels.cuda()
-                train_contexts = train_contexts.cuda()
-
-            self.model.train()
-            train_outputs = self.model(train_contexts)
-            batches.append((train_labels, train_outputs))
-            if sum([batch[0].size(0) for batch in batches]) < self.cfg.batch_size:
+            # 배치 크기만큼 찰 때까지 문장을 추가
+            batch_contexts.extend(train_sent.get_contexts(self.cfg, self.rsc))
+            left_spc_masks, right_spc_masks = train_sent.get_spc_masks(self.cfg, self.rsc, True)
+            batch_left_spc_masks.extend(left_spc_masks)
+            batch_right_spc_masks.extend(right_spc_masks)
+            batch_labels.extend(train_sent.get_labels(self.rsc))
+            batch_spaces.extend(train_sent.get_spaces())
+            if len(batch_labels) < self.cfg.batch_size:
                 continue
 
-            batch_label = torch.cat([x[0] for x in batches], 0)    # pylint: disable=no-member
-            batch_output = torch.cat([x[1] for x in batches], 0)    # pylint: disable=no-member
-            batches = []
-
-            batch_output.requires_grad_()
-            loss_train = self.criterion(batch_output, batch_label)
+            # 형태소 태깅 모델 학습
+            self.model.train()
+            batch_outputs_pos, batch_outputs_spc = \
+                    self.model(PosSentTensor.to_tensor(batch_contexts, self.cfg.gpu_num),
+                               PosSentTensor.to_tensor(batch_left_spc_masks, self.cfg.gpu_num),
+                               PosSentTensor.to_tensor(batch_right_spc_masks, self.cfg.gpu_num))
+            batch_outputs_pos.requires_grad_()
+            batch_outputs_spc.requires_grad_()
+            loss_train_pos = self.criterion(batch_outputs_pos,
+                                            PosSentTensor.to_tensor(batch_labels, self.cfg.gpu_num))
+            loss_train_spc = self.criterion(batch_outputs_spc,
+                                            PosSentTensor.to_tensor(batch_spaces, self.cfg.gpu_num))
+            loss_train = loss_train_pos + loss_train_spc
             loss_trains.append(loss_train.item())
             loss_train.backward()
             self.optimizer.step()
             self.optimizer.zero_grad()
+
+            # 배치 데이터 초기화
+            batch_contexts = []
+            batch_left_spc_masks = []
+            batch_right_spc_masks = []
+            batch_labels = []
+            batch_spaces = []
 
         avg_loss_dev, acc_char, acc_word, f_score = self.evaluate(True)
         is_best = self._check_epoch(loss_trains, avg_loss_dev, acc_char, acc_word, f_score)
         self.cfg.epoch += 1
         return is_best
 
-    def _check_epoch(self, loss_trains: List[float], avg_loss_dev: float, acc_char: float,
-                     acc_word: float, f_score: float) -> bool:
+    def _check_epoch(self, loss_trains: List[float], avg_loss_dev: float,
+                     acc_char: float, acc_word: float, f_score: float) -> bool:
         """
         매 epoch마다 수행하는 체크
         Args:
@@ -276,13 +295,15 @@ class Trainer:
         self.learning_rates.append(self.cfg.learning_rate)
         is_best = self._is_best()
         is_best_str = 'BEST' if is_best else '< {:.4f}'.format(max(self.f_scores))
-        logging.info('[Los trn]  [Los dev]  [Acc chr]  [Acc wrd]  [F-score]           [LR]')
+        logging.info('[Los trn]  [Los dev]  [Acc chr]  [Acc wrd]  [F-score]' \
+                     '           [LR]')
         logging.info('{:9.4f}  {:9.4f}  {:9.4f}  {:9.4f}  {:9.4f} {:8}  {:.8f}' \
                 .format(avg_loss_train, avg_loss_dev, acc_char, acc_word, f_score, is_best_str,
                         self.cfg.learning_rate))
         print('{}\t{}\t{}\t{}\t{}\t{}\t{}'.format(self.cfg.epoch, avg_loss_train, avg_loss_dev,
                                                   acc_char, acc_word, f_score,
-                                                  self.cfg.learning_rate), file=self.log_file)
+                                                  self.cfg.learning_rate),
+              file=self.log_file)
         self.log_file.flush()
         self.sum_wrt.add_scalar('loss-train', avg_loss_train, self.cfg.epoch)
         self.sum_wrt.add_scalar('loss-dev', avg_loss_dev, self.cfg.epoch)
@@ -303,30 +324,19 @@ class Trainer:
         # this epoch hits new max value
         self.cfg.best_epoch = self.cfg.epoch
         self.model.save('{}/model.state'.format(self.cfg.out_dir))
-        self._save_optim('{}/optim.state'.format(self.cfg.out_dir))
+        torch.save(self.optimizer.state_dict(), '{}/optimizer.state'.format(self.cfg.out_dir))
         with open('{}/config.json'.format(self.cfg.out_dir), 'w', encoding='UTF-8') as fout:
             json.dump(vars(self.cfg), fout, indent=2, sort_keys=True)
         return True
 
-    def _save_optim(self, path: str):
-        """
-        save optimizer parameters
-        Args:
-            path:  path
-        """
-        torch.save(self.optimizer.state_dict(), path)
-
-    def _load_optim(self, path: str, learning_rate: float):
+    def _load_optim(self, learning_rate: float):
         """
         load optimizer parameters
         Args:
-            path:  path
             learning_rate:  learning rate
         """
-        if torch.cuda.is_available():
-            state_dict = torch.load(path)
-        else:
-            state_dict = torch.load(path, map_location=lambda storage, loc: storage)
+        path = '{}/optimizer.state'.format(self.cfg.out_dir)
+        state_dict = torch.load(path, map_location=lambda storage, loc: storage)
         self.optimizer = torch.optim.Adam(self.model.parameters(), learning_rate)
         self.optimizer.load_state_dict(state_dict)
         self.optimizer.param_groups[0]['lr'] = learning_rate
@@ -346,18 +356,25 @@ class Trainer:
         self.model.eval()
         losses = []
         for sent in dataset:
+            contexts = sent.get_contexts(self.cfg, self.rsc)
             # 만약 spc_dropout이 1.0 이상이면 공백을 전혀 쓰지 않는 것이므로 평가 시에도 적용한다.
-            labels, contexts = sent.to_tensor(self.cfg, self.rsc, self.cfg.spc_dropout >= 1.0)
-            if torch.cuda.is_available():
-                labels = labels.cuda()
-                contexts = contexts.cuda()
-            outputs = self.model(contexts)
-            loss = self.criterion(outputs, labels)
+            left_spc_masks, right_spc_masks = sent.get_spc_masks(self.cfg, self.rsc,
+                                                                 self.cfg.spc_dropout >= 1.0)
+            gpu_num = self.cfg.gpu_num
+            outputs_pos, outputs_spc = self.model(PosSentTensor.to_tensor(contexts, gpu_num),
+                                                  PosSentTensor.to_tensor(left_spc_masks, gpu_num),
+                                                  PosSentTensor.to_tensor(right_spc_masks, gpu_num))
+            labels = PosSentTensor.to_tensor(sent.get_labels(self.rsc), self.cfg.gpu_num)
+            spaces = PosSentTensor.to_tensor(sent.get_spaces(), self.cfg.gpu_num)
+            loss_pos = self.criterion(outputs_pos, labels)
+            loss_spc = self.criterion(outputs_spc, spaces)
+            loss = loss_pos + loss_spc
             losses.append(loss.item())
-            _, predicts = F.softmax(outputs, dim=1).max(1)
+            _, predicts = F.softmax(outputs_pos, dim=1).max(1)
             pred_tags = [self.rsc.vocab_out[t.item()] for t in predicts]
             pred_sent = copy.deepcopy(sent)
             pred_sent.set_pos_result(pred_tags, self.rsc.restore_dic)
             self.evaler.count(sent, pred_sent)
         avg_loss = sum(losses) / len(losses)
-        return (avg_loss, ) + self.evaler.evaluate()
+        char_acc, word_acc, f_score = self.evaler.evaluate()
+        return avg_loss, char_acc, word_acc, f_score

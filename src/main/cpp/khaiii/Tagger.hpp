@@ -11,6 +11,7 @@
 //////////////
 // includes //
 //////////////
+#include <memory>
 #include <vector>
 #include <utility>
 
@@ -46,14 +47,13 @@ class Tagger {
     const Resource& _rsc;    ///< resource
     std::shared_ptr<Sentence> _sent;    ///< Sentence object
 
-    /**
-     * tag characters with FNN method
-     * @param  data  data start point
-     * @param  batch_size  batch size
-     * @param  col_dim  column dimension for each batch
-     */
-    void _tag_fnn(float* data, int batch_size, int col_dim,
-                  const std::vector<std::pair<int, int>>& index);
+   /**
+    * add left/right word boundary embedding to batch
+    * @param  data  data start point
+    * @param  wrd_idx  word index
+    * @param  chr_idx  character index
+    */
+    void _add_lwb_rwb(float* data, int wrd_idx, int chr_idx);
 
     /**
      * tag characters with CNN method
@@ -70,6 +70,17 @@ class Tagger {
      * B- 위치에 I- 로 잘못 태깅된 태그를 보정한다.
      */
     void _revise_tags();
+
+   /**
+    * 이전 태그와 현재 태그가 B-, I- 만 다르고 같은 카테고리인지 여부.
+    * 이전 태그가 복합 태그일 경우 마지막 태그와 비교한다.
+    * 현재 태그는 단순 태그이며 B- 태그인 경우에 한해 동작한다.
+    * @param  prev_chr  이전 음절
+    * @param  prev_tag  이전 태그
+    * @param  curr  현재 태그
+    * @return  태그 카테고리가 동일한지 여부
+    */
+    bool _is_same_tag_cat(wchar_t prev_chr, int prev_tag, int curr);
 
     void _restore();    ///< restore morphemes
 
