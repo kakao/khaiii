@@ -68,7 +68,7 @@ class Word: public khaiii_word_t {
      * @param  begin_idx  시작 인덱스 (유니코드 음절 인덱스)
      * @param  end_idx  끝 인덱스 (유니코드 음절 인덷스)
      */
-    void add_morph(const std::wstringstream& wlex, uint8_t tag1, int begin_idx, int end_idx);
+    void add_morph(const std::wstringstream& wlex, uint8_t tag, int begin_idx, int end_idx);
 
     /**
      * API 결과 구조체의 내용을 채운다.

@@ -555,7 +555,7 @@ class Aligner:
                              (MrpChr.to_str(pfx_mrp_chrs), MrpChr.to_str(mdl_mrp_chrs),
                               MrpChr.to_str(sfx_mrp_chrs)))
             raise algn_err
-        elif not mdl_mrp_chrs:
+        if not mdl_mrp_chrs:
             algn_err = AlignError('{N:0}')
             algn_err.add_msg('[%s] [%s] [%s]' % (pfx_word, mdl_word, sfx_word))
             algn_err.add_msg('[%s] [%s] [%s]' % \

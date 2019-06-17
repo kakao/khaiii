@@ -25,7 +25,7 @@ from khaiii.khaiii import KhaiiiApi
 from khaiii.munjong.sejong_corpus import Sentence, sents
 from khaiii.resource.char_align import Aligner, AlignError, align_patch, align_to_tag
 from khaiii.resource.morphs import mix_char_tag, WORD_DELIM_NUM, SENT_DELIM_NUM
-from khaiii.resource.resource import load_restore_dic, load_vocab_out
+from khaiii.resource.resource import load_vocab_out, parse_restore_dic
 
 
 #########
@@ -198,7 +198,7 @@ def run(args: Namespace):
         args:  program arguments
     """
     aligner = Aligner(args.rsc_src)
-    restore_dic = load_restore_dic('{}/restore.dic'.format(args.rsc_src))
+    restore_dic = parse_restore_dic('{}/restore.dic'.format(args.rsc_src))
     if not restore_dic:
         sys.exit(1)
     vocab_out = load_vocab_out(args.rsc_src)

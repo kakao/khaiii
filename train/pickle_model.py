@@ -67,14 +67,16 @@ def _get_embedding(rsc: Resource, state_dict: dict) -> dict:
         embedding data
     """
     data = {}
-    chars = [0, ] * 5    # 5 special characters
-    for idx in range(5, len(rsc.vocab_in)):
+    chars = [0, ] * 4    # 4 special characters (0: padding, 1: unknown, 2: left word boundary,
+                         #                       3: right word boundary)
+    for idx in range(4, len(rsc.vocab_in)):
         chars.append(ord(rsc.vocab_in[idx]))
     data['chars'] = array('i', chars)    # [input vocab(char)] * 4(wchar_t)
 
-    embedding = state_dict['embedder.embedding.weight']
-    data['weights'] = []
-    for row in embedding:
+    embedding = state_dict['conv_layer.embedder.embedding.weight']
+    padding = array('f', [0.0, ] * len(embedding[0]))    # first embedding is always padding
+    data['weights'] = [padding, ]
+    for row in embedding[1:]:
         data['weights'].append(array('f', row))    # [input vocab(char)] * embed_dim * 4(float)
     return data
 
@@ -142,15 +144,15 @@ def _get_data(rsc: Resource, state_dict: dict) -> dict:
     for kernel in range(2, 6):
         # weight: [output chan(embed_dim)] * kernel * [input chan(embed_dim)] * 4
         # bias: [output chan] * 4
-        data['convs'][kernel] = _get_conv('convs', kernel, state_dict)
+        data['convs'][kernel] = _get_conv('conv_layer.convs', kernel, state_dict)
 
     # weight: hidden_dim * [cnn layers * output chan(embed_dim)] * 4
     # bias: hidden_dim * 4
-    data['conv2hidden'] = _get_linear('conv2hidden', state_dict)
+    data['conv2hidden'] = _get_linear('hidden_layer_pos.layers.0', state_dict)
 
     # weight: [output vocab(tag)] * hidden_dim * 4
     # bias: [output vocab(tag)] * 4
-    data['hidden2tag'] = _get_linear('hidden2tag', state_dict)
+    data['hidden2tag'] = _get_linear('hidden_layer_pos.layers.1', state_dict)
     return data
 
 

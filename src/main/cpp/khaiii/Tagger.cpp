@@ -15,7 +15,6 @@
 #include <vector>
 #include <utility>
 
-
 #include "khaiii/Config.hpp"
 #include "khaiii/Embed.hpp"
 #include "khaiii/Sentence.hpp"
@@ -75,7 +74,16 @@ void Tagger::tag() {
             copy(batch[i][j]->data(), batch[i][j]->data() + _cfg.embed_dim,
                  &data[i * col_dim + j * _cfg.embed_dim]);
         }
+        _add_lwb_rwb(&data[i * col_dim], index[i].first, index[i].second);
         nn::add_positional_enc(&data[i * col_dim], _cfg.window * 2 + 1, _cfg.embed_dim);
+#ifndef NDEBUG
+        for (int j = 0; j < batch[i].size(); ++j) {
+            SPDLOG_TRACE(_log, "batch[{}][{}]", i, j);
+            for (int k = 0; k < _cfg.embed_dim; ++k) {
+                SPDLOG_TRACE(_log, "\t{}: {}", k, data[i * col_dim + j * _cfg.embed_dim + k]);
+            }
+        }
+#endif
     }
 
     _tag_cnn(data.data(), batch.size(), col_dim, index);
@@ -86,18 +94,33 @@ void Tagger::tag() {
 }
 
 
+void Tagger::_add_lwb_rwb(float* data, int wrd_idx, int chr_idx) {
+    int context_len = _cfg.window * 2 + 1;
+    int lwb_idx = context_len / 2 + _sent->get_lwb_delta(wrd_idx, chr_idx);
+    if (lwb_idx >= 0) {
+        nn::add_vec(&data[lwb_idx * _cfg.embed_dim], _rsc.embed.left_word_bound().data(),
+                    _cfg.embed_dim);
+    }
+    int rwb_idx = context_len / 2 + _sent->get_rwb_delta(wrd_idx, chr_idx);
+    if (rwb_idx < context_len) {
+        nn::add_vec(&data[rwb_idx * _cfg.embed_dim], _rsc.embed.right_word_bound().data(),
+                    _cfg.embed_dim);
+    }
+}
+
+
 void Tagger::_tag_cnn(float* data, int batch_size, int col_dim,
                       const vector<pair<int, int>>& index) {
-    nn::matrix_t conv_outs(batch_size, 4 * _cfg.embed_dim);
-    conv_outs << _rsc.convs[2].forward_max_pool_mat(data, batch_size, col_dim),
+    nn::matrix_t features(batch_size, 4 * _cfg.embed_dim);
+    features << _rsc.convs[2].forward_max_pool_mat(data, batch_size, col_dim),
                  _rsc.convs[3].forward_max_pool_mat(data, batch_size, col_dim),
                  _rsc.convs[4].forward_max_pool_mat(data, batch_size, col_dim),
                  _rsc.convs[5].forward_max_pool_mat(data, batch_size, col_dim);
-    auto hidden_outs = _rsc.cnv2hdn.forward_mat(conv_outs);
-    auto tag_outs = _rsc.hdn2tag.forward_mat(hidden_outs);
+    auto hidden_outs = _rsc.cnv2hdn.forward_mat(features);
+    auto logits = _rsc.hdn2tag.forward_mat(hidden_outs);
     for (int i = 0; i < batch_size; ++i) {
         nn::vector_t::Index max_idx;
-        tag_outs.row(i).maxCoeff(&max_idx);
+        logits.row(i).maxCoeff(&max_idx);
         int wrd_idx = index[i].first;
         int chr_idx = index[i].second;
         _sent->words[wrd_idx]->char_tags[chr_idx] = max_idx + 1;
@@ -124,7 +147,7 @@ void Tagger::_revise_tags() {
             }
             if (0 < curr_tag && curr_tag <= POS_TAG_SIZE) {
                 // B- 태그이면서 이전 카테고리와 다른 경우 I- 태그로 보정해준다.
-                if (prev_tag != (curr_tag + POS_TAG_SIZE)) {
+                if (j == 0 || !_is_same_tag_cat(word->wbegin[j-1], prev_tag, curr_tag)) {
                     curr_tag += POS_TAG_SIZE;
                     _log->debug("B->I tag: {} -> {}", word->char_tags[j], curr_tag);
                     word->char_tags[j] = curr_tag;
@@ -133,6 +156,20 @@ void Tagger::_revise_tags() {
             prev_tag = curr_tag;
         }
     }
+}
+
+
+bool Tagger::_is_same_tag_cat(wchar_t prev_chr, int prev_tag, int curr_tag) {
+    assert(0 < curr_tag && curr_tag <= POS_TAG_SIZE);
+    if (prev_tag == 0) return false;    // 맨 첫번째 음절인 경우 항상 false
+    if (0 < prev_tag && prev_tag <= 2 * POS_TAG_SIZE) {
+        // 이전 태그가 단순 태그일 경우
+        return (prev_tag-1) % POS_TAG_SIZE == (curr_tag-1) % POS_TAG_SIZE;
+    }
+    // 이전 태그가 복합 태그일 경우 원형복원 후 마지막 음절의 태그로 판단한다.
+    auto restored = _rsc.restore.restore(prev_chr, prev_tag, true);
+    int prev_last_tag = restored[restored.size()-1].tag;
+    return (prev_last_tag-1) % POS_TAG_SIZE == (curr_tag-1) % POS_TAG_SIZE;
 }
 
 
@@ -174,9 +211,6 @@ vector<const embedding_t*> Tagger::_get_left_context(int wrd_idx, int chr_idx) {
     for (int c = chr_idx - 1; c >= 0 && left_context.size() < _cfg.window; --c) {
         left_context.emplace_back(&(word->embeds.at(c)));
     }
-    if (left_context.size() < _cfg.window) {    // left word mark
-        left_context.emplace_back(&_rsc.embed.left_word_bound());
-    }
     // from left word
     for (int w = wrd_idx - 1; w >= 0 && left_context.size() < _cfg.window; --w) {
         word = _sent->words[w];
@@ -200,9 +234,6 @@ vector<const embedding_t*> Tagger::_get_right_context(int wrd_idx, int chr_idx) 
     auto word = _sent->words[wrd_idx];
     for (int c = chr_idx + 1; c < word->wlength && right_context.size() < _cfg.window; ++c) {
         right_context.emplace_back(&(word->embeds.at(c)));
-    }
-    if (right_context.size() < _cfg.window) {    // right word mark
-        right_context.emplace_back(&_rsc.embed.right_word_bound());
     }
     // from right word
     for (int w = wrd_idx + 1; w < _sent->words.size() && right_context.size() < _cfg.window; ++w) {

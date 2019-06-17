@@ -13,6 +13,7 @@
 //////////////
 #include <list>
 #include <map>
+#include <memory>
 #include <mutex>    // NOLINT
 #include <string>
 #include <vector>

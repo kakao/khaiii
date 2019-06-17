@@ -143,9 +143,8 @@ def _load_corpus(path: str, enc: str) -> Tuple[List[Line], Dict[str, int]]:
             wid, content = line.split('\t', 1)
             if wid in wid_dic:
                 raise RuntimeError('duplicated word ID: %s' % line)
-            else:
-                wid_dic[wid] = len(lines)
-                lines.append(Line(WORD_TYPE, wid, content))
+            wid_dic[wid] = len(lines)
+            lines.append(Line(WORD_TYPE, wid, content))
         elif line in SENT_OPEN_TAGS:
             lines.append(Line(BOS_TYPE, None, line))
         elif line in SENT_CLOSE_TAGS:

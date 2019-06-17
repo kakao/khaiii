@@ -16,12 +16,11 @@ import json
 import logging
 import re
 
-import torch
 import torch.nn.functional as F
 
 from khaiii.resource.resource import Resource
 from khaiii.train.dataset import PosSentTensor
-from khaiii.train.models import CnnModel
+from khaiii.train.models import Model
 
 
 #########
@@ -31,17 +30,19 @@ class PosTagger:
     """
     part-of-speech tagger
     """
-    def __init__(self, model_dir: str):
+    def __init__(self, model_dir: str, gpu_num: int = -1):
         """
         Args:
             model_dir:  model dir
+            gpu_num:  GPU number to override
         """
         cfg_dict = json.load(open('{}/config.json'.format(model_dir), 'r', encoding='UTF-8'))
         self.cfg = Namespace()
         for key, val in cfg_dict.items():
             setattr(self.cfg, key, val)
+        setattr(self.cfg, 'gpu_num', gpu_num)
         self.rsc = Resource(self.cfg)
-        self.model = CnnModel(self.cfg, self.rsc)
+        self.model = Model(self.cfg, self.rsc)
         self.model.load('{}/model.state'.format(model_dir))
         self.model.eval()
 
@@ -54,10 +55,11 @@ class PosTagger:
             PosSentTensor object
         """
         pos_sent = PosSentTensor(raw_sent)
-        _, contexts = pos_sent.to_tensor(self.cfg, self.rsc, False)
-        if torch.cuda.is_available():
-            contexts = contexts.cuda()
-        outputs = self.model(contexts)
+        contexts = pos_sent.get_contexts(self.cfg, self.rsc)
+        left_spc_masks, right_spc_masks = pos_sent.get_spc_masks(self.cfg, self.rsc, False)
+        outputs, _ = self.model(PosSentTensor.to_tensor(contexts, self.cfg.gpu_num),    # pylint: disable=no-member
+                                PosSentTensor.to_tensor(left_spc_masks, self.cfg.gpu_num),    # pylint: disable=no-member
+                                PosSentTensor.to_tensor(right_spc_masks, self.cfg.gpu_num))    # pylint: disable=no-member
         _, predicts = F.softmax(outputs, dim=1).max(1)
         tags = [self.rsc.vocab_out[t.item()] for t in predicts]
         pos_sent.set_pos_result(tags, self.rsc.restore_dic if enable_restore else None)

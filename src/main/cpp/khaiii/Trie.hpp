@@ -13,6 +13,7 @@
 //////////////
 #include <functional>
 #include <list>
+#include <memory>
 #include <sstream>
 #include <string>
 

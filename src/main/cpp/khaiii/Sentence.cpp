@@ -71,6 +71,18 @@ void Sentence::organize() {
 }
 
 
+int Sentence::get_lwb_delta(int wrd_idx, int chr_idx) {
+    assert(0 <= chr_idx && chr_idx < words[wrd_idx]->wlength);
+    return -chr_idx;
+}
+
+
+int Sentence::get_rwb_delta(int wrd_idx, int chr_idx) {
+    assert(0 <= chr_idx && chr_idx < words[wrd_idx]->wlength);
+    return words[wrd_idx]->wlength - chr_idx - 1;
+}
+
+
 void Sentence::_tokenize() {
     bool is_in_space = true;
     for (int idx = 0; idx < _wraw.size(); ++idx) {
