@@ -46,8 +46,8 @@ def main():
                         default='./logdir')
     parser.add_argument('--window', help='left/right character window length <default: 4>',
                         metavar='INT', type=int, default=4)
-    parser.add_argument('--hdn-dropout', help='hidden layer dropout rate <default: 0.0>',
-                        metavar='REAL', type=float, default=0.0)
+    parser.add_argument('--hdn-dropout', help='hidden layer dropout rate <default: 0.1>',
+                        metavar='REAL', type=float, default=0.1)
     parser.add_argument('--spc-dropout', help='space(word delimiter) dropout rate <default: 0.1>',
                         metavar='REAL', type=float, default=0.1)
     parser.add_argument('--cutoff', help='cutoff <default: 1>', metavar='INT', type=int, default=1)
