@@ -46,6 +46,8 @@ def main():
                         default='./logdir')
     parser.add_argument('--window', help='left/right character window length <default: 4>',
                         metavar='INT', type=int, default=4)
+    parser.add_argument('--hdn-dropout', help='hidden layer dropout rate <default: 0.1>',
+                        metavar='REAL', type=float, default=0.1)
     parser.add_argument('--spc-dropout', help='space(word delimiter) dropout rate <default: 0.1>',
                         metavar='REAL', type=float, default=0.1)
     parser.add_argument('--cutoff', help='cutoff <default: 1>', metavar='INT', type=int, default=1)
@@ -61,6 +63,8 @@ def main():
                         metavar='INT', type=int, default=10)
     parser.add_argument('--gpu-num', help='GPU number to use <default: -1 for CPU>', metavar='INT',
                         type=int, default=-1)
+    parser.add_argument('--random-seed', help='random seed <default: 123456>', metavar='INT',
+                        type=int, default=123456)
     parser.add_argument('--debug', help='enable debug', action='store_true')
     args = parser.parse_args()
 

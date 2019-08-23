@@ -19,8 +19,10 @@ import logging
 import os
 import pathlib
 import pprint
+import random
 from typing import List, Tuple
 
+import numpy
 from tensorboardX import SummaryWriter
 import torch
 import torch.nn as nn
@@ -45,6 +47,9 @@ class Trainer:
         Args:
             cfg:  config
         """
+        random.seed(cfg.random_seed)
+        torch.cuda.manual_seed_all(cfg.random_seed)
+        numpy.random.seed(cfg.random_seed)
         self.cfg = cfg
         setattr(cfg, 'model_id', self.model_id(cfg))
         setattr(cfg, 'out_dir', '{}/{}'.format(cfg.logdir, cfg.model_id))
@@ -82,6 +87,7 @@ class Trainer:
             os.path.basename(cfg.in_pfx),
             'cut{}'.format(cfg.cutoff),
             'win{}'.format(cfg.window),
+            'hdo{}'.format(cfg.hdn_dropout),
             'sdo{}'.format(cfg.spc_dropout),
             'emb{}'.format(cfg.embed_dim),
             'lr{}'.format(cfg.learning_rate),
@@ -224,14 +230,19 @@ class Trainer:
         Returns:
             현재 epoch이 best 성능을 나타냈는 지 여부
         """
+        self.model.train()
         batch_contexts = []
         batch_left_spc_masks = []
         batch_right_spc_masks = []
         batch_labels = []
         batch_spaces = []
         loss_trains = []
-        for train_sent in tqdm(self.dataset_train, 'EPOCH[{}]'.format(self.cfg.epoch),
-                               len(self.dataset_train), mininterval=1, ncols=100):
+        progress = tqdm(self.dataset_train, 'EPOCH[{}]'.format(self.cfg.epoch),
+                        len(self.dataset_train), mininterval=1, ncols=100)
+        for step, train_sent in enumerate(progress, start=1):
+            if step % 1000 == 0:
+                avg_loss = sum(loss_trains) / len(loss_trains)
+                progress.set_description('EPOCH[{}] ({:.6f})'.format(self.cfg.epoch, avg_loss))
             # 배치 크기만큼 찰 때까지 문장을 추가
             batch_contexts.extend(train_sent.get_contexts(self.cfg, self.rsc))
             left_spc_masks, right_spc_masks = train_sent.get_spc_masks(self.cfg, self.rsc, True)
@@ -243,22 +254,19 @@ class Trainer:
                 continue
 
             # 형태소 태깅 모델 학습
-            self.model.train()
             batch_outputs_pos, batch_outputs_spc = \
                     self.model(PosSentTensor.to_tensor(batch_contexts, self.cfg.gpu_num),
                                PosSentTensor.to_tensor(batch_left_spc_masks, self.cfg.gpu_num),
                                PosSentTensor.to_tensor(batch_right_spc_masks, self.cfg.gpu_num))
-            batch_outputs_pos.requires_grad_()
-            batch_outputs_spc.requires_grad_()
             loss_train_pos = self.criterion(batch_outputs_pos,
                                             PosSentTensor.to_tensor(batch_labels, self.cfg.gpu_num))
             loss_train_spc = self.criterion(batch_outputs_spc,
                                             PosSentTensor.to_tensor(batch_spaces, self.cfg.gpu_num))
             loss_train = loss_train_pos + loss_train_spc
             loss_trains.append(loss_train.item())
+            self.optimizer.zero_grad()
             loss_train.backward()
             self.optimizer.step()
-            self.optimizer.zero_grad()
 
             # 배치 데이터 초기화
             batch_contexts = []
@@ -352,29 +360,36 @@ class Trainer:
             word accuracy
             f-score
         """
-        dataset = self.dataset_dev if is_dev else self.dataset_test
         self.model.eval()
         losses = []
-        for sent in dataset:
-            contexts = sent.get_contexts(self.cfg, self.rsc)
-            # 만약 spc_dropout이 1.0 이상이면 공백을 전혀 쓰지 않는 것이므로 평가 시에도 적용한다.
-            left_spc_masks, right_spc_masks = sent.get_spc_masks(self.cfg, self.rsc,
-                                                                 self.cfg.spc_dropout >= 1.0)
-            gpu_num = self.cfg.gpu_num
-            outputs_pos, outputs_spc = self.model(PosSentTensor.to_tensor(contexts, gpu_num),
-                                                  PosSentTensor.to_tensor(left_spc_masks, gpu_num),
-                                                  PosSentTensor.to_tensor(right_spc_masks, gpu_num))
-            labels = PosSentTensor.to_tensor(sent.get_labels(self.rsc), self.cfg.gpu_num)
-            spaces = PosSentTensor.to_tensor(sent.get_spaces(), self.cfg.gpu_num)
-            loss_pos = self.criterion(outputs_pos, labels)
-            loss_spc = self.criterion(outputs_spc, spaces)
-            loss = loss_pos + loss_spc
-            losses.append(loss.item())
-            _, predicts = F.softmax(outputs_pos, dim=1).max(1)
-            pred_tags = [self.rsc.vocab_out[t.item()] for t in predicts]
-            pred_sent = copy.deepcopy(sent)
-            pred_sent.set_pos_result(pred_tags, self.rsc.restore_dic)
-            self.evaler.count(sent, pred_sent)
+        dataset = self.dataset_dev if is_dev else self.dataset_test
+        progress = tqdm(dataset, ' EVAL[{}]'.format(self.cfg.epoch), len(dataset), mininterval=1,
+                        ncols=100)
+        for step, sent in enumerate(progress, start=1):
+            if step % 1000 == 0:
+                avg_loss = sum(losses) / len(losses)
+                progress.set_description(' EVAL[{}] ({:.6f})'.format(self.cfg.epoch, avg_loss))
+            with torch.no_grad():
+                contexts = sent.get_contexts(self.cfg, self.rsc)
+                # 만약 spc_dropout이 1.0 이상이면 공백을 전혀 쓰지 않는 것이므로 평가 시에도 적용한다.
+                left_spc_masks, right_spc_masks = sent.get_spc_masks(self.cfg, self.rsc,
+                                                                     self.cfg.spc_dropout >= 1.0)
+                gpu_num = self.cfg.gpu_num
+                outputs_pos, outputs_spc = \
+                        self.model(PosSentTensor.to_tensor(contexts, gpu_num),
+                                   PosSentTensor.to_tensor(left_spc_masks, gpu_num),
+                                   PosSentTensor.to_tensor(right_spc_masks, gpu_num))
+                labels = PosSentTensor.to_tensor(sent.get_labels(self.rsc), self.cfg.gpu_num)
+                spaces = PosSentTensor.to_tensor(sent.get_spaces(), self.cfg.gpu_num)
+                loss_pos = self.criterion(outputs_pos, labels)
+                loss_spc = self.criterion(outputs_spc, spaces)
+                loss = loss_pos + loss_spc
+                losses.append(loss.item())
+                _, predicts = F.softmax(outputs_pos, dim=1).max(1)
+                pred_tags = [self.rsc.vocab_out[t.item()] for t in predicts]
+                pred_sent = copy.deepcopy(sent)
+                pred_sent.set_pos_result(pred_tags, self.rsc.restore_dic)
+                self.evaler.count(sent, pred_sent)
         avg_loss = sum(losses) / len(losses)
         char_acc, word_acc, f_score = self.evaler.evaluate()
         return avg_loss, char_acc, word_acc, f_score

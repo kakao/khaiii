@@ -148,11 +148,11 @@ def _get_data(rsc: Resource, state_dict: dict) -> dict:
 
     # weight: hidden_dim * [cnn layers * output chan(embed_dim)] * 4
     # bias: hidden_dim * 4
-    data['conv2hidden'] = _get_linear('hidden_layer_pos.layers.0', state_dict)
+    data['conv2hidden'] = _get_linear('hidden_layer_pos.conv2hidden', state_dict)
 
     # weight: [output vocab(tag)] * hidden_dim * 4
     # bias: [output vocab(tag)] * 4
-    data['hidden2tag'] = _get_linear('hidden_layer_pos.layers.1', state_dict)
+    data['hidden2tag'] = _get_linear('hidden_layer_pos.hidden2logit', state_dict)
     return data
 
 

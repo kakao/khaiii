@@ -94,11 +94,11 @@ TEST_F(KhaiiiApiTest, open_close) {
 
 
 TEST_F(KhaiiiApiTest, analyze) {
-    auto results = khaiii_analyze(_handle, u8"\v안녕? \t새로운 세상~\n", "");
+    auto results = khaiii_analyze(_handle, u8"\v안녕! \t새로운 세상~\n", "");
 
     auto word1 = results;
     EXPECT_NE(nullptr, word1);
-    _expect_eq_word(u8"[1:7]\t안녕/IC[1:6] + ?/SF[7:1]", *word1);
+    _expect_eq_word(u8"[1:7]\t안녕/IC[1:6] + !/SF[7:1]", *word1);
 
     auto word2 = word1->next;
     EXPECT_NE(nullptr, word2);
