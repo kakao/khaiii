@@ -38,7 +38,7 @@ CMD ["/khaiii/build/test/khaiii"]
 # Stage - Runtime
 FROM ubuntu:16.04 AS runtime
 
-LABEL maintainer="Kakao Corp. <oss@kakaocorp.com>"
+LABEL maintainer="krikit <krikit@naver.com>"
 
 WORKDIR /khaiii
 
