@@ -3,11 +3,15 @@
 
 
 """
-세종 코퍼스와 khaiii 학습 코퍼스를 원하는 형태로 변환하는 스크립트.
-- 입력: sejong: 세종 코퍼스, train: khaiii 학습 코퍼스
-- 출력: raw: 원문, khaiii: khaiii 바이너리 프로그램의 출력 포맷
+conversion script between Sejong corpus and khaiii training corpus
+* input
+  - sejong: Sejong corpus
+  - train: khaiii training corpus
+* output
+  - raw: raw text only
+  - khaiii: output format of khaiii command line program
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 """
 
 
@@ -22,7 +26,7 @@ from typing import List
 
 from khaiii.munjong.sejong_corpus import sents
 from khaiii.resource.resource import Resource
-from khaiii.train.dataset import PosDataset
+from khaiii.train import dataset
 
 
 #########
@@ -38,9 +42,9 @@ class Sentence:
 
     def merge_words(self, rate: float = 0.0):
         """
-        어절을 무작위로 합친다.
+        merge word randomly (for spacing error input test)
         Args:
-            rate:  비율
+            rate:  merge rate
         """
         if rate <= 0.0:
             return
@@ -90,12 +94,14 @@ class Sentence:
             list of sentences
         """
         restore_dic = Resource.load_restore_dic(f'{rsc_src}/restore.dic')
+        data = dataset.load(sys.stdin, 0, 0)
         sentences = []
-        for sent in PosDataset(None, restore_dic, sys.stdin):
+        for _, sent in dataset.SentIter(data):
+            sent.set_tags(restore_dic=restore_dic)
             sentence = Sentence()
-            for word in sent.pos_tagged_words:
+            for word in sent.words:
                 sentence.words.append(word.raw)
-                sentence.morphs.append(' + '.join([str(m) for m in word.pos_tagged_morphs]))
+                sentence.morphs.append(' + '.join([str(m) for m in word.morphs]))
             sentences.append(sentence)
         return sentences
 
@@ -109,7 +115,7 @@ def run(args: Namespace):
     Args:
         args:  program arguments
     """
-    random.seed(args.seed)
+    random.seed(args.random_seed)
 
     sentences = []
     if args.input_format == 'sejong':
@@ -145,8 +151,8 @@ def main():
                         metavar='DIR', default='../rsc/src')
     parser.add_argument('--input', help='input file <default: stdin>', metavar='FILE', )
     parser.add_argument('--output', help='output file <default: stdout>', metavar='FILE')
-    parser.add_argument('--seed', help='random seed <default: 1234>', metavar='NUM', type=int,
-                        default=1234)
+    parser.add_argument('--random-seed', help='random seed <default: 42>', metavar='NUM',
+                        type=int, default=42)
     parser.add_argument('--merge-rate', help='word merge rate', metavar='REAL', type=float,
                         default=0.0)
     parser.add_argument('--debug', help='enable debug', action='store_true')

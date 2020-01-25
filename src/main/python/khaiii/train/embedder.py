@@ -4,7 +4,7 @@
 """
 making embedding models
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 """
 
 
@@ -17,38 +17,49 @@ import math
 import torch
 from torch import nn, Tensor
 
-from khaiii.resource.resource import Resource
+from khaiii.train.dataset import FIELDS
 
 
 class Embedder(nn.Module):
     """
     embedder class
     """
-    def __init__(self, cfg: Namespace, rsc: Resource):
+    def __init__(self, cfg: Namespace):
         """
         Args:
             cfg:  config
-            rsc:  Resource object
         """
         super().__init__()
         self.cfg = cfg
-        self.rsc = rsc
-        self.embedding = nn.Embedding(len(rsc.vocab_in), cfg.embed_dim, 0)
+        self.embedding = nn.Embedding(cfg.vocab_in, cfg.embed_dim, 0)
+        self.spc_dropout_mod = nn.Dropout(p=cfg.spc_dropout)
 
-    def forward(self, *inputs):    # pylint: disable=arguments-differ
+    def spc_dropout(self, tensor: Tensor) -> Tensor:
         """
-        임베딩을 생성하는 메소드
+        apply space drop out to the tensor
         Args:
-            inputs:  batch size list of (context, left space mask, right space mask)
+            tensor:  tensor to apply drop out
         Returns:
-            embedding
+            drop-outed tensor
         """
-        contexts, left_spc_masks, right_spc_masks = inputs
-        embeds = self.embedding(contexts)
-        if left_spc_masks is not None:
-            embeds += self.embedding(left_spc_masks)
-        if right_spc_masks is not None:
-            embeds += self.embedding(right_spc_masks)
+        if self.cfg.spc_dropout <= 0 or not self.training:
+            return tensor
+        return self.spc_dropout_mod(tensor.type(torch.float32)).type(torch.long)    # pylint: disable=no-member
+
+    def forward(self, batch: Tensor, use_spc_mask: bool):    # pylint: disable=arguments-differ
+        """
+        Args:
+            batch:  batch input
+            use_spc_mask:  whether use left/right space masks or not
+        Returns:
+            embedding vectors
+        """
+        embeds = self.embedding(batch.char)
+        if use_spc_mask:
+            left_spc = self.spc_dropout(batch.left_spc)
+            right_spc = self.spc_dropout(batch.right_spc)
+            embeds += self.embedding(left_spc * FIELDS['char'].vocab.stoi['<w>'])
+            embeds += self.embedding(right_spc * FIELDS['char'].vocab.stoi['</w>'])
         # 왼쪽과 오른쪽 패딩에는 zero 벡터인데 아래 positional encoding이 더해짐
         # 사소하지만 아래도 패딩 영역에 대해 마스킹 후 더해줘야 하지 않을까?
         embeds += positional_encoding(self.cfg.context_len, self.cfg.context_len,

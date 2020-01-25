@@ -2,10 +2,10 @@
 
 
 """
-형태소 분석 결과를 기술한 문자열을 파싱하는 모듈.
-TODO(jamie): sejong_corpus 모듈의 Morph 클래스와 중복되므로 정리 필요
+parsing module for morphologically analyzed results
+TODO(jamie): duplicated to Morph class in sejong_corpus module
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 """
 
 
@@ -18,22 +18,23 @@ from typing import List
 #############
 # constants #
 #############
-# 전체 태그셋. 숫자 -> 태그 매핑
+# all tag set for index -> tag mapping
 TAGS = sorted(['EC', 'EF', 'EP', 'ETM', 'ETN', 'IC', 'JC', 'JKB', 'JKC', 'JKG',
                'JKO', 'JKQ', 'JKS', 'JKV', 'JX', 'MAG', 'MAJ', 'MM', 'NNB', 'NNG',
                'NNP', 'NP', 'NR', 'SE', 'SF', 'SH', 'SL', 'SN', 'SO', 'SP',
                'SS', 'SW', 'SWK', 'VA', 'VCN', 'VCP', 'VV', 'VX', 'XPN', 'XR',
                'XSA', 'XSN', 'XSV', 'ZN', 'ZV', 'ZZ', ])
-# B- 태그가 가능한 태그 목록
+# "B-" possible tags
 B_TAGS = sorted(['EP', 'IC', 'JKB', 'JX', 'MAG', 'MM', 'NNB', 'NNG', 'NNP', 'NP',
                  'NR', 'SE', 'SF', 'SN', 'SO', 'SP', 'SS', 'SW', 'SWK', 'XPN',
-                 'XR', 'XSN', ])
-TAG_SET = {tag: num for num, tag in enumerate(TAGS, start=1)}    # 태그 -> 숫자 매핑
+                 'XR', 'XSN', 'ZN', ])
+TAG_SET = {tag: num for num, tag in enumerate(TAGS, start=1)}    # tag -> index mapping
 
-WORD_DELIM_STR = '_'    # 어절 경계(공백)를 나타내는 가상 형태소
-SENT_DELIM_STR = '|'    # 문장 경계를 나타내는 가상 형태소
-WORD_DELIM_NUM = -1    # 어절 경계 가상 태그 번호
-SENT_DELIM_NUM = -2    # 문장 경계 가상 태그 번호
+# virtual morphemes for error patch
+WORD_DELIM_STR = '_'    # word delimiter(space) symbol
+SENT_DELIM_STR = '|'    # sentence boundary symbol
+WORD_DELIM_NUM = -1    # word delimiter(space) number
+SENT_DELIM_NUM = -2    # sentence boundary number
 
 
 #########
@@ -41,19 +42,19 @@ SENT_DELIM_NUM = -2    # 문장 경계 가상 태그 번호
 #########
 class ParseError(Exception):
     """
-    형태소 분석 결과 문자열을 파싱하면서 발생하는 오류
+    errors occurred when parsing morphologically analyzed results
     """
 
 
 class Morph:
     """
-    형태소
+    morpheme
     """
     def __init__(self, lex: str, tag: str):
         """
         Arguments:
-            lex:  형태소(어휘)
-            tag:  품사 태그
+            lex:  lexical form
+            tag:  part-of-speech tag
         """
         self.lex = lex
         self.tag = tag
@@ -65,39 +66,39 @@ class Morph:
 
     def is_word_delim(self) -> bool:
         """
-        어절의 경계를 나타태는 지 여부
+        whether is word delimiter or not
         Returns:
-            어절의 경계 여부
+            whether is word delimiter
         """
         return not self.tag and self.lex == WORD_DELIM_STR
 
     def is_sent_delim(self) -> bool:
         """
-        문장의 경계를 나타태는 지 여부
+        whether is sentence delimiter or not
         Returns:
-            문장의 경계 여부
+            whether is sentence delimiter
         """
         return not self.tag and self.lex == SENT_DELIM_STR
 
     @classmethod
     def to_str(cls, morphs: List['Morph']) -> str:
         """
-        Morph 객체 리스트를 문자열로 변환한다.
+        make string for list of Morph objects
         Arguments:
-            morphs:  Morph 객체 리스트
+            morphs:  list of Morph objects
         Returns:
-            변환된 문자열
+            string
         """
         return ' + '.join([str(m) for m in morphs])
 
     @classmethod
     def parse(cls, morphs_str: str) -> List['Morph']:
         """
-        형태소 분석 결과 형태의 문자열을 파싱하여 Morph 객체 리스트를 반환하는 파싱 함수
+        parse morphologically analyzed results and return the analyzed results
         Arguments:
-            morphs_str:  형태소 분석 결과 문자열. 예: "제이미/NNP + 는/JKS"
+            morphs_str:  morphlogically analyzed string. ex: "제이미/NNP + 는/JKS"
         Returns:
-            Morph 객체 리스트
+            list of Morph objects
         """
         if not morphs_str:
             raise ParseError('empty to parse')
@@ -106,11 +107,11 @@ class Morph:
     @classmethod
     def _parse_one(cls, morph_str: str) -> 'Morph':
         """
-        하나의 형태소 객체를 기술한 문자열을 파싱한다.
+        parse a single morpheme string
         Arguments:
-            morph_str:  형태소 문자열
+            morph_str:  morpheme string
         Returns:
-            Morph 객체
+            Morph object
         """
         if ' ' in morph_str:
             raise ParseError('space in morph')
@@ -134,12 +135,12 @@ class Morph:
 #############
 def mix_char_tag(chars: str, tags: List[int]) -> List[int]:
     """
-    음절과 출력 태그를 비트 연산으로 합쳐서 하나의 (32비트) 숫자로 표현한다.
+    make 32-bit numbers with mixing characters with output labels by bit shifting operation
     Args:
-        chars:  음절 (유니코드) 리스트 (문자열)
-        tags:  출력 태그 번호의 리스트
+        chars:  list of characters
+        tags:  list of output labels
     Returns:
-        합쳐진 숫자의 리스트
+        list of mixed numbers
     """
     char_nums = [ord(c) for c in chars]
     if tags[0] == SENT_DELIM_NUM:
@@ -150,7 +151,7 @@ def mix_char_tag(chars: str, tags: List[int]) -> List[int]:
         if char_num == ord(' '):
             char_nums[idx] = WORD_DELIM_NUM
             continue
-        elif tags[idx] == SENT_DELIM_NUM:
+        if tags[idx] == SENT_DELIM_NUM:
             continue
         char_nums[idx] = char_num << 12 | tags[idx]
     return char_nums

@@ -1,3 +1,4 @@
 tensorboardX
 torch
+torchtext
 tqdm

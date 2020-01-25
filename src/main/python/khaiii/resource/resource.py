@@ -4,7 +4,7 @@
 """
 resources for training and tagging
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 """
 
 
@@ -17,14 +17,13 @@ import logging
 import os
 from typing import Dict, Tuple
 
-from khaiii.resource.vocabulary import Vocabulary
+from khaiii.resource.vocabulary import VocabIn, VocabOut
 
 
 #############
-# constants #
+# variables #
 #############
-UNK_CHR = '@@UNKNOWN@@'
-SPECIAL_CHARS = ['<w>', '</w>']    # begin/end of word
+_LOG = logging.getLogger(__name__)
 
 
 #########
@@ -40,9 +39,9 @@ class Resource:
             cfg:  config
         """
         vocab_in_path = '{}/vocab.in'.format(cfg.rsc_src)
-        self.vocab_in = Vocabulary(vocab_in_path, cfg.cutoff, UNK_CHR, SPECIAL_CHARS)
+        self.vocab_in = VocabIn(vocab_in_path, cfg.min_freq)
         vocab_out_path = '{}/vocab.out'.format(cfg.rsc_src)
-        self.vocab_out = Vocabulary(vocab_out_path)    # no unknown, no special
+        self.vocab_out = VocabOut(vocab_out_path)
         restore_dic_path = '{}/restore.dic'.format(cfg.rsc_src)
         self.restore_dic = self.load_restore_dic(restore_dic_path)
 
@@ -62,7 +61,7 @@ class Resource:
                 continue
             key, val = line.split('\t')
             dic[key] = val
-        logging.info('%s: %d entries', os.path.basename(path), len(dic))
+        _LOG.info('%s: %d entries', os.path.basename(path), len(dic))
         return dic
 
 
@@ -71,11 +70,11 @@ class Resource:
 #############
 def parse_restore_dic(file_path: str) -> Dict[Tuple[str, str], Dict[int, str]]:
     """
-    원형복원 사전을 로드한다.
+    load the restore dictionary
     Args:
-        file_path:  파일 경로
+        file_path:  file path
     Returns:
-        사전
+        the dictionary
     """
     file_name = os.path.basename(file_path)
     restore_dic = defaultdict(dict)
@@ -90,8 +89,8 @@ def parse_restore_dic(file_path: str) -> Dict[Tuple[str, str], Dict[int, str]]:
         if (char, tag) in restore_dic:
             num_mrp_chrs_dic = restore_dic[char, tag]
             if num in num_mrp_chrs_dic:
-                logging.error('%s:%d: duplicated with %s: %s', file_name, line_num,
-                              num_mrp_chrs_dic[num], line)
+                _LOG.error('%s:%d: duplicated with %s: %s', file_name, line_num,
+                           num_mrp_chrs_dic[num], line)
                 return {}
         restore_dic[char, tag][num] = mrp_chr_str
     return restore_dic
@@ -99,11 +98,11 @@ def parse_restore_dic(file_path: str) -> Dict[Tuple[str, str], Dict[int, str]]:
 
 def load_vocab_out(rsc_src: str) -> Dict[str, int]:
     """
-    출력 태그 vocabulary를 로드한다.
+    load the output vocabulary
     Args:
-        rsc_src:  리소스 디렉토리
+        rsc_src:  resource directory
     Returns:
-        출력 태그 vocabulary
+        the vocabulary
     """
     file_path = '{}/vocab.out'.format(rsc_src)
     vocab_out = [line.strip() for line in open(file_path, 'r', encoding='UTF-8')

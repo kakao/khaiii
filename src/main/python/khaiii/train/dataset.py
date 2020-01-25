@@ -2,264 +2,533 @@
 
 
 """
-corpus for training
+training dataset for torchtext
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 """
 
 
 ###########
 # imports #
 ###########
-from argparse import Namespace
-import itertools
+import copy
 import logging
+import math
 import os
-import random
+from queue import Queue, Empty
+from threading import Thread
 from typing import Dict, List, TextIO, Tuple
 
 import torch
-from torch import Tensor
+from torch import Tensor    # pylint: disable=no-name-in-module
+from torchtext.data import BucketIterator, Dataset, Example, Field, Iterator
+from torchtext.vocab import Vocab
 from tqdm import tqdm
 
 from khaiii.resource.resource import Resource
-from khaiii.train.sentence import PosSentence, PosWord
+from khaiii.resource.vocabulary import VocabIn, VocabOut
+
+
+#############
+# variables #
+#############
+_LOG = logging.getLogger(__name__)
 
 
 #########
 # types #
 #########
-class PosSentTensor(PosSentence):
+class Morph:
     """
-    tensor transformable sentence
+    morpheme
     """
-    def __init__(self, raw_sent: str = ''):
-        super().__init__(raw_sent)
-        if raw_sent:
-            self.init_pos_tags()
-
-    def __len__(self):
-        # RNN에서 길이가 긴 것으로 정렬하기위한 문장의 길이 = 음절 갯수 + 문장 경계 + 어절 경계
-        if self.words:
-            return sum([len(w) for w in self.words]) + len(self.words) + 1
-        if self.pos_tagged_words:
-            return sum([len(w.raw) for w in self.pos_tagged_words]) + len(self.pos_tagged_words) + 1
-        return 0
-
-    @classmethod
-    def to_tensor(cls, arr: List, gpu_num: int = -1) -> Tensor:
+    def __init__(self, lex: str, tag: str = 'O', beg: int = -1, end: int = -1):
         """
         Args:
-            arr:  array to convert
-            gpu_num:  GPU device number. default: -1 for CPU
-        Returns:
-            tensor
+            lex:  lexical
+            tag:  part-of-speech tag
+            beg:  begin position
+            end:  end position
         """
-        # pylint: disable=no-member
-        device = torch.device('cuda', gpu_num) if torch.cuda.is_available() and gpu_num >= 0 \
-                                               else torch.device('cpu')
-        return torch.tensor(arr, device=device)    # pylint: disable=not-callable
-
-    def make_contexts(self, window: int) -> List[List[str]]:
-        """
-        각 음절 별로 좌/우 window 크기 만큼 context를 만든다.
-        Args:
-            window:  left/right window size
-        Returns:
-            contexts
-        """
-        chars = [c for w in self.words for c in w]
-        chars_len = len(chars)
-        chars_padded = ['', ] * window + chars + ['', ] * window
-        contexts = [chars_padded[idx-window:idx+window+1]
-                    for idx in range(window, chars_len + window)]
-        return contexts
-
-    @classmethod
-    def _flatten(cls, list_of_lists):
-        """
-        flatten one level of nesting
-        Args:
-            list_of_lists:  list of lists
-        Returns:
-            flattened list
-        """
-        return list(itertools.chain.from_iterable(list_of_lists))
-
-    def make_left_spc_masks(self, window: int, left_vocab_id: int, spc_dropout: float) \
-            -> List[List[int]]:
-        """
-        각 음절 별로 좌/우 window 크기 만큼 context를 만든다.
-        Args:
-            window:  left/right window size
-            left_vocab_id:  vocabulary ID for '<w>'
-            spc_dropout:  space dropout rate
-        Returns:
-            left space masks
-        """
-        def _filter_left_spc_mask(left_spc_mask):
-            """
-            중심 음절로부터 첫번째 왼쪽 공백만 남기고 나머지는 제거한다.
-            Args:
-                left_spc_mask:  왼쪽 공백 마스크
-            """
-            for idx in range(window, -1, -1):
-                if left_spc_mask[idx] == left_vocab_id:
-                    if random.random() < spc_dropout:
-                        left_spc_mask[idx] = 0
-                    for jdx in range(idx-1, -1, -1):
-                        left_spc_mask[jdx] = 0
-                    break
-
-        left_spcs = self._flatten([[left_vocab_id, ] + [0, ] * (len(word)-1)
-                                   for word in self.words])
-        left_padded = [0, ] * window + left_spcs + [0, ] * window
-        left_spc_masks = [left_padded[idx-window:idx+1] + [0, ] * window
-                          for idx in range(window, len(left_spcs) + window)]
-        for left_spc_mask in left_spc_masks:
-            _filter_left_spc_mask(left_spc_mask)
-        return left_spc_masks
-
-    def make_right_spc_masks(self, window: int, right_vocab_id: int, spc_dropout: float) \
-            -> List[List[int]]:
-        """
-        각 음절 별로 좌/우 window 크기 만큼 context를 만든다.
-        Args:
-            window:  left/right window size
-            right_vocab_id:  vocabulary ID for '</w>'
-            spc_dropout:  space dropout rate
-        Returns:
-            right space masks
-        """
-        def _filter_right_spc_mask(right_spc_mask):
-            """
-            중심 음절로부터 첫번째 오른쪽 공백만 남기고 나머지는 제거한다.
-            Args:
-                right_spc_mask:  오른쪽 공백 마스크
-            """
-            for idx in range(window, len(right_spc_mask)):
-                if right_spc_mask[idx] == right_vocab_id:
-                    if random.random() < spc_dropout:
-                        right_spc_mask[idx] = 0
-                    for jdx in range(idx+1, len(right_spc_mask)):
-                        right_spc_mask[jdx] = 0
-                    break
-
-        right_spcs = self._flatten([[0, ] * (len(word)-1) + [right_vocab_id, ]
-                                    for word in self.words])
-        right_padded = [0, ] * window + right_spcs + [0, ] * window
-        right_spc_masks = [[0, ] * window + right_padded[idx:idx+window+1]
-                           for idx in range(window, len(right_spcs) + window)]
-        for right_spc_mask in right_spc_masks:
-            _filter_right_spc_mask(right_spc_mask)
-        return right_spc_masks
-
-    def get_contexts(self, cfg: Namespace, rsc: Resource) -> List[List[int]]:
-        """
-        문맥을 반환하는 메서드
-        Args:
-            cfg:  config
-            rsc:  Resource object
-        Returns
-            문맥 리스트. shape: [(문장 내 음절 길이), (문맥의 크기)]
-        """
-        contexts = self.make_contexts(cfg.window)
-        return [[rsc.vocab_in[c] for c in context] for context in contexts]
-
-    def get_spc_masks(self, cfg: Namespace, rsc: Resource, do_spc_dropout: bool) \
-                -> Tuple[List[List[int]], List[List[int]]]:
-        """
-        공백 마스킹 벡터를 반환하는 메소드
-        Args:
-            cfg:  config
-            rsc:  Resource object
-            do_spc_dropout:  공백 마스크 시 dropout 적용 여부
-        Returns
-            좌측 공백 마스킹 벡터. shape: [(문장 내 음절 길이), (문맥의 크기)]
-            우측 공백 마스킹 벡터. shape: [(문장 내 음절 길이), (문맥의 크기)]
-        """
-        spc_dropout = cfg.spc_dropout if do_spc_dropout else 0.0
-        left_spc_masks = self.make_left_spc_masks(cfg.window, rsc.vocab_in['<w>'], spc_dropout)
-        right_spc_masks = self.make_right_spc_masks(cfg.window, rsc.vocab_in['</w>'], spc_dropout)
-        return left_spc_masks, right_spc_masks
-
-    def get_labels(self, rsc: Resource) -> List[int]:
-        """
-        레이블(출력 태그)를 반환하는 메서드
-        Args:
-            rsc:  Resource object
-        Returns
-            레이블 리스트. shape: [(문장 내 음절 길이), ]
-        """
-        return [rsc.vocab_out[tag] for pos_word in self.pos_tagged_words for tag in pos_word.tags]
-
-    def get_spaces(self) -> List[int]:
-        """
-        음절 별 공백 여부를 반환하는 메서드
-        Returns
-            공백 여부 리스트. shape: [(문장 내 음절 길이), ]
-        """
-        spaces = []
-        for word in self.words:
-            spaces.extend([0, ] * (len(word)-1))
-            spaces.append(1)
-        return spaces
-
-
-class PosDataset:
-    """
-    part-of-speech tag dataset
-    """
-    def __init__(self, cfg: Namespace, restore_dic: Dict[str, str], fin: TextIO):
-        """
-        Args:
-            cfg:  config
-            restore_dic:  restore dictionary
-            fin:  input file
-        """
-        self.cfg = cfg
-        self.fin = fin
-        self.sents = []
-        self.sent_idx = -1
-        self._load(restore_dic)
+        self.lex = lex
+        self.tag = tag
+        self.beg = beg
+        self.end = end
 
     def __str__(self):
-        return '<PosDataset: file: {}, sents: {}, sent_idx: {}>'.format(
-            os.path.basename(self.fin.name), len(self.sents), self.sent_idx)
+        return '{}/{}'.format(self.lex, self.tag)
 
-    def _load(self, restore_dic: dict):
+    def __len__(self):
+        return self.end - self.beg
+
+
+class Word:
+    """
+    word
+    """
+    def __init__(self, raw: str):
         """
-        load data file
+        Args:
+            raw:  raw word
+        """
+        self.raw = raw
+        self.tags = []    # output tags for each character
+        self.res_chrs = raw    # concatenation of characters of restored morphemes
+        self.res_tags = []    # list of output tags from restored morphemes for each character
+        self.morphs = [Morph(c, 'O', i, i+1) for i, c in enumerate(raw)]
+
+    def __str__(self):
+        return '{}\t{}'.format(self.raw, ' '.join([str(x) for x in self.morphs]))
+
+    def __eq__(self, other: 'Word'):
+        """
+        assume equal if two morphologically analyzed results are same.
+        use this equal operator when evaluate valid/test dataset
+        Args:
+            other:  other object
+        """
+        return self.res_chrs == other.res_chrs and self.res_tags == other.res_tags
+
+    def set_tags(self, tags: List[str], restore_dic: Dict[str, str] = None):
+        """
+        apply predicted output labels to this word with restore dictionary
+        Args:
+            tags:  output labels for each character
+            restore_dic:  restore dictionary
+        """
+        if not restore_dic:
+            tags = [x.split(':', 1)[0] for x in tags]
+        self.tags = tags
+        assert len(self.raw) == len(self.tags)    # 음절수와 태그수는 동일해야 한다.
+        self.morphs = self._make_morphs(restore_dic)
+
+    def _make_morphs(self, restore_dic: Dict[str, str] = None):
+        """
+        make morphemes from characters with B-/I- tags
         Args:
             restore_dic:  restore dictionary
         """
-        sent = PosSentTensor()
-        lines = self.fin.readlines()
-        for line in tqdm(lines, os.path.basename(self.fin.name), len(lines), mininterval=1,
-                         ncols=100):
-            line = line.rstrip('\r\n')
-            if not line:
-                if sent and sent.pos_tagged_words:
-                    sent.set_raw_by_words()
-                    self.sents.append(sent)
-                sent = PosSentTensor()
-                continue
-            raw, tags = line.split('\t')
-            pos_word = PosWord(raw)
-            pos_word.set_pos_result(tags.split(), restore_dic)
-            sent.pos_tagged_words.append(pos_word)
-        logging.info('%s: %d sentences', os.path.basename(self.fin.name), len(self.sents))
+        if not self.tags:
+            return []
+
+        self._restore(restore_dic)
+
+        morphs = []
+        for beg, (lex, iob_tag) in enumerate(zip(self.res_chrs, self.res_tags)):
+            try:
+                iob, tag = iob_tag.rsplit('-', 1)
+            except ValueError as val_err:
+                _LOG.error('invalid char/tag: %s/%s in [%s] %s', lex, iob_tag, self.res_chrs,
+                           self.res_tags)
+                raise val_err
+            if iob == 'B' or not morphs or morphs[-1].tag != tag:
+                morphs.append(Morph(lex, tag, beg, beg+1))
+            elif iob == 'I':
+                if morphs[-1].tag == tag:
+                    morphs[-1].lex += lex
+                    morphs[-1].end += len(lex)
+                else:
+                    _LOG.debug('tag is different between B and I: %s vs %s', morphs[-1].tag, tag)
+                    morphs.append(Morph(lex, tag, beg, beg+1))
+            else:
+                raise ValueError('invalid IOB tag: {}/{} in [{}] {}'.format \
+                                 (lex, iob_tag, self.res_chrs, self.res_tags))
+        return morphs
+
+    def _restore(self, restore_dic: Dict[str, str]):
+        """
+        restore morphemes with dictionary
+        Args:
+            restore_dic:  restore dictionary
+        """
+        if not restore_dic:
+            self.res_chrs = self.raw
+            self.res_tags = self.tags
+            return
+
+        res_chrs = []
+        self.res_tags = []
+        for char, tag in zip(self.raw, self.tags):
+            if ':' in tag:
+                key = '{}/{}'.format(char, tag)
+                if key in restore_dic:
+                    for char_tag in restore_dic[key].split():
+                        res_chr, res_tag = char_tag.rsplit('/', 1)
+                        res_chrs.append(res_chr)
+                        self.res_tags.append(res_tag)
+                    continue
+                _LOG.debug('mapping not found: %s/%s', char, tag)
+                tag, _ = tag.split(':', 1)
+            res_chrs.append(char)
+            self.res_tags.append(tag)
+        self.res_chrs = ''.join(res_chrs)
+
+
+class Sent(Example):
+    """
+    single training example
+    """
+    def __init__(self, words: List[Tuple[str, str]]):
+        """
+        Args:
+            words:  list of words. word is pair of raw and tags
+        """
+        self.words = []
+        self.char = []
+        self.tag = []
+        self.left_spc = []
+        self.right_spc = []
+        for raw, tag in words:
+            self.words.append(Word(raw))
+            self.char.extend(list(raw))
+            self.tag.extend(tag.split())
+            self.left_spc.extend([1, ] + [0, ] * (len(raw)-1))
+            self.right_spc.extend([0, ] * (len(raw)-1) + [1, ])
+        assert len(self.char) == len(self.tag), \
+               f'char and tag len diff: {len(self.char)} vs {len(self.tag)}'
+        assert len(self.tag) == len(self.left_spc), \
+               f'tag and left spc len diff: {len(self.tag)} {len(self.left_spc)}'
+        assert len(self.left_spc) == len(self.right_spc), \
+               f'left and right spc len diff: {len(self.tag)} {len(self.left_spc)}'
+
+    def __str__(self):
+        return '\n'.join([f'char: {self.char}', f'tag: {self.tag}', f'left_spc: {self.left_spc}',
+                          f'right_spc: {self.right_spc}'])
+
+    def copy(self):
+        """
+        shallow copy for evaluation
+        Returns:
+            copied object
+        """
+        other = copy.copy(self)
+        other.words = [copy.copy(w) for w in self.words]
+        return other
+
+    def set_tags(self, tags: List[str] = None, restore_dic: Dict[str, str] = None):
+        """
+        set whole tags(output labels) in sentence and restore morphemes
+        Args:
+            tags:  output labels
+            restore_dic:  restore dictionary
+        """
+        if not tags:
+            tags = self.tag
+        total_char_num = 0
+        for word in self.words:
+            word.set_tags(tags[total_char_num:total_char_num + len(word.raw)], restore_dic)
+            total_char_num += len(word.raw)
+        assert total_char_num == len(tags)
+
+
+class CharField(Field):
+    """
+    characters field
+    """
+    def __init__(self, vocab: VocabIn, window: int):
+        """
+        Args:
+            window:  window size of context
+            vocab:  input vocabulary
+        """
+        super().__init__(batch_first=True, postprocessing=self.postprocess)
+        self.window = window
+        self.vocab = vocab
+
+    def itos(self, tensor: Tensor) -> List[str]:
+        """
+        transform list of numbers(index) into list of strings(chars)
+        Args:
+            tensor:  list of numbers(index)
+        Returns:
+            list of strings(chars)
+        """
+        # since 1st rank items are context(list), print only middle characters in list
+        return ', '.join([self.vocab.itos[c[self.window]] for c in tensor])
+
+    def postprocess(self, batch: List[List[int]], vocab: Vocab) -> List[List[int]]:    # pylint: disable=unused-argument
+        """
+        Args:
+            batch:  batch (list of field values)
+            vocab:  vocabuary
+        """
+        new_batch = []
+        for chars in batch:
+            new_chars = []
+            for idx, char in enumerate(chars):
+                if char == 0:
+                    new_chars.append([0, ] * (2 * self.window + 1))
+                    continue
+                if idx - self.window < 0:
+                    left = 0
+                    context = [0, ] * (self.window - idx)
+                else:
+                    left = idx - self.window
+                    context = []
+                context.extend(chars[left:idx+self.window+1])
+                if idx + self.window+1 > len(chars):
+                    context.extend([0, ] * (idx + self.window+1 - len(chars)))
+                new_chars.append(context)
+            new_batch.append(new_chars)
+        return new_batch
+
+    def vocab_size(self):
+        """
+        Returns:
+            vocabulary size
+        """
+        return len(self.vocab.itos)
+
+
+class TagField(Field):
+    """
+    tags field
+    """
+    def __init__(self, vocab: VocabOut, window: int):
+        """
+        Args:
+            window:  window size of context
+            vocab:  output vocabulary
+        """
+        super().__init__(batch_first=True, is_target=True)
+        self.window = window
+        self.vocab = vocab
+
+    def itos(self, tensor: Tensor) -> List[str]:
+        """
+        transform list of numbers(index) into list of strings(chars)
+        Args:
+            tensor:  list of numbers(index)
+        Returns:
+            list of strings(chars)
+        """
+        return ', '.join([self.vocab[c] for c in tensor])
+
+    def vocab_size(self):
+        """
+        Returns:
+            vocabulary size
+        """
+        return len(self.vocab)-1    # without padding (the last index)
+
+
+class LeftSpcField(Field):
+    """
+    left spaces field
+    """
+    def __init__(self, window: int):
+        """
+        Args:
+            window:  window size of context
+        """
+        super().__init__(batch_first=True, use_vocab=False, pad_token=-1,
+                         postprocessing=self.postprocess)
+        self.window = window
+
+    def postprocess(self, batch: List[List[int]], vocab: Vocab) -> List[List[int]]:    # pylint: disable=unused-argument
+        """
+        Args:
+            batch:  batch (list of field values)
+            vocab:  vocabuary
+        """
+        new_batch = []
+        for left_spcs in batch:
+            new_left_spcs = []
+            for idx, left_spc in enumerate(left_spcs):
+                if left_spc == -1:
+                    new_left_spcs.append([0, ] * (2 * self.window + 1))
+                    continue
+                left_spc_context = []
+                for jdx in range(idx, max(idx-self.window-1, -1), -1):
+                    if left_spcs[jdx] == 1:
+                        left_spc_context.insert(0, 1)
+                        break
+                    left_spc_context.insert(0, 0)
+                if len(left_spc_context) < self.window+1:
+                    left_spc_context = ([0, ] * (self.window+1 - len(left_spc_context))
+                                        + left_spc_context)
+                left_spc_context.extend([0, ] * self.window)
+                new_left_spcs.append(left_spc_context)
+            new_batch.append(new_left_spcs)
+        return new_batch
+
+
+class RightSpcField(Field):
+    """
+    right spaces field
+    """
+    def __init__(self, window: int):
+        """
+        Args:
+            window:  window size of context
+        """
+        super().__init__(batch_first=True, use_vocab=False, pad_token=-1,
+                         postprocessing=self.postprocess)
+        self.window = window
+
+    def postprocess(self, batch: List[List[int]], vocab: Vocab) -> List[List[int]]:    # pylint: disable=unused-argument
+        """
+        Args:
+            batch:  batch (list of field values)
+            vocab:  vocabuary
+        """
+        new_batch = []
+        for right_spcs in batch:
+            new_right_spcs = []
+            for idx, right_spc in enumerate(right_spcs):
+                if right_spc == -1:
+                    new_right_spcs.append([0, ] * (2 * self.window + 1))
+                    continue
+                right_spc_context = []
+                for jdx in range(idx, min(idx+self.window+1, len(right_spcs)+1)):
+                    if right_spcs[jdx] == 1:
+                        right_spc_context.append(1)
+                        break
+                    right_spc_context.append(0)
+                if len(right_spc_context) < self.window+1:
+                    right_spc_context.extend([0, ] * (self.window+1 - len(right_spc_context)))
+                right_spc_context = ([0, ] * self.window) + right_spc_context
+                new_right_spcs.append(right_spc_context)
+            new_batch.append(new_right_spcs)
+        return new_batch
+
+    @classmethod
+    def for_criterion(cls, spc_batch: Tensor, tag_batch: Tensor, window: int,
+                      device: torch.device = None) -> Tensor:    # pylint: disable=no-member
+        """
+        make tensor for criterion from space context to space output
+        Args:
+            spc_batch:  space context
+            tag_batch:  tag output
+            window:  window size
+            device:  device for tensor
+        Returns:
+            space output
+        """
+        space_output = []
+        for batch_idx, sent in enumerate(spc_batch):
+            for char_idx, spc in enumerate(sent):
+                if tag_batch[batch_idx][char_idx] == FIELDS['tag'].vocab.stoi['<pad>']:
+                    space_output.append(-100)
+                else:
+                    space_output.append(spc[window].item())
+        return torch.tensor(space_output, device=device)    # pylint: disable=not-callable
+
+
+class BatchIter:
+    """
+    multi-core batch iterator
+    """
+    def __init__(self, data: Dataset, batch_size: int, device: torch.device = None):    # pylint: disable=no-member
+        """
+        Args:
+            data:  dataset
+            batch_size:  batch_size
+            device:  device for tensor
+        """
+        self.batches = BucketIterator(data, batch_size, device=device, shuffle=True)
+        self.queue = Queue(maxsize=10)
+        self.worker = Thread(target=self.run)
+        self.worker.start()
+
+    def __len__(self):
+        return math.ceil(len(self.batches.dataset) / self.batches.batch_size)
 
     def __iter__(self):
-        self.sent_idx = -1
-        random.shuffle(self.sents)
         return self
 
     def __next__(self):
-        self.sent_idx += 1
-        if self.sent_idx >= len(self.sents):
-            raise StopIteration()
-        return self.sents[self.sent_idx]
+        for _ in range(10):
+            try:
+                return self.queue.get(timeout=1)
+            except Empty:
+                if not self.worker.is_alive():
+                    break
+        raise StopIteration()
+
+    def run(self):
+        """
+        run iterator thread
+        """
+        for batch in self.batches:
+            self.queue.put(batch)
+
+
+class SentIter:
+    """
+    sentence iterator
+    """
+    def __init__(self, data: Dataset, device: torch.device = None):    # pylint: disable=no-member
+        """
+        Args:
+            data:  dataset
+            device:  device for tensor
+        """
+        self.sents = Iterator(data, 1, device=device, train=False, sort=False)
+        self.queue = Queue(maxsize=10)
+        self.worker = Thread(target=self.run)
+        self.worker.start()
 
     def __len__(self):
-        return len(self.sents)
+        return len(self.sents.dataset)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        for _ in range(10):
+            try:
+                return self.queue.get(timeout=1)
+            except Empty:
+                if not self.worker.is_alive():
+                    break
+        raise StopIteration()
+
+    def run(self):
+        """
+        run iterator thread
+        """
+        for tensor, sent in zip(self.sents, self.sents.data()):
+            self.queue.put((tensor, sent))
+
+
+#############
+# variables #
+#############
+FIELDS = {}
+
+
+#############
+# functions #
+#############
+def load(fin: TextIO, window: int, rsc: Resource) -> Dataset:
+    """
+    load dataset from file
+    Args:
+        fin:  input file
+        min_freq:  minimum freq. for characters vocab.
+        window:  window size of context
+        rsc:  Resource
+    Returns:
+        Dataset object
+    """
+    lines = fin.readlines()
+    sents = []
+    words = []
+    for line in tqdm(lines, os.path.basename(fin.name), len(lines), mininterval=1, ncols=100):
+        line = line.rstrip('\r\n')
+        if not line:
+            if words:
+                sents.append(Sent(words))
+                words = []
+            continue
+        raw, tags = line.split('\t')
+        words.append((raw, tags))
+
+    FIELDS['char'] = CharField(rsc.vocab_in, window)
+    FIELDS['tag'] = TagField(rsc.vocab_out, window)
+    FIELDS['left_spc'] = LeftSpcField(window)
+    FIELDS['right_spc'] = RightSpcField(window)
+    data = Dataset(sents, FIELDS.items())
+
+    return data

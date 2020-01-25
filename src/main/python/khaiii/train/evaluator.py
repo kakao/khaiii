@@ -4,7 +4,7 @@
 """
 evaluation related module
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 """
 
 
@@ -15,7 +15,13 @@ from collections import Counter
 import logging
 from typing import List, TextIO, Tuple
 
-from khaiii.train.sentence import PosMorph, PosSentence, PosWord
+from khaiii.train.dataset import Morph, Sent, Word
+
+
+#############
+# variables #
+#############
+_LOG = logging.getLogger(__name__)
 
 
 #########
@@ -47,47 +53,45 @@ class Evaluator:
         self.cnt.clear()
         return char_acc, word_acc, f_score
 
-    def count(self, correct_sent: PosSentence, predict_sent: PosSentence):
+    def count(self, gold_sent: Sent, pred_sent: Sent):
         """
-        정답 문장과 비교하여 맞춘 갯수를 샌다.
+        count correct words and morphemes in sentence
         Args:
-            correct_sent:  정답 문장
-            predict_sent:  예측한 문장
+            gold_sent:  gold standard sentence
+            pred_sent:  predicted sentence
         """
-        assert len(correct_sent.words) == len(predict_sent.words)
-        for gold, pred in zip(correct_sent.pos_tagged_words, predict_sent.pos_tagged_words):
+        assert len(gold_sent.words) == len(pred_sent.words)
+        for gold, pred in zip(gold_sent.words, pred_sent.words):
             self.cnt['total_chars'] += len(gold.res_tags)
             self.cnt['match_chars'] += len([1 for x, y in zip(gold.res_tags, pred.res_tags)
                                             if x == y])
             self._count_word(gold, pred)
 
-    def _count_word(self, gold: PosWord, pred: PosWord):
+    def _count_word(self, gold: Word, pred: Word):
         """
-        count with gold standard and predicted (will update counter)
+        count with gold standard and predicted (will update counter) in word
         Args:
             gold:  gold standard word
             pred:  predicted word
         """
         self.cnt['total_words'] += 1
-        gold_morphs = gold.pos_tagged_morphs
-        pred_morphs = pred.pos_tagged_morphs
         if gold == pred:
             self.cnt['match_words'] += 1
-            num_match = len(gold_morphs)
+            num_match = len(gold.morphs)
             self.cnt['total_gold_morphs'] += num_match
             self.cnt['total_pred_morphs'] += num_match
             self.cnt['match_morphs'] += num_match
             return
-        logging.debug('gold: %s', ' '.join([str(_) for _ in gold_morphs]))
-        logging.debug('pred: %s', ' '.join([str(_) for _ in pred_morphs]))
-        self.cnt['total_gold_morphs'] += len(gold_morphs)
-        self.cnt['total_pred_morphs'] += len(pred_morphs)
-        gold_set = self.morphs_to_set(gold_morphs)
-        pred_set = self.morphs_to_set(pred_morphs)
+        _LOG.debug('gold: %s', ' '.join([str(_) for _ in gold.morphs]))
+        _LOG.debug('pred: %s', ' '.join([str(_) for _ in pred.morphs]))
+        self.cnt['total_gold_morphs'] += len(gold.morphs)
+        self.cnt['total_pred_morphs'] += len(pred.morphs)
+        gold_set = self.morphs_to_set(gold.morphs)
+        pred_set = self.morphs_to_set(pred.morphs)
         self.cnt['match_morphs'] += len(gold_set & pred_set)
 
     @classmethod
-    def morphs_to_set(cls, morphs: List[PosMorph]) -> set:
+    def morphs_to_set(cls, morphs: List[Morph]) -> set:
         """
         make set from morpheme list
         Args:
@@ -95,7 +99,7 @@ class Evaluator:
         Returns:
             morphemes set
         """
-        morph_cnt = Counter([(morph.morph, morph.pos_tag) for morph in morphs])
+        morph_cnt = Counter([(morph.lex, morph.tag) for morph in morphs])
         morph_set = set()
         for (lex, tag), freq in morph_cnt.items():
             if freq == 1:

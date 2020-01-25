@@ -5,7 +5,7 @@
 """
 pickle trained model (state dict)
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 """
 
 
@@ -22,6 +22,12 @@ import re
 import torch
 
 from khaiii.resource.resource import Resource
+
+
+#############
+# variables #
+#############
+_LOG = logging.getLogger(__name__)
 
 
 #############
@@ -47,7 +53,7 @@ def _validate_state_dict(cfg: Namespace, rsc: Resource, state_dict: dict):
             raise ValueError((msg + ': expected: {}, but actual: {}').format(expected, actual))
 
     for name, tensor in state_dict.items():
-        logging.info('%s: %s', name, tensor.size())
+        _LOG.info('%s: %s', name, tensor.size())
         if name == 'embedder.embedding.weight':
             _assert(len(rsc.vocab_in), tensor.size(0), 'invalid input vocab')
             _assert(cfg.embed_dim, tensor.size(1), 'invalid embedding dim')
@@ -165,10 +171,10 @@ def _load_config(path: str) -> Namespace:
         config
     """
     cfg_dic = json.load(open(path, 'r', encoding='UTF-8'))
-    logging.info('config: %s', json.dumps(cfg_dic, indent=4, sort_keys=True))
+    _LOG.info('config: %s', json.dumps(cfg_dic, indent=4, sort_keys=True))
     cfg = Namespace()
     for key, val in cfg_dic.items():
-        if key not in {'cutoff', 'embed_dim', 'hidden_dim', 'model_id', 'model_name', 'rsc_src',
+        if key not in {'min_freq', 'embed_dim', 'hidden_dim', 'model_id', 'model_name', 'rsc_src',
                        'window'}:
             continue
         setattr(cfg, key, val)
