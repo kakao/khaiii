@@ -4,7 +4,6 @@ SRC_PYTHON = $(HOME_DIR)/../src/main/python
 RSC_SRC = $(HOME_DIR)/src
 PREFIX = /usr/local
 RSC_DIR = $(PREFIX)/share/khaiii
-MODEL_SIZE = base
 
 MODEL = \
     $(RSC_DIR)/config.json \
@@ -33,9 +32,9 @@ ERRPATCH = \
 all: $(MODEL) $(PREANAL) $(RESTORE) $(ERRPATCH)
 
 $(wordlist 2,100,$(MODEL)): $(firstword $(MODEL))
-$(firstword $(MODEL)): $(RSC_SRC)/$(MODEL_SIZE).config.json $(RSC_SRC)/$(MODEL_SIZE).model.pickle
+$(firstword $(MODEL)): $(RSC_SRC)/config.json $(RSC_SRC)/model.pickle
 	mkdir -p $(RSC_DIR)
-	PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_model.py --model-size $(MODEL_SIZE) --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
+	PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_model.py --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
 
 $(wordlist 2,100,$(PREANAL)): $(firstword $(PREANAL))
 $(firstword $(PREANAL)): $(RSC_SRC)/preanal.auto $(RSC_SRC)/preanal.manual
@@ -48,9 +47,9 @@ $(firstword $(RESTORE)): $(RSC_SRC)/restore.dic $(RSC_SRC)/vocab.out $(RSC_SRC)/
 	PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_restore.py --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
 
 $(wordlist 2,100,$(ERRPATCH)): $(firstword $(ERRPATCH))
-$(firstword $(ERRPATCH)): $(RSC_SRC)/$(MODEL_SIZE).errpatch.auto $(RSC_SRC)/$(MODEL_SIZE).errpatch.manual
+$(firstword $(ERRPATCH)): $(RSC_SRC)/errpatch.auto $(RSC_SRC)/errpatch.manual
 	mkdir -p $(RSC_DIR)
-	PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_errpatch.py --model-size $(MODEL_SIZE) --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
+	PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_errpatch.py --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
 
 clean:
 	rm -rf $(RSC_DIR)

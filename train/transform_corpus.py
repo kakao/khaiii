@@ -25,7 +25,7 @@ import sys
 from typing import List
 
 from khaiii.munjong.sejong_corpus import sents
-from khaiii.resource.resource import Resource
+from khaiii.resource.resource import load_cfg_rsc
 from khaiii.train import dataset
 
 
@@ -93,11 +93,11 @@ class Sentence:
         Returns:
             list of sentences
         """
-        restore_dic = Resource.load_restore_dic(f'{rsc_src}/restore.dic')
-        data = dataset.load(sys.stdin, 0, 0)
+        cfg, rsc = load_cfg_rsc(rsc_src)
+        data = dataset.load(sys.stdin, cfg.window, rsc)    # pylint: disable=no-member
         sentences = []
         for _, sent in dataset.SentIter(data):
-            sent.set_tags(restore_dic=restore_dic)
+            sent.set_tags(restore_dic=rsc.restore_dic)
             sentence = Sentence()
             for word in sent.words:
                 sentence.words.append(word.raw)

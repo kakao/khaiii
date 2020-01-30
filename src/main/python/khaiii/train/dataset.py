@@ -33,6 +33,7 @@ from khaiii.resource.vocabulary import VocabIn, VocabOut
 # variables #
 #############
 _LOG = logging.getLogger(__name__)
+FIELDS = {}    # fields in data
 
 
 #########
@@ -191,6 +192,21 @@ class Sent(Example):
         assert len(self.left_spc) == len(self.right_spc), \
                f'left and right spc len diff: {len(self.tag)} {len(self.left_spc)}'
 
+    @classmethod
+    def from_raw(cls, raw_sent: str) -> 'Sent':
+        """
+        create Sent object from raw sentence
+        Args:
+            raw_sent:  raw sentence
+        Returns:
+            Sent object
+        """
+        words = []
+        for raw_word in raw_sent.split():
+            tags = ['I-ZZ', ] * len(raw_word)
+            words.append((raw_word, ' '.join(tags)))
+        return Sent(words)
+
     def __str__(self):
         return '\n'.join([f'char: {self.char}', f'tag: {self.tag}', f'left_spc: {self.left_spc}',
                           f'right_spc: {self.right_spc}'])
@@ -212,7 +228,9 @@ class Sent(Example):
             tags:  output labels
             restore_dic:  restore dictionary
         """
-        if not tags:
+        if tags:
+            self.tag = tags
+        else:
             tags = self.tag
         total_char_num = 0
         for word in self.words:
@@ -493,20 +511,26 @@ class SentIter:
 
 
 #############
-# variables #
-#############
-FIELDS = {}
-
-
-#############
 # functions #
 #############
+def set_fields(window: int, rsc: Resource):
+    """
+    set field objects for dataset
+    Args:
+        window:  window size of context
+        rsc:  Resource
+    """
+    FIELDS['char'] = CharField(rsc.vocab_in, window)
+    FIELDS['tag'] = TagField(rsc.vocab_out, window)
+    FIELDS['left_spc'] = LeftSpcField(window)
+    FIELDS['right_spc'] = RightSpcField(window)
+
+
 def load(fin: TextIO, window: int, rsc: Resource) -> Dataset:
     """
-    load dataset from file
+    load dataset from train file
     Args:
         fin:  input file
-        min_freq:  minimum freq. for characters vocab.
         window:  window size of context
         rsc:  Resource
     Returns:
@@ -525,10 +549,26 @@ def load(fin: TextIO, window: int, rsc: Resource) -> Dataset:
         raw, tags = line.split('\t')
         words.append((raw, tags))
 
-    FIELDS['char'] = CharField(rsc.vocab_in, window)
-    FIELDS['tag'] = TagField(rsc.vocab_out, window)
-    FIELDS['left_spc'] = LeftSpcField(window)
-    FIELDS['right_spc'] = RightSpcField(window)
-    data = Dataset(sents, FIELDS.items())
+    set_fields(window, rsc)
+    return Dataset(sents, FIELDS.items())
 
-    return data
+
+def load_raw(fin: TextIO, window: int, rsc: Resource) -> Dataset:
+    """
+    load dataset from train file
+    Args:
+        fin:  input file
+        window:  window size of context
+        rsc:  Resource
+    Returns:
+        Dataset object
+    """
+    sents = []
+    for line in fin:
+        line = line.rstrip('\r\n')
+        if not line:
+            continue
+        sents.append(Sent.from_raw(line))
+
+    set_fields(window, rsc)
+    return Dataset(sents, FIELDS.items())

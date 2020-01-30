@@ -1,8 +1,0 @@
-{
-    "cutoff": 1,
-    "embed_dim": 35,
-    "hidden_dim": 320,
-    "model_id": "munjong.cut1.win4.hdo0.1.sdo0.1.emb35.lr0.001.lrd0.9.bs500",
-    "rsc_src": "../rsc/src",
-    "window": 4
-}

@@ -23,8 +23,15 @@ namespace nn {
 using std::cout;
 using std::endl;
 using std::make_unique;
+using std::shared_ptr;
 using std::string;
 using std::vector;
+
+
+////////////////////
+// static members //
+////////////////////
+shared_ptr<spdlog::logger> Linear::_log = spdlog::stderr_color_mt("Linear");
 
 
 ////////////////////
@@ -46,6 +53,8 @@ void Linear::open(string path, int in_dim, int out_dim, bool has_bias,
     _param_mmf.open(path);
     int size = in_dim * out_dim;
     if (has_bias) size += out_dim;
+    _log->debug("in_dim: {}, out_dim: {}, size: {}, _param_mmf.size(): {}", in_dim, out_dim, size,
+                _param_mmf.size());
     assert(_param_mmf.size() == size);
     _weight = make_unique<matrix_map_t>(const_cast<float*>(_param_mmf.data()), in_dim, out_dim);
     if (has_bias) {

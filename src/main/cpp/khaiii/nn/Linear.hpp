@@ -91,6 +91,8 @@ class Linear {
     const activation_t* _activation = nullptr;    ///< activation function
 
     MemMapFile<float> _param_mmf;    ///< model parameters map file
+
+    static std::shared_ptr<spdlog::logger> _log;    ///< logger
 };
 
 

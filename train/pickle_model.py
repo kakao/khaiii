@@ -195,11 +195,11 @@ def run(args: Namespace):
     _validate_state_dict(cfg, rsc, state_dict)
     data = _get_data(rsc, state_dict)
 
-    config_path = '{}/{}.config.json'.format(args.rsc_src, args.model_size)
+    config_path = '{}/config.json'.format(args.rsc_src)
     with open(config_path, 'w', encoding='UTF-8') as fout:
         json.dump(vars(cfg), fout, indent=4, sort_keys=True)
 
-    pickle_path = '{}/{}.model.pickle'.format(args.rsc_src, args.model_size)
+    pickle_path = '{}/model.pickle'.format(args.rsc_src)
     with open(pickle_path, 'wb') as fout:
         pickle.dump(data, fout)
 
@@ -213,8 +213,6 @@ def main():
     """
     parser = ArgumentParser(description='pickle trained model (state dict)')
     parser.add_argument('-i', '--in-dir', help='model dir', metavar='DIR', required=True)
-    parser.add_argument('--model-size', help='model size <default: base>',
-                        metavar='SIZE', default='base')
     parser.add_argument('--rsc-src', help='resource source dir <default: ../rsc/src>',
                         metavar='DIR', default='../rsc/src')
     parser.add_argument('--debug', help='enable debug', action='store_true')

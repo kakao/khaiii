@@ -5,7 +5,7 @@
 """
 compile trained model for C/C++ decoder
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 """
 
 
@@ -17,35 +17,19 @@ import json
 import logging
 import pathlib
 import pickle
-from typing import Tuple
 
-from khaiii.resource.resource import Resource
+from khaiii.resource.resource import Resource, load_cfg_rsc
+
+
+#############
+# variables #
+#############
+_LOG = logging.getLogger(__name__)
 
 
 #############
 # functions #
 #############
-def _load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
-    """
-    load config and resource from source directory
-    Args:
-        rsc_src:  source directory
-        model_size:  model size (base|large)
-    Returns:
-        config
-        resource
-    """
-    file_path = '{}/{}.config.json'.format(rsc_src, model_size)
-    cfg_dic = json.load(open(file_path, 'r', encoding='UTF-8'))
-    logging.info('config: %s', json.dumps(cfg_dic, indent=4, sort_keys=True))
-    cfg = Namespace()
-    for key, val in cfg_dic.items():
-        setattr(cfg, key, val)
-    setattr(cfg, 'rsc_src', rsc_src)
-    rsc = Resource(cfg)
-    return cfg, rsc
-
-
 def _write_config(cfg: Namespace, rsc: Resource, rsc_dir: str):
     """
     write config file
@@ -59,7 +43,7 @@ def _write_config(cfg: Namespace, rsc: Resource, rsc_dir: str):
     cfg_dic['vocab_size'] = len(rsc.vocab_in)
     cfg_dic['embed_dim'] = cfg.embed_dim
     cfg_dic['hidden_dim'] = cfg.hidden_dim
-    cfg_dic['class_num'] = len(rsc.vocab_out)
+    cfg_dic['class_num'] = len(rsc.vocab_out)-1    # exclude padding at the last position
     cfg_dic['conv_kernels'] = [2, 3, 4, 5]
     pathlib.Path(rsc_dir).mkdir(parents=True, exist_ok=True)
     config_json = '{}/config.json'.format(rsc_dir)
@@ -139,8 +123,8 @@ def run(args: Namespace):
     Args:
         args:  program arguments
     """
-    cfg, rsc = _load_cfg_rsc(args.rsc_src, args.model_size)
-    data = pickle.load(open('{}/{}.model.pickle'.format(args.rsc_src, args.model_size), 'rb'))
+    cfg, rsc = load_cfg_rsc(args.rsc_src)
+    data = pickle.load(open('{}/model.pickle'.format(args.rsc_src), 'rb'))
     _write_config(cfg, rsc, args.rsc_dir)
     _write_data(data, args.rsc_dir)
 
@@ -153,8 +137,6 @@ def main():
     main function processes only argument parsing
     """
     parser = ArgumentParser(description='part-of-speech tagger')
-    parser.add_argument('--model-size', help='model size <default: base>',
-                        metavar='SIZE', default='base')
     parser.add_argument('--rsc-src', help='source directory (model) <default: ./src>',
                         metavar='DIR', default='./src')
     parser.add_argument('--rsc-dir', help='target directory (output) <default: ./share/khaiii>',
@@ -163,7 +145,7 @@ def main():
     args = parser.parse_args()
 
     if args.debug:
-        logging.basicConfig(level=logging.DEBUG)
+        _LOG.basicConfig(level=logging.DEBUG)
     else:
         logging.basicConfig(level=logging.INFO)
 

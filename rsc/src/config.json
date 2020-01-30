@@ -1,0 +1,8 @@
+{
+    "embed_dim": 30,
+    "hidden_dim": 310,
+    "min_freq": 2,
+    "model_id": "munjong.minfrq2.win3.hdo0.1.sdo0.1.emb30.lr0.001.lrd0.9.bs20",
+    "rsc_src": "../rsc/src",
+    "window": 3
+}

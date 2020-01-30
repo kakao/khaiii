@@ -5,7 +5,7 @@
 """
 command line part-of-speech tagger demo
 __author__ = 'Jamie (jamie.lim@kakaocorp.com)'
-__copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
+__copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 """
 
 
@@ -16,7 +16,15 @@ from argparse import ArgumentParser, Namespace
 import logging
 import sys
 
+from khaiii.train.dataset import SentIter
 from khaiii.train.tagger import PosTagger
+from khaiii.train import dataset
+
+
+#############
+# variables #
+#############
+_LOG = logging.getLogger(__name__)
 
 
 #############
@@ -29,17 +37,16 @@ def run(args: Namespace):
         args:  program arguments
     """
     tgr = PosTagger(args.model_dir, args.gpu_num)
-    for line_num, line in enumerate(sys.stdin, start=1):
-        if line_num % 100000 == 0:
-            logging.info('%d00k-th line..', (line_num // 100000))
-        line = line.rstrip('\r\n')
-        if not line:
-            print()
-            continue
-        pos_sent = tgr.tag_raw(line)
-        for pos_word in pos_sent.pos_tagged_words:
-            print(pos_word.raw, end='\t')
-            print(' + '.join([str(m) for m in pos_word.pos_tagged_morphs]))
+    data = dataset.load_raw(sys.stdin, tgr.cfg.window, tgr.rsc)    # pylint: disable=no-member
+
+    device = f'cuda:{args.gpu_num}' if args.gpu_num >= 0 else 'cpu'
+    for idx, (batch, sent) in enumerate(SentIter(data, device=device), start=1):
+        if idx % 100000 == 0:
+            _LOG.info('%d00k-th sentence..', (idx // 100000))
+        tgr.tag_batch(batch, sent)
+        for word in sent.words:
+            print(word.raw, end='\t')
+            print(' + '.join([str(m) for m in word.morphs]))
         print()
 
 

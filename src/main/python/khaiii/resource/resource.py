@@ -13,6 +13,7 @@ __copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 ###########
 from argparse import Namespace
 from collections import defaultdict
+import json
 import logging
 import os
 from typing import Dict, Tuple
@@ -94,6 +95,26 @@ def parse_restore_dic(file_path: str) -> Dict[Tuple[str, str], Dict[int, str]]:
                 return {}
         restore_dic[char, tag][num] = mrp_chr_str
     return restore_dic
+
+
+def load_cfg_rsc(rsc_src: str) -> Tuple[Namespace, Resource]:
+    """
+    load config and resource from source directory
+    Args:
+        rsc_src:  source directory
+    Returns:
+        config
+        resource
+    """
+    file_path = '{}/config.json'.format(rsc_src)
+    cfg_dic = json.load(open(file_path, 'r', encoding='UTF-8'))
+    _LOG.info('config: %s', json.dumps(cfg_dic, indent=4, sort_keys=True))
+    cfg = Namespace()
+    for key, val in cfg_dic.items():
+        setattr(cfg, key, val)
+    setattr(cfg, 'rsc_src', rsc_src)
+    rsc = Resource(cfg)
+    return cfg, rsc
 
 
 def load_vocab_out(rsc_src: str) -> Dict[str, int]:

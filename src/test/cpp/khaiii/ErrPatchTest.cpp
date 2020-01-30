@@ -92,12 +92,12 @@ shared_ptr<spdlog::logger> ErrPatchTest::_log = spdlog::stderr_color_mt("ErrPatc
 // test cases //
 ////////////////
 TEST_F(ErrPatchTest, apply) {
-    // for base model
-    _check("지저스크라이스트", "지저스/NNG + 크/NNP + 라이스트/NNG", "지저스/NNP + 크라이스트/NNP");
-    _check("지저스 크라이스트", "지저스/NNG + _ + 크라이스트/NNP",
+    _check("지저스크라이스트", "지저스크라이스트/NNG", "지저스/NNP + 크라이스트/NNP");
+    _check("지저스 크라이스트", "지저스/NNG + _ + 크/NNG + 라/NNP + 이스트/NNG",
            "지저스/NNP + _ + 크라이스트/NNP");
-    _check("고타마싯다르타", "고타마/NNG + 싯다르타/NNP", "고타마/NNP + 싯다르타/NNP");
-    _check("무함마드압둘라", "무함마드/NNP + 압둘라/NNG", "무함마드/NNP + 압둘라/NNP");
+    _check("고타마싯다르타", "고/NNG + 타마/VV + 싯다르타/NNP", "고타마/NNP + 싯다르타/NNP");
+    _check("무함마드압둘라", "무함마드/NNP + 압둘/NNG + 이/VCP + 라/EC",
+           "무함마드/NNP + 압둘라/NNP");
 }
 
 
