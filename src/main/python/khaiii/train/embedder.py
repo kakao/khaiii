@@ -12,6 +12,7 @@ __copyright__ = 'Copyright (C) 2020-, Kakao Corp. All rights reserved.'
 # imports #
 ###########
 from argparse import Namespace
+import logging
 import math
 
 import torch
@@ -20,21 +21,33 @@ from torch import nn, Tensor
 from khaiii.train.dataset import FIELDS
 
 
+#############
+# variables #
+#############
+_LOG = logging.getLogger(__name__)
+
+
+#########
+# types #
+#########
 class Embedder(nn.Module):
     """
     embedder class
     """
-    def __init__(self, cfg: Namespace):
+    def __init__(self, cfg: Namespace, padding_idx: int = 0):
         """
         Args:
             cfg:  config
+            padding_idx:  padding index
         """
         super().__init__()
         self.cfg = cfg
-        self.embedding = nn.Embedding(cfg.vocab_in, cfg.embed_dim, 0)
+        self.padding_idx = padding_idx
+        self.embedding = nn.Embedding(cfg.vocab_in, cfg.embed_dim, padding_idx=padding_idx)
+        self.zeros = None    # zero embedding to check padding (for debug)
         self.spc_dropout_mod = nn.Dropout(p=cfg.spc_dropout)
 
-    def spc_dropout(self, tensor: Tensor) -> Tensor:
+    def _spc_dropout(self, tensor: Tensor) -> Tensor:
         """
         apply space drop out to the tensor
         Args:
@@ -46,6 +59,25 @@ class Embedder(nn.Module):
             return tensor
         return self.spc_dropout_mod(tensor.type(torch.float32)).type(torch.long)    # pylint: disable=no-member
 
+    def _check_padding(self):
+        """
+        check padding embedding whether its values of vector are zero
+        """
+        # padding embedding must be zero vector, but it changes by backward step
+        # force overwriting padding embedding with zeros
+        if self.zeros is None:
+            device = torch.device(f'cuda:{self.cfg.gpu_num}' if self.cfg.gpu_num >= 0 else 'cpu')    # pylint: disable=no-member
+            self.zeros = torch.zeros([1, self.cfg.embed_dim], device=device)    # pylint: disable=no-member
+        if not (self.embedding.weight[self.padding_idx] == self.zeros).all():
+            _LOG.debug('self.embedding.weight[%d]:\n%s', self.padding_idx,
+                       self.embedding.weight[self.padding_idx])
+            with torch.no_grad():
+                self.embedding.weight[self.padding_idx] = 0
+            _LOG.debug('self.embedding.weight[%s]:\n%s', self.padding_idx,
+                       self.embedding.weight[self.padding_idx])
+        assert (self.embedding.weight[self.padding_idx] == self.zeros).all(), \
+               f'padding embedding must be zero vector:\n{self.embedding.weight[self.padding_idx]}'
+
     def forward(self, batch: Tensor, use_spc_mask: bool):    # pylint: disable=arguments-differ
         """
         Args:
@@ -54,10 +86,13 @@ class Embedder(nn.Module):
         Returns:
             embedding vectors
         """
+        self._check_padding()
+        _LOG.debug('batch.char:\n%s', batch.char)
         embeds = self.embedding(batch.char)
+        _LOG.debug('embeds:\n%s', embeds)
         if use_spc_mask:
-            left_spc = self.spc_dropout(batch.left_spc)
-            right_spc = self.spc_dropout(batch.right_spc)
+            left_spc = self._spc_dropout(batch.left_spc)
+            right_spc = self._spc_dropout(batch.right_spc)
             embeds += self.embedding(left_spc * FIELDS['char'].vocab.stoi['<w>'])
             embeds += self.embedding(right_spc * FIELDS['char'].vocab.stoi['</w>'])
         # 왼쪽과 오른쪽 패딩에는 zero 벡터인데 아래 positional encoding이 더해짐

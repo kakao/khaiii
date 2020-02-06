@@ -187,10 +187,10 @@ def run(args: Namespace):
     Args:
         args:  program arguments
     """
-    cfg = _load_config('{}/config.json'.format(args.in_dir))
+    cfg = _load_config('{}/config.json'.format(args.model_dir))
     setattr(cfg, 'rsc_src', args.rsc_src)
     rsc = Resource(cfg)
-    state_dict = torch.load('{}/model.state'.format(args.in_dir),
+    state_dict = torch.load('{}/model.state'.format(args.model_dir),
                             map_location=lambda storage, loc: storage)
     _validate_state_dict(cfg, rsc, state_dict)
     data = _get_data(rsc, state_dict)
@@ -212,7 +212,7 @@ def main():
     main function processes only argument parsing
     """
     parser = ArgumentParser(description='pickle trained model (state dict)')
-    parser.add_argument('-i', '--in-dir', help='model dir', metavar='DIR', required=True)
+    parser.add_argument('-m', '--model-dir', help='model dir', metavar='DIR', required=True)
     parser.add_argument('--rsc-src', help='resource source dir <default: ../rsc/src>',
                         metavar='DIR', default='../rsc/src')
     parser.add_argument('--debug', help='enable debug', action='store_true')
