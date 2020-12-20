@@ -1,5 +1,4 @@
 FROM pytorch/pytorch:latest
-MAINTAINER nako.sung@navercorp.com
 
 RUN apt-get update -y
 RUN apt-get install -y git cmake build-essential language-pack-ko
