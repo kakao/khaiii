@@ -16,6 +16,7 @@
 #endif
 #include "gtest/gtest.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 #include "khaiii/khaiii_dev.h"
 

@@ -13,6 +13,9 @@
 #include <exception>
 #include <memory>
 
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
+
 #include "khaiii/Config.hpp"
 #include "khaiii/KhaiiiApi.hpp"
 #include "khaiii/nn/tensor.hpp"

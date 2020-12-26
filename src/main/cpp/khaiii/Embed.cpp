@@ -13,6 +13,9 @@
 #include <cstdlib>
 #include <string>
 
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
+
 #include "khaiii/Config.hpp"
 #ifndef NDEBUG
 #include "khaiii/util.hpp"

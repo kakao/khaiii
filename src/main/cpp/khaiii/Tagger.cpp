@@ -15,6 +15,9 @@
 #include <vector>
 #include <utility>
 
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
+
 #include "khaiii/Config.hpp"
 #include "khaiii/Embed.hpp"
 #include "khaiii/Sentence.hpp"

@@ -18,6 +18,7 @@
     #include "gperftools/profiler.h"
 #endif
 #include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 #include "khaiii/KhaiiiApi.hpp"
 #include "khaiii/khaiii_dev.h"

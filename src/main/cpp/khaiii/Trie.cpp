@@ -18,6 +18,8 @@
 #include <string>
 
 #include "boost/lexical_cast.hpp"
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 #include "khaiii/KhaiiiApi.hpp"
 #include "khaiii/util.hpp"

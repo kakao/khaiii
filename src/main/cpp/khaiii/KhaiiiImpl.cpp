@@ -16,6 +16,7 @@
 #include <sstream>
 
 #include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 #include "khaiii/Sentence.hpp"
 #include "khaiii/Tagger.hpp"
@@ -200,6 +201,8 @@ void KhaiiiImpl::set_log_level(string name, string level) {
 
     if (name == "all") {
         spdlog::set_level(found->second);
+    } else if (name == "") {
+        throw Except(fmt::format("no logger name"));
     } else {
         auto logger = spdlog::get(name);
         if (!logger) throw Except(fmt::format("invalid logger name: {}", name));

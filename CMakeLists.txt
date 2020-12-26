@@ -6,9 +6,8 @@ if(NOT APPLE)
 endif()
 include("cmake/HunterGate.cmake")
 HunterGate(
-        URL "https://github.com/ruslo/hunter/archive/v0.23.34.tar.gz"
-        SHA1 "70287b1ffa810ee4e952052a9adff9b4856d0d54"
-        LOCAL
+    URL "https://github.com/cpp-pm/hunter/archive/v0.23.288.tar.gz"
+    SHA1 "6c9b2bc606d86ae31f96a62fc68f0a593024815b"
 )
 
 # versions
@@ -73,6 +72,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_definitions(-DFMT_HEADER_ONLY)
+add_definitions(-DSPDLOG_FMT_EXTERNAL=ON)
 if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_definitions(-O3)
     add_definitions(-g)

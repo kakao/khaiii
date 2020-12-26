@@ -14,6 +14,9 @@
 #include <memory>
 #include <vector>
 
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
+
 #include "khaiii/KhaiiiApi.hpp"
 #include "khaiii/Morph.hpp"
 #include "khaiii/util.hpp"

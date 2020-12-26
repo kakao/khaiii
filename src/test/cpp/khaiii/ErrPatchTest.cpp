@@ -15,6 +15,7 @@
 #include "cxxopts.hpp"
 #include "gtest/gtest.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 #include "khaiii/ErrPatch.hpp"
 #include "khaiii/KhaiiiApi.hpp"
