@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.12)
 
 # manage 3rd party libraries with "hunter"
 if(NOT APPLE)
