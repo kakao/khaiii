@@ -28,7 +28,7 @@ using std::vector;
 float relu(float x) {
     return std::max(x, 0.0f);
 }
-activation_t RELU = std::ptr_fun(relu);    ///< ReLU function pointer
+activation_t RELU = &relu;    ///< ReLU function pointer
 
 
 ///////////////
