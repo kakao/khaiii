@@ -1,0 +1,8 @@
+FROM pytorch/pytorch:1.7.0-cuda11.0-cudnn8-runtime
+
+RUN pip install tensorboardX tqdm
+COPY . /khaiii
+WORKDIR /khaiii/train
+ENV PYTHONPATH=/khaiii/src/main/python
+RUN python split_corpus.py --input corpus/sample.txt --out-pfx corpus/sample --dev 4 --test 4
+RUN python train.py --in-pfx corpus/sample --batch-size 4

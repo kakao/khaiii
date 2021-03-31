@@ -1,0 +1,41 @@
+FROM centos:7.9.2009 AS base
+
+# install base packages
+RUN yum -y install glibc-langpack-en glibc-langpack-ko python3 python3-pip
+RUN pip3 install --upgrade pip wheel
+
+# branch to build khaiii
+FROM base AS build
+RUN yum -y groupinstall "Development Tools" && \
+    yum -y install centos-release-scl && \
+    yum -y install devtoolset-7
+RUN pip3 install cmake
+COPY . /khaiii
+WORKDIR /khaiii/build
+RUN source /opt/rh/devtoolset-7/enable && \
+    cmake .. && \
+    make -j && \
+    make resource && \
+    test/khaiii && \
+    make install && \
+    make package_python
+WORKDIR /khaiii/build/package_python
+RUN source /opt/rh/devtoolset-7/enable && \
+    pip3 install .
+
+# branch to run khaiii
+FROM base AS runtime
+COPY --from=build /usr/local/bin/khaiii /usr/local/bin/
+COPY --from=build /usr/local/lib/libkhaiii.* /usr/local/lib/
+COPY --from=build /usr/local/share/khaiii/ /usr/local/share/khaiii/
+COPY --from=build /usr/local/include/khaiii/ /usr/local/include/khaiii/
+
+ENV PYTHON_VER=3.6
+ARG KHAIII_VER
+RUN echo "KHAIII_VER: ${KHAIII_VER}"
+RUN if [ "${KHAIII_VER}" = "" ]; then echo "build argument KHAIII_VER is not provided" && exit 1; fi
+COPY --from=build /usr/local/lib/python${PYTHON_VER}/site-packages/khaiii/ /usr/local/lib/python${PYTHON_VER}/site-packages/khaiii/
+COPY --from=build /usr/local/lib/python${PYTHON_VER}/site-packages/khaiii-${KHAIII_VER}.dist-info/ /usr/local/lib/python${PYTHON_VER}/site-packages/khaiii-${KHAIII_VER}.dist-info/
+
+ENV LANG=en_US.UTF-8
+WORKDIR /
