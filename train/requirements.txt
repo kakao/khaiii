@@ -1,3 +1,4 @@
 tensorboardX
 torch==0.4.1
 tqdm
+numpy>=1.22.0 # not directly required, pinned by Snyk to avoid a vulnerability
