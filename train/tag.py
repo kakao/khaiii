@@ -30,7 +30,7 @@ def run(args: Namespace):
     """
     tgr = PosTagger(args.model_dir, args.gpu_num)
     for line_num, line in enumerate(sys.stdin, start=1):
-        if line_num % 100000 == 0:
+        if not line_num % 100000:
             logging.info('%d00k-th line..', (line_num // 100000))
         line = line.rstrip('\r\n')
         if not line:
