@@ -36,14 +36,15 @@ def _load_cfg_rsc(rsc_src: str, model_size: str) -> Tuple[Namespace, Resource]:
         resource
     """
     file_path = '{}/{}.config.json'.format(rsc_src, model_size)
-    cfg_dic = json.load(open(file_path, 'r', encoding='UTF-8'))
-    logging.info('config: %s', json.dumps(cfg_dic, indent=4, sort_keys=True))
-    cfg = Namespace()
-    for key, val in cfg_dic.items():
-        setattr(cfg, key, val)
-    setattr(cfg, 'rsc_src', rsc_src)
-    rsc = Resource(cfg)
-    return cfg, rsc
+    with open(file_path, 'r', encoding='UTF-8') as f:
+        cfg_dic = json.load(f)
+        logging.info('config: %s', json.dumps(cfg_dic, indent=4, sort_keys=True))
+        cfg = Namespace()
+        for key, val in cfg_dic.items():
+            setattr(cfg, key, val)
+        setattr(cfg, 'rsc_src', rsc_src)
+        rsc = Resource(cfg)
+        return cfg, rsc
 
 
 def _write_config(cfg: Namespace, rsc: Resource, rsc_dir: str):
