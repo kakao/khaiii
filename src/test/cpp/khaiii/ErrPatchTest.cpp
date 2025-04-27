@@ -15,12 +15,15 @@
 #include "cxxopts.hpp"
 #include "gtest/gtest.h"
 #include "spdlog/spdlog.h"
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 #include "khaiii/ErrPatch.hpp"
 #include "khaiii/KhaiiiApi.hpp"
 #include "khaiii/Word.hpp"
 #include "khaiii/util.hpp"
 
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 ///////////////
 // variables //
@@ -47,7 +50,7 @@ class ErrPatchTest: public testing::Test {
  public:
     virtual void SetUp() {
         std::string rsc_dir = (*prog_args)["rsc-dir"].as<string>();
-        ASSERT_NO_THROW(_khaiii_api->open(rsc_dir, "{\"errpatch\": false}"));
+        ASSERT_NO_THROW(_khaiii_api->open(rsc_dir.c_str(), "{\"errpatch\": false}"));
     }
 
     virtual void TearDown() {

@@ -38,7 +38,7 @@ class Conv1d {
      * @param  kernel_size  kernel size
      * @param  activation  activation function
      */
-    void open(std::string path, int in_ch, int out_ch, int kernel_size,
+    void open(const char* path, int in_ch, int out_ch, int kernel_size,
               const activation_t* activation = nullptr);
 
     /**

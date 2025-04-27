@@ -52,7 +52,7 @@ class Word: public khaiii_word_t {
      * @param  wbegins  begin positions for each unicode characters
      * @param  wends  end positions for each unicode characters
      */
-    void set_begin_length(const std::wstring &wchars, const std::vector<int> &wbegins,
+    void set_begin_length(const wchar_t* wchars, const std::vector<int> &wbegins,
                           const std::vector<int> &wends);
 
     /**
@@ -76,7 +76,7 @@ class Word: public khaiii_word_t {
      * @param  wbegins  각 음절별 시작 byte 위치
      * @param  wends  각 음절별 끝 byte 위치
      */
-    void organize(const std::wstring& wraw, const std::vector<int>& wbegins,
+    void organize(const wchar_t* wraw, const std::vector<int>& wbegins,
                   const std::vector<int>& wends);
 
     /**

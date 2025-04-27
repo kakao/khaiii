@@ -12,7 +12,6 @@ __copyright__ = 'Copyright (C) 2019-, Kakao Corp. All rights reserved.'
 # imports #
 ###########
 from argparse import Namespace
-from collections import OrderedDict
 
 import torch
 import torch.nn as nn
@@ -52,6 +51,36 @@ class ConvLayer(nn.Module):
         return features
 
 
+class HiddenLayer(nn.Module):
+    """
+    형태소 태깅 모델과 띄어쓰기 모델이 각각 학습하는 히든 레이어
+    """
+    def __init__(self, cfg: Namespace, rsc: Resource, conv_layer_len: int, is_spc: bool):
+        """
+        Args:
+            cfg:  config
+            rsc:  Resource object
+            conv_layer_len:  convolution 레이어의 n-gram 타입 갯수
+            is_spc:  띄어쓰기 모델 여부
+        """
+        super().__init__()
+        setattr(cfg, 'hidden_dim',
+                (cfg.embed_dim * conv_layer_len + len(rsc.vocab_out)) // 2)
+        feature_dim = cfg.embed_dim * conv_layer_len
+        tag_dim = 2 if is_spc else len(rsc.vocab_out)
+        self.layers = nn.ModuleList([nn.Linear(feature_dim, cfg.hidden_dim),
+                                     nn.Linear(cfg.hidden_dim, tag_dim)])
+
+    def forward(self, features):    # pylint: disable=arguments-differ
+        # feature => hidden
+        features_drop = F.dropout(features)
+        hidden_out = F.relu(self.layers[0](features_drop))
+        # hidden => tag
+        hidden_out_drop = F.dropout(hidden_out)
+        tag_out = self.layers[1](hidden_out_drop)
+        return tag_out
+
+
 class Model(nn.Module):
     """
     형태소 태깅 모델, 띄어쓰기 모델
@@ -66,22 +95,8 @@ class Model(nn.Module):
         self.cfg = cfg
         self.rsc = rsc
         self.conv_layer = ConvLayer(cfg, rsc)
-        hidden_dim = (cfg.embed_dim * len(self.conv_layer.convs) + len(rsc.vocab_out)) // 2
-        setattr(cfg, 'hidden_dim', hidden_dim)
-        self.hidden_layer_pos = nn.Sequential(OrderedDict([
-            ('feature_dropout', nn.Dropout(p=cfg.hdn_dropout)),
-            ('conv2hidden', nn.Linear(cfg.embed_dim * len(self.conv_layer.convs), hidden_dim)),
-            ('relu1', nn.ReLU()),
-            ('hidden_dropout', nn.Dropout(p=cfg.hdn_dropout)),
-            ('hidden2logit', nn.Linear(hidden_dim, len(rsc.vocab_out))),
-        ]))
-        self.hidden_layer_spc = nn.Sequential(
-            nn.Dropout(p=cfg.hdn_dropout),
-            nn.Linear(cfg.embed_dim * len(self.conv_layer.convs), hidden_dim),
-            nn.ReLU(),
-            nn.Dropout(p=cfg.hdn_dropout),
-            nn.Linear(hidden_dim, 2),
-        )
+        self.hidden_layer_pos = HiddenLayer(cfg, rsc, len(self.conv_layer.convs), is_spc=False)
+        self.hidden_layer_spc = HiddenLayer(cfg, rsc, len(self.conv_layer.convs), is_spc=True)
 
     def forward(self, *inputs):
         contexts, left_spc_masks, right_spc_masks = inputs

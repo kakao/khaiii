@@ -38,7 +38,7 @@ class ErrPatch {
      * 리소스를 연다.
      * @param  dir  리소스 디렉토리
      */
-    void open(std::string dir);
+    void open(const char* dir);
 
     void close();    ///< 리소스를 닫는다.
 

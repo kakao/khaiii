@@ -13,11 +13,13 @@
 //////////////
 #include <sys/stat.h>
 
-#include <memory>
 #include <sstream>
 #include <string>
+#include <cstring>
 #include <utility>
 #include <vector>
+#include <cassert>
+#include <memory>
 
 #include "boost/locale/encoding_utf.hpp"
 
@@ -45,8 +47,9 @@ inline bool is_space(wchar_t chr) {
  * @param str  UTF-8 string
  * @return  wstring
  */
-inline std::wstring utf8_to_wstr(const std::string& str) {
-    return boost::locale::conv::utf_to_utf<wchar_t>(str.c_str(), str.c_str() + str.length());
+inline std::wstring utf8_to_wstr(const char* str) {
+	assert(str);
+    return boost::locale::conv::utf_to_utf<wchar_t>(str, str + ::strlen(str));
 }
 
 
@@ -55,8 +58,9 @@ inline std::wstring utf8_to_wstr(const std::string& str) {
  * @param  wstr  wstring
  * @return  UTF-8 string
  */
-inline std::string wstr_to_utf8(const std::wstring& wstr) {
-    return boost::locale::conv::utf_to_utf<char>(wstr.c_str(), wstr.c_str() + wstr.length());
+inline std::string wstr_to_utf8(const wchar_t* wstr) {
+	assert(wstr);
+    return boost::locale::conv::utf_to_utf<char>(wstr, wstr + ::wcslen(wstr));
 }
 
 
@@ -66,7 +70,7 @@ inline std::string wstr_to_utf8(const std::wstring& wstr) {
  * @param  deilm  delimiter char
  * @return  list of splitted strings
  */
-inline std::vector<std::string> split(const std::string& str, char delim) {
+inline std::vector<std::string> split(const char* str, char delim) {
     std::stringstream sss(str);
     std::vector<std::string> elems;
     for (std::string item; std::getline(sss, item, delim); ) {
@@ -81,9 +85,10 @@ inline std::vector<std::string> split(const std::string& str, char delim) {
  * @param  path  path
  * @return  true if exists
  */
-inline bool file_exists(std::string path) {
+inline bool file_exists(const char* path) {
+	assert(path);
     struct stat st;
-    return stat(path.c_str(), &st) == 0;
+    return stat(path, &st) == 0;
 }
 
 

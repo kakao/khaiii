@@ -11,6 +11,7 @@
 // includes //
 //////////////
 #include <fstream>
+#include <cassert>
 
 #include "fmt/format.h"
 #include "nlohmann/json.hpp"
@@ -31,7 +32,9 @@ using std::string;
 /////////////
 // methods //
 /////////////
-void Config::read_from_file(string path) {
+void Config::read_from_file(const char* path) {
+	assert(path);
+
     try {
         ifstream ifs(path);
         nlohmann::json jsn;

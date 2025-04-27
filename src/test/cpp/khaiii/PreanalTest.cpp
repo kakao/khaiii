@@ -40,7 +40,7 @@ class PreanalTest: public testing::Test {
  public:
     virtual void SetUp() {
         std::string rsc_dir = (*prog_args)["rsc-dir"].as<string>();
-        ASSERT_NO_THROW(_preanal.open(rsc_dir));
+        ASSERT_NO_THROW(_preanal.open(rsc_dir.c_str()));
     }
 
     virtual void TearDown() {

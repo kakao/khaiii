@@ -10,6 +10,8 @@
 //////////////
 // includes //
 //////////////
+
+#include <cassert>
 #include <algorithm>
 #include <memory>
 #include <vector>
@@ -22,6 +24,9 @@
 #include "khaiii/util.hpp"
 #include "khaiii/nn/tensor.hpp"
 
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 namespace khaiii {
 

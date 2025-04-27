@@ -16,11 +16,16 @@
 #include <list>
 #include <memory>
 #include <string>
+#include <cassert>
 
 #include "boost/lexical_cast.hpp"
 
 #include "khaiii/KhaiiiApi.hpp"
 #include "khaiii/util.hpp"
+
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 
 namespace khaiii {
@@ -59,13 +64,18 @@ Trie::~Trie() {
 /////////////
 // methods //
 /////////////
-void Trie::open(string path) {
+void Trie::open(const char* path) {
     _mmf.open(path);
 
 #ifndef NDEBUG
     const _node_t* root_node = _mmf.data();
-    for (int i = 0; i < sizeof(root_node) / sizeof(_node_t); ++i) {
-        SPDLOG_TRACE(_log, root_node[i].str(root_node));
+
+    for (
+		    int i = 0; 
+		    i < _mmf.size() 
+		    /** It was sizeof(root_node) / sizeof(_node_t) has changed to closest intention. */; 
+		    ++i) {
+	    SPDLOG_TRACE(_log, root_node[i].str(root_node));
     }
 #endif
 }

@@ -36,7 +36,7 @@ class KhaiiiApi {
      * @param  rsc_dir  resource directory
      * @param  opt_str  option string (JSON format)
      */
-    virtual void open(std::string rsc_dir = "", std::string opt_str = "") = 0;
+    virtual void open(const char* rsc_dir = "", const char* opt_str = "") = 0;
 
     /**
      * analyze input text

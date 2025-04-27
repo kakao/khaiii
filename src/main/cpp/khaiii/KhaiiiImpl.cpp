@@ -4,6 +4,8 @@
  */
 
 
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/sinks/stdout_color_sinks.h>
 #include "khaiii/KhaiiiImpl.hpp"
 
 
@@ -14,6 +16,7 @@
 #include <map>
 #include <memory>
 #include <sstream>
+#include <cassert>
 
 #include "spdlog/spdlog.h"
 
@@ -83,21 +86,23 @@ shared_ptr<KhaiiiApi> KhaiiiApi::create() {
 }
 
 
-void KhaiiiImpl::open(string rsc_dir, string opt_str) {
+void KhaiiiImpl::open(const char* rsc_dir, const char* opt_str) {
+	assert(rsc_dir && opt_str);
+
     unique_lock<recursive_mutex> lock(_mutex);
     if (!_is_opened) close();
 
-    rsc_dir = _check_rsc_dir(rsc_dir);
+    std::string __rsc_dir = _check_rsc_dir(rsc_dir);
 
     // load configurations
     // pos-tagger configuration
-    _cfg.read_from_file(rsc_dir + "/config.json");
-    _cfg.override_from_str(opt_str.c_str());
-    // override options passed by argument
-    _cfg.override_from_str(opt_str.c_str());
+    _cfg.read_from_file((__rsc_dir + "/config.json").c_str());
+
+    /** It has been iterated. deleting... */
+    _cfg.override_from_str(opt_str);
 
     // open resources
-    _rsc.open(_cfg, rsc_dir);
+    _rsc.open(_cfg, __rsc_dir.c_str());
     _is_opened = true;
 }
 
@@ -106,10 +111,13 @@ const khaiii_word_t* KhaiiiImpl::analyze(const char* input, const char* opt_str)
     if (input == nullptr) throw Except("input is nullptr");
     unique_lock<recursive_mutex> lock(_mutex);
     if (!_is_opened) throw Except("handle is not opened");
+
     auto sent = make_shared<Sentence>(input);
     auto cfg = _cfg.copy_and_override(opt_str);
+
     Tagger tgr(*cfg, _rsc, sent);
     tgr.tag();
+
     if (sent->words.size() == 0) return nullptr;
     sent->organize();
     return _deposit_sent(sent);
@@ -175,8 +183,9 @@ void KhaiiiImpl::close() {
 }
 
 
-void KhaiiiImpl::set_err_msg(string msg) {
-    _err_msg = msg;
+void KhaiiiImpl::set_err_msg(const char* msg) {
+	assert(msg);
+	_err_msg = msg;
 }
 
 
@@ -185,7 +194,9 @@ const char* KhaiiiImpl::get_err_msg() const {
 }
 
 
-void KhaiiiImpl::set_log_level(string name, string level) {
+void KhaiiiImpl::set_log_level(const char* name, const char* level) {
+	assert(name && level);
+
     map<string, spdlog::level::level_enum> levels = {
         {"trace", spdlog::level::trace},
         {"debug", spdlog::level::debug},
@@ -198,7 +209,7 @@ void KhaiiiImpl::set_log_level(string name, string level) {
     auto found = levels.find(level);
     if (found == levels.end()) throw Except(fmt::format("invalid log level: {}", level));
 
-    if (name == "all") {
+    if (name[0] == 'a' && name[1] == 'l' && name[2] == 'l' && !name[3]) {
         spdlog::set_level(found->second);
     } else {
         auto logger = spdlog::get(name);
@@ -208,14 +219,21 @@ void KhaiiiImpl::set_log_level(string name, string level) {
 }
 
 
-void KhaiiiImpl::set_log_levels(string name_level_pairs) {
-    for (auto name_level_pair : split(name_level_pairs, ',')) {
-        auto name_level = split(name_level_pair, ':');
-        if (name_level.size() != 2) {
-            throw Except(fmt::format("invalid logger name/level pair: {}", name_level_pair));
-        }
-        KhaiiiImpl::set_log_level(name_level[0], name_level[1]);
-    }
+void KhaiiiImpl::set_log_levels(const char* name_level_pairs) {
+	for (const auto& name_level_pair : split(name_level_pairs, ',')) 
+	{
+
+		auto name_level = split(name_level_pair.c_str(), ':');
+
+		if (name_level.size() != 2) {
+			throw Except(fmt::format("invalid logger name/level pair: {}", name_level_pair));
+		}
+
+		KhaiiiImpl::set_log_level(
+				name_level[0].c_str()
+				, name_level[1].c_str()
+				);
+	}	
 }
 
 
@@ -230,12 +248,18 @@ void KhaiiiImpl::_withdraw_sent(const khaiii_word_t* head_word) {
     _result_cloakroom.erase(head_word);
 }
 
-string KhaiiiImpl::_check_rsc_dir(string rsc_dir) {
-    if (rsc_dir.length() == 0) rsc_dir = fmt::format("{}/share/khaiii", PREFIX);
-    if (!file_exists(rsc_dir)) {
-        throw Except(fmt::format("resource directory not found: {}", rsc_dir));
-    }
-    return rsc_dir;
+string KhaiiiImpl::_check_rsc_dir(const char* rsc_dir) {
+	assert(rsc_dir);
+
+	std::string _rsc_dir(rsc_dir);
+
+	if (!strlen(rsc_dir)) _rsc_dir = fmt::format("{}/share/khaiii", PREFIX);
+
+	if (!file_exists(rsc_dir)) {
+		throw Except(fmt::format("resource directory not found: {}", rsc_dir));
+	}
+
+    return _rsc_dir;
 }
 
 

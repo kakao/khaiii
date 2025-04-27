@@ -20,6 +20,9 @@
 #include "khaiii/util.hpp"
 
 
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/sinks/stdout_color_sinks.h>
+
 namespace khaiii {
 
 
@@ -59,7 +62,7 @@ Sentence::Sentence(const char* raw): _raw(raw), _morph_cnt(0) {
 void Sentence::organize() {
     for (int i = 0; i < words.size(); ++i) {
         if (i > 0) words[i-1]->next = words[i].get();
-        words[i]->organize(_wraw, _wbegins, _wends);
+        words[i]->organize(_wraw.c_str(), _wbegins, _wends);
 #ifndef NDEBUG
         _log->debug("[{}] word: {}", i, words[i]->str());
         for (int j = 0; j < words[i]->morph_vec.size(); ++j) {
@@ -100,7 +103,7 @@ void Sentence::_tokenize() {
     }
 
     for (auto& word : words) {
-        word->set_begin_length(_wraw, _wbegins, _wends);
+        word->set_begin_length(_wraw.c_str(), _wbegins, _wends);
         _log->debug("'{}'{}~{}|{},{}", word->str(), word->begin, word->length,
                     (word->wbegin - &_wraw[0]), word->wlength);
     }
@@ -109,8 +112,8 @@ void Sentence::_tokenize() {
 
 void Sentence::_characterize() {
     assert(_raw != nullptr);
-    auto en_US_utf8 = locale("en_US.UTF-8");
-    auto& facet = use_facet<codecvt<wchar_t, char, mbstate_t>>(en_US_utf8);
+    std::locale en_sysdefault_utf8 = locale("");
+    auto& facet = use_facet<codecvt<wchar_t, char, mbstate_t>>(en_sysdefault_utf8);
     auto mbst = mbstate_t();
     const char* from_next = nullptr;
     wstringstream wss;

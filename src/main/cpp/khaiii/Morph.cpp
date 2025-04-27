@@ -41,13 +41,16 @@ static const char* _TAG_SET[POS_TAG_SIZE] = {
 ////////////////////
 // ctors and dtor //
 ////////////////////
-Morph::Morph(wstring wlex, pos_tag_t tag, const wchar_t* wbegin, int wlength)
-        : wlex(wlex), wbegin(wbegin), wlength(wlength), _lex(wstr_to_utf8(wlex)) {
-    lex = _lex.c_str();
-    this->tag = pos_str(tag);
-    begin = -1;
-    length = -1;
-    next = nullptr;
+Morph::Morph(const wchar_t* wlex, pos_tag_t tag, const wchar_t* wbegin, int wlength)
+        : wlex(wlex), wbegin(wbegin), wlength(wlength), _lex(wstr_to_utf8(wlex)) 
+{
+	assert(wlex);
+
+	lex = _lex.c_str();
+	this->tag = pos_str(tag);
+	begin = -1;
+	length = -1;
+	next = nullptr;
 }
 
 
@@ -59,17 +62,22 @@ const char* Morph::pos_str(pos_tag_t num) {
     return _TAG_SET[num-1];
 }
 
-void Morph::organize(const wstring& wraw, const vector<int>& wbegins, const vector<int>& wends) {
-    int begin_idx = wbegin - wraw.c_str();
-    int end_idx = begin_idx + wlength - 1;
-    begin = wbegins[begin_idx];
-    length = wends[end_idx] - begin;
+void Morph::organize(const wchar_t* wraw, const vector<int>& wbegins, const vector<int>& wends) {
+	assert(wraw);
+
+	int begin_idx = wbegin - wraw;
+	int end_idx = begin_idx + wlength - 1;
+
+	assert(end_idx - begin_idx >= 0);
+
+	begin = wbegins[begin_idx];
+	length = wends[end_idx] - begin;
 }
 
 
 
 string Morph::str() {
-    return wstr_to_utf8(wstr());
+    return wstr_to_utf8(wstr().c_str());
 }
 
 

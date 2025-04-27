@@ -7,11 +7,16 @@
 #include "khaiii/Embed.hpp"
 
 
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+
 //////////////
 // includes //
 //////////////
 #include <cstdlib>
 #include <string>
+#include <cassert>
 
 #include "khaiii/Config.hpp"
 #ifndef NDEBUG
@@ -22,7 +27,6 @@
 namespace khaiii {
 
 
-using std::make_shared;
 using std::shared_ptr;
 using std::string;
 
@@ -36,8 +40,10 @@ shared_ptr<spdlog::logger> Embed::_log = spdlog::stderr_color_mt("Embed");
 /////////////
 // methods //
 /////////////
-void Embed::open(const Config& cfg, string dir) {
-    _embed_mmf.open(fmt::format("{}/embed.bin", dir));
+void Embed::open(const Config& cfg, const char* dir) {
+	assert(dir);
+
+    _embed_mmf.open(fmt::format("{}/embed.bin", dir).c_str());
     _keys = reinterpret_cast<const wchar_t*>(_embed_mmf.data());
     const float* val_start = reinterpret_cast<const float*>(_keys + cfg.vocab_size);
     for (int i = 0; i < cfg.vocab_size; ++i) {
@@ -87,6 +93,8 @@ const embedding_t& Embed::right_padding() const {
 
 
 int Embed::_key_cmp(const void* left, const void* right) {
+	assert(left && right);
+
     const wchar_t* left_ = reinterpret_cast<const wchar_t*>(left);
     const wchar_t* right_ = reinterpret_cast<const wchar_t*>(right);
     return *left_ - *right_;

@@ -4,6 +4,7 @@
  */
 
 
+#include <cassert>
 #include "khaiii/nn/Linear.hpp"
 
 
@@ -38,7 +39,7 @@ Linear::~Linear() {
 /////////////
 // methods //
 /////////////
-void Linear::open(string path, int in_dim, int out_dim, bool has_bias,
+void Linear::open(const char* path, int in_dim, int out_dim, bool has_bias,
                   const activation_t* activation) {
     // Eigen은 column 우선으로 저장합니다.
     // 따라서 matrix map의 경우 row, col을 거꾸로 해서 생성한 다음,

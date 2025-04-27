@@ -12,6 +12,7 @@
 //////////////
 #include <string>
 #include <vector>
+#include <cassert>
 
 #include "khaiii/Morph.hpp"
 #include "khaiii/util.hpp"
@@ -42,9 +43,11 @@ Word::Word(const wchar_t* wbegin, int wlength): wbegin(wbegin), wlength(wlength)
 /////////////
 // methods //
 /////////////
-void Word::set_begin_length(const wstring &wchars, const vector<int> &wbegins,
+void Word::set_begin_length(const wchar_t* wchars, const vector<int> &wbegins,
                             const vector<int> &wends) {
-    int wbegin_idx = wbegin - wchars.c_str();
+	assert(wchars);
+
+    int wbegin_idx = wbegin - wchars;
     begin = wbegins.at(wbegin_idx);
     length = wends.at(wbegin_idx + wlength - 1) - begin;
     char_tags.resize(wlength);
@@ -60,12 +63,13 @@ void Word::set_embeds(const Resource& rsc) {
 void Word::add_morph(const wstringstream& wlex, uint8_t tag, int begin_idx, int end_idx) {
     const wchar_t* morph_wbegin = wbegin + begin_idx;
     int morph_wlength = end_idx - begin_idx + 1;
-    morph_vec.emplace_back(make_shared<Morph>(wlex.str(), static_cast<pos_tag_t>(tag), morph_wbegin,
+    morph_vec.emplace_back(
+		    make_shared<Morph>(wlex.str().c_str(), static_cast<pos_tag_t>(tag), morph_wbegin,
                            morph_wlength));
 }
 
 
-void Word::organize(const wstring& wraw, const vector<int>& wbegins, const vector<int>& wends) {
+void Word::organize(const wchar_t* wraw, const vector<int>& wbegins, const vector<int>& wends) {
     for (int i = 0; i < morph_vec.size(); ++i) {
         if (i > 0) morph_vec[i-1]->next = morph_vec[i].get();
         morph_vec[i]->organize(wraw, wbegins, wends);
@@ -105,7 +109,7 @@ void Word::make_morphs() {
 
 
 string Word::str() const {
-    return wstr_to_utf8(wstr());
+    return wstr_to_utf8(wstr().c_str());
 }
 
 

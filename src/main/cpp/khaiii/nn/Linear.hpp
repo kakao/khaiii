@@ -40,7 +40,7 @@ class Linear {
      * @param  has_bias  whether has bias or not
      * @param  activation  activation function
      */
-    void open(std::string path, int in_dim, int out_dim, bool has_bias,
+    void open(const char* path, int in_dim, int out_dim, bool has_bias,
               const activation_t* activation = nullptr);
 
     void close();    ///< 리소스를 닫는다.

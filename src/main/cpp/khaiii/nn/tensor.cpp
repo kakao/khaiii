@@ -3,7 +3,7 @@
  * @copyright  Copyright (C) 2017-, Kakao Corp. All rights reserved.
  */
 
-
+#include <cassert>
 #include "khaiii/nn/tensor.hpp"
 
 

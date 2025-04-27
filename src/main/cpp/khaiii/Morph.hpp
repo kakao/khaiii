@@ -40,7 +40,7 @@ class Morph: public khaiii_morph_t {
     const wchar_t* wbegin = nullptr;    ///< unicode string begin address
     int wlength = 0;    ///< unicode string length
 
-    Morph(std::wstring wlex, pos_tag_t tag, const wchar_t* wbegin, int wlength);    ///< ctor
+    Morph(const wchar_t* wlex, pos_tag_t tag, const wchar_t* wbegin, int wlength);    ///< ctor
 
     /**
      * API 결과 구조체의 내용을 채운다.
@@ -48,7 +48,7 @@ class Morph: public khaiii_morph_t {
      * @param  wbegins  각 음절별 시작 byte 위치
      * @param  wends  각 음절별 끝 byte 위치
      */
-    void organize(const std::wstring& wraw, const std::vector<int>& wbegins,
+    void organize(const wchar_t* wraw, const std::vector<int>& wbegins,
                   const std::vector<int>& wends);
 
     /**

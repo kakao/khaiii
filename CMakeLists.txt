@@ -1,16 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 
-# manage 3rd party libraries with "hunter"
-if(NOT APPLE)
-    set(HUNTER_BUILD_SHARED_LIBS ON)
-endif()
-include("cmake/HunterGate.cmake")
-HunterGate(
-        URL "https://github.com/ruslo/hunter/archive/v0.23.34.tar.gz"
-        SHA1 "70287b1ffa810ee4e952052a9adff9b4856d0d54"
-        LOCAL
-)
-
 # versions
 file(READ "include/khaiii/khaiii_api.h" KHAIII_VERSION_HEADER)
 string(REGEX MATCH "#define[ \t]+KHAIII_VERSION_MAJOR[ \t]+([0-9]+)" _KHAIII_VERSION_MAJOR "${KHAIII_VERSION_HEADER}")
@@ -18,6 +7,8 @@ set(KHAIII_VERSION_MAJOR ${CMAKE_MATCH_1} CACHE STRING "major version" FORCE)
 string(REGEX MATCH "#define[ \t]+KHAIII_VERSION_MINOR[ \t]+([0-9]+)" _KHAIII_VERSION_MINOR "${KHAIII_VERSION_HEADER}")
 set(KHAIII_VERSION_MINOR ${CMAKE_MATCH_1} CACHE STRING "minor version" FORCE)
 set(KHAIII_VERSION ${KHAIII_VERSION_MAJOR}.${KHAIII_VERSION_MINOR} CACHE STRING "version" FORCE)
+
+include(cmake/ae2f_Core.cmake)
 
 # project
 project(khaiii VERSION ${KHAIII_VERSION})
@@ -51,23 +42,24 @@ endif()
 
 set(CMAKE_DEBUG_POSTFIX "_debug")
 
-# dependent 3rd party libraries
-hunter_add_package(Boost)
-find_package(Boost CONFIG REQUIRED)
-hunter_add_package(cxxopts)
-find_package(cxxopts CONFIG REQUIRED)
-hunter_add_package(Eigen)
-find_package(Eigen3 CONFIG REQUIRED)
-hunter_add_package(fmt)
-find_package(fmt CONFIG REQUIRED)
-hunter_add_package(GTest)
-find_package(GTest CONFIG REQUIRED)
-hunter_add_package(nlohmann_json)
-find_package(nlohmann_json CONFIG REQUIRED)
-hunter_add_package(spdlog)
-find_package(spdlog CONFIG REQUIRED)
-
+# Available on modern Windows & Linux
 find_package(Threads REQUIRED)
+
+# dependent 3rd party libraries (Automatically installable)
+ae2f_CoreLibFetchX_NS(jarro2783 cxxopts cxxopts master)
+ae2f_CoreLibFetchX_NS(fmtlib fmt fmt master)
+
+find_package(nlohmann_json)
+if(NOT ${nlohmann_json_FOUND})
+	ae2f_CoreLibFetch_NS(nlohmann json json master)
+endif()
+
+ae2f_CoreLibFetchX_NS(gabime spdlog spdlog master)
+
+# dependent 3rd party libraries (Manual step needed)
+find_package(Boost REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(GTest REQUIRED)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -151,9 +143,9 @@ endif()
 
 # resource
 add_custom_target(resource
-        COMMAND make PREFIX=${CMAKE_BINARY_DIR} -C ${CMAKE_SOURCE_DIR}/rsc)
+        COMMAND make PREFIX=${CMAKE_BINARY_DIR}/test -C ${CMAKE_SOURCE_DIR}/rsc)
 add_custom_target(large_resource
-        COMMAND make PREFIX=${CMAKE_BINARY_DIR} MODEL_SIZE=large -C ${CMAKE_SOURCE_DIR}/rsc)
+        COMMAND make PREFIX=${CMAKE_BINARY_DIR}/test MODEL_SIZE=large -C ${CMAKE_SOURCE_DIR}/rsc)
 
 # test
 enable_testing()

@@ -43,30 +43,40 @@ class Trie {
      * 리소스를 연다.
      * @param  path  파일 경로
      */
-    void open(std::string path);
+    void open(const char* path);
 
     void close();    ///< 리소스를 닫는다.
+		     
+
+    /**
+     * @deprecated
+     * It has been commented. \n
+     * And I have no idea why.
+     * */
+#if 0
 
     /*
      * 키를 이용해 값을 찾는다.
      * @param  key  키 문자열
      * @return  값. 키가 없을 경우 boost::none
      */
-    // boost::optional<uint32_t> find(const std::wstring& key) const;
+    boost::optional<uint32_t> find(const std::wstring& key) const;
 
     /*
      * 키를 이용해 값을 찾는다.
      * @param  key  키 문자열
      * @return  값. 키가 없을 경우 boost::none
      */
-    // boost::optional<uint32_t> find(const wchar_t* key) const;
+    boost::optional<uint32_t> find(const wchar_t* key) const;
+
+#endif
 
     /*
      * 접두사가 같은 모든 매칭 결과를 검색한다.
      * @param  text  검색할 문자열
      * @return  매칭 결과 리스트
      */
-    std::list<match_t> search_common_prefix_matches(const std::wstring& text,
+    std::list<match_t> search_common_prefix_matches(const  std::wstring& text,
                                                     int max_len = INT_MAX) const;
 
     /*

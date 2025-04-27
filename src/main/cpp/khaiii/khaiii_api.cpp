@@ -65,7 +65,7 @@ int khaiii_open(const char* rsc_dir, const char* opt_str) {
 const khaiii_word_t* khaiii_analyze(int handle, const char* input, const char* opt_str) {
     if (handle <= 0 || handle >= KHAIII_HANDLES.size()) {
         unique_lock<recursive_mutex> lock(KHAIII_HANDLES[0]->get_mutex());
-        KHAIII_HANDLES[0]->set_err_msg(fmt::format("invalid handle: {}", handle));
+        KHAIII_HANDLES[0]->set_err_msg(fmt::format("invalid handle: {}", handle).c_str());
         return nullptr;
     }
     auto khaiii_impl = KHAIII_HANDLES[handle];
@@ -85,7 +85,7 @@ const khaiii_word_t* khaiii_analyze(int handle, const char* input, const char* o
 void khaiii_free_results(int handle, const khaiii_word_t* results) {
     unique_lock<recursive_mutex> lock(KHAIII_HANDLES[0]->get_mutex());
     if (handle <= 0 || handle >= KHAIII_HANDLES.size()) {
-        KHAIII_HANDLES[0]->set_err_msg(fmt::format("invalid handle: {}", handle));
+        KHAIII_HANDLES[0]->set_err_msg(fmt::format("invalid handle: {}", handle).c_str());
         return;
     }
     auto khaiii_impl = KHAIII_HANDLES[handle];
@@ -100,7 +100,7 @@ void khaiii_free_results(int handle, const khaiii_word_t* results) {
 void khaiii_close(int handle) {
     unique_lock<recursive_mutex> lock(KHAIII_HANDLES[0]->get_mutex());
     if (handle <= 0 || handle >= KHAIII_HANDLES.size()) {
-        KHAIII_HANDLES[0]->set_err_msg(fmt::format("invalid handle: {}", handle));
+        KHAIII_HANDLES[0]->set_err_msg(fmt::format("invalid handle: {}", handle).c_str());
         return;
     }
     auto khaiii_impl = KHAIII_HANDLES[handle];

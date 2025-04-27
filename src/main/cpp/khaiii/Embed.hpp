@@ -36,7 +36,7 @@ class Embed {
      * @param  cfg  config
      * @param  dir  base directory
      */
-    void open(const Config& cfg, std::string dir);
+    void open(const Config& cfg, const char* dir);
 
     void close();    ///< 리소스를 닫는다.
 

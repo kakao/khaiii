@@ -23,40 +23,17 @@ import subprocess
 import zipfile
 
 from setuptools import setup
-from setuptools.command.install import install
 
 
 #############
 # constants #
 #############
 _SRC_NAME = '@CPACK_SOURCE_PACKAGE_FILE_NAME@'
-_MODEL_SIZE = 'base'
 
 
 #########
 # types #
 #########
-class InstallCommand(install):
-    """
-    custom handler for 'install' command
-    """
-    user_options = install.user_options + [
-        ('model-size=', None, 'model size (base or large)'),
-    ]
-
-    def initialize_options(self):
-        install.initialize_options(self)
-        self.model_size = 'base'
-
-    def finalize_options(self):
-        install.finalize_options(self)
-
-    def run(self):
-        global _MODEL_SIZE    # pylint: disable=global-statement
-        _MODEL_SIZE = self.model_size
-        install.run(self)
-
-
 class CustomBuild(build):
     """
     custom handler for 'build' command
@@ -70,8 +47,7 @@ class CustomBuild(build):
         build_dir = '{}/build'.format(_SRC_NAME)
         os.makedirs(build_dir, exist_ok=True)
         subprocess.check_call('cmake ..', cwd=build_dir, shell=True)
-        resource_target = 'large_resource' if _MODEL_SIZE == 'large' else 'resource'
-        subprocess.check_call('make all {}'.format(resource_target), cwd=build_dir, shell=True)
+        subprocess.check_call('make all resource', cwd=build_dir, shell=True)
         shutil.rmtree('khaiii/lib', ignore_errors=True)
         shutil.copytree('{}/lib'.format(build_dir), 'khaiii/lib')
         shutil.rmtree('khaiii/share', ignore_errors=True)
@@ -115,8 +91,5 @@ setup(
     setup_requires=['pytest-runner', ],
     tests_require=['pytest', ],
     zip_safe=False,
-    cmdclass={
-        'install': InstallCommand,
-        'build': CustomBuild,
-    }
+    cmdclass={'build': CustomBuild}
 )
