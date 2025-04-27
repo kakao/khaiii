@@ -143,9 +143,9 @@ endif()
 
 # resource
 add_custom_target(resource
-        COMMAND make PREFIX=${CMAKE_BINARY_DIR}/test -C ${CMAKE_SOURCE_DIR}/rsc)
+        COMMAND make PREFIX=${CMAKE_BINARY_DIR} -C ${CMAKE_SOURCE_DIR}/rsc)
 add_custom_target(large_resource
-        COMMAND make PREFIX=${CMAKE_BINARY_DIR}/test MODEL_SIZE=large -C ${CMAKE_SOURCE_DIR}/rsc)
+        COMMAND make PREFIX=${CMAKE_BINARY_DIR} MODEL_SIZE=large -C ${CMAKE_SOURCE_DIR}/rsc)
 
 # test
 enable_testing()
