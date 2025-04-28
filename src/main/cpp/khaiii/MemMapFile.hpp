@@ -3,7 +3,6 @@
  * @copyright  Copyright (C) 2018-, Kakao Corp. All rights reserved.
  */
 
-
 #ifndef SRC_MAIN_CPP_KHAIII_MEMMAPFILE_HPP_
 #define SRC_MAIN_CPP_KHAIII_MEMMAPFILE_HPP_
 
@@ -18,9 +17,9 @@
 #define khaiii_when_POSIX(...)
 
 static inline std::string abspath(const char* a) {
-	std::string _abspath = ::std::filesystem::absolute(a).string();
-	for(auto& c : _abspath) if(c == '/') c = '\\';
-	return _abspath;
+    std::string _abspath = ::std::filesystem::absolute(a).string();
+    for (auto& c : _abspath) if (c == '/') c = '\\';
+    return _abspath;
 }
 
 #else
@@ -42,13 +41,12 @@ static inline std::string abspath(const char* a) {
 	khaiii_when_Windows(HANDLE) \
 	khaiii_when_POSIX(int)
 
-typedef 
-	khaiii_when_Windows(struct) 
-	khaiii_when_POSIX(union)
+typedef
+khaiii_when_Windows(struct)
+    khaiii_when_POSIX(union)
 
-	khaiii_fmap 
-{
-	khaiii_fd file, map;
+    khaiii_fmap {
+    khaiii_fd file, map;
 } khaiii_fmap;
 /**
  * @macro khaiii_rdopen
@@ -139,7 +137,7 @@ typedef
 
 /** @brief munmap */
 #define khaiii_unmap(addr, len)  \
-	khaiii_when_Windows((::UnmapViewOfFile(addr) ? -1 : 0)) \
+	khaiii_when_Windows((::UnmapViewOfFile(addr) ? 0 : -1)) \
 	khaiii_when_POSIX(::munmap(addr, len))
 
 /** @brief value when khaiii_rmmap failed. */
@@ -159,112 +157,102 @@ typedef
 #include "fmt/format.h"
 #include "khaiii/KhaiiiApi.hpp"
 
-
 namespace khaiii {
-
-
-/**
- * memory mapped file
- */
-template<typename T>
-class MemMapFile {
- public:
-
     /**
-     * dtor
+     * memory mapped file
      */
-    ~MemMapFile() {
-        close();
-    }
-
-    /**
-     * open memory mapped file
-     * @param  path  path
-     */
-    void open(const char* path) {
-        close();
-	khaiii_fmapopen(_fmap, path);
-	if (khaiii_fmapisbad(_fmap)) {
-		throw Except(fmt::format(
-					"fail to open file: {}"
-					, abspath(path)
-				)
-				khaiii_when_Windows(
-					+ fmt::format(
-						", Errcode for Windows: {}"
-						, std::to_string(GetLastError())
-					)
-				)
-			); 				
-		}
-
-        std::ifstream fin(path, std::ifstream::ate | std::ifstream::binary);
-        _byte_len = fin.tellg();
-        if (_byte_len == -1)
-		throw Except(fmt::format("fail to get size of file: {}", path));
-
-        assert(_byte_len % sizeof(T) == 0);
-        _data = reinterpret_cast<const T*>(
-			khaiii_rmmap(
-				_fmap
-				, 0 /** Not handled this value for windows when non-0. */
-				, _byte_len
-				, 0
-				)
-			);
-
-        if (_data == khaiii_map_FAILED) {
-            throw Except(fmt::format("fail to map file to memory: {}", path));
+    template<typename T>
+    class MemMapFile {
+    public:
+        /**
+         * dtor
+         */
+        ~MemMapFile() {
+            close();
         }
-        _path = path;
-    }
 
-    /**
-     * close memory mapped file
-     */
-    void close() {
-        if (_data) {
-            if (khaiii_unmap(const_cast<T*>(_data), _byte_len) == -1) {
-                throw Except(fmt::format("fail to close memory mapped file: {}", _path));
+        /**
+         * open memory mapped file
+         * @param  path  path
+         */
+        void open(const char* path) {
+            close();
+            khaiii_fmapopen(_fmap, path);
+            if (khaiii_fmapisbad(_fmap)) {
+                throw Except(fmt::format(
+                        "fail to open file: {}"
+                        , abspath(path)
+                    )
+                    khaiii_when_Windows(
+                        + fmt::format(
+                            ", Errcode for Windows: {}"
+                            , std::to_string(GetLastError())
+                        )
+                    )
+                );
             }
+
+            std::ifstream fin(path, std::ifstream::ate | std::ifstream::binary);
+            _byte_len = fin.tellg();
+            if (_byte_len == -1)
+                throw Except(fmt::format("fail to get size of file: {}", path));
+
+            assert(_byte_len % sizeof(T) == 0);
+            _data = reinterpret_cast<const T*>(
+                khaiii_rmmap(
+                    _fmap
+                    , 0 /** Not handled this value for windows when non-0. */
+                    , _byte_len
+                    , 0
+                )
+            );
+
+            if (_data == khaiii_map_FAILED) {
+                throw Except(fmt::format("fail to map file to memory: {}", path));
+            }
+            _path = path;
         }
 
-	khaiii_fmapclose(_fmap);
-        _path = "";
-        _data = nullptr;
-        _byte_len = -1;
+        /**
+         * close memory mapped file
+         */
+        void close() {
+            if (_data) {
+                if (khaiii_unmap(const_cast<T*>(_data), _byte_len) == -1) {
+                    throw Except(fmt::format("fail to close memory mapped file: {}", _path));
+                }
+            }
 
-    }
+            khaiii_fmapclose(_fmap);
+            _path = "";
+            _data = nullptr;
+            _byte_len = -1;
+        }
 
-	
+        /**
+         * get pointer of data
+         * @return  start address of data
+         */
+        const T* data() const {
+            assert(_data != nullptr && _byte_len >= sizeof(T));
+            return _data;
+        }
 
-    /**
-     * get pointer of data
-     * @return  start address of data
-     */
-    const T* data() const {
-        assert(_data != nullptr && _byte_len >= sizeof(T));
-        return _data;
-    }
+        /**
+         * get data size
+         * @return  number of data elements (not byte length)
+         */
+        int size() const {
+            assert(_data != nullptr && _byte_len >= sizeof(T));
+            return _byte_len / sizeof(T);
+        }
 
-    /**
-     * get data size
-     * @return  number of data elements (not byte length)
-     */
-    int size() const {
-        assert(_data != nullptr && _byte_len >= sizeof(T));
-        return _byte_len / sizeof(T);
-    }
-
- private:
-    std::string _path;    ///< file path
-    const T* _data = nullptr;    ///< memory data
-    int _byte_len = -1;    /* < byte length */
-    khaiii_fmap _fmap = { 0,  };
-};
-
-
-}    // namespace khaiii
-
+    private:
+        std::string _path; ///< file path
+        const T* _data = nullptr; ///< memory data
+        int _byte_len = -1; /* < byte length */
+        khaiii_fmap _fmap = { 0, };
+    };
+} // namespace khaiii
 
 #endif    // SRC_MAIN_CPP_KHAIII_MEMMAPFILE_HPP_
