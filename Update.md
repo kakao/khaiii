@@ -3,6 +3,10 @@
 - Find a way to fetch eigen
 - CreateFileA is failing. Needs to be fixed.
     > src/main/cpp/khaiii/MemMapFile.hpp
+
+# Error Fixed
+- GTest Library Fetch Misconfigured
+
 # What you need
 - cmake, and compiler (gcc, clang, ...), and linker (make, ninja, ...)
 

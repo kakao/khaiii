@@ -65,8 +65,8 @@ if(NOT ${Eigen3_FOUND})
 	ae2f_CoreLibFetch_NS(opm eigen3 eigen3 master)
 endif()
 
-find_package(gtest REQUIRED)
-if(NOT ${GTest_FOUND})
+find_package(Gtest)
+if(NOT ${Gtest_FOUND})
 	ae2f_CoreLibFetch_NS(google googletest googletest main)
 endif()
 
