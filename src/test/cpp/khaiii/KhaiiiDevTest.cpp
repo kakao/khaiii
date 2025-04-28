@@ -14,7 +14,7 @@
 
 #include "khaiii/ErrPatch.hpp"
 #include "khaiii/KhaiiiApiTest.hpp"
-
+#include "khaiii/util.hpp"
 
 using std::array;
 using std::string;
@@ -32,9 +32,9 @@ class KhaiiiDevTest: public KhaiiiApiTest {};
 TEST_F(KhaiiiDevTest, analyze_bfr_errorpatch) {
     array<int16_t, 13> output;
     EXPECT_EQ(13, khaiii_analyze_bfr_errpatch(_handle, u8"진정한 테스트입니다.", "", &output[0]));
-    EXPECT_EQ(khaiii::ErrPatch::SENT_DELIM_NUM, output[0]);    // bos/eos
-    EXPECT_EQ(khaiii::ErrPatch::WORD_DELIM_NUM, output[4]);    // bow/eow
-    EXPECT_EQ(khaiii::ErrPatch::SENT_DELIM_NUM, output[12]);    // bos/eos
+    EXPECT_EQ(khaiii::ErrPatch::SENT_DELIM_NUM, static_cast<wchar_t>(output[0]));    // bos/eos
+    EXPECT_EQ(khaiii::ErrPatch::WORD_DELIM_NUM, static_cast<wchar_t>(output[4]));    // bow/eow
+    EXPECT_EQ(khaiii::ErrPatch::SENT_DELIM_NUM, static_cast<wchar_t>(output[12]));   // bos/eos
 
     EXPECT_GT(0, khaiii_analyze_bfr_errpatch(-1, u8"", "", &output[0]));    // invalid handle
     EXPECT_GT(0, khaiii_analyze_bfr_errpatch(_handle, nullptr, "", &output[0]));    // null input
