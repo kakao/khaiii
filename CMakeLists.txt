@@ -65,15 +65,18 @@ if(NOT ${Eigen3_FOUND})
 	ae2f_CoreLibFetch_NS(opm eigen3 eigen3 master)
 endif()
 
-find_package(Gtest)
-if(NOT ${Gtest_FOUND})
+find_package(GTest)
+if(NOT ${GTest_FOUND})
+        message("NOT FOUND")
 	ae2f_CoreLibFetch_NS(google googletest googletest main)
+        set(GTEST_FETCHED GTest::gtest)
+else()
+        message(FATAL_ERROR "FOUND GTEST. You set it manually.")
 endif()
 
 set(Boost_INCLUDE_DIR "")
 find_package(Boost)
 if(NOT ${Boost_FOUND})
-        
         execute_process(COMMAND git clone https://github.com/boostorg/boost ${PROJECT_SOURCE_DIR}/.submod/boost --recursive)
         file(GLOB subdirs LIST_DIRECTORIES true "${PROJECT_SOURCE_DIR}/.submod/boost/libs/*")
 
@@ -162,7 +165,7 @@ target_include_directories(test_khaiii PRIVATE
         src/test/cpp
         ${include_directories})
 target_link_libraries(test_khaiii PRIVATE
-        GTest::gtest
+        ${GTEST_FETCHED}
         cxxopts::cxxopts
         ${GPERFTOOLS_PROFILER}
         ${CMAKE_THREAD_LIBS_INIT})
