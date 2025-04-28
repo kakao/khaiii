@@ -1,3 +1,8 @@
+# TODO
+- Test the library fetching system.
+- Find a way to fetch eigen
+- CreateFileA is failing. Needs to be fixed.
+    > src/main/cpp/khaiii/MemMapFile.hpp
 # What you need
 - cmake, and compiler (gcc, clang, ...), and linker (make, ninja, ...)
 
@@ -10,13 +15,14 @@
 - Threads
 - cxxopts
 - fmt
+- Boost
+- GTest
+- spdlog
 
 ## Libraries which Manual Handling required
 > In cmake, some libraries are not allowing in-source builds.  
 > You will install them manually.
 - Eigen3
-- Boost
-- GTest
 
 ## Not sure currently
 find_package(nlohmann_json REQUIRED)

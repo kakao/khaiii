@@ -202,15 +202,22 @@ function(ae2f_CoreLibFetch_NS prm_AuthorName prm_namespace prm_TarName prm_TagNa
                 RESULT_VARIABLE result
             )
 
+            include_directories(${ae2f_ProjRoot}/.submod/${prm_AuthorName}/${prm_TarName}/include)
+
             if(result)
                 message(FATAL_ERROR "Fetching ${prm_AuthorName}/${prm_TarName} from Github Failed.")
             endif()
+
+        else()
+            include_directories(${ae2f_ProjRoot}/.submod/${prm_AuthorName}/${prm_TarName}/include)
         endif()
 
         add_subdirectory(
             ${ae2f_ProjRoot}/.submod/${prm_AuthorName}/${prm_TarName}
             ${ae2f_BinRoot}/.submod/${prm_AuthorName}/${prm_TarName}
         )
+
+        
     endif()
 
     set(

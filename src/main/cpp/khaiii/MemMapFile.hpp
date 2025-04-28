@@ -11,9 +11,17 @@
 
 /** We suggest the environment as Windows. */
 #include <Windows.h>
+#include <memoryapi.h>
+#include <filesystem>
 
 #define khaiii_when_Windows(...)	__VA_ARGS__
 #define khaiii_when_POSIX(...)
+
+static inline std::string abspath(const char* a) {
+	std::string _abspath = ::std::filesystem::absolute(a).string();
+	for(auto& c : _abspath) if(c == '/') c = '\\';
+	return _abspath;
+}
 
 #else
 
@@ -25,6 +33,7 @@
 #define khaiii_when_Windows(...)
 #define khaiii_when_POSIX(...)		__VA_ARGS__
 
+#define abspath(a) a
 
 #endif
 
@@ -33,14 +42,14 @@
 	khaiii_when_Windows(HANDLE) \
 	khaiii_when_POSIX(int)
 
-typedef khaiii_when_Windows(union) 
-	khaiii_when_POSIX(struct)
+typedef 
+	khaiii_when_Windows(struct) 
+	khaiii_when_POSIX(union)
 
 	khaiii_fmap 
 {
 	khaiii_fd file, map;
 } khaiii_fmap;
-
 /**
  * @macro khaiii_rdopen
  *
@@ -50,28 +59,29 @@ typedef khaiii_when_Windows(union)
  * */
 #define khaiii_fmapopen(fmap, path) \
 { \
+	(fmap).map = 0; \
 	(fmap).file = :: \
 			khaiii_when_POSIX(open(path, O_RDONLY, 0660)) \
 			khaiii_when_Windows( \
 					CreateFileA( \
-						path \
+						::abspath(path).c_str() \
 						, GENERIC_READ \
-						, FILE_SHARE_READ \
+						, FILE_SHARE_READ | FILE_SHARE_WRITE \
 						, NULL \
 						, OPEN_EXISTING \
-						, FILE_ATTRIBUTE_NORMAL \
+						, FILE_ATTRIBUTE_ARCHIVE \
 						, NULL  \
 						) \
 						); \
 	khaiii_when_Windows( \
-			if((fmap).file != INVALID_HANDLE_VALUE) \
+			if((fmap).file != INVALID_HANDLE_VALUE && !GetLastError()) \
 				(fmap).map = \
-				::CreateFileMapping( \
+				::CreateFileMappingA( \
 						(fmap).file \
 						, NULL \
 						, PAGE_READWRITE \
 						, 0, 0, NULL \
-						) \
+						); \
 			) \
 }
 
@@ -121,16 +131,16 @@ typedef khaiii_when_Windows(union)
 			MapViewOfFile( \
 				(fmap).map \
 				, FILE_MAP_READ \
-				, (DWORD)(off >> 32) \
-				, (DWORD)(off & 0xFFFFFFFF) \
+				, (DWORD)(((off) >> 32) & 0xFFFFFFFF) \
+				, (DWORD)((off) & 0xFFFFFFFF) \
 				, len \
 				) \
 			)
 
 /** @brief munmap */
-#define khaiii_unmap(addr, len) :: \
-	khaiii_when_Windows((UnmapViewOfFile(addr) ? -1 : 0)) \
-	khaiii_when_POSIX(munmap(addr, len))
+#define khaiii_unmap(addr, len)  \
+	khaiii_when_Windows((::UnmapViewOfFile(addr) ? -1 : 0)) \
+	khaiii_when_POSIX(::munmap(addr, len))
 
 /** @brief value when khaiii_rmmap failed. */
 #define khaiii_map_FAILED  \
@@ -163,7 +173,7 @@ class MemMapFile {
     /**
      * dtor
      */
-    virtual ~MemMapFile() {
+    ~MemMapFile() {
         close();
     }
 
@@ -174,11 +184,19 @@ class MemMapFile {
     void open(const char* path) {
         close();
 	khaiii_fmapopen(_fmap, path);
-	if (khaiii_fmapisbad(_fmap)) 
+	if (khaiii_fmapisbad(_fmap)) {
 		throw Except(fmt::format(
 					"fail to open file: {}"
-					, path)
-				);
+					, abspath(path)
+				)
+				khaiii_when_Windows(
+					+ fmt::format(
+						", Errcode for Windows: {}"
+						, std::to_string(GetLastError())
+					)
+				)
+			); 				
+		}
 
         std::ifstream fin(path, std::ifstream::ate | std::ifstream::binary);
         _byte_len = fin.tellg();
@@ -242,7 +260,7 @@ class MemMapFile {
     std::string _path;    ///< file path
     const T* _data = nullptr;    ///< memory data
     int _byte_len = -1;    /* < byte length */
-    khaiii_fmap _fmap = { 0, 0 };
+    khaiii_fmap _fmap = { 0,  };
 };
 
 

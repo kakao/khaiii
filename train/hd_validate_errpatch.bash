@@ -119,7 +119,7 @@ function split_input() {
     total_line=$(wc -l < ${INPUT_FILE})
     local line_per_split=$((total_line / NUM_MAPPER))
     rm -rf ${INPUT_DIR}
-    mkdir -p ${INPUT_DIR}
+    cmake -E make_directory ${INPUT_DIR}
     shuf ${INPUT_FILE} | split -d -a 5 -l ${line_per_split} - ${INPUT_DIR}/part-
 
     hadoop fs -test -e ${INPUT_DIR} && hadoop fs -rm -skipTrash -r ${INPUT_DIR}
@@ -133,18 +133,18 @@ function cache_files() {
     >&2 echo "{{{{{{{{{{ ${FUNCNAME[0]} {{{{{{{{{{"
 
     hadoop fs -test -e ${CACHE_DIR} && hadoop fs -rm -skipTrash -r ${CACHE_DIR}
-    hadoop fs -mkdir -p ${CACHE_DIR}
+    hadoop fs -cmake -E make_directory ${CACHE_DIR}
 
     hadoop fs -put ../src/main/python/khaiii ${CACHE_DIR}
-    hadoop fs -mkdir -p ${CACHE_DIR}/khaiii/lib
+    hadoop fs -cmake -E make_directory ${CACHE_DIR}/khaiii/lib
     hadoop fs -put ${LIB_PATH} ${CACHE_DIR}/khaiii/lib
 
-    hadoop fs -mkdir -p ${CACHE_DIR}/khaiii/share
+    hadoop fs -cmake -E make_directory ${CACHE_DIR}/khaiii/share
     hadoop fs -put ${RSC_DIR} ${CACHE_DIR}/khaiii/share/khaiii
 
     hadoop fs -put ${RSC_SRC} ${CACHE_DIR}/rsc_src
 
-    hadoop fs -mkdir -p ${CACHE_DIR}/corpus
+    hadoop fs -cmake -E make_directory ${CACHE_DIR}/corpus
     hadoop fs -put ${CORPUS_DIR}/*.txt ${CACHE_DIR}/corpus
 
     >&2 echo "}}}}}}}}}} ${FUNCNAME[0]} }}}}}}}}}}"

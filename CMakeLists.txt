@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.5...3.30)
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING 3.5)
 
 # versions
 file(READ "include/khaiii/khaiii_api.h" KHAIII_VERSION_HEADER)
@@ -46,23 +47,47 @@ set(CMAKE_DEBUG_POSTFIX "_debug")
 find_package(Threads REQUIRED)
 
 # dependent 3rd party libraries (Automatically installable)
+
+# ae2f_CoreLibFetchX_NS(boostorg boost boost master)
 ae2f_CoreLibFetchX_NS(jarro2783 cxxopts cxxopts master)
 ae2f_CoreLibFetchX_NS(fmtlib fmt fmt master)
+ae2f_CoreLibFetchX_NS(gabime spdlog spdlog v1.x)
 
 find_package(nlohmann_json)
 if(NOT ${nlohmann_json_FOUND})
 	ae2f_CoreLibFetch_NS(nlohmann json json master)
 endif()
 
-ae2f_CoreLibFetchX_NS(gabime spdlog spdlog master)
-
 # dependent 3rd party libraries (Manual step needed)
-find_package(Boost REQUIRED)
-find_package(Eigen3 REQUIRED)
-find_package(GTest REQUIRED)
 
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(Eigen3)
+if(NOT ${Eigen3_FOUND})
+	ae2f_CoreLibFetch_NS(opm eigen3 eigen3 master)
+endif()
+
+find_package(gtest REQUIRED)
+if(NOT ${GTest_FOUND})
+	ae2f_CoreLibFetch_NS(google googletest googletest main)
+endif()
+
+set(Boost_INCLUDE_DIR "")
+find_package(Boost)
+if(NOT ${Boost_FOUND})
+        
+        execute_process(COMMAND git clone https://github.com/boostorg/boost ${PROJECT_SOURCE_DIR}/.submod/boost --recursive)
+        file(GLOB subdirs LIST_DIRECTORIES true "${PROJECT_SOURCE_DIR}/.submod/boost/libs/*")
+
+        foreach(subdir ${subdirs})
+            if(IS_DIRECTORY ${subdir})
+                if(EXISTS ${subdir}/include AND IS_DIRECTORY ${subdir}/include)
+                        message(STATUS "Found directory: ${subdir}/include")
+                        list(APPEND Boost_INCLUDE_DIR ${subdir}/include)
+                endif()
+            endif()
+        endforeach()
+endif()
+
+include_directories(${Boost_INCLUDE_DIR})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_definitions(-DFMT_HEADER_ONLY)
 if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -94,7 +119,8 @@ set(include_directories
         include
         src/main/cpp
         ${Boost_INCLUDE_DIRS}
-        ${EIGEN3_INCLUDE_DIR})
+        ${EIGEN3_INCLUDE_DIR}
+        )
 target_include_directories(obj_khaiii PUBLIC ${include_directories})
 target_compile_definitions(obj_khaiii PUBLIC -DPREFIX="${CMAKE_INSTALL_PREFIX}")
 
@@ -111,12 +137,14 @@ add_executable(bin_khaiii
         src/main/cpp/main.cpp)
 set_target_properties(bin_khaiii PROPERTIES
         OUTPUT_NAME khaiii
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+        )
 target_include_directories(bin_khaiii PRIVATE ${include_directories})
 target_link_libraries(bin_khaiii PRIVATE
         cxxopts::cxxopts
         ${GPERFTOOLS_PROFILER}
-        ${CMAKE_THREAD_LIBS_INIT})
+        ${CMAKE_THREAD_LIBS_INIT}
+        )
 
 # executable: test_khaiii
 add_executable(test_khaiii
@@ -128,7 +156,8 @@ add_executable(test_khaiii
         src/test/cpp/khaiii/PreanalTest.cpp)
 set_target_properties(test_khaiii PROPERTIES
         OUTPUT_NAME khaiii
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/test)
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/test
+        )
 target_include_directories(test_khaiii PRIVATE
         src/test/cpp
         ${include_directories})

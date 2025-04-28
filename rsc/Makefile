@@ -3,6 +3,7 @@ BIN_DIR = $(HOME_DIR)/bin
 SRC_PYTHON = $(HOME_DIR)/../src/main/python
 RSC_SRC = $(HOME_DIR)/src
 PREFIX = /usr/local
+_RSC_DIR = $(PREFIX)/share/
 RSC_DIR = $(PREFIX)/share/khaiii
 MODEL_SIZE = base
 
@@ -34,23 +35,27 @@ all: $(MODEL) $(PREANAL) $(RESTORE) $(ERRPATCH)
 
 $(wordlist 2,100,$(MODEL)): $(firstword $(MODEL))
 $(firstword $(MODEL)): $(RSC_SRC)/$(MODEL_SIZE).config.json $(RSC_SRC)/$(MODEL_SIZE).model.pickle
-	mkdir -p $(RSC_DIR)
-	PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_model.py --model-size $(MODEL_SIZE) --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
+	cmake -E make_directory $(_RSC_DIR)
+	cmake -E make_directory $(RSC_DIR)
+	cmake -E env PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_model.py --model-size $(MODEL_SIZE) --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
 
 $(wordlist 2,100,$(PREANAL)): $(firstword $(PREANAL))
 $(firstword $(PREANAL)): $(RSC_SRC)/preanal.auto $(RSC_SRC)/preanal.manual
-	mkdir -p $(RSC_DIR)
-	PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_preanal.py --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
+	cmake -E make_directory $(_RSC_DIR)
+	cmake -E make_directory $(RSC_DIR)
+	cmake -E env PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_preanal.py --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
 
 $(wordlist 2,100,$(RESTORE)): $(firstword $(RESTORE))
 $(firstword $(RESTORE)): $(RSC_SRC)/restore.dic $(RSC_SRC)/vocab.out $(RSC_SRC)/vocab.out.more
-	mkdir -p $(RSC_DIR)
-	PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_restore.py --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
+	cmake -E make_directory $(_RSC_DIR)
+	cmake -E make_directory $(RSC_DIR)
+	cmake -E env PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_restore.py --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
 
 $(wordlist 2,100,$(ERRPATCH)): $(firstword $(ERRPATCH))
 $(firstword $(ERRPATCH)): $(RSC_SRC)/$(MODEL_SIZE).errpatch.auto $(RSC_SRC)/$(MODEL_SIZE).errpatch.manual
-	mkdir -p $(RSC_DIR)
-	PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_errpatch.py --model-size $(MODEL_SIZE) --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
+	cmake -E make_directory $(_RSC_DIR)
+	cmake -E make_directory $(RSC_DIR)
+	cmake -E env PYTHONPATH=$(SRC_PYTHON) python3 $(BIN_DIR)/compile_errpatch.py --model-size $(MODEL_SIZE) --rsc-src $(RSC_SRC) --rsc-dir $(RSC_DIR)
 
 clean:
 	rm -rf $(RSC_DIR)
