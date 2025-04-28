@@ -69,7 +69,7 @@ typedef
 						, FILE_SHARE_READ | FILE_SHARE_WRITE \
 						, NULL \
 						, OPEN_EXISTING \
-						, FILE_ATTRIBUTE_ARCHIVE \
+						, FILE_ATTRIBUTE_NORMAL \
 						, NULL  \
 						) \
 						); \
@@ -79,7 +79,7 @@ typedef
 				::CreateFileMappingA( \
 						(fmap).file \
 						, NULL \
-						, PAGE_READWRITE \
+						, PAGE_READONLY \
 						, 0, 0, NULL \
 						); \
 			) \
