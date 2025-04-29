@@ -13,6 +13,7 @@
 #include <cassert>
 #include <string>
 #include <vector>
+#include <sstream>
 
 #include "khaiii/util.hpp"
 
@@ -22,9 +23,7 @@ namespace khaiii {
 
 using std::string;
 using std::vector;
-using std::wstring;
-using std::wstringstream;
-
+using std::u32string;
 
 ///////////////
 // variables //
@@ -32,7 +31,7 @@ using std::wstringstream;
 static const char* _TAG_SET[POS_TAG_SIZE] = {
      "EC",  "EF",  "EP", "ETM", "ETN",  "IC",  "JC", "JKB", "JKC", "JKG",
     "JKO", "JKQ", "JKS", "JKV",  "JX", "MAG", "MAJ",  "MM", "NNB", "NNG",
-    "NNP",  "NP",  "NR",  "SE",  "SF",  "SH",  "SL",  "SN",  "SO",  "SP",
+    "NNP",  "NP",  "NR",  "SE",  "SF",  "SH",  "SU",  "SN",  "SO",  "SP",
      "SS",  "SW", "SWK",  "VA", "VCN", "VCP",  "VV",  "VX", "XPN",  "XR",
     "XSA", "XSN", "XSV",  "ZN",  "ZV",  "ZZ",
 };
@@ -41,7 +40,7 @@ static const char* _TAG_SET[POS_TAG_SIZE] = {
 ////////////////////
 // ctors and dtor //
 ////////////////////
-Morph::Morph(const wchar_t* wlex, pos_tag_t tag, const wchar_t* wbegin, int wlength)
+Morph::Morph(const char32_t* wlex, pos_tag_t tag, const char32_t* wbegin, int wlength)
         : wlex(wlex), wbegin(wbegin), wlength(wlength), _lex(wstr_to_utf8(wlex)) 
 {
 	assert(wlex);
@@ -62,7 +61,7 @@ const char* Morph::pos_str(pos_tag_t num) {
     return _TAG_SET[num-1];
 }
 
-void Morph::organize(const wchar_t* wraw, const vector<int>& wbegins, const vector<int>& wends) {
+void Morph::organize(const char32_t* wraw, const vector<int>& wbegins, const vector<int>& wends) {
 	assert(wraw);
 
 	int begin_idx = wbegin - wraw;
@@ -81,9 +80,9 @@ string Morph::str() {
 }
 
 
-wstring Morph::wstr() {
-    wstringstream wss;
-    wss << wlex << L"/" << tag << L":" << begin << L"," << length;
+u32string Morph::wstr() {
+    std::u32stringstream wss;
+    wss << wlex << U"/" << tag << U":" << begin << U"," << length;
     return wss.str();
 }
 

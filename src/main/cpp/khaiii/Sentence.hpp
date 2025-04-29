@@ -68,7 +68,7 @@ class Sentence {
 
     const char* _raw = "";    ///< raw sentence (UTF-8)
     int _morph_cnt;    ///< total morpheme count
-    std::wstring _wraw;    ///< unicode characters
+    std::u32string _wraw;    ///< unicode characters
     std::vector<int> _wbegins;    ///< character begin positions for each unicode characters
     std::vector<int> _wends;    ///< character end positions for each unicode characters
 

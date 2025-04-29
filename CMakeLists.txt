@@ -8,8 +8,13 @@ set(KHAIII_VERSION_MAJOR ${CMAKE_MATCH_1} CACHE STRING "major version" FORCE)
 string(REGEX MATCH "#define[ \t]+KHAIII_VERSION_MINOR[ \t]+([0-9]+)" _KHAIII_VERSION_MINOR "${KHAIII_VERSION_HEADER}")
 set(KHAIII_VERSION_MINOR ${CMAKE_MATCH_1} CACHE STRING "minor version" FORCE)
 set(KHAIII_VERSION ${KHAIII_VERSION_MAJOR}.${KHAIII_VERSION_MINOR} CACHE STRING "version" FORCE)
-
 include(cmake/ae2f_Core.cmake)
+
+# stringstream typedef for char32_t
+add_compile_definitions(u32stringstream=basic_stringstream<char32_t>)
+
+# U8 before string marker
+add_compile_definitions(u8=u8)
 
 # project
 project(khaiii VERSION ${KHAIII_VERSION})

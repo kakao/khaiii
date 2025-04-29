@@ -40,7 +40,7 @@ using std::pair;
 using std::shared_ptr;
 using std::string;
 using std::vector;
-using std::wstring;
+using std::u32string;
 
 
 //////////////////

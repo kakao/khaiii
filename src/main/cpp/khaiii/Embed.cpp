@@ -44,7 +44,7 @@ void Embed::open(const Config& cfg, const char* dir) {
 	assert(dir);
 
     _embed_mmf.open(fmt::format("{}/embed.bin", dir).c_str());
-    _keys = reinterpret_cast<const wchar_t*>(_embed_mmf.data());
+    _keys = reinterpret_cast<const char32_t*>(_embed_mmf.data());
     const float* val_start = reinterpret_cast<const float*>(_keys + cfg.vocab_size);
     for (int i = 0; i < cfg.vocab_size; ++i) {
         const float* embed_start = val_start + i * cfg.embed_dim;
@@ -59,13 +59,13 @@ void Embed::close() {
 }
 
 
-const embedding_t& Embed::operator[](wchar_t chr) const {
-    const wchar_t* found = reinterpret_cast<const wchar_t*>(
-            bsearch(&chr, _keys, _vals.size(), sizeof(wchar_t), Embed::_key_cmp));
+const embedding_t& Embed::operator[](char32_t chr) const {
+    const char32_t* found = reinterpret_cast<const char32_t*>(
+            bsearch(&chr, _keys, _vals.size(), sizeof(char32_t), Embed::_key_cmp));
     int idx = 1;    // unknown character index is 1
     if (found != nullptr) idx = found - _keys;
 #ifndef NDEBUG
-    wchar_t wstr[2] = {chr, 0};
+    char32_t wstr[2] = {chr, 0};
     SPDLOG_TRACE(_log, "'{}'({}) {}", wstr_to_utf8(wstr), idx, _vals.at(idx));
 #endif
     return _vals.at(idx);
@@ -95,8 +95,8 @@ const embedding_t& Embed::right_padding() const {
 int Embed::_key_cmp(const void* left, const void* right) {
 	assert(left && right);
 
-    const wchar_t* left_ = reinterpret_cast<const wchar_t*>(left);
-    const wchar_t* right_ = reinterpret_cast<const wchar_t*>(right);
+    const char32_t* left_ = reinterpret_cast<const char32_t*>(left);
+    const char32_t* right_ = reinterpret_cast<const char32_t*>(right);
     return *left_ - *right_;
 }
 

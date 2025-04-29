@@ -1,11 +1,10 @@
 # TODO
-- Test the library fetching system.
-- Find a way to fetch eigen
-- CreateFileA is failing. Needs to be fixed.
-    > src/main/cpp/khaiii/MemMapFile.hpp
+- Test if it works both on Windows & Linux
 
 # Error Fixed
-- GTest Library Fetch Misconfigured
+- Now is using char32_t instead of wchar_t
+- Using std::locale::classic(), which is repectively using default locale for OS.
+- No locale is being generated.
 
 # What you need
 - cmake, and compiler (gcc, clang, ...), and linker (make, ninja, ...)

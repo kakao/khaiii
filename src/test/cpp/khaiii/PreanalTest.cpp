@@ -30,7 +30,7 @@ namespace khaiii {
 using std::make_shared;
 using std::shared_ptr;
 using std::string;
-using std::wstring;
+using std::u32string;
 
 
 //////////////////
@@ -50,7 +50,7 @@ class PreanalTest: public testing::Test {
  protected:
     Preanal _preanal;
 
-    inline shared_ptr<Word> _apply(wstring raw) {
+    inline shared_ptr<Word> _apply(u32string raw) {
         auto word = make_shared<Word>(raw.c_str(), raw.length());
         _preanal.apply(word);
         return word;
@@ -64,43 +64,43 @@ class PreanalTest: public testing::Test {
 TEST_F(PreanalTest, apply_exact) {
     // 어절 완전일치 엔트리 "이더리움"에 대해
 
-    auto word1 = _apply(L"이더리움");    // 매칭
+    auto word1 = _apply(U"이더리움");    // 매칭
     EXPECT_LT(0, word1->char_tags[0]);
     EXPECT_LT(0, word1->char_tags[1]);
     EXPECT_LT(0, word1->char_tags[2]);
     EXPECT_LT(0, word1->char_tags[3]);
 
-    auto word2 = _apply(L"이더리움을");    // 매칭 안됨
+    auto word2 = _apply(U"이더리움을");    // 매칭 안됨
     EXPECT_EQ(0, word2->char_tags[0]);
     EXPECT_EQ(0, word2->char_tags[1]);
     EXPECT_EQ(0, word2->char_tags[2]);
     EXPECT_EQ(0, word2->char_tags[3]);
     EXPECT_EQ(0, word2->char_tags[4]);
 
-    auto word3 = _apply(L"이더륨");    // 매칭 안됨
+    auto word3 = _apply(U"이더륨");    // 매칭 안됨
     EXPECT_EQ(0, word3->char_tags[0]);
     EXPECT_EQ(0, word3->char_tags[1]);
     EXPECT_EQ(0, word3->char_tags[2]);
 
-    EXPECT_NO_THROW(_apply(L""));
+    EXPECT_NO_THROW(_apply(U""));
 }
 
 
 TEST_F(PreanalTest, apply_prefix) {
     // 전망매칭 패턴 "가즈아*"에 대해
 
-    auto word1 = _apply(L"가즈아~");    // 매칭
+    auto word1 = _apply(U"가즈아~");    // 매칭
     EXPECT_LT(0, word1->char_tags[0]);
     EXPECT_LT(0, word1->char_tags[1]);
     EXPECT_LT(0, word1->char_tags[2]);
     EXPECT_EQ(0, word1->char_tags[3]);
 
-    auto word2 = _apply(L"가즈아");    // 매칭
+    auto word2 = _apply(U"가즈아");    // 매칭
     EXPECT_LT(0, word2->char_tags[0]);
     EXPECT_LT(0, word2->char_tags[1]);
     EXPECT_LT(0, word2->char_tags[2]);
 
-    auto word3 = _apply(L"가자");    // 매칭 안됨
+    auto word3 = _apply(U"가자");    // 매칭 안됨
     EXPECT_EQ(0, word3->char_tags[0]);
     EXPECT_EQ(0, word3->char_tags[1]);
 }

@@ -29,8 +29,8 @@ class Sentence;
 
 class ErrPatch {
  public:
-    static const wchar_t WORD_DELIM_NUM;    ///< 어절 경계를 나타내는 가상 음절
-    static const wchar_t SENT_DELIM_NUM;    ///< 문장 경계를 나타내는 가상 음절
+    static const char32_t WORD_DELIM_NUM;    ///< 어절 경계를 나타내는 가상 음절
+    static const char32_t SENT_DELIM_NUM;    ///< 문장 경계를 나타내는 가상 음절
 
     virtual ~ErrPatch();    ///< dtor
 
@@ -61,7 +61,7 @@ class ErrPatch {
      * @param  outputs  출력 위치
      * @return  음절과 태그의 비트 조합한 열
      */
-    static std::vector<wchar_t> _get_char_tag_mixes(std::shared_ptr<Sentence> sent,
+    static std::vector<char32_t> _get_char_tag_mixes(std::shared_ptr<Sentence> sent,
                                                     std::vector<uint16_t*>* outputs);
 };
 

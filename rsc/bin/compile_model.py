@@ -76,7 +76,7 @@ def _write_embedding(embedding_data: dict, path: str):
         path:  output file path
     """
     with open(path, 'wb') as fout:
-        embedding_data['chars'].tofile(fout)    # [input vocab(char)] * 4(wchar_t)
+        embedding_data['chars'].tofile(fout)    # [input vocab(char)] * 4(char32_t)
         for weight in embedding_data['weights']:
             weight.tofile(fout)    # [input vocab(char)] * embed_dim * 4(float)
 

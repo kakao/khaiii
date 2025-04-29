@@ -31,7 +31,7 @@ class Morph;
  */
 class Word: public khaiii_word_t {
  public:
-    const wchar_t* wbegin = nullptr;    ///< unicode string begin address
+    const char32_t* wbegin = nullptr;    ///< unicode string begin address
     int wlength = 0;    ///< unicode string length
     std::vector<std::shared_ptr<Morph>> morph_vec;   ///< 어절에 포함된 형태소 배열 (분석 결과)
 
@@ -44,7 +44,7 @@ class Word: public khaiii_word_t {
      * @param  wbegin  unicode string begin address
      * @param  length  unicode string length
      */
-    explicit Word(const wchar_t* wbegin = nullptr, int wlength = 0);
+    explicit Word(const char32_t* wbegin = nullptr, int wlength = 0);
 
     /**
      * set begin position and length in raw string for this word
@@ -52,7 +52,7 @@ class Word: public khaiii_word_t {
      * @param  wbegins  begin positions for each unicode characters
      * @param  wends  end positions for each unicode characters
      */
-    void set_begin_length(const wchar_t* wchars, const std::vector<int> &wbegins,
+    void set_begin_length(const char32_t* wchars, const std::vector<int> &wbegins,
                           const std::vector<int> &wends);
 
     /**
@@ -68,7 +68,7 @@ class Word: public khaiii_word_t {
      * @param  begin_idx  시작 인덱스 (유니코드 음절 인덱스)
      * @param  end_idx  끝 인덱스 (유니코드 음절 인덷스)
      */
-    void add_morph(const std::wstringstream& wlex, uint8_t tag, int begin_idx, int end_idx);
+    void add_morph(const std::u32stringstream& wlex, uint8_t tag, int begin_idx, int end_idx);
 
     /**
      * API 결과 구조체의 내용을 채운다.
@@ -76,7 +76,7 @@ class Word: public khaiii_word_t {
      * @param  wbegins  각 음절별 시작 byte 위치
      * @param  wends  각 음절별 끝 byte 위치
      */
-    void organize(const wchar_t* wraw, const std::vector<int>& wbegins,
+    void organize(const char32_t* wraw, const std::vector<int>& wbegins,
                   const std::vector<int>& wends);
 
     /**
@@ -85,7 +85,7 @@ class Word: public khaiii_word_t {
     void make_morphs();
 
     std::string str() const;    ///< to string (UTF-8)
-    std::wstring wstr() const;    ///< to unicode string
+    std::u32string wstr() const;    ///< to unicode string
 };
 
 

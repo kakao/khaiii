@@ -38,29 +38,30 @@ namespace khaiii {
      * @param  chr  character
      * @return  true if character is space
      */
-    inline bool is_space(wchar_t chr) {
-        static std::wstring space(L" \t\v\r\n\u3000");
-        return space.find(chr) != std::wstring::npos;
+    inline bool is_space(char32_t chr) {
+        static std::u32string space(U" \t\v\r\n\u3000");
+        return space.find(chr) != std::u32string::npos;
     }
 
     /**
-     * convert UTF-8 string to wstring
+     * convert UTF-8 string to u32string
      * @param str  UTF-8 string
-     * @return  wstring
+     * @return  u32string
      */
-    inline std::wstring utf8_to_wstr(const char* str) {
+    inline std::u32string utf8_to_wstr(const char* str) {
         assert(str);
-        return boost::locale::conv::utf_to_utf<wchar_t>(str, str + ::strlen(str));
+        return boost::locale::conv::utf_to_utf<char32_t>(str, str + ::strlen(str));
     }
 
     /**
-     * convert wstring to UTF-8 string
-     * @param  wstr  wstring
+     * convert u32string to UTF-8 string
+     * @param  wstr  u32string
      * @return  UTF-8 string
      */
-    inline std::string wstr_to_utf8(const wchar_t* wstr) {
+    inline std::string wstr_to_utf8(const char32_t* wstr) {
         assert(wstr);
-        return boost::locale::conv::utf_to_utf<char>(wstr, wstr + ::wcslen(wstr));
+        
+        return boost::locale::conv::utf_to_utf<char>(wstr, wstr + std::u32string(wstr).length());
     }
 
     /**

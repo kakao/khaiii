@@ -15,6 +15,8 @@
 #include <iomanip>
 #include <locale>
 #include <sstream>
+#include <charconv>
+#include <cuchar>
 
 #include "khaiii/Word.hpp"
 #include "khaiii/util.hpp"
@@ -38,7 +40,6 @@ using std::setw;
 using std::shared_ptr;
 using std::string;
 using std::use_facet;
-using std::wstringstream;
 
 
 ////////////////////
@@ -110,31 +111,30 @@ void Sentence::_tokenize() {
 }
 
 
-#if _WIN32
+#if defined(_WIN32) and 0
 /** It will set locale temporalily to locale.C. */
 static struct sLocale {
     std::locale previous;
-    static constexpr const char* tar = "C.UTF-8";
+    static constexpr const char* tar = "";
     inline sLocale() {
-#ifdef _WIN32
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
-#endif
+	    SetConsoleOutputCP(CP_UTF8);
+	    SetConsoleCP(CP_UTF8);
     }
 } __sLocale;
 #endif
 
 void Sentence::_characterize() {
     assert(_raw != nullptr);
-    std::locale sysdefault_utf8 = locale("");
-    auto& facet = use_facet<codecvt<wchar_t, char, mbstate_t>>(sysdefault_utf8);
+    const std::codecvt<char32_t, char, mbstate_t>* facet = &use_facet<codecvt<char32_t, char, mbstate_t>>(
+        std::locale::classic()
+    );
     auto mbst = mbstate_t();
     const char* from_next = nullptr;
-    wstringstream wss;
+    std::u32stringstream wss;
     for (const char* from_curr = _raw; *from_curr != '\0'; from_curr = from_next) {
-        wchar_t wchar[2] = L"";
-        wchar_t* to_next = nullptr;
-        auto result = facet.in(mbst, from_curr, from_curr + 6, from_next, wchar, wchar + 1,
+        char32_t wchar[2] = U"";
+        char32_t* to_next = nullptr;
+        auto result = facet->in(mbst, from_curr, from_curr + 6, from_next, wchar, wchar + 1,
                                to_next);
         assert(result == codecvt_base::partial || result == codecvt_base::ok);
         wss << wchar[0];
