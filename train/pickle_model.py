@@ -71,7 +71,7 @@ def _get_embedding(rsc: Resource, state_dict: dict) -> dict:
                          #                       3: right word boundary)
     for idx in range(4, len(rsc.vocab_in)):
         chars.append(ord(rsc.vocab_in[idx]))
-    data['chars'] = array('i', chars)    # [input vocab(char)] * 4(wchar_t)
+    data['chars'] = array('i', chars)    # [input vocab(char)] * 4(char32_t)
 
     embedding = state_dict['conv_layer.embedder.embedding.weight']
     padding = array('f', [0.0, ] * len(embedding[0]))    # first embedding is always padding

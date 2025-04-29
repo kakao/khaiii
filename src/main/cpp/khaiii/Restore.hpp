@@ -30,7 +30,7 @@ namespace khaiii {
 struct chr_tag_t {
     enum BI { B = 0, I = 1, };    ///< enumeration type for B-, I- notation
 
-    wchar_t chr;
+    char32_t chr;
     uint8_t tag;
     BI bi;    ///< B-, I- notation
 
@@ -65,7 +65,7 @@ class Restore {
      * 리소스를 연다.
      * @param  dir  리소스 디렉토리
      */
-    void open(std::string dir);
+    void open(const char* dir);
 
     void close();    ///< 리소스를 닫는다.
 
@@ -76,7 +76,7 @@ class Restore {
      * @param  use_dic  원형복원 사전을 사용할 지 여부
      * @return   복원한 음절 만큼의 태그 리스트
      */
-    std::vector<chr_tag_t> restore(wchar_t chr, uint16_t tag_out, bool use_dic) const;
+    std::vector<chr_tag_t> restore(char32_t chr, uint16_t tag_out, bool use_dic) const;
 
     /**
      * 원형 복원이 필요한 복합 태그 여부
@@ -91,7 +91,7 @@ class Restore {
      * @param  tag_out  태그 번호
      * @return  인덱스. 찾지 못할 경우 -1
      */
-     int find(wchar_t chr, uint16_t tag_out) const;
+     int find(char32_t chr, uint16_t tag_out) const;
 
      /**
       * 원형 복원 사전에 존재하지 않는 복합 태그 번호일 경우 맨 앞에 하나의 태그를 얻는다.

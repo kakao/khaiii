@@ -39,7 +39,7 @@ int khaiii_analyze_bfr_errpatch(int handle, const char* input, const char* opt_s
                                 int16_t* output) {
     if (handle <= 0 || handle >= KHAIII_HANDLES.size()) {
         unique_lock<recursive_mutex> lock(KHAIII_HANDLES[0]->get_mutex());
-        KHAIII_HANDLES[0]->set_err_msg(fmt::format("invalid handle: {}", handle));
+        KHAIII_HANDLES[0]->set_err_msg(fmt::format("invalid handle: {}", handle).c_str());
         return -1;
     }
     auto khaiii_impl = KHAIII_HANDLES[handle];
@@ -53,7 +53,7 @@ int khaiii_analyze_bfr_errpatch(int handle, const char* input, const char* opt_s
 
 
 int khaiii_set_log_level(const char* name, const char* level) {
-    if (name == nullptr || level == nullptr) {
+    if (name == nullptr || level == nullptr || !name[0] || !level[0]) {
         unique_lock<recursive_mutex> lock(KHAIII_HANDLES[0]->get_mutex());
         KHAIII_HANDLES[0]->set_err_msg("log name or level is null");
         return -1;

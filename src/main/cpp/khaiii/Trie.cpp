@@ -16,11 +16,16 @@
 #include <list>
 #include <memory>
 #include <string>
+#include <cassert>
 
 #include "boost/lexical_cast.hpp"
 
 #include "khaiii/KhaiiiApi.hpp"
 #include "khaiii/util.hpp"
+
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 
 namespace khaiii {
@@ -31,7 +36,7 @@ using std::find_if;
 using std::list;
 using std::shared_ptr;
 using std::string;
-using std::wstring;
+using std::u32string;
 
 using boost::optional;
 
@@ -59,13 +64,18 @@ Trie::~Trie() {
 /////////////
 // methods //
 /////////////
-void Trie::open(string path) {
+void Trie::open(const char* path) {
     _mmf.open(path);
 
 #ifndef NDEBUG
     const _node_t* root_node = _mmf.data();
-    for (int i = 0; i < sizeof(root_node) / sizeof(_node_t); ++i) {
-        SPDLOG_TRACE(_log, root_node[i].str(root_node));
+
+    for (
+		    int i = 0; 
+		    i < _mmf.size() 
+		    /** It was sizeof(root_node) / sizeof(_node_t) has changed to closest intention. */; 
+		    ++i) {
+	    SPDLOG_TRACE(_log, root_node[i].str(root_node));
     }
 #endif
 }
@@ -77,12 +87,12 @@ void Trie::close() {
 
 
 /*
-optional<uint32_t> Trie::find(const wstring& key) const {
+optional<uint32_t> Trie::find(const u32string& key) const {
     return find(key.c_str());
 }
 
 
-optional<uint32_t> Trie::find(const wchar_t* key) const {
+optional<uint32_t> Trie::find(const char32_t* key) const {
     assert(key != nullptr);
     if (*key == L'\0') return boost::none;
     return _find(key, _mmf.data());
@@ -90,12 +100,12 @@ optional<uint32_t> Trie::find(const wchar_t* key) const {
 */
 
 
-list<Trie::match_t> Trie::search_common_prefix_matches(const wstring& text, int max_len) const {
+list<Trie::match_t> Trie::search_common_prefix_matches(const u32string& text, int max_len) const {
     return search_common_prefix_matches(text.c_str(), max_len);
 }
 
 
-list<Trie::match_t> Trie::search_common_prefix_matches(const wchar_t* text, int max_len) const {
+list<Trie::match_t> Trie::search_common_prefix_matches(const char32_t* text, int max_len) const {
     assert(text != nullptr);
     list<match_t> found;
     _search(text, _mmf.data(), &found, 0, max_len);
@@ -103,7 +113,7 @@ list<Trie::match_t> Trie::search_common_prefix_matches(const wchar_t* text, int 
 }
 
 
-optional<Trie::match_t> Trie::search_longest_prefix_match(const wchar_t* text, int max_len) const {
+optional<Trie::match_t> Trie::search_longest_prefix_match(const char32_t* text, int max_len) const {
     list<match_t> found = search_common_prefix_matches(text, max_len);
     if (found.empty()) return boost::none;
     return optional<match_t>(found.back());
@@ -111,7 +121,7 @@ optional<Trie::match_t> Trie::search_longest_prefix_match(const wchar_t* text, i
 
 
 /*
-boost::optional<uint32_t> Trie::_find(const wchar_t* key, const _node_t* node) const {
+boost::optional<uint32_t> Trie::_find(const char32_t* key, const _node_t* node) const {
     SPDLOG_TRACE(_log, "key: [{}], {}", key, node->str(_data()));
     if (node->child_start <= 0 || node->child_num <= 0) return boost::none;
     auto begin = node + node->child_start;
@@ -148,7 +158,7 @@ boost::optional<uint32_t> Trie::_find(const wchar_t* key, const _node_t* node) c
 */
 
 
-void Trie::_search(const wchar_t* text, const _node_t* node, list<Trie::match_t>* matches,
+void Trie::_search(const char32_t* text, const _node_t* node, list<Trie::match_t>* matches,
                    int len, int max_len) const {
     SPDLOG_TRACE(_log, "text({}): [{}], {}", len, wstr_to_utf8(text), node->str(_data()));
     if (*text == '\0' || len > max_len || node->child_start <= 0 || node->child_num <= 0) return;

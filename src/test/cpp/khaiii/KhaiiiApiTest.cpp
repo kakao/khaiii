@@ -15,7 +15,10 @@
 #include "cxxopts.hpp"
 
 #include "khaiii/KhaiiiApi.hpp"
-
+#include "khaiii/util.hpp"
+#ifdef _WIN32
+#include "windows.h"
+#endif
 
 ///////////////
 // variables //
@@ -31,6 +34,14 @@ using std::ostringstream;
 // methods //
 /////////////
 void KhaiiiApiTest::SetUp() {
+    // Call the parent SetUp first
+    ::testing::Test::SetUp();
+
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
+
     string rsc_dir = (*prog_args)["rsc-dir"].as<string>();
     _handle = khaiii_open(rsc_dir.c_str(), "");
     ASSERT_GT(_handle, 0);

@@ -15,10 +15,15 @@
 #include <iomanip>
 #include <locale>
 #include <sstream>
+#include <charconv>
+#include <cuchar>
 
 #include "khaiii/Word.hpp"
 #include "khaiii/util.hpp"
 
+
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 namespace khaiii {
 
@@ -35,7 +40,6 @@ using std::setw;
 using std::shared_ptr;
 using std::string;
 using std::use_facet;
-using std::wstringstream;
 
 
 ////////////////////
@@ -59,7 +63,7 @@ Sentence::Sentence(const char* raw): _raw(raw), _morph_cnt(0) {
 void Sentence::organize() {
     for (int i = 0; i < words.size(); ++i) {
         if (i > 0) words[i-1]->next = words[i].get();
-        words[i]->organize(_wraw, _wbegins, _wends);
+        words[i]->organize(_wraw.c_str(), _wbegins, _wends);
 #ifndef NDEBUG
         _log->debug("[{}] word: {}", i, words[i]->str());
         for (int j = 0; j < words[i]->morph_vec.size(); ++j) {
@@ -100,24 +104,37 @@ void Sentence::_tokenize() {
     }
 
     for (auto& word : words) {
-        word->set_begin_length(_wraw, _wbegins, _wends);
+        word->set_begin_length(_wraw.c_str(), _wbegins, _wends);
         _log->debug("'{}'{}~{}|{},{}", word->str(), word->begin, word->length,
                     (word->wbegin - &_wraw[0]), word->wlength);
     }
 }
 
 
+#if defined(_WIN32) and 0
+/** It will set locale temporalily to locale.C. */
+static struct sLocale {
+    std::locale previous;
+    static constexpr const char* tar = "";
+    inline sLocale() {
+	    SetConsoleOutputCP(CP_UTF8);
+	    SetConsoleCP(CP_UTF8);
+    }
+} __sLocale;
+#endif
+
 void Sentence::_characterize() {
     assert(_raw != nullptr);
-    auto en_US_utf8 = locale("en_US.UTF-8");
-    auto& facet = use_facet<codecvt<wchar_t, char, mbstate_t>>(en_US_utf8);
+    const std::codecvt<char32_t, char, mbstate_t>* facet = &use_facet<codecvt<char32_t, char, mbstate_t>>(
+        std::locale::classic()
+    );
     auto mbst = mbstate_t();
     const char* from_next = nullptr;
-    wstringstream wss;
+    std::u32stringstream wss;
     for (const char* from_curr = _raw; *from_curr != '\0'; from_curr = from_next) {
-        wchar_t wchar[2] = L"";
-        wchar_t* to_next = nullptr;
-        auto result = facet.in(mbst, from_curr, from_curr + 6, from_next, wchar, wchar + 1,
+        char32_t wchar[2] = U"";
+        char32_t* to_next = nullptr;
+        auto result = facet->in(mbst, from_curr, from_curr + 6, from_next, wchar, wchar + 1,
                                to_next);
         assert(result == codecvt_base::partial || result == codecvt_base::ok);
         wss << wchar[0];

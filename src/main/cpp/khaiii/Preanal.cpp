@@ -17,13 +17,16 @@
 #include "khaiii/Word.hpp"
 
 
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+
 namespace khaiii {
 
 
 using std::exception;
 using std::shared_ptr;
 using std::string;
-
 
 ////////////////////
 // static members //
@@ -42,10 +45,18 @@ Preanal::~Preanal() {
 /////////////
 // methods //
 /////////////
-void Preanal::open(string dir) {
-    _trie.open(dir + "/preanal.tri");
-    _val_mmf.open(dir + "/preanal.val");
-    _log->info("preanal dictionary opened");
+void Preanal::open(const char* dir) {
+	assert(dir);
+
+	std::string _dir(dir);
+	_dir += "/preanal.tri";
+	size_t drsz = _dir.length();
+
+	_trie.open(_dir.c_str());
+
+	_dir.replace(drsz - 3, 3, "val");
+	_val_mmf.open(_dir.c_str());
+	_log->info("preanal dictionary opened");
 }
 
 

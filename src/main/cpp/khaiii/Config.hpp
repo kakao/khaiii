@@ -44,7 +44,7 @@ class Config {
      * 파일로부터 설정을 읽어들인다.
      * @param  path  file path
      */
-    void read_from_file(std::string path);
+    void read_from_file(const char* path);
 
     /**
      * JSON 옵션을 이용해 설정을 override 한다.

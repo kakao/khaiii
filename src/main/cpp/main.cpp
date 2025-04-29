@@ -12,20 +12,20 @@
 #include <fstream>
 #include <string>
 
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+
 #include "cxxopts.hpp"
 #include "fmt/printf.h"
 #ifdef PROFILER
     #include "gperftools/profiler.h"
 #endif
-#include "spdlog/spdlog.h"
 
 #include "khaiii/KhaiiiApi.hpp"
 #include "khaiii/khaiii_dev.h"
 
-
-using std::cerr;
 using std::cin;
-using std::endl;
 using std::ifstream;
 using std::ofstream;
 using std::string;
@@ -42,7 +42,7 @@ int run(const cxxopts::ParseResult& opts) {
 
     auto khaiii_api = KhaiiiApi::create();
     try {
-        khaiii_api->open(opts["rsc-dir"].as<string>(), opts["opt-str"].as<string>());
+        khaiii_api->open(opts["rsc-dir"].as<string>().c_str(), opts["opt-str"].as<string>().c_str());
     } catch (const khaiii::Except& exc) {
         _log->error("fail to open dir: '{}', opt: '{}'", opts["rsc-dir"].as<string>(),
                     opts["opt-str"].as<string>());
@@ -94,7 +94,8 @@ int main(int argc, char** argv) {
     auto opts = options.parse(argc, argv);
 
     if (opts.count("help")) {
-        fmt::fprintf(cerr, "%s\n", options.help());
+	
+        fmt::fprintf(stderr, "%s\n", options.help());
         return 0;
     }
     if (opts.count("input")) {

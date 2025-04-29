@@ -10,6 +10,8 @@
 //////////////
 // includes //
 //////////////
+
+#include <cassert>
 #include <algorithm>
 #include <memory>
 #include <vector>
@@ -22,6 +24,9 @@
 #include "khaiii/util.hpp"
 #include "khaiii/nn/tensor.hpp"
 
+/** Supports spdlog::stderr_color_mt */
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 namespace khaiii {
 
@@ -159,7 +164,7 @@ void Tagger::_revise_tags() {
 }
 
 
-bool Tagger::_is_same_tag_cat(wchar_t prev_chr, int prev_tag, int curr_tag) {
+bool Tagger::_is_same_tag_cat(char32_t prev_chr, int prev_tag, int curr_tag) {
     assert(0 < curr_tag && curr_tag <= POS_TAG_SIZE);
     if (prev_tag == 0) return false;    // 맨 첫번째 음절인 경우 항상 false
     if (0 < prev_tag && prev_tag <= 2 * POS_TAG_SIZE) {

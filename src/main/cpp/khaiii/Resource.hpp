@@ -46,7 +46,7 @@ class Resource {
     ErrPatch errpatch;    ///< 오분석 패치
     Restore restore;    ///< 원형복원 사전
 
-    void open(const Config& cfg, std::string dir);
+    void open(const Config& cfg, const char* dir);
     void close();
 
  private:

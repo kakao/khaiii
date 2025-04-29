@@ -80,7 +80,7 @@ class Tagger {
     * @param  curr  현재 태그
     * @return  태그 카테고리가 동일한지 여부
     */
-    bool _is_same_tag_cat(wchar_t prev_chr, int prev_tag, int curr);
+    bool _is_same_tag_cat(char32_t prev_chr, int prev_tag, int curr);
 
     void _restore();    ///< restore morphemes
 

@@ -1,15 +1,5 @@
-cmake_minimum_required(VERSION 3.10)
-
-# manage 3rd party libraries with "hunter"
-if(NOT APPLE)
-    set(HUNTER_BUILD_SHARED_LIBS ON)
-endif()
-include("cmake/HunterGate.cmake")
-HunterGate(
-        URL "https://github.com/ruslo/hunter/archive/v0.23.34.tar.gz"
-        SHA1 "70287b1ffa810ee4e952052a9adff9b4856d0d54"
-        LOCAL
-)
+cmake_minimum_required(VERSION 3.5...3.30)
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING 3.5)
 
 # versions
 file(READ "include/khaiii/khaiii_api.h" KHAIII_VERSION_HEADER)
@@ -18,17 +8,24 @@ set(KHAIII_VERSION_MAJOR ${CMAKE_MATCH_1} CACHE STRING "major version" FORCE)
 string(REGEX MATCH "#define[ \t]+KHAIII_VERSION_MINOR[ \t]+([0-9]+)" _KHAIII_VERSION_MINOR "${KHAIII_VERSION_HEADER}")
 set(KHAIII_VERSION_MINOR ${CMAKE_MATCH_1} CACHE STRING "minor version" FORCE)
 set(KHAIII_VERSION ${KHAIII_VERSION_MAJOR}.${KHAIII_VERSION_MINOR} CACHE STRING "version" FORCE)
+include(cmake/ae2f_Core.cmake)
+
+# stringstream typedef for char32_t
+add_compile_definitions(u32stringstream=basic_stringstream<char32_t>)
+
+# U8 before string marker
+add_compile_definitions(u8=u8)
 
 # project
 project(khaiii VERSION ${KHAIII_VERSION})
 
 # options
 option(FMA "on/off fused multiply add compiler option" ON)
-if(FMA)
+if (FMA)
     include("cmake/FusedMultiplyAdd.cmake")
-endif()
+endif ()
 option(PROFILER "on/off profiler option" OFF)
-if(PROFILER)
+if (PROFILER)
     # bin/khaiii는 /tmp/bin_khaiii.prof 파일로, test/khaiii는 /tmp/test_khaiii.prof 파일로 생성됩니다.
     # 출력 파일명을 지정하고 싶을 경우 CPUPROFILE=/path/to/output bin/khanii와 같이 환경변수와 함께 실행합니다.
     # pprof --text bin/khaiii /tmp/bin_khaiii.prof와 같이 실행하면 출력 파일로부터 텍스트 보고서를 생성할 수 있습니다.
@@ -36,9 +33,9 @@ if(PROFILER)
     message(STATUS "[khaiii] profiler option enabled")
     include("cmake/FindGperftools.cmake")
     add_definitions(-DPROFILER)
-endif()
+endif ()
 option(COVERAGE "on/off code coverage option" OFF)
-if(COVERAGE AND CMAKE_COMPILER_IS_GNUCXX)
+if (COVERAGE AND CMAKE_COMPILER_IS_GNUCXX)
     # 코드 커버리지 옵션을 켭니다.
     # lcov --capture --directory . --output-file coverage.info
     # genhtml coverage.info --output-directory coverage.html
@@ -47,37 +44,76 @@ if(COVERAGE AND CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_BUILD_TYPE Debug)
     include(cmake/CodeCoverage.cmake)
     APPEND_COVERAGE_COMPILER_FLAGS()
-endif()
+endif ()
+
 
 set(CMAKE_DEBUG_POSTFIX "_debug")
 
-# dependent 3rd party libraries
-hunter_add_package(Boost)
-find_package(Boost CONFIG REQUIRED)
-hunter_add_package(cxxopts)
-find_package(cxxopts CONFIG REQUIRED)
-hunter_add_package(Eigen)
-find_package(Eigen3 CONFIG REQUIRED)
-hunter_add_package(fmt)
-find_package(fmt CONFIG REQUIRED)
-hunter_add_package(GTest)
-find_package(GTest CONFIG REQUIRED)
-hunter_add_package(nlohmann_json)
-find_package(nlohmann_json CONFIG REQUIRED)
-hunter_add_package(spdlog)
-find_package(spdlog CONFIG REQUIRED)
-
+# Available on modern Windows & Linux
 find_package(Threads REQUIRED)
 
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# dependent 3rd party libraries (Automatically installable)
+
+# ae2f_CoreLibFetchX_NS(boostorg boost boost master)
+ae2f_CoreLibFetchX_NS(jarro2783 cxxopts cxxopts master)
+ae2f_CoreLibFetchX_NS(fmtlib fmt fmt master)
+ae2f_CoreLibFetchX_NS(gabime spdlog spdlog v1.x)
+
+find_package(nlohmann_json)
+if (NOT ${nlohmann_json_FOUND})
+    ae2f_CoreLibFetch_NS(nlohmann json json master)
+endif ()
+
+# dependent 3rd party libraries (Manual step needed)
+
+find_package(Eigen3)
+if (NOT ${Eigen3_FOUND})
+	execute_process(
+		COMMAND git clone https://gitlab.com/libeigen/eigen ${PROJECT_SOURCE_DIR}/.submod/eigen --recursive
+	)
+
+        include_directories(${PROJECT_SOURCE_DIR}/.submod/eigen)
+endif()
+
+find_package(GTest)
+if(NOT ${GTest_FOUND})
+        message("NOT FOUND")
+	ae2f_CoreLibFetch_NS(google googletest googletest main)
+        set(GTEST_FETCHED GTest::gtest)
+else()
+if(_WIN32)
+ae2f_CoreLibFetch_NS(google googletest googletest main)
+set(GTEST_FETCHED GTest::gtest)
+else()
+	set(GTEST_FETCHED GTest::GTest)
+endif()
+	# message(FATAL_ERROR "FOUND GTEST. You set it manually.")
+endif()
+
+set(Boost_INCLUDE_DIR "")
+find_package(Boost)
+if(NOT ${Boost_FOUND})
+        execute_process(COMMAND git clone https://github.com/boostorg/boost ${PROJECT_SOURCE_DIR}/.submod/boost --recursive)
+        file(GLOB subdirs LIST_DIRECTORIES true "${PROJECT_SOURCE_DIR}/.submod/boost/libs/*")
+
+        foreach(subdir ${subdirs})
+            if(IS_DIRECTORY ${subdir})
+                if(EXISTS ${subdir}/include AND IS_DIRECTORY ${subdir}/include)
+                        message(STATUS "Found directory: ${subdir}/include")
+                        list(APPEND Boost_INCLUDE_DIR ${subdir}/include)
+                endif()
+            endif()
+        endforeach()
+endif()
+
+include_directories(${Boost_INCLUDE_DIR})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_definitions(-DFMT_HEADER_ONLY)
-if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+if (NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_definitions(-O3)
     add_definitions(-g)
     add_definitions(-funroll-loops)
-endif()
+endif ()
 
 # main objects
 add_library(obj_khaiii OBJECT
@@ -102,7 +138,8 @@ set(include_directories
         include
         src/main/cpp
         ${Boost_INCLUDE_DIRS}
-        ${EIGEN3_INCLUDE_DIR})
+        ${EIGEN3_INCLUDE_DIR}
+)
 target_include_directories(obj_khaiii PUBLIC ${include_directories})
 target_compile_definitions(obj_khaiii PUBLIC -DPREFIX="${CMAKE_INSTALL_PREFIX}")
 
@@ -119,12 +156,14 @@ add_executable(bin_khaiii
         src/main/cpp/main.cpp)
 set_target_properties(bin_khaiii PROPERTIES
         OUTPUT_NAME khaiii
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+)
 target_include_directories(bin_khaiii PRIVATE ${include_directories})
 target_link_libraries(bin_khaiii PRIVATE
         cxxopts::cxxopts
         ${GPERFTOOLS_PROFILER}
-        ${CMAKE_THREAD_LIBS_INIT})
+        ${CMAKE_THREAD_LIBS_INIT}
+)
 
 # executable: test_khaiii
 add_executable(test_khaiii
@@ -136,18 +175,25 @@ add_executable(test_khaiii
         src/test/cpp/khaiii/PreanalTest.cpp)
 set_target_properties(test_khaiii PROPERTIES
         OUTPUT_NAME khaiii
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/test)
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/test
+)
 target_include_directories(test_khaiii PRIVATE
         src/test/cpp
         ${include_directories})
 target_link_libraries(test_khaiii PRIVATE
-        GTest::gtest
+        ${GTEST_FETCHED}
         cxxopts::cxxopts
         ${GPERFTOOLS_PROFILER}
         ${CMAKE_THREAD_LIBS_INIT})
-if(COVERAGE AND CMAKE_COMPILER_IS_GNUCXX)
+if (COVERAGE AND CMAKE_COMPILER_IS_GNUCXX)
     target_link_libraries(test_khaiii PRIVATE gcov)
-endif()
+endif ()
+
+if (WIN32)
+    target_link_libraries(khaiii PRIVATE shlwapi)
+    target_link_libraries(bin_khaiii PRIVATE shlwapi)
+    target_link_libraries(test_khaiii PRIVATE shlwapi)
+endif ()
 
 # resource
 add_custom_target(resource

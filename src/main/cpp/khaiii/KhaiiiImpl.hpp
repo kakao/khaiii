@@ -38,7 +38,7 @@ class KhaiiiImpl: public KhaiiiApi {
  public:
     virtual ~KhaiiiImpl();    ///< dtor
 
-    void open(std::string rsc_dir = "", std::string opt_str = "") override;
+    void open(const char* rsc_dir = "", const char* opt_str = "") override;
 
     const khaiii_word_t* analyze(const char* input, const char* opt_str) override;
 
@@ -65,7 +65,7 @@ class KhaiiiImpl: public KhaiiiApi {
      * set error message
      * @param  message
      */
-    void set_err_msg(std::string msg);
+    void set_err_msg(const char* msg);
 
     /**
      * get error message
@@ -78,14 +78,14 @@ class KhaiiiImpl: public KhaiiiApi {
      * @param  name  로거 이름. "all"인 경우 모든 로거
      * @param  level 로거 레벨. trace, debug, info, warn, err, critical
      */
-    static void set_log_level(std::string name, std::string level);
+    static void set_log_level(const char* name, const char* level);
 
     /**
      * 여러 로그 레벨을 한꺼번에 지정한다.
      * @param  name_level_pairs  로거 (이름, 레벨) 쌍의 리스트.
      *                           "all:warn,console:info,Tagger:debug"와 같은 형식
      */
-    static void set_log_levels(std::string name_level_pairs);
+    static void set_log_levels(const char* name_level_pairs);
 
 
  private:
@@ -120,7 +120,7 @@ class KhaiiiImpl: public KhaiiiApi {
      * @param  rsc_dir  resource directory
      * @return  존재하는 디렉토리 경로
      */
-     std::string _check_rsc_dir(std::string rsc_dir);
+     std::string _check_rsc_dir(const char* rsc_dir);
 };
 
 

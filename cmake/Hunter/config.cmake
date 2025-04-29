@@ -1,7 +1,0 @@
-hunter_config(Boost VERSION 1.68.0-p1)
-hunter_config(cxxopts VERSION 2.1.1-pre)
-hunter_config(Eigen VERSION 3.3.5)
-hunter_config(fmt VERSION 4.1.0)
-hunter_config(GTest VERSION 1.8.0-hunter-p11)
-hunter_config(nlohmann_json VERSION 3.3.0)
-hunter_config(spdlog VERSION 0.16.3-p1)

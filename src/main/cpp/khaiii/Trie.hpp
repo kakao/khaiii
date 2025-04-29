@@ -43,30 +43,40 @@ class Trie {
      * 리소스를 연다.
      * @param  path  파일 경로
      */
-    void open(std::string path);
+    void open(const char* path);
 
     void close();    ///< 리소스를 닫는다.
+		     
+
+    /**
+     * @deprecated
+     * It has been commented. \n
+     * And I have no idea why.
+     * */
+#if 0
 
     /*
      * 키를 이용해 값을 찾는다.
      * @param  key  키 문자열
      * @return  값. 키가 없을 경우 boost::none
      */
-    // boost::optional<uint32_t> find(const std::wstring& key) const;
+    boost::optional<uint32_t> find(const std::u32string& key) const;
 
     /*
      * 키를 이용해 값을 찾는다.
      * @param  key  키 문자열
      * @return  값. 키가 없을 경우 boost::none
      */
-    // boost::optional<uint32_t> find(const wchar_t* key) const;
+    boost::optional<uint32_t> find(const char32_t* key) const;
+
+#endif
 
     /*
      * 접두사가 같은 모든 매칭 결과를 검색한다.
      * @param  text  검색할 문자열
      * @return  매칭 결과 리스트
      */
-    std::list<match_t> search_common_prefix_matches(const std::wstring& text,
+    std::list<match_t> search_common_prefix_matches(const  std::u32string& text,
                                                     int max_len = INT_MAX) const;
 
     /*
@@ -74,17 +84,17 @@ class Trie {
      * @param  text  검색할 문자열
      * @return  매칭 결과 리스트
      */
-    std::list<match_t> search_common_prefix_matches(const wchar_t* text,
+    std::list<match_t> search_common_prefix_matches(const char32_t* text,
                                                     int max_len = INT_MAX) const;
 
-    boost::optional<match_t> search_longest_prefix_match(const wchar_t* text,
+    boost::optional<match_t> search_longest_prefix_match(const char32_t* text,
                                                          int max_len = INT_MAX) const;
 
  private:
     static std::shared_ptr<spdlog::logger> _log;    ///< logger
 
     struct _node_t {    ///< TRIE의 노드 구조체
-        wchar_t chr = 0;    ///< 유니코드 문자
+        char32_t chr = 0;    ///< 유니코드 문자
         uint32_t val = 0;    ///< 값 (양수). (0인 경우 값이 아님. 즉, 단말 노드가 아님)
         int32_t child_start = -1;    ///< 현재 노드로부터 자식 노드가 시작되는 위치
         int32_t child_num = -1;    ///< 자식 노드의 갯수
@@ -122,7 +132,7 @@ class Trie {
      * @param  node  노드 시작 위치
      * @return  값. 키가 없을 경우 boost::none
      */
-    boost::optional<uint32_t> _find(const wchar_t* key, const _node_t* node) const;
+    boost::optional<uint32_t> _find(const char32_t* key, const _node_t* node) const;
 
     /*
      * 현재 노드로부터 더이상 매칭되는 키가 없을 때까지 검색한다.
@@ -131,7 +141,7 @@ class Trie {
      * @param  matches  매칭 결과 리스트
      * @param  len  현재까지 검색을 진행한 길이(자식 노드의 깊이)
      */
-    void _search(const wchar_t* text, const _node_t* node, std::list<match_t>* matches,
+    void _search(const char32_t* text, const _node_t* node, std::list<match_t>* matches,
                  int len, int max_len) const;
 };
 

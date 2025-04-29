@@ -36,11 +36,11 @@ typedef enum {
  */
 class Morph: public khaiii_morph_t {
  public:
-    std::wstring wlex;    ///< unicode lexical
-    const wchar_t* wbegin = nullptr;    ///< unicode string begin address
+    std::u32string wlex;    ///< unicode lexical
+    const char32_t* wbegin = nullptr;    ///< unicode string begin address
     int wlength = 0;    ///< unicode string length
 
-    Morph(std::wstring wlex, pos_tag_t tag, const wchar_t* wbegin, int wlength);    ///< ctor
+    Morph(const char32_t* wlex, pos_tag_t tag, const char32_t* wbegin, int wlength);    ///< ctor
 
     /**
      * API 결과 구조체의 내용을 채운다.
@@ -48,7 +48,7 @@ class Morph: public khaiii_morph_t {
      * @param  wbegins  각 음절별 시작 byte 위치
      * @param  wends  각 음절별 끝 byte 위치
      */
-    void organize(const std::wstring& wraw, const std::vector<int>& wbegins,
+    void organize(const char32_t* wraw, const std::vector<int>& wbegins,
                   const std::vector<int>& wends);
 
     /**
@@ -66,7 +66,7 @@ class Morph: public khaiii_morph_t {
     void set_ne_str(const char* tag);
 
     std::string str();    ///< UTF-8 문자열로 표현합니다.
-    std::wstring wstr();    ///< 유니코드 문자열로 표현합니다. (거의) 디버그용
+    std::u32string wstr();    ///< 유니코드 문자열로 표현합니다. (거의) 디버그용
 
  private:
     std::string _lex;    ///< cache of UTF-8 lexical
