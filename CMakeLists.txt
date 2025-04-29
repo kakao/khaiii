@@ -67,26 +67,29 @@ if (NOT ${Eigen3_FOUND})
 endif ()
 
 find_package(GTest)
-if (NOT ${GTest_FOUND})
-    ae2f_CoreLibFetch_NS(google googletest googletest main)
-endif ()
+if(NOT ${GTest_FOUND})
+        message("NOT FOUND")
+	ae2f_CoreLibFetch_NS(google googletest googletest main)
+        set(GTEST_FETCHED GTest::gtest)
+else()
+        message(FATAL_ERROR "FOUND GTEST. You set it manually.")
+endif()
 
 set(Boost_INCLUDE_DIR "")
 find_package(Boost)
-if (NOT ${Boost_FOUND})
+if(NOT ${Boost_FOUND})
+        execute_process(COMMAND git clone https://github.com/boostorg/boost ${PROJECT_SOURCE_DIR}/.submod/boost --recursive)
+        file(GLOB subdirs LIST_DIRECTORIES true "${PROJECT_SOURCE_DIR}/.submod/boost/libs/*")
 
-    execute_process(COMMAND git clone https://github.com/boostorg/boost ${PROJECT_SOURCE_DIR}/.submod/boost --recursive)
-    file(GLOB subdirs LIST_DIRECTORIES true "${PROJECT_SOURCE_DIR}/.submod/boost/libs/*")
-
-    foreach (subdir ${subdirs})
-        if (IS_DIRECTORY ${subdir})
-            if (EXISTS ${subdir}/include AND IS_DIRECTORY ${subdir}/include)
-                message(STATUS "Found directory: ${subdir}/include")
-                list(APPEND Boost_INCLUDE_DIR ${subdir}/include)
-            endif ()
-        endif ()
-    endforeach ()
-endif ()
+        foreach(subdir ${subdirs})
+            if(IS_DIRECTORY ${subdir})
+                if(EXISTS ${subdir}/include AND IS_DIRECTORY ${subdir}/include)
+                        message(STATUS "Found directory: ${subdir}/include")
+                        list(APPEND Boost_INCLUDE_DIR ${subdir}/include)
+                endif()
+            endif()
+        endforeach()
+endif()
 
 include_directories(${Boost_INCLUDE_DIR})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -163,7 +166,7 @@ target_include_directories(test_khaiii PRIVATE
         src/test/cpp
         ${include_directories})
 target_link_libraries(test_khaiii PRIVATE
-        GTest::gtest
+        ${GTEST_FETCHED}
         cxxopts::cxxopts
         ${GPERFTOOLS_PROFILER}
         ${CMAKE_THREAD_LIBS_INIT})

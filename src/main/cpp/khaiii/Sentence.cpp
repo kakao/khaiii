@@ -110,10 +110,23 @@ void Sentence::_tokenize() {
 }
 
 
+/** It will set locale temporalily to locale.C. */
+static struct sLocale {
+    std::locale previous;
+    static constexpr const char* tar = "C.UTF-8";
+    inline sLocale() {
+        previous = locale("");
+        std::locale::global(std::locale(tar));
+    }
+    inline ~sLocale() {
+        std::locale::global(previous);
+    }
+} __sLocale;
+
 void Sentence::_characterize() {
     assert(_raw != nullptr);
-    std::locale en_sysdefault_utf8 = locale("");
-    auto& facet = use_facet<codecvt<wchar_t, char, mbstate_t>>(en_sysdefault_utf8);
+    std::locale sysdefault_utf8 = locale(sLocale::tar);
+    auto& facet = use_facet<codecvt<wchar_t, char, mbstate_t>>(sysdefault_utf8);
     auto mbst = mbstate_t();
     const char* from_next = nullptr;
     wstringstream wss;
