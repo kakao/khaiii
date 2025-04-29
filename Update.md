@@ -1,10 +1,10 @@
-# TODO
-- Test if it works both on Windows & Linux
+This library is being tested on Arch Linux & Windows 11.
 
-# Error Fixed
-- Now is using char32_t instead of wchar_t
-- Using std::locale::classic(), which is repectively using default locale for OS.
-- No locale is being generated.
+# TODO
+- Test if Eigen3 Library fetch works on Windows
+
+# Update
+- Eigen3 fetching system is now completed. Tested on Arch Linux.
 
 # What you need
 - cmake, and compiler (gcc, clang, ...), and linker (make, ninja, ...)
@@ -21,13 +21,5 @@
 - Boost
 - GTest
 - spdlog
-
-## Libraries which Manual Handling required
-> In cmake, some libraries are not allowing in-source builds.  
-> You will install them manually.
 - Eigen3
-
-## Not sure currently
-find_package(nlohmann_json REQUIRED)
-find_package(spdlog REQUIRED)
-find_package(Threads REQUIRED)
+- nlohmann_jaon

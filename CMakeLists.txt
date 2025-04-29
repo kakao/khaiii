@@ -68,8 +68,12 @@ endif ()
 
 find_package(Eigen3)
 if (NOT ${Eigen3_FOUND})
-    ae2f_CoreLibFetch_NS(opm eigen3 eigen3 master)
-endif ()
+	execute_process(
+		COMMAND git clone https://gitlab.com/libeigen/eigen ${PROJECT_SOURCE_DIR}/.submod/eigen --recursive
+	)
+
+        include_directories(${PROJECT_SOURCE_DIR}/.submod/eigen)
+endif()
 
 find_package(GTest)
 if(NOT ${GTest_FOUND})
@@ -77,7 +81,13 @@ if(NOT ${GTest_FOUND})
 	ae2f_CoreLibFetch_NS(google googletest googletest main)
         set(GTEST_FETCHED GTest::gtest)
 else()
-        message(FATAL_ERROR "FOUND GTEST. You set it manually.")
+if(_WIN32)
+ae2f_CoreLibFetch_NS(google googletest googletest main)
+set(GTEST_FETCHED GTest::gtest)
+else()
+	set(GTEST_FETCHED GTest::GTest)
+endif()
+	# message(FATAL_ERROR "FOUND GTEST. You set it manually.")
 endif()
 
 set(Boost_INCLUDE_DIR "")
