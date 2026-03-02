@@ -6,7 +6,7 @@ The following sets forth attribution notices for third party software that may b
 
 If you have any questions or concerns, please contact us at [opensource@kakaocorp.com][opensource_kakaocorp.com]
 
- **boost**
+**boost**
 
 https://www.boost.org
 
@@ -17,7 +17,7 @@ Copyright Rene Rivera 2004-2007.
 Boost Software License 1.0 
 
 
- **CodeCoverage.cmake**
+**CodeCoverage.cmake**
 
 https://github.com/bilke/cmake-modules/blob/master/CodeCoverage.cmake
 
@@ -27,7 +27,7 @@ Copyright 2012 - 2017, Lars Bilke
 BSD 3-Clause "New" or "Revised" License 
 
 
- **cxxopts**
+**cxxopts**
 
 https://github.com/jarro2783/cxxopts
 
@@ -37,7 +37,7 @@ Copyright 2014 Jarryd Beck
 MIT License 
 
 
- **Eigen**
+**Eigen**
 
 https://bitbucket.org/eigen/eigen
 
@@ -47,7 +47,7 @@ Copyright property of respective owners
 Mozilla Public License 2.0 
 
 
- **gate**
+**gate**
 
 https://github.com/hunter-packages/gate/
 
@@ -57,7 +57,7 @@ Copyright 2013, Ruslan Baratov
 BSD 2-Clause "Simplified" License 
 
 
- **gperftools**
+**gperftools**
 
 https://github.com/gperftools/gperftools
 
@@ -67,7 +67,7 @@ Copyright 2005, Google Inc.
 BSD 3-Clause "New" or "Revised" License 
 
 
- **GTest**
+**GTest**
 
 https://github.com/hunter-packages/gtest
 
@@ -77,7 +77,7 @@ Copyright 2008, Google Inc.
 BSD 3-Clause "New" or "Revised" License 
 
 
- **Hunter**
+**Hunter**
 
 https://github.com/ruslo/hunter
 
@@ -87,7 +87,7 @@ Copyright 2013-2018, Ruslan Baratov
 BSD 2-Clause "Simplified" License 
 
 
- **JSON for Modern C++**
+**JSON for Modern C++**
 
 https://github.com/nlohmann/json
 
@@ -97,7 +97,7 @@ Copyright 2013-2018 Niels Lohmann
 MIT License 
 
 
- **PyTorch**
+**PyTorch**
 
 https://github.com/pytorch/pytorch
 
@@ -107,7 +107,7 @@ Copyright 2016- Facebook, Inc and All contributions
 BSD 3-Clause "New" or "Revised" License 
 
 
- **spdlog**
+**spdlog**
 
 https://github.com/gabime/spdlog
 
@@ -117,7 +117,7 @@ Copyright 2016 Gabi Melman
 MIT License 
 
 
- **tensorboardX**
+**tensorboardX**
 
 https://github.com/lanpa/tensorboardX
 
@@ -127,7 +127,7 @@ Copyright 2017 Tzu-Wei Huang
 MIT License 
 
 
- **tqdm**
+**tqdm**
 
 https://github.com/tqdm/tqdm
 
@@ -140,7 +140,7 @@ Mozilla Public License 2.0
 MIT License 
 
 
- **\{fmt\}**
+**\{fmt\}**
 
 https://github.com/fmtlib/fmt
 
